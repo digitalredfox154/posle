@@ -1,0 +1,42 @@
+# ПОСЛЕ — Todo
+
+## Phase 1: Foundation
+- [x] Global styles: Cormorant Garamond + Inter fonts, CSS variables (white/mint/#0E0E0E palette)
+- [x] Database schema: clients, pets, visits, subscriptions, master_users, sms_codes
+- [x] Dark Header component (#0E0E0E) with nav links
+- [x] Dark Footer component (#0E0E0E) with contacts and socials
+- [x] App routing: all public + private routes
+
+## Phase 2: Public Pages
+- [x] Home page: Hero, Philosophy, Before/After slider, Subscription teaser, Master bio, Booking CTA
+- [x] Before/After drag slider component (mouse + touch)
+- [x] About page
+- [x] Results/Gallery page
+- [x] Subscription page
+- [x] Contacts page with Yandex Map
+
+## Phase 3: Auth + Client Account
+- [x] SMS auth flow: phone input → 6-digit code → JWT cookie
+- [x] Rate limiting + brute-force protection (5 attempts → 15 min block)
+- [x] Client dashboard: next appointment, subscription status, quick booking
+- [x] Pet profiles: add/edit/delete, photo upload, breed, notes, allergies
+- [x] Pet diary: visit timeline, before/after photos, master notes, recommendations
+- [x] Subscription management: plan display, billing date, payment history, cancel
+
+## Phase 4: Master Panel + Booking + Storage
+- [x] Master daily visit list
+- [x] Visit card creation: before/after photo upload, notes, publish to client diary, 24h edit window
+- [x] YCLIENTS API integration: service list, available slots, booking creation
+- [x] Booking flow: pet → service → date/time → SMS confirmation
+- [x] SMS reminder 24h before visit
+- [x] File storage: photo upload to S3, 5MB limit
+
+## Phase 5: QA + Tests
+- [x] Vitest unit tests: auth, pets RBAC, visits RBAC, subscriptions (8 tests passing)
+- [x] Mobile responsiveness (mobile-first design)
+- [x] Final checkpoint save
+
+## Pending (requires external credentials)
+- [ ] YCLIENTS API key — provide via secrets panel to enable live booking
+- [ ] SMS provider credentials — provide to enable real SMS sending
+- [ ] Master visit edit page (/master/visit/:id)
