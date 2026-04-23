@@ -4,49 +4,85 @@ import { publicProcedure, router } from "../_core/trpc";
 import { getClientFromCookie } from "./client";
 
 const YCLIENTS_API = "https://api.yclients.com/api/v1";
-const YCLIENTS_TOKEN = process.env.YCLIENTS_TOKEN || "";
-const YCLIENTS_COMPANY_ID = process.env.YCLIENTS_COMPANY_ID || "";
 
-async function yclientsRequest(path: string, options?: RequestInit) {
-  if (!YCLIENTS_TOKEN || !YCLIENTS_COMPANY_ID) {
+function getYclientsHeaders() {
+  const partnerToken = process.env.YCLIENTS_API_KEY || "";
+  const userToken = process.env.YCLIENTS_USER_TOKEN || "";
+  const companyId = process.env.YCLIENTS_COMPANY_ID || "";
+
+  if (!partnerToken || !companyId) {
     throw new TRPCError({
       code: "PRECONDITION_FAILED",
-      message: "YCLIENTS не настроен. Добавьте YCLIENTS_TOKEN и YCLIENTS_COMPANY_ID",
+      message: "YCLIENTS не настроен",
     });
   }
+
+  return {
+    headers: {
+      Authorization: `Bearer ${partnerToken}, User ${userToken}`,
+      Accept: "application/vnd.yclients.v2+json",
+      "Content-Type": "application/json",
+    },
+    companyId,
+  };
+}
+
+async function yclientsRequest(path: string, options?: RequestInit) {
+  const { headers } = getYclientsHeaders();
   const res = await fetch(`${YCLIENTS_API}${path}`, {
     ...options,
     headers: {
-      Authorization: `Bearer ${YCLIENTS_TOKEN}, User ${YCLIENTS_TOKEN}`,
-      Accept: "application/vnd.yclients.v2+json",
-      "Content-Type": "application/json",
+      ...headers,
       ...(options?.headers || {}),
     },
   });
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok || body.success === false) {
     throw new TRPCError({
       code: "BAD_GATEWAY",
-      message: `YCLIENTS error ${res.status}: ${body}`,
+      message: body?.meta?.message || body?.message || `YCLIENTS error ${res.status}`,
     });
   }
-  return res.json();
+  return body;
 }
 
 export const bookingRouter = router({
-  // Get available services
+  // Список услуг из YCLIENTS
   services: publicProcedure.query(async () => {
-    const data = await yclientsRequest(`/company/${YCLIENTS_COMPANY_ID}/services`);
-    return (data.data || []) as Array<{ id: number; title: string; price_min: number; duration: number }>;
+    const { companyId } = getYclientsHeaders();
+    const data = await yclientsRequest(`/book_services/${companyId}`);
+    const services = data.data?.services || [];
+    return services as Array<{
+      id: number;
+      title: string;
+      price_min: number;
+      price_max: number;
+      duration: number;
+      category_id: number;
+    }>;
   }),
 
-  // Get available staff
+  // Категории услуг
+  serviceCategories: publicProcedure.query(async () => {
+    const { companyId } = getYclientsHeaders();
+    const data = await yclientsRequest(`/book_services/${companyId}`);
+    const categories = data.data?.category || [];
+    return categories as Array<{ id: number; title: string }>;
+  }),
+
+  // Список сотрудников
   staff: publicProcedure.query(async () => {
-    const data = await yclientsRequest(`/company/${YCLIENTS_COMPANY_ID}/staff`);
-    return (data.data || []) as Array<{ id: number; name: string; avatar: string }>;
+    const { companyId } = getYclientsHeaders();
+    const data = await yclientsRequest(`/book_staff/${companyId}`);
+    return (data.data || []) as Array<{
+      id: number;
+      name: string;
+      avatar: string;
+      specialization: string;
+    }>;
   }),
 
-  // Get available dates for a service
+  // Доступные даты для услуги
   availableDates: publicProcedure
     .input(
       z.object({
@@ -57,6 +93,7 @@ export const bookingRouter = router({
       })
     )
     .query(async ({ input }) => {
+      const { companyId } = getYclientsHeaders();
       const params = new URLSearchParams({
         service_ids: String(input.serviceId),
         date_from: input.dateFrom,
@@ -64,12 +101,12 @@ export const bookingRouter = router({
         ...(input.staffId ? { staff_id: String(input.staffId) } : {}),
       });
       const data = await yclientsRequest(
-        `/bookform/${YCLIENTS_COMPANY_ID}/dates?${params}`
+        `/book_dates/${companyId}?${params}`
       );
-      return (data.data || []) as string[];
+      return (data.data?.booking_dates || []) as string[];
     }),
 
-  // Get available time slots for a date
+  // Доступные слоты времени
   availableSlots: publicProcedure
     .input(
       z.object({
@@ -79,18 +116,19 @@ export const bookingRouter = router({
       })
     )
     .query(async ({ input }) => {
+      const { companyId } = getYclientsHeaders();
       const params = new URLSearchParams({
         service_ids: String(input.serviceId),
         date: input.date,
         ...(input.staffId ? { staff_id: String(input.staffId) } : {}),
       });
       const data = await yclientsRequest(
-        `/bookform/${YCLIENTS_COMPANY_ID}/times?${params}`
+        `/book_times/${companyId}/${input.staffId || 0}/${input.date}?${params}`
       );
-      return (data.data || []) as Array<{ time: string; seance_length: number }>;
+      return (data.data || []) as Array<{ time: string; seance_length: number; datetime: number }>;
     }),
 
-  // Create booking
+  // Создание записи
   createBooking: publicProcedure
     .input(
       z.object({
@@ -98,16 +136,31 @@ export const bookingRouter = router({
         staffId: z.number(),
         date: z.string(),
         time: z.string(),
-        clientName: z.string(),
-        clientPhone: z.string(),
+        clientName: z.string().min(2),
+        clientPhone: z.string().min(10),
         comment: z.string().optional(),
+        petName: z.string().optional(),
       })
     )
     .mutation(async ({ input, ctx }) => {
-      const session = await getClientFromCookie(ctx.req);
+      const { companyId } = getYclientsHeaders();
+
+      // Пробуем получить сессию клиента если авторизован
+      let clientPhone = input.clientPhone;
+      try {
+        const session = await getClientFromCookie(ctx.req);
+        if (session?.phone) clientPhone = session.phone;
+      } catch {}
+
+      const comment = [
+        input.comment || "",
+        input.petName ? `Питомец: ${input.petName}` : "",
+      ]
+        .filter(Boolean)
+        .join(". ");
 
       const body = {
-        phone: input.clientPhone,
+        phone: clientPhone.replace(/\D/g, "").replace(/^8/, "7"),
         fullname: input.clientName,
         email: "",
         appointments: [
@@ -118,10 +171,10 @@ export const bookingRouter = router({
             datetime: `${input.date}T${input.time}:00+07:00`,
           },
         ],
-        comment: input.comment || "",
+        comment,
       };
 
-      const data = await yclientsRequest(`/book_record/${YCLIENTS_COMPANY_ID}`, {
+      const data = await yclientsRequest(`/book_record/${companyId}`, {
         method: "POST",
         body: JSON.stringify(body),
       });

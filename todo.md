@@ -35,8 +35,9 @@
 - [x] Vitest unit tests: auth, pets RBAC, visits RBAC, subscriptions (8 tests passing)
 - [x] Mobile responsiveness (mobile-first design)
 - [x] Final checkpoint save
+- [x] YCLIENTS vitest tests (3 tests passing)
 
 ## Pending (requires external credentials)
-- [ ] YCLIENTS API key — provide via secrets panel to enable live booking
+- [x] YCLIENTS API key — подключён, partner token + user token, 11 тестов прошли
 - [ ] SMS provider credentials — provide to enable real SMS sending
 - [ ] Master visit edit page (/master/visit/:id)
