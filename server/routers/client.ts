@@ -99,7 +99,9 @@ export const clientRouter = router({
         console.log(`[SMS] Code for ${phone}: ${code}`);
       }
 
-      return { success: true, message: "Код отправлен" };
+      // Return code in dev/test mode (when SMS_RU_TEST=true or no balance)
+      const isTestMode = process.env.SMS_RU_TEST === "true";
+      return { success: true, message: "Код отправлен", testCode: isTestMode ? code : undefined };
     }),
 
   // Verify SMS code and create session

@@ -30,10 +30,17 @@ export default function Login() {
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const codeRefs = useRef<(HTMLInputElement | null)[]>([]);
 
+  const [testCode, setTestCode] = useState<string | null>(null);
+
   const sendCode = trpc.posleClient.sendCode.useMutation({
-    onSuccess: () => {
+    onSuccess: (data) => {
       setStep("code");
-      toast.success("Код отправлен");
+      if (data.testCode) {
+        setTestCode(data.testCode);
+        toast.info(`Тестовый режим: код ${data.testCode}`, { duration: 30000 });
+      } else {
+        toast.success("Код отправлен");
+      }
       setTimeout(() => codeRefs.current[0]?.focus(), 100);
     },
     onError: (e) => toast.error(e.message),
@@ -156,6 +163,12 @@ export default function Login() {
                 <p className="text-[#0E0E0E]/50 text-sm mb-10" style={{ fontFamily: "'Inter', sans-serif" }}>
                   Отправили SMS на {phone}
                 </p>
+                {testCode && (
+                  <div className="mb-6 p-4 bg-[#F7FAF9] border border-[#A8C5B5] text-center">
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8C5B5] mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>Тестовый режим</p>
+                    <p className="text-[#0E0E0E] text-3xl font-light tracking-[0.3em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{testCode}</p>
+                  </div>
+                )}
                 <div className="flex gap-3 mb-8" onPaste={handleCodePaste}>
                   {code.map((digit, i) => (
                     <input
