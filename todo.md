@@ -39,5 +39,5 @@
 
 ## Pending (requires external credentials)
 - [x] YCLIENTS API key — подключён, partner token + user token, 11 тестов прошли
-- [ ] SMS provider credentials — provide to enable real SMS sending
-- [ ] Master visit edit page (/master/visit/:id)
+- [ ] SMS provider credentials — нужен внешний SMS-провайдер (например sms.ru, smsc.ru)
+- [x] Master visit edit page (/master/visit/:id) — masterGet procedure, WebP оптимизация, хранение key+url, 24ч окно, 5 тестов (16 всего)

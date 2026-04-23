@@ -23,6 +23,7 @@ import AccountSubscription from "./pages/account/AccountSubscription";
 // Master pages
 import MasterPanel from "./pages/master/MasterPanel";
 import NewVisit from "./pages/master/NewVisit";
+import EditVisit from "./pages/master/EditVisit";
 
 function Router() {
   return (
@@ -47,6 +48,7 @@ function Router() {
       {/* Master panel */}
       <Route path="/master" component={MasterPanel} />
       <Route path="/master/new-visit" component={NewVisit} />
+      <Route path="/master/visit/:id" component={EditVisit} />
 
       {/* 404 */}
       <Route path="/404" component={NotFound} />

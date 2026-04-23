@@ -45,6 +45,18 @@ export const visitsRouter = router({
       return result[0];
     }),
 
+  // Master: get single visit by id
+  masterGet: protectedProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input, ctx }) => {
+      if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      const result = await db.select().from(visits).where(eq(visits.id, input.id)).limit(1);
+      if (!result[0]) throw new TRPCError({ code: "NOT_FOUND" });
+      return result[0];
+    }),
+
   // Master: create visit card
   masterCreate: protectedProcedure
     .input(
