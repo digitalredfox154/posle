@@ -49,7 +49,8 @@ export default function Login() {
   const verifyCode = trpc.posleClient.verifyCode.useMutation({
     onSuccess: () => {
       toast.success("Добро пожаловать!");
-      setLocation("/account");
+      // Full page reload ensures cookie is picked up by the browser
+      window.location.href = "/account";
     },
     onError: (e) => toast.error(e.message),
   });

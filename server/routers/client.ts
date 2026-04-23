@@ -5,6 +5,7 @@ import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
 import { clients, smsCodes, clientSessions } from "../../drizzle/schema";
 import { SignJWT, jwtVerify } from "jose";
+import { parse as parseCookie } from "cookie";
 import { ENV } from "../_core/env";
 
 const JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret || "posle-secret-key-change-in-production");
@@ -13,10 +14,11 @@ const CLIENT_COOKIE = "posle_client_session";
 // Helper: get client from request cookie
 async function getClientFromCookie(req: any) {
   const raw = req.headers?.cookie || "";
-  const match = raw.match(new RegExp(`${CLIENT_COOKIE}=([^;]+)`));
-  if (!match) return null;
+  const cookies = parseCookie(raw);
+  const token = cookies[CLIENT_COOKIE];
+  if (!token) return null;
   try {
-    const { payload } = await jwtVerify(match[1], JWT_SECRET);
+    const { payload } = await jwtVerify(token, JWT_SECRET);
     return payload as { clientId: number; phone: string };
   } catch {
     return null;
@@ -158,8 +160,11 @@ export const clientRouter = router({
         clientId = existing[0].id;
         await db.update(clients).set({ lastSignedIn: new Date() }).where(eq(clients.id, clientId));
       } else {
-        const inserted = await db.insert(clients).values({ phone, lastSignedIn: new Date() });
-        clientId = (inserted as any).insertId;
+        await db.insert(clients).values({ phone, lastSignedIn: new Date() });
+        // Re-fetch to get the auto-incremented id reliably
+        const newClient = await db.select().from(clients).where(eq(clients.phone, phone)).limit(1);
+        if (!newClient[0]) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Ошибка создания аккаунта" });
+        clientId = newClient[0].id;
       }
 
       // Issue JWT
@@ -168,12 +173,11 @@ export const clientRouter = router({
         .setExpirationTime("30d")
         .sign(JWT_SECRET);
 
-      // Set cookie
-      const isSecure = ctx.req.protocol === "https" || ctx.req.headers["x-forwarded-proto"] === "https";
+      // Set cookie — always secure+none for cross-origin (Manus gateway is always HTTPS)
       ctx.res.cookie(CLIENT_COOKIE, token, {
         httpOnly: true,
-        secure: isSecure,
-        sameSite: isSecure ? "none" : "lax",
+        secure: true,
+        sameSite: "none",
         maxAge: 30 * 24 * 60 * 60 * 1000,
         path: "/",
       });
