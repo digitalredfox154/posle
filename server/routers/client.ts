@@ -77,9 +77,27 @@ export const clientRouter = router({
 
       await db.insert(smsCodes).values({ phone, code, expiresAt });
 
-      // TODO: integrate real SMS gateway (SMSC/МТС)
-      // For now, log to console in dev
-      console.log(`[SMS] Code for ${phone}: ${code}`);
+      // Send via sms.ru
+      const smsApiKey = process.env.SMS_RU_API_KEY;
+      if (smsApiKey) {
+        try {
+          const smsRes = await fetch(
+            `https://sms.ru/sms/send?api_id=${smsApiKey}&to=${phone}&msg=${encodeURIComponent(`Ваш код для входа в ПОСЛЕ: ${code}. Действителен 5 минут.`)}&from=POSLE&json=1`
+          );
+          const smsData = await smsRes.json() as { status: string; status_code: number; sms?: Record<string, { status: string; status_code: number }> };
+          if (smsData.status !== "OK") {
+            console.error(`[SMS.ru] Error: ${JSON.stringify(smsData)}`);
+            // Still return success — code is saved, user can retry
+          } else {
+            console.log(`[SMS.ru] Sent to ${phone}`);
+          }
+        } catch (err) {
+          console.error("[SMS.ru] Request failed:", err);
+        }
+      } else {
+        // Dev fallback
+        console.log(`[SMS] Code for ${phone}: ${code}`);
+      }
 
       return { success: true, message: "Код отправлен" };
     }),

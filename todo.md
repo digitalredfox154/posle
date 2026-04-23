@@ -41,3 +41,8 @@
 - [x] YCLIENTS API key — подключён, partner token + user token, 11 тестов прошли
 - [ ] SMS provider credentials — нужен внешний SMS-провайдер (например sms.ru, smsc.ru)
 - [x] Master visit edit page (/master/visit/:id) — masterGet procedure, WebP оптимизация, хранение key+url, 24ч окно, 5 тестов (16 всего)
+
+## SMS Integration
+- [x] Подключить sms.ru API — ключ сохранён, 2 теста прошли (18 всего)
+- [ ] Имя отправителя POSLE — нужно зарегистрировать в sms.ru (раздел «Отправители»)
+- [ ] Пополнить баланс sms.ru для отправки SMS
