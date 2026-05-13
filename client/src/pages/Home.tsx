@@ -342,8 +342,8 @@ export default function Home() {
               style={{ backgroundColor: "#1a1a18" }}
             >
               <div>
-                <p className="text-[#C4A96A] text-[10px] tracking-[0.35em] uppercase mb-6"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}>
+                <p className="text-[#C4A96A] uppercase mb-6"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
                   Клуб резидентов
                 </p>
                 <h2 className="text-white font-light leading-[1.15] mb-8"
@@ -376,8 +376,8 @@ export default function Home() {
               className="border border-white/[0.07] p-8"
               style={{ backgroundColor: "#1a1a18" }}
             >
-              <p className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-8"
-                style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}>
+              <p className="text-[#C4A96A] uppercase mb-8"
+                style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
                 Онлайн-дневник питомца
               </p>
               <div className="flex flex-col">
@@ -452,8 +452,8 @@ export default function Home() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <p className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-3"
-                style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}>
+              <p className="text-[#C4A96A] uppercase mb-3"
+                style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
                 Дополнение
               </p>
               <h3 className="text-white font-light leading-tight mb-2"
@@ -476,7 +476,7 @@ export default function Home() {
                 className="w-full flex items-center justify-between border border-white/[0.15] text-white/60 px-5 py-3.5 hover:border-[#C4A96A]/60 hover:text-[#C4A96A] transition-all duration-300 mt-auto"
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
-                <span className="tracking-[0.25em] uppercase" style={{ fontSize: "13px" }}>Записаться</span>
+                <span className="tracking-[0.25em] uppercase" style={{ fontSize: "13px" }}>Обсудить условия</span>
                 <span className="text-lg">→</span>
               </Link>
             </motion.div>
