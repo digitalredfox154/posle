@@ -96,31 +96,33 @@ export default function Home() {
       </section>
 
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-white">
+      <section className="py-24 md:py-32 bg-[#FDFCF9]">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+            {/* Left: label + heading + paragraphs */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-6"
+              <p className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-8"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
                 Философия
               </p>
               <h2 className="font-light leading-tight mb-8 text-[#0E0E0E]"
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(36px, 5vw, 56px)",
+                  fontSize: "clamp(40px, 5vw, 60px)",
                 }}>
-                Один питомец.<br />Полное внимание.
+                Один питомец.<br />Полное внимание.{" "}
+                <span className="text-[#C4A96A]" style={{ fontSize: "0.7em" }}>✦</span>
               </h2>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-6"
+              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-5"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
                 Мы не работаем в потоке. У каждой собаки есть свой характер, привычки, тревоги и границы. Поэтому визит в ПОСЛЕ строится спокойно: без спешки, лишнего шума и ощущения конвейера.
               </p>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-6"
+              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-5"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
                 Мастер видит не только шерсть и форму, но и настроение питомца. Где нужно — даст время привыкнуть. Где важно — сделает мягче. Где можно — доведёт образ до аккуратного, чистого и выразительного результата.
               </p>
@@ -129,6 +131,8 @@ export default function Home() {
                 ПОСЛЕ — это момент, когда собака выглядит ухоженно, чувствует себя спокойно, а владелец понимает: к деталям здесь относятся всерьёз.
               </p>
             </motion.div>
+
+            {/* Right: 2x2 cards with icon */}
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -137,20 +141,67 @@ export default function Home() {
               className="grid grid-cols-2 gap-4"
             >
               {[
-                { num: "01", text: "Камерный формат" },
-                { num: "02", text: "Спокойный процесс" },
-                { num: "03", text: "Внимание к характеру" },
-                { num: "04", text: "Постоянный мастер" },
+                {
+                  num: "01",
+                  text: "Камерный формат",
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#C4A96A" strokeWidth="1.2">
+                      <rect x="4" y="4" width="10" height="10" />
+                      <rect x="18" y="4" width="10" height="10" />
+                      <rect x="4" y="18" width="10" height="10" />
+                      <rect x="18" y="18" width="10" height="10" />
+                    </svg>
+                  ),
+                },
+                {
+                  num: "02",
+                  text: "Спокойный процесс",
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#C4A96A" strokeWidth="1.2">
+                      <path d="M16 4C16 4 6 10 6 18a10 10 0 0020 0C26 10 16 4 16 4z" />
+                      <path d="M10 20c1-3 3-5 6-6" />
+                    </svg>
+                  ),
+                },
+                {
+                  num: "03",
+                  text: "Внимание к характеру",
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#C4A96A" strokeWidth="1.2">
+                      <path d="M16 27S5 20 5 12a6 6 0 0111-3.3A6 6 0 0127 12c0 8-11 15-11 15z" />
+                    </svg>
+                  ),
+                },
+                {
+                  num: "04",
+                  text: "Постоянный мастер",
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#C4A96A" strokeWidth="1.2">
+                      <circle cx="16" cy="16" r="11" />
+                      <circle cx="16" cy="16" r="6" />
+                      <path d="M16 5v3M16 24v3M5 16h3M24 16h3" />
+                    </svg>
+                  ),
+                },
               ].map((item) => (
-                <div key={item.num} className="bg-[#F7FAF9] p-6 border border-[#E8F0EC]">
-                  <p className="text-[#A8C5B5] text-xs tracking-widest mb-3"
-                    style={{ fontFamily: "'Inter', sans-serif" }}>
-                    {item.num}
-                  </p>
-                  <p className="text-[#0E0E0E] text-sm font-light"
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
-                    {item.text}
-                  </p>
+                <div
+                  key={item.num}
+                  className="bg-white rounded-2xl p-6 border border-[#EDE8DF] flex flex-col justify-between min-h-[160px]"
+                >
+                  <div className="flex items-start justify-between">
+                    <span className="text-[#0E0E0E]/40 text-sm"
+                      style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px" }}>
+                      {item.num}
+                    </span>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div className="w-8 h-px bg-[#C4A96A] mb-4" />
+                    <p className="text-[#0E0E0E] font-light"
+                      style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
+                      {item.text}
+                    </p>
+                  </div>
                 </div>
               ))}
             </motion.div>
