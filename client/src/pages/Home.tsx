@@ -70,13 +70,13 @@ export default function Home() {
                 variants={fadeUp}
                 className="text-white leading-none mb-4"
                 style={{
-                  fontFamily: "'Playfair Display', serif",
+                  fontFamily: "'Cormorant Garamond', serif",
                   fontSize: "clamp(72px, 11vw, 130px)",
-                  fontWeight: 400,
-                  letterSpacing: "0.01em",
+                  fontWeight: 300,
+                  letterSpacing: "0.15em",
                 }}
               >
-                после
+                ПОСЛЕ
               </motion.h1>
 
               {/* Gold divider with star */}
