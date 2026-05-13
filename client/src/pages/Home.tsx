@@ -486,64 +486,80 @@ export default function Home() {
       </section>
 
       {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-white">
+      <section className="py-20 md:py-28" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="aspect-[3/4] overflow-hidden bg-[#F7FAF9]">
-                <img
-                  src={MASTER_PHOTO}
-                  alt="Мастер"
-                  className="w-full h-full object-cover"
-                />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="border rounded-sm max-w-5xl mx-auto overflow-hidden"
+            style={{ borderColor: "rgba(180,150,90,0.25)", backgroundColor: "#FAF7F2" }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-[45%_55%]">
+              {/* Left — photo */}
+              <div className="relative">
+                <div className="h-full min-h-[420px] overflow-hidden">
+                  <img
+                    src={MASTER_PHOTO}
+                    alt="Мастер"
+                    className="w-full h-full object-cover object-top"
+                    style={{ minHeight: "420px" }}
+                  />
+                </div>
+                {/* Experience badge */}
+                <div
+                  className="absolute bottom-6 right-6 w-28 h-28 flex flex-col items-center justify-center"
+                  style={{ backgroundColor: "#A8C5B5" }}
+                >
+                  <span className="text-[#2a2a2a] text-center leading-tight"
+                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", letterSpacing: "0.08em" }}>
+                    5 ЛЕТ<br />ОПЫТА
+                  </span>
+                </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#A8C5B5] flex items-center justify-center">
-                <span className="text-[#0E0E0E] text-xs tracking-widest uppercase text-center leading-tight"
-                  style={{ fontFamily: "'Inter', sans-serif" }}>
-                  5 лет<br />опыта
-                </span>
+
+              {/* Right — text */}
+              <div className="p-10 md:p-14 flex flex-col justify-center">
+                {/* Label */}
+                <p className="uppercase mb-3"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", letterSpacing: "0.35em", color: "#B8965A" }}>
+                  Мастер
+                </p>
+                {/* Gold line + paw divider */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.4)" }} />
+                  <span style={{ color: "#B8965A", fontSize: "18px" }}>🐾</span>
+                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.4)" }} />
+                </div>
+                {/* Heading */}
+                <h2 className="font-light leading-tight mb-8" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(30px, 3.5vw, 46px)", color: "#1a1a14" }}>
+                  Работаю не с потоком,<br />а с характером
+                </h2>
+                {/* Ornamental divider */}
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.3)" }} />
+                  <span style={{ color: "#B8965A", fontSize: "20px" }}>❧</span>
+                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.3)" }} />
+                </div>
+                {/* Text */}
+                <p className="leading-relaxed mb-5" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", color: "rgba(26,26,20,0.7)" }}>
+                  Для меня груминг начинается не с инструмента, а с контакта. Я смотрю, как собака реагирует, где ей спокойно, где нужно больше времени, какой уход подойдёт именно ей.
+                </p>
+                <p className="leading-relaxed mb-10" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", color: "rgba(26,26,20,0.7)" }}>
+                  Мне важно, чтобы после процедуры питомец выглядел ухоженно, но не был уставшим и зажатым. Красивый результат имеет смысл только тогда, когда он получен бережно.
+                </p>
+                {/* Link */}
+                <Link
+                  href="/about"
+                  className="self-start uppercase pb-0.5 transition-all duration-200 hover:opacity-100"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", letterSpacing: "0.25em", color: "#B8965A", borderBottom: "1px solid rgba(180,150,90,0.5)" }}
+                >
+                  Подробнее обо мне
+                </Link>
               </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-6"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
-                Мастер
-              </p>
-              <h2 className="font-light leading-tight mb-6 text-[#0E0E0E]"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(32px, 4vw, 48px)",
-                }}>
-                Работаю не с потоком,<br />а с характером
-              </h2>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-6"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
-                Для меня груминг начинается не с инструмента, а с контакта. Я смотрю, как собака реагирует, где ей спокойно, где нужно больше времени, какой уход подойдёт именно ей.
-              </p>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-8"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
-                Мне важно, чтобы после процедуры питомец выглядел ухоженно, но не был уставшим и зажатым. Красивый результат имеет смысл только тогда, когда он получен бережно.
-              </p>
-              <Link
-                href="/about"
-                className="text-xs tracking-[0.2em] uppercase text-[#0E0E0E]/50 hover:text-[#0E0E0E] border-b border-[#0E0E0E]/20 hover:border-[#0E0E0E] pb-0.5 transition-all duration-200"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
-                Подробнее обо мне
-              </Link>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
