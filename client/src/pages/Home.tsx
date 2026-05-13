@@ -328,72 +328,164 @@ export default function Home() {
       </section>
 
       {/* ── SUBSCRIPTION TEASER ──────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-[#0E0E0E]">
+      <section className="py-20 md:py-28" style={{ backgroundColor: "#111110" }}>
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr_0.9fr] gap-6 items-start">
+
+            {/* Col 1 — heading + text + button */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
+              className="flex flex-col justify-between h-full py-2"
             >
-              <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-6"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
-                Клуб резидентов
-              </p>
-              <h2 className="text-white font-light leading-tight mb-8"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(36px, 5vw, 56px)",
-                }}>
-                Для тех, кто выбирает постоянство
-              </h2>
-              <p className="text-white/50 text-sm leading-relaxed mb-8"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
-                Резиденты ПОСЛЕ — это клиенты, чьих собак мы знаем не по карточке, а по характеру. Привычки, особенности шерсти, комфортный темп, предпочтения владельца — всё сохраняется и учитывается при каждом визите.
-              </p>
+              <div>
+                <p className="text-[#C4A96A] text-[10px] tracking-[0.35em] uppercase mb-6"
+                  style={{ fontFamily: "'Inter', sans-serif" }}>
+                  Клуб резидентов
+                </p>
+                <h2 className="text-white font-light leading-[1.15] mb-8"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "clamp(36px, 4.5vw, 58px)",
+                  }}>
+                  Для тех, кто выбирает постоянство
+                </h2>
+                <p className="text-white/45 text-sm leading-relaxed mb-10"
+                  style={{ fontFamily: "'Inter', sans-serif" }}>
+                  Онлайн-дневник питомца в личном кабинете — всё о его жизни: визиты, уход, рекомендации и важные заметки. Всегда под рукой.
+                </p>
+              </div>
               <Link
                 href="/subscription"
-                className="inline-block text-xs tracking-[0.2em] uppercase bg-[#A8C5B5] text-[#0E0E0E] px-8 py-4 hover:bg-[#C8DDD4] transition-all duration-300 font-medium"
+                className="inline-block text-[10px] tracking-[0.25em] uppercase border border-[#A8C5B5]/60 text-[#A8C5B5] px-8 py-4 hover:bg-[#A8C5B5]/10 transition-all duration-300 self-start"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 Стать резидентом
               </Link>
             </motion.div>
+
+            {/* Col 2 — diary card */}
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex flex-col gap-4"
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="rounded-sm border border-white/10 p-8"
+              style={{ backgroundColor: "#1a1a18" }}
             >
-              {(plans && plans.length > 0 ? plans : [
-                { id: 1, name: "Резидент", priceKopecks: 199000, features: JSON.stringify(["Приоритетная запись", "Индивидуальные условия", "История ухода питомца"]) },
-              ]).slice(0, 1).map((plan) => (
-                <div key={plan.id} className="border border-white/10 p-8">
-                  <p className="text-[#A8C5B5] text-xs tracking-widest uppercase mb-4"
-                    style={{ fontFamily: "'Inter', sans-serif" }}>
-                    {plan.name}
-                  </p>
-                  <p className="text-white font-light mb-6"
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "42px" }}>
-                    {(plan.priceKopecks / 100).toLocaleString("ru-RU")} ₽
-                    <span className="text-white/30 text-base ml-2">/мес</span>
-                  </p>
-                  <div className="flex flex-col gap-2">
-                    {(JSON.parse(plan.features || "[]") as string[]).map((f: string) => (
-                      <div key={f} className="flex items-center gap-3">
-                        <div className="w-1 h-1 rounded-full bg-[#A8C5B5]" />
-                        <span className="text-white/60 text-xs"
-                          style={{ fontFamily: "'Inter', sans-serif" }}>
-                          {f}
-                        </span>
-                      </div>
-                    ))}
+              <p className="text-[#C4A96A] text-[9px] tracking-[0.3em] uppercase mb-8"
+                style={{ fontFamily: "'Inter', sans-serif" }}>
+                Онлайн-дневник питомца
+              </p>
+              <div className="flex flex-col gap-0">
+                {[
+                  {
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.4" strokeLinecap="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                        <path d="M16 2v4M8 2v4M3 10h18" />
+                        <path d="M8 14h2M14 14h2M8 18h2M14 18h2" />
+                      </svg>
+                    ),
+                    text: "История визитов\nи процедур",
+                  },
+                  {
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.4" strokeLinecap="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                      </svg>
+                    ),
+                    text: "Рекомендации по уходу\nи питанию",
+                  },
+                  {
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.4" strokeLinecap="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M7 8h10M7 12h6M7 16h4" />
+                      </svg>
+                    ),
+                    text: "Заметки и важные\nнаблюдения",
+                  },
+                  {
+                    icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.4" strokeLinecap="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                      </svg>
+                    ),
+                    text: "Напоминания о записях\nи процедурах",
+                  },
+                ].map((item, idx, arr) => (
+                  <div key={idx}>
+                    <div className="flex items-start gap-4 py-5">
+                      <div className="mt-0.5 shrink-0">{item.icon}</div>
+                      <p className="text-white/70 text-sm leading-snug whitespace-pre-line"
+                        style={{ fontFamily: "'Inter', sans-serif" }}>
+                        {item.text}
+                      </p>
+                    </div>
+                    {idx < arr.length - 1 && (
+                      <div className="h-px bg-white/8" />
+                    )}
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </motion.div>
+
+            {/* Col 3 — subscription card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="rounded-sm border border-white/10 p-8 flex flex-col items-center text-center"
+              style={{ backgroundColor: "#1a1a18" }}
+            >
+              {/* Logo emblem */}
+              <div className="mb-6 w-20 h-20 flex items-center justify-center">
+                <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
+                  <circle cx="40" cy="40" r="36" stroke="#C4A96A" strokeWidth="1.2" />
+                  <text x="40" y="58" textAnchor="middle"
+                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "52px", fill: "#C4A96A", fontWeight: 300 }}
+                  >
+                    П
+                  </text>
+                  {/* star on top */}
+                  <path d="M40 4 L41.2 7.5 L45 7.5 L42 9.8 L43.2 13.3 L40 11 L36.8 13.3 L38 9.8 L35 7.5 L38.8 7.5 Z"
+                    fill="#C4A96A" />
+                </svg>
+              </div>
+              <p className="text-[#C4A96A] text-[9px] tracking-[0.3em] uppercase mb-3"
+                style={{ fontFamily: "'Inter', sans-serif" }}>
+                Дополнение
+              </p>
+              <h3 className="text-white font-light leading-tight mb-2"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(26px, 3vw, 34px)",
+                }}>
+                Индивидуальная<br />подписка
+              </h3>
+              {/* small gold star divider */}
+              <div className="my-4">
+                <span className="text-[#C4A96A]" style={{ fontSize: "18px" }}>✦</span>
+              </div>
+              <p className="text-white/45 text-sm leading-relaxed mb-8"
+                style={{ fontFamily: "'Inter', sans-serif" }}>
+                Персональные привилегии и особое внимание для вашего питомца.
+              </p>
+              <Link
+                href="/subscription"
+                className="w-full flex items-center justify-between border border-white/20 text-white/70 px-5 py-3.5 hover:border-[#C4A96A] hover:text-[#C4A96A] transition-all duration-300 mt-auto"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                <span className="text-[10px] tracking-[0.25em] uppercase">Узнать условия</span>
+                <span className="text-lg">→</span>
+              </Link>
+            </motion.div>
+
           </div>
         </div>
       </section>
