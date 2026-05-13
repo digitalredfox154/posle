@@ -60,7 +60,7 @@ export default function Home() {
             >
               <motion.p
                 variants={fadeUp}
-                className="text-[#C4A96A] text-[10px] tracking-[0.35em] uppercase mb-6"
+                 className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-5"
                 style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.3em" }}
               >
                 Камерный груминг-сервис · Новосибирск
@@ -130,9 +130,9 @@ export default function Home() {
       </section>
 
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-14 md:py-20" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             {/* Left: label + heading + paragraphs */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
@@ -140,11 +140,12 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-8"
+              <p className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-5"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
                 Философия
               </p>
-              <h2 className="font-light leading-tight mb-8 text-[#0E0E0E]"
+              <h2
+                className="font-light leading-tight mb-5 text-[#0E0E0E]"
                 style={{
                   fontFamily: "'Cormorant Garamond', serif",
                   fontSize: "clamp(40px, 5vw, 60px)",
@@ -152,11 +153,11 @@ export default function Home() {
                 Один питомец.<br />Полное внимание.{" "}
                 <span className="text-[#C4A96A]" style={{ fontSize: "0.7em" }}>✦</span>
               </h2>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-5"
+              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-3"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
                 Мы не работаем в потоке. У каждой собаки есть свой характер, привычки, тревоги и границы. Поэтому визит в ПОСЛЕ строится спокойно: без спешки, лишнего шума и ощущения конвейера.
               </p>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-5"
+              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-3"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
                 Мастер видит не только шерсть и форму, но и настроение питомца. Где нужно — даст время привыкнуть. Где важно — сделает мягче. Где можно — доведёт образ до аккуратного, чистого и выразительного результата.
               </p>
@@ -244,14 +245,14 @@ export default function Home() {
       </section>
 
       {/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-14 md:py-20" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-center mb-14"
+            className="text-center mb-8"
           >
             {/* РЕЗУЛЬТАТЫ label */}
             <p className="text-[#C4A96A] text-[10px] tracking-[0.35em] uppercase mb-3"
@@ -303,7 +304,7 @@ export default function Home() {
           </div>
 
           {/* Bottom paw divider */}
-          <div className="flex items-center justify-center gap-3 mt-12">
+          <div className="flex items-center justify-center gap-3 mt-8">
             <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, #C4A96A)" }} />
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#C4A96A">
               <ellipse cx="12" cy="17" rx="5" ry="4" />
@@ -315,7 +316,7 @@ export default function Home() {
             <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, #C4A96A)" }} />
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-6">
             <Link
               href="/results"
               className="inline-block text-xs tracking-[0.2em] uppercase border border-[#2C2416]/20 text-[#2C2416]/60 px-8 py-3 hover:border-[#C4A96A] hover:text-[#C4A96A] transition-all duration-300"
@@ -328,9 +329,9 @@ export default function Home() {
       </section>
 
       {/* ── SUBSCRIPTION TEASER ──────────────────────────────────────────── */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: "#111110" }}>
+      <section className="py-14 md:py-20" style={{ backgroundColor: "#111110" }}>
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr_0.9fr] gap-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr_0.9fr] gap-4 items-stretch">
 
             {/* Col 1 — heading + text + button */}
             <motion.div
@@ -338,7 +339,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col justify-between border border-white/[0.07] p-8"
+              className="flex flex-col justify-between border border-white/[0.07] p-7"
               style={{ backgroundColor: "#1a1a18" }}
             >
               <div>
@@ -373,10 +374,10 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="border border-white/[0.07] p-8"
+              className="border border-white/[0.07] p-7"
               style={{ backgroundColor: "#1a1a18" }}
             >
-              <p className="text-[#C4A96A] uppercase mb-8"
+              <p className="text-[#C4A96A] uppercase mb-5"
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
                 Онлайн-дневник питомца
               </p>
@@ -441,18 +442,18 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="border border-white/[0.07] p-8 flex flex-col items-center text-center"
+              className="border border-white/[0.07] p-7 flex flex-col items-center text-center"
               style={{ backgroundColor: "#1a1a18" }}
             >
               {/* Logo emblem — olive PNG */}
-              <div className="mb-6 w-24 h-24 flex items-center justify-center">
+              <div className="mb-4 w-20 h-20 flex items-center justify-center">
                 <img
                   src="/manus-storage/posle-logo-olive_44f3e3e8.png"
                   alt="ПОСЛЕ логотип"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <p className="text-[#C4A96A] uppercase mb-3"
+              <p className="text-[#C4A96A] uppercase mb-2"
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
                 Дополнение
               </p>
@@ -467,7 +468,7 @@ export default function Home() {
               <div className="my-4">
                 <span className="text-[#C4A96A]" style={{ fontSize: "18px" }}>✦</span>
               </div>
-              <p className="text-white/45 leading-relaxed mb-8"
+              <p className="text-white/45 leading-relaxed mb-5"
                 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px" }}>
                 Персональные привилегии и особое внимание для вашего питомца.
               </p>
@@ -486,7 +487,7 @@ export default function Home() {
       </section>
 
       {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-14 md:py-20" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -520,33 +521,33 @@ export default function Home() {
               </div>
 
               {/* Right — text */}
-              <div className="p-10 md:p-14 flex flex-col justify-center">
+              <div className="p-8 md:p-12 flex flex-col justify-center">
                 {/* Label */}
-                <p className="uppercase mb-3"
+                <p className="uppercase mb-2"
                   style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", letterSpacing: "0.35em", color: "#B8965A" }}>
                   Мастер
                 </p>
                 {/* Gold line + paw divider */}
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-4">
                   <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.4)" }} />
                   <span style={{ color: "#B8965A", fontSize: "18px" }}>🐾</span>
                   <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.4)" }} />
                 </div>
                 {/* Heading */}
-                <h2 className="font-light leading-tight mb-8" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(30px, 3.5vw, 46px)", color: "#1a1a14" }}>
+                <h2 className="font-light leading-tight mb-5" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 42px)", color: "#1a1a14" }}>
                   Работаю не с потоком,<br />а с характером
                 </h2>
                 {/* Ornamental divider */}
-                <div className="flex items-center gap-3 mb-8">
+                <div className="flex items-center gap-3 mb-5">
                   <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.3)" }} />
                   <span style={{ color: "#B8965A", fontSize: "20px" }}>❧</span>
                   <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.3)" }} />
                 </div>
                 {/* Text */}
-                <p className="leading-relaxed mb-5" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", color: "rgba(26,26,20,0.7)" }}>
+                <p className="leading-relaxed mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(26,26,20,0.7)" }}>
                   Для меня груминг начинается не с инструмента, а с контакта. Я смотрю, как собака реагирует, где ей спокойно, где нужно больше времени, какой уход подойдёт именно ей.
                 </p>
-                <p className="leading-relaxed mb-10" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", color: "rgba(26,26,20,0.7)" }}>
+                <p className="leading-relaxed mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(26,26,20,0.7)" }}>
                   Мне важно, чтобы после процедуры питомец выглядел ухоженно, но не был уставшим и зажатым. Красивый результат имеет смысл только тогда, когда он получен бережно.
                 </p>
                 {/* Link */}
@@ -564,7 +565,7 @@ export default function Home() {
       </section>
 
       {/* ── BOOKING CTA ──────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-14 md:py-20" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -573,22 +574,22 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="text-center max-w-xl mx-auto"
           >
-            <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-6"
+            <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-4"
               style={{ fontFamily: "'Inter', sans-serif" }}>
               Запись
             </p>
-            <h2 className="font-light text-[#0E0E0E] mb-6"
+            <h2 className="font-light text-[#0E0E0E] mb-4"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 fontSize: "clamp(36px, 5vw, 56px)",
               }}>
               Запишитесь на уход в ПОСЛЕ
             </h2>
-            <p className="text-[#0E0E0E]/50 text-sm mb-4"
+            <p className="text-[#0E0E0E]/50 text-sm mb-2"
               style={{ fontFamily: "'Inter', sans-serif" }}>
               Подберём удобное время и процедуру под состояние шерсти, характер собаки и желаемый результат.
             </p>
-            <p className="text-[#0E0E0E]/50 text-sm mb-10"
+            <p className="text-[#0E0E0E]/50 text-sm mb-6"
               style={{ fontFamily: "'Inter', sans-serif" }}>
               Вокзальная магистраль, 16 · +7 913 018-72-19
             </p>
