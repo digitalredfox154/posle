@@ -32,66 +32,105 @@ export default function Home() {
   return (
     <PublicLayout>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[90vh] flex items-center bg-[#0E0E0E] overflow-hidden">
-        {/* Background texture */}
-        <div className="absolute inset-0 opacity-[0.04]"
+      <section className="relative min-h-[88vh] flex items-center bg-[#111009] overflow-hidden">
+        {/* Subtle dot texture */}
+        <div className="absolute inset-0"
           style={{
-            backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px)"
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
           }}
         />
-        <div className="container relative z-10 py-24">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={stagger}
-            className="max-w-2xl"
-          >
-            <motion.p
-              variants={fadeUp}
-              className="text-[#A8C5B5] text-xs tracking-[0.3em] uppercase mb-8"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+        {/* Gold vignette glow */}
+        <div className="absolute bottom-0 right-0 w-[60%] h-[70%] pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse at 80% 80%, rgba(196,169,106,0.08) 0%, transparent 70%)",
+          }}
+        />
+
+        <div className="container relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[88vh] py-16">
+
+            {/* LEFT: text */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={stagger}
             >
-              Камерный груминг-сервис · Новосибирск
-            </motion.p>
-            <motion.h1
-              variants={fadeUp}
-              className="text-white font-light leading-none mb-8"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(64px, 10vw, 120px)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              ПОСЛЕ
-            </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="text-white/60 text-base md:text-lg font-light leading-relaxed mb-12 max-w-lg"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Деликатный уход для собак, где важны не только чистота и форма, но и состояние питомца после визита.
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/booking"
-                className="inline-block text-center text-xs tracking-[0.2em] uppercase bg-[#A8C5B5] text-[#0E0E0E] px-8 py-4 hover:bg-[#C8DDD4] transition-all duration-300 font-medium"
+              <motion.p
+                variants={fadeUp}
+                className="text-[#C4A96A] text-[10px] tracking-[0.35em] uppercase mb-6"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                Записаться
-              </Link>
-              <Link
-                href="/results"
-                className="inline-block text-center text-xs tracking-[0.2em] uppercase border border-white/30 text-white/70 px-8 py-4 hover:border-white hover:text-white transition-all duration-300"
+                Камерный груминг-сервис · Новосибирск
+              </motion.p>
+
+              <motion.h1
+                variants={fadeUp}
+                className="text-white font-light leading-none mb-4"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(72px, 11vw, 130px)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                после
+              </motion.h1>
+
+              {/* Gold divider with star */}
+              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
+                <div className="h-px w-20" style={{ background: "linear-gradient(to right, transparent, #C4A96A)" }} />
+                <span className="text-[#C4A96A] text-sm">&#10022;</span>
+                <div className="h-px w-20" style={{ background: "linear-gradient(to left, transparent, #C4A96A)" }} />
+              </motion.div>
+
+              <motion.p
+                variants={fadeUp}
+                className="text-white/55 text-base font-light leading-relaxed mb-12 max-w-sm"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                Посмотреть работы
-              </Link>
+                Деликатный уход для собак, где важны<br />
+                не только чистота и форма, но и состояние<br />
+                питомца после визита.
+              </motion.p>
+
+              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/booking"
+                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase px-10 py-4 font-medium transition-all duration-300 hover:opacity-90"
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    background: "linear-gradient(135deg, #C4A96A 0%, #9E7F44 100%)",
+                    color: "#111009",
+                  }}
+                >
+                  Записаться
+                </Link>
+                <Link
+                  href="/results"
+                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase border border-white/25 text-white/65 px-10 py-4 hover:border-[#C4A96A] hover:text-[#C4A96A] transition-all duration-300"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  Посмотреть работы
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-          <div className="w-px h-12 bg-white animate-pulse" />
+
+            {/* RIGHT: logo image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.1, ease: "easeOut", delay: 0.3 }}
+              className="flex items-center justify-center"
+            >
+              <img
+                src="/manus-storage/posle-logo-hero_8e4e6fa3.png"
+                alt="ПОСЛЕ — груминг-сервис"
+                className="w-full max-w-[520px] object-contain select-none"
+                draggable={false}
+              />
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
