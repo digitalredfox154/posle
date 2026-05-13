@@ -221,7 +221,7 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item.num}
-                  className="rounded-2xl p-6 border border-[#EDE8DF] flex flex-col justify-between min-h-[160px]" style={{ backgroundColor: "#F7F5F2" }}
+                  className="card-lift rounded-2xl p-6 border border-[#EDE8DF] flex flex-col justify-between min-h-[160px]" style={{ backgroundColor: "#F7F5F2" }}
                 >
                   <div className="flex items-start justify-between">
                     <span className="text-[#0E0E0E]/40 text-sm"
@@ -319,7 +319,7 @@ export default function Home() {
           <div className="text-center mt-6">
             <Link
               href="/results"
-              className="inline-block text-xs tracking-[0.2em] uppercase border border-[#0E0E0E]/20 text-[#0E0E0E]/60 px-8 py-3 hover:border-[#A8C5B5] hover:text-[#A8C5B5] transition-all duration-300"
+              className="btn-outline-dark inline-block text-xs tracking-[0.2em] uppercase px-8 py-3"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Все результаты
@@ -361,7 +361,7 @@ export default function Home() {
               </div>
               <Link
                 href="/booking"
-                className="inline-block text-[10px] tracking-[0.25em] uppercase border border-[#A8C5B5]/60 text-[#A8C5B5] px-8 py-4 hover:bg-[#A8C5B5]/10 transition-all duration-300 self-start"
+                className="btn-mint inline-block text-[10px] tracking-[0.25em] uppercase px-8 py-4 self-start"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 Записаться
@@ -374,7 +374,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="border border-white/[0.07] p-7"
+              className="card-lift-dark border border-white/[0.07] p-7"
               style={{ backgroundColor: "#1a1a18" }}
             >
               <p className="text-[#A8C5B5] uppercase mb-5"
@@ -442,7 +442,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="border border-white/[0.07] p-7 flex flex-col items-center text-center"
+              className="card-lift-dark border border-white/[0.07] p-7 flex flex-col items-center text-center"
               style={{ backgroundColor: "#1a1a18" }}
             >
               {/* Logo emblem — olive PNG */}
@@ -474,7 +474,7 @@ export default function Home() {
               </p>
               <Link
                 href="/subscription"
-                className="w-full flex items-center justify-between border border-white/[0.15] text-white/60 px-5 py-3.5 hover:border-[#A8C5B5]/60 hover:text-[#A8C5B5] transition-all duration-300 mt-auto"
+                className="btn-outline-light w-full flex items-center justify-between px-5 py-3.5 mt-auto"
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
                 <span className="tracking-[0.25em] uppercase" style={{ fontSize: "13px" }}>Обсудить условия</span>
@@ -553,10 +553,10 @@ export default function Home() {
                 {/* Link */}
                 <Link
                   href="/about"
-                  className="self-start uppercase pb-0.5 transition-all duration-200 hover:opacity-100"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", letterSpacing: "0.25em", color: "#B8965A", borderBottom: "1px solid rgba(180,150,90,0.5)" }}
+                  className="link-arrow self-start uppercase pb-0.5"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", letterSpacing: "0.25em", color: "#A8C5B5", borderBottom: "1px solid rgba(168,197,181,0.4)" }}
                 >
-                  Подробнее обо мне
+                  Подробнее обо мне →
                 </Link>
               </div>
             </div>
@@ -616,12 +616,12 @@ export default function Home() {
                 className="inline-flex items-center gap-4 group"
               >
                 <span
-                  className="text-[10px] tracking-[0.3em] uppercase text-[#0E0E0E] bg-[#A8C5B5] px-10 py-4 group-hover:bg-[#C8DDD4] transition-all duration-300"
+                  className="btn-mint text-[10px] tracking-[0.3em] uppercase px-10 py-4"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   Записаться
                 </span>
-                <span className="text-[#A8C5B5] text-2xl group-hover:translate-x-1 transition-transform duration-300">→</span>
+                <span className="link-arrow text-[#A8C5B5] text-2xl">→</span>
               </Link>
             </motion.div>
 
@@ -634,7 +634,7 @@ export default function Home() {
               className="flex flex-col gap-4 min-w-[260px]"
             >
               {/* Address */}
-              <div className="border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
+              <div className="card-lift-dark border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
                 <p className="text-[#A8C5B5] text-[9px] tracking-[0.35em] uppercase mb-3"
                   style={{ fontFamily: "'Inter', sans-serif" }}>
                   Адрес
@@ -661,7 +661,7 @@ export default function Home() {
                 </p>
               </a>
               {/* Hours */}
-              <div className="border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
+              <div className="card-lift-dark border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
                 <p className="text-[#A8C5B5] text-[9px] tracking-[0.35em] uppercase mb-3"
                   style={{ fontFamily: "'Inter', sans-serif" }}>
                   Часы работы

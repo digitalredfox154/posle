@@ -155,3 +155,111 @@
     }
   }
 }
+/* ─── ПОСЛЕ Premium Interactions ─────────────────────────────────────────── */
+
+/* Mint filled button */
+.btn-mint {
+  position: relative;
+  overflow: hidden;
+  background-color: #A8C5B5;
+  color: #0E0E0E;
+  transition: background-color 0.35s ease, transform 0.25s ease, box-shadow 0.35s ease;
+}
+.btn-mint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.12);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-mint:hover {
+  background-color: #C8DDD4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(168,197,181,0.35);
+}
+.btn-mint:hover::after { opacity: 1; }
+.btn-mint:active { transform: translateY(0); box-shadow: none; }
+
+/* Outline button (dark on light) */
+.btn-outline-dark {
+  position: relative;
+  border: 1px solid rgba(14,14,14,0.2);
+  color: rgba(14,14,14,0.6);
+  transition: border-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
+}
+.btn-outline-dark:hover {
+  border-color: #A8C5B5;
+  color: #A8C5B5;
+  transform: translateY(-1px);
+}
+
+/* Outline button (light on dark) */
+.btn-outline-light {
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.65);
+  transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.25s ease;
+}
+.btn-outline-light:hover {
+  border-color: rgba(168,197,181,0.7);
+  color: #A8C5B5;
+  background-color: rgba(168,197,181,0.06);
+  transform: translateY(-1px);
+}
+
+/* Premium card lift */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(14,14,14,0.1);
+}
+
+/* Dark card lift (for dark sections) */
+.card-lift-dark {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+.card-lift-dark:hover {
+  transform: translateY(-3px);
+  border-color: rgba(168,197,181,0.3) !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+/* Nav link underline slide */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #A8C5B5;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* Before/after slider handle pulse */
+.slider-handle {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.slider-handle:hover,
+.slider-handle:active {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 6px rgba(168,197,181,0.25);
+}
+
+/* Link arrow nudge */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+.link-arrow:hover { gap: 0.85rem; color: #A8C5B5; }
