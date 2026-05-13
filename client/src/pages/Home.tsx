@@ -24,7 +24,7 @@ const PAIRS = [
   // Pair 5: brown poodle — both face RIGHT
   { before: "/manus-storage/before5_1c1723f8.png", after: "/manus-storage/after5_cc507478.png" },
 ];
-const MASTER_PHOTO = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80";
+const MASTER_PHOTO = "/manus-storage/master_191c8f08.jpg";
 
 export default function Home() {
   const { data: plans } = trpc.subscriptions.plans.useQuery();
@@ -69,7 +69,7 @@ export default function Home() {
               className="text-white/60 text-base md:text-lg font-light leading-relaxed mb-12 max-w-lg"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              Не просто груминг. Результат, который вы замечаете сразу — чистота, ухоженность, характер.
+              Деликатный уход для собак, где важны не только чистота и форма, но и состояние питомца после визита.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -84,7 +84,7 @@ export default function Home() {
                 className="inline-block text-center text-xs tracking-[0.2em] uppercase border border-white/30 text-white/70 px-8 py-4 hover:border-white hover:text-white transition-all duration-300"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                Смотреть результаты
+                Посмотреть работы
               </Link>
             </motion.div>
           </motion.div>
@@ -118,11 +118,15 @@ export default function Home() {
               </h2>
               <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-6"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
-                ПОСЛЕ — это не поток. Мы принимаем ограниченное количество клиентов, чтобы каждый визит был событием, а не рутиной.
+                Мы не работаем в потоке. У каждой собаки есть свой характер, привычки, тревоги и границы. Поэтому визит в ПОСЛЕ строится спокойно: без спешки, лишнего шума и ощущения конвейера.
+              </p>
+              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-6"
+                style={{ fontFamily: "'Inter', sans-serif" }}>
+                Мастер видит не только шерсть и форму, но и настроение питомца. Где нужно — даст время привыкнуть. Где важно — сделает мягче. Где можно — доведёт образ до аккуратного, чистого и выразительного результата.
               </p>
               <p className="text-[#0E0E0E]/60 text-sm leading-relaxed"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
-                Каждая процедура заканчивается результатом, который вы видите и чувствуете. Именно поэтому мы называемся ПОСЛЕ.
+                ПОСЛЕ — это момент, когда собака выглядит ухоженно, чувствует себя спокойно, а владелец понимает: к деталям здесь относятся всерьёз.
               </p>
             </motion.div>
             <motion.div
@@ -134,8 +138,8 @@ export default function Home() {
             >
               {[
                 { num: "01", text: "Камерный формат" },
-                { num: "02", text: "Только результат" },
-                { num: "03", text: "Без суеты" },
+                { num: "02", text: "Спокойный процесс" },
+                { num: "03", text: "Внимание к характеру" },
                 { num: "04", text: "Постоянный мастер" },
               ].map((item) => (
                 <div key={item.num} className="bg-[#F7FAF9] p-6 border border-[#E8F0EC]">
@@ -177,7 +181,7 @@ export default function Home() {
             </h2>
             <p className="text-[#0E0E0E]/50 text-sm mt-4 max-w-md mx-auto"
               style={{ fontFamily: "'Inter', sans-serif" }}>
-              Потяните разделитель, чтобы увидеть разницу
+              Передвиньте разделитель, чтобы увидеть разницу в деталях
             </p>
           </motion.div>
 
@@ -200,7 +204,11 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <p className="text-center text-[#0E0E0E]/50 text-sm mt-10 max-w-xl mx-auto"
+            style={{ fontFamily: "'Inter', sans-serif" }}>
+            Аккуратная форма, чистая шерсть, выразительный силуэт и тот самый вид, ради которого хочется сделать фото сразу после процедуры.
+          </p>
+          <div className="text-center mt-8">
             <Link
               href="/results"
               className="inline-block text-xs tracking-[0.2em] uppercase border border-[#0E0E0E]/20 text-[#0E0E0E]/60 px-8 py-3 hover:border-[#0E0E0E] hover:text-[#0E0E0E] transition-all duration-300"
@@ -231,11 +239,11 @@ export default function Home() {
                   fontFamily: "'Cormorant Garamond', serif",
                   fontSize: "clamp(36px, 5vw, 56px)",
                 }}>
-                Постоянство — это привилегия
+                Для тех, кто выбирает постоянство
               </h2>
               <p className="text-white/50 text-sm leading-relaxed mb-8"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
-                Резиденты ПОСЛЕ получают приоритетную запись, персональный подход и особые условия. Не для всех — для своих.
+                Резиденты ПОСЛЕ — это клиенты, чьих собак мы знаем не по карточке, а по характеру. Привычки, особенности шерсти, комфортный темп, предпочтения владельца — всё сохраняется и учитывается при каждом визите.
               </p>
               <Link
                 href="/subscription"
@@ -253,7 +261,7 @@ export default function Home() {
               className="flex flex-col gap-4"
             >
               {(plans && plans.length > 0 ? plans : [
-                { id: 1, name: "Резидент", priceKopecks: 199000, features: JSON.stringify(["Приоритетная запись", "Скидка 10%", "Дневник питомца"]) },
+                { id: 1, name: "Резидент", priceKopecks: 199000, features: JSON.stringify(["Приоритетная запись", "Индивидуальные условия", "История ухода питомца"]) },
               ]).slice(0, 1).map((plan) => (
                 <div key={plan.id} className="border border-white/10 p-8">
                   <p className="text-[#A8C5B5] text-xs tracking-widest uppercase mb-4"
@@ -323,15 +331,15 @@ export default function Home() {
                   fontFamily: "'Cormorant Garamond', serif",
                   fontSize: "clamp(32px, 4vw, 48px)",
                 }}>
-                Я работаю<br />с характером
+                Работаю не с потоком,<br />а с характером
               </h2>
               <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-6"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
-                Каждый питомец — это личность. Я не тороплюсь и не работаю в потоке. Мне важно, чтобы и животное, и хозяин уходили с ощущением заботы.
+                Для меня груминг начинается не с инструмента, а с контакта. Я смотрю, как собака реагирует, где ей спокойно, где нужно больше времени, какой уход подойдёт именно ей.
               </p>
               <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-8"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
-                Специализация: собаки и кошки всех пород. Работаю только с профессиональной косметикой.
+                Мне важно, чтобы после процедуры питомец выглядел ухоженно, но не был уставшим и зажатым. Красивый результат имеет смысл только тогда, когда он получен бережно.
               </p>
               <Link
                 href="/about"
@@ -364,8 +372,12 @@ export default function Home() {
                 fontFamily: "'Cormorant Garamond', serif",
                 fontSize: "clamp(36px, 5vw, 56px)",
               }}>
-              Готовы к результату?
+              Запишитесь на уход в ПОСЛЕ
             </h2>
+            <p className="text-[#0E0E0E]/50 text-sm mb-4"
+              style={{ fontFamily: "'Inter', sans-serif" }}>
+              Подберём удобное время и процедуру под состояние шерсти, характер собаки и желаемый результат.
+            </p>
             <p className="text-[#0E0E0E]/50 text-sm mb-10"
               style={{ fontFamily: "'Inter', sans-serif" }}>
               Вокзальная магистраль, 16 · +7 913 018-72-19
