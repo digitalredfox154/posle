@@ -32,18 +32,12 @@ export default function Home() {
   return (
     <PublicLayout>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[88vh] flex items-center bg-[#111009] overflow-hidden">
-        {/* Subtle dot texture */}
-        <div className="absolute inset-0"
+      <section className="relative min-h-[88vh] flex items-center overflow-hidden" style={{ backgroundColor: "#111111" }}>
+        {/* Very subtle dot texture like in mockup */}
+        <div className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
-        {/* Gold vignette glow */}
-        <div className="absolute bottom-0 right-0 w-[60%] h-[70%] pointer-events-none"
-          style={{
-            background: "radial-gradient(ellipse at 80% 80%, rgba(196,169,106,0.08) 0%, transparent 70%)",
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
           }}
         />
 
@@ -59,34 +53,35 @@ export default function Home() {
               <motion.p
                 variants={fadeUp}
                 className="text-[#C4A96A] text-[10px] tracking-[0.35em] uppercase mb-6"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.3em" }}
               >
                 Камерный груминг-сервис · Новосибирск
               </motion.p>
 
               <motion.h1
                 variants={fadeUp}
-                className="text-white font-light leading-none mb-4"
+                className="text-white leading-none mb-4"
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: "'Playfair Display', serif",
                   fontSize: "clamp(72px, 11vw, 130px)",
-                  letterSpacing: "-0.01em",
+                  fontWeight: 400,
+                  letterSpacing: "0.01em",
                 }}
               >
                 после
               </motion.h1>
 
               {/* Gold divider with star */}
-              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
-                <div className="h-px w-20" style={{ background: "linear-gradient(to right, transparent, #C4A96A)" }} />
-                <span className="text-[#C4A96A] text-sm">&#10022;</span>
-                <div className="h-px w-20" style={{ background: "linear-gradient(to left, transparent, #C4A96A)" }} />
+              <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
+                <div className="h-px w-24" style={{ background: "linear-gradient(to right, transparent, #C4A96A)" }} />
+                <span style={{ color: "#C4A96A", fontSize: "14px" }}>&#10022;</span>
+                <div className="h-px w-24" style={{ background: "linear-gradient(to left, transparent, #C4A96A)" }} />
               </motion.div>
 
               <motion.p
                 variants={fadeUp}
-                className="text-white/55 text-base font-light leading-relaxed mb-12 max-w-sm"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="text-white/60 font-light leading-relaxed mb-12 max-w-sm"
+                style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", lineHeight: "1.7" }}
               >
                 Деликатный уход для собак, где важны<br />
                 не только чистота и форма, но и состояние<br />
@@ -94,21 +89,25 @@ export default function Home() {
               </motion.p>
 
               <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
+                {/* Olive-green button like in mockup */}
                 <Link
                   href="/booking"
                   className="inline-block text-center text-[11px] tracking-[0.25em] uppercase px-10 py-4 font-medium transition-all duration-300 hover:opacity-90"
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    background: "linear-gradient(135deg, #C4A96A 0%, #9E7F44 100%)",
-                    color: "#111009",
+                    backgroundColor: "#8B9B6B",
+                    color: "#ffffff",
                   }}
                 >
                   Записаться
                 </Link>
                 <Link
                   href="/results"
-                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase border border-white/25 text-white/65 px-10 py-4 hover:border-[#C4A96A] hover:text-[#C4A96A] transition-all duration-300"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
+                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase text-white/65 px-10 py-4 hover:text-white transition-all duration-300"
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    border: "1px solid rgba(255,255,255,0.25)",
+                  }}
                 >
                   Посмотреть работы
                 </Link>
@@ -125,7 +124,8 @@ export default function Home() {
               <img
                 src="/manus-storage/posle-logo-only_fef94be3.png"
                 alt="ПОСЛЕ — груминг-сервис"
-                className="w-full max-w-[520px] object-contain select-none"
+                className="w-full max-w-[560px] object-contain select-none"
+                style={{ mixBlendMode: "lighten" }}
                 draggable={false}
               />
             </motion.div>
