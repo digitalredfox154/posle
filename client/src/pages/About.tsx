@@ -25,7 +25,7 @@ export default function About() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-              <div className="aspect-[3/4] overflow-hidden bg-[#F7FAF9]">
+              <div className="aspect-[3/4] overflow-hidden bg-[#F7F5F2]">
                 <img src={MASTER_PHOTO} alt="Мастер ПОСЛЕ" className="w-full h-full object-cover" />
               </div>
             </motion.div>
@@ -49,7 +49,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-24 bg-[#F7FAF9]">
+      <section className="py-24 bg-[#F7F5F2]">
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="text-center mb-16">
             <h2 className="font-light text-[#0E0E0E]" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>

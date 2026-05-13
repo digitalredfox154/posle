@@ -91,7 +91,7 @@ export default function AccountPets() {
                 <input
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
+                  className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
                   placeholder="Как зовут питомца?"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 />
@@ -101,7 +101,7 @@ export default function AccountPets() {
                 <select
                   value={form.species}
                   onChange={(e) => setForm({ ...form, species: e.target.value as any })}
-                  className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
+                  className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   <option value="dog">Собака</option>
@@ -114,7 +114,7 @@ export default function AccountPets() {
                 <input
                   value={form.breed}
                   onChange={(e) => setForm({ ...form, breed: e.target.value })}
-                  className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
+                  className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
                   placeholder="Необязательно"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 />
@@ -125,7 +125,7 @@ export default function AccountPets() {
                   type="number"
                   value={form.birthYear}
                   onChange={(e) => setForm({ ...form, birthYear: e.target.value })}
-                  className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
+                  className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
                   placeholder="2020"
                   min="2000"
                   max="2030"
@@ -137,7 +137,7 @@ export default function AccountPets() {
                 <input
                   value={form.allergies}
                   onChange={(e) => setForm({ ...form, allergies: e.target.value })}
-                  className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
+                  className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
                   placeholder="Если есть"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 />
@@ -147,7 +147,7 @@ export default function AccountPets() {
                 <textarea
                   value={form.notes}
                   onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                  className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors resize-none"
+                  className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors resize-none"
                   placeholder="Особенности характера, поведение..."
                   rows={3}
                   style={{ fontFamily: "'Inter', sans-serif" }}
@@ -186,7 +186,7 @@ export default function AccountPets() {
           <div className="flex flex-col gap-3">
             {pets.map((pet) => (
               <div key={pet.id} className="bg-white border border-[#E8F0EC] p-5 flex items-center gap-4 hover:border-[#A8C5B5] transition-colors group">
-                <div className="w-10 h-10 rounded-full bg-[#F7FAF9] flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-[#F7F5F2] flex items-center justify-center flex-shrink-0">
                   <PawPrint size={16} className="text-[#A8C5B5]" />
                 </div>
                 <div className="flex-1 min-w-0">

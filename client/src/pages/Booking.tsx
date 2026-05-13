@@ -96,7 +96,7 @@ export default function Booking() {
         </div>
       </section>
 
-      <section className="py-16" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-16" style={{ backgroundColor: "#F0EDE8" }}>
         <div className="container max-w-xl">
           {step === "done" ? (
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center py-12">
@@ -154,7 +154,7 @@ export default function Booking() {
                     </h2>
                     {servicesLoading ? (
                       <div className="flex flex-col gap-3">
-                        {[1, 2, 3].map(i => <div key={i} className="h-16 bg-[#F7FAF9] animate-pulse" />)}
+                        {[1, 2, 3].map(i => <div key={i} className="h-16 bg-[#F7F5F2] animate-pulse" />)}
                       </div>
                     ) : services && services.length > 0 ? (
                       <div className="flex flex-col gap-3">
@@ -176,7 +176,7 @@ export default function Booking() {
                         ))}
                       </div>
                     ) : (
-                      <div className="bg-[#F7FAF9] border border-[#E8F0EC] p-8 text-center">
+                      <div className="bg-[#F7F5F2] border border-[#E8F0EC] p-8 text-center">
                         <p className="text-[#0E0E0E]/50 text-sm mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
                           Онлайн-запись временно недоступна
                         </p>
@@ -278,7 +278,7 @@ export default function Booking() {
                     </h2>
 
                     {/* Summary */}
-                    <div className="bg-[#F7FAF9] border border-[#E8F0EC] p-5 mb-6">
+                    <div className="bg-[#F7F5F2] border border-[#E8F0EC] p-5 mb-6">
                       <div className="flex flex-col gap-2">
                         <div className="flex justify-between">
                           <span className="text-[#0E0E0E]/40 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>Услуга</span>
@@ -304,7 +304,7 @@ export default function Booking() {
                         <input
                           value={clientName}
                           onChange={(e) => setClientName(e.target.value)}
-                          className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
+                          className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
                           placeholder="Имя"
                           style={{ fontFamily: "'Inter', sans-serif" }}
                         />
@@ -315,7 +315,7 @@ export default function Booking() {
                           type="tel"
                           value={formatPhone(rawPhone)}
                           onChange={(e) => setRawPhone(e.target.value.replace(/\D/g, ""))}
-                          className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
+                          className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
                           placeholder="+7 999 000-00-00"
                           style={{ fontFamily: "'Inter', sans-serif" }}
                         />
@@ -325,7 +325,7 @@ export default function Booking() {
                         <textarea
                           value={comment}
                           onChange={(e) => setComment(e.target.value)}
-                          className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors resize-none"
+                          className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors resize-none"
                           placeholder="Порода, пожелания..."
                           rows={3}
                           style={{ fontFamily: "'Inter', sans-serif" }}

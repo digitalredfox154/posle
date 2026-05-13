@@ -251,7 +251,7 @@ export default function EditVisit() {
               onChange={(e) => setter(e.target.value)}
               rows={rows}
               disabled={isExpired}
-              className="w-full border border-[#E8F0EC] p-3 text-sm text-[#0E0E0E] resize-none focus:outline-none focus:border-[#A8C5B5] transition-colors disabled:opacity-50 disabled:bg-[#F7FAF9]"
+              className="w-full border border-[#E8F0EC] p-3 text-sm text-[#0E0E0E] resize-none focus:outline-none focus:border-[#A8C5B5] transition-colors disabled:opacity-50 disabled:bg-[#F7F5F2]"
               style={{ fontFamily: "'Inter', sans-serif" }}
             />
           </div>

@@ -60,7 +60,7 @@ export default function Home() {
             >
               <motion.p
                 variants={fadeUp}
-                 className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-5"
+                 className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-5"
                 style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.3em" }}
               >
                 Камерный груминг-сервис · Новосибирск
@@ -81,9 +81,9 @@ export default function Home() {
 
               {/* Gold divider with star */}
               <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
-                <div className="h-px w-24" style={{ background: "linear-gradient(to right, transparent, #C4A96A)" }} />
-                <span style={{ color: "#C4A96A", fontSize: "14px" }}>&#10022;</span>
-                <div className="h-px w-24" style={{ background: "linear-gradient(to left, transparent, #C4A96A)" }} />
+                <div className="h-px w-24" style={{ background: "linear-gradient(to right, transparent, #A8C5B5)" }} />
+                <span style={{ color: "#A8C5B5", fontSize: "14px" }}>&#10022;</span>
+                <div className="h-px w-24" style={{ background: "linear-gradient(to left, transparent, #A8C5B5)" }} />
               </motion.div>
 
               <motion.p
@@ -103,8 +103,8 @@ export default function Home() {
                   className="inline-block text-center text-[11px] tracking-[0.25em] uppercase px-10 py-4 font-medium transition-all duration-300 hover:opacity-90"
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    backgroundColor: "#8B9B6B",
-                    color: "#ffffff",
+                    backgroundColor: "#A8C5B5",
+                    color: "#0E0E0E",
                   }}
                 >
                   Записаться
@@ -130,7 +130,7 @@ export default function Home() {
       </section>
 
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-14 md:py-20" style={{ backgroundColor: "#F0EDE8" }}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             {/* Left: label + heading + paragraphs */}
@@ -140,7 +140,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-5"
+              <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-5"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
                 Философия
               </p>
@@ -151,7 +151,7 @@ export default function Home() {
                   fontSize: "clamp(40px, 5vw, 60px)",
                 }}>
                 Один питомец.<br />Полное внимание.{" "}
-                <span className="text-[#C4A96A]" style={{ fontSize: "0.7em" }}>✦</span>
+                <span className="text-[#A8C5B5]" style={{ fontSize: "0.7em" }}>✦</span>
               </h2>
               <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-3"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -180,7 +180,7 @@ export default function Home() {
                   num: "01",
                   text: "Камерный формат",
                   icon: (
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#C4A96A" strokeWidth="1.2">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.2">
                       <rect x="4" y="4" width="10" height="10" />
                       <rect x="18" y="4" width="10" height="10" />
                       <rect x="4" y="18" width="10" height="10" />
@@ -192,7 +192,7 @@ export default function Home() {
                   num: "02",
                   text: "Спокойный процесс",
                   icon: (
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#C4A96A" strokeWidth="1.2">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.2">
                       <path d="M16 4C16 4 6 10 6 18a10 10 0 0020 0C26 10 16 4 16 4z" />
                       <path d="M10 20c1-3 3-5 6-6" />
                     </svg>
@@ -202,7 +202,7 @@ export default function Home() {
                   num: "03",
                   text: "Внимание к характеру",
                   icon: (
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#C4A96A" strokeWidth="1.2">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.2">
                       <path d="M16 27S5 20 5 12a6 6 0 0111-3.3A6 6 0 0127 12c0 8-11 15-11 15z" />
                     </svg>
                   ),
@@ -211,7 +211,7 @@ export default function Home() {
                   num: "04",
                   text: "Постоянный мастер",
                   icon: (
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#C4A96A" strokeWidth="1.2">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.2">
                       <circle cx="16" cy="16" r="11" />
                       <circle cx="16" cy="16" r="6" />
                       <path d="M16 5v3M16 24v3M5 16h3M24 16h3" />
@@ -221,7 +221,7 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item.num}
-                  className="rounded-2xl p-6 border border-[#EDE8DF] flex flex-col justify-between min-h-[160px]" style={{ backgroundColor: "#FAF7F2" }}
+                  className="rounded-2xl p-6 border border-[#EDE8DF] flex flex-col justify-between min-h-[160px]" style={{ backgroundColor: "#F7F5F2" }}
                 >
                   <div className="flex items-start justify-between">
                     <span className="text-[#0E0E0E]/40 text-sm"
@@ -231,7 +231,7 @@ export default function Home() {
                     {item.icon}
                   </div>
                   <div>
-                    <div className="w-8 h-px bg-[#C4A96A] mb-4" />
+                    <div className="w-8 h-px bg-[#A8C5B5] mb-4" />
                     <p className="text-[#0E0E0E] font-light"
                       style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
                       {item.text}
@@ -245,7 +245,7 @@ export default function Home() {
       </section>
 
       {/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-14 md:py-20" style={{ backgroundColor: "#F0EDE8" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -255,21 +255,21 @@ export default function Home() {
             className="text-center mb-8"
           >
             {/* РЕЗУЛЬТАТЫ label */}
-            <p className="text-[#C4A96A] text-[10px] tracking-[0.35em] uppercase mb-3"
+            <p className="text-[#A8C5B5] text-[10px] tracking-[0.35em] uppercase mb-3"
               style={{ fontFamily: "'Inter', sans-serif" }}>
               РЕЗУЛЬТАТЫ
             </p>
             {/* Gold divider + paw icon */}
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, #C4A96A)" }} />
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#C4A96A">
+              <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, #A8C5B5)" }} />
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#A8C5B5">
                 <ellipse cx="12" cy="17" rx="5" ry="4" />
                 <ellipse cx="6" cy="11" rx="2.5" ry="3" />
                 <ellipse cx="18" cy="11" rx="2.5" ry="3" />
                 <ellipse cx="9" cy="7" rx="2" ry="2.5" />
                 <ellipse cx="15" cy="7" rx="2" ry="2.5" />
               </svg>
-              <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, #C4A96A)" }} />
+              <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, #A8C5B5)" }} />
             </div>
             <h2 className="font-light text-[#2C2416] mb-4"
               style={{
@@ -305,21 +305,21 @@ export default function Home() {
 
           {/* Bottom paw divider */}
           <div className="flex items-center justify-center gap-3 mt-8">
-            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, #C4A96A)" }} />
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C4A96A">
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, #A8C5B5)" }} />
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#A8C5B5">
               <ellipse cx="12" cy="17" rx="5" ry="4" />
               <ellipse cx="6" cy="11" rx="2.5" ry="3" />
               <ellipse cx="18" cy="11" rx="2.5" ry="3" />
               <ellipse cx="9" cy="7" rx="2" ry="2.5" />
               <ellipse cx="15" cy="7" rx="2" ry="2.5" />
             </svg>
-            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, #C4A96A)" }} />
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, #A8C5B5)" }} />
           </div>
 
           <div className="text-center mt-6">
             <Link
               href="/results"
-              className="inline-block text-xs tracking-[0.2em] uppercase border border-[#2C2416]/20 text-[#2C2416]/60 px-8 py-3 hover:border-[#C4A96A] hover:text-[#C4A96A] transition-all duration-300"
+              className="inline-block text-xs tracking-[0.2em] uppercase border border-[#0E0E0E]/20 text-[#0E0E0E]/60 px-8 py-3 hover:border-[#A8C5B5] hover:text-[#A8C5B5] transition-all duration-300"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Все результаты
@@ -343,7 +343,7 @@ export default function Home() {
               style={{ backgroundColor: "#1a1a18" }}
             >
               <div>
-                <p className="text-[#C4A96A] uppercase mb-6"
+                <p className="text-[#A8C5B5] uppercase mb-6"
                   style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
                   Клуб резидентов
                 </p>
@@ -377,7 +377,7 @@ export default function Home() {
               className="border border-white/[0.07] p-7"
               style={{ backgroundColor: "#1a1a18" }}
             >
-              <p className="text-[#C4A96A] uppercase mb-5"
+              <p className="text-[#A8C5B5] uppercase mb-5"
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
                 Онлайн-дневник питомца
               </p>
@@ -385,7 +385,7 @@ export default function Home() {
                 {[
                   {
                     icon: (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="3" y="4" width="18" height="18" rx="2" />
                         <path d="M16 2v4M8 2v4M3 10h18" />
                         <path d="M8 14h2M14 14h2M8 18h2M14 18h2" />
@@ -395,7 +395,7 @@ export default function Home() {
                   },
                   {
                     icon: (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                       </svg>
                     ),
@@ -403,7 +403,7 @@ export default function Home() {
                   },
                   {
                     icon: (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="3" y="3" width="18" height="18" rx="2" />
                         <path d="M7 8h10M7 12h6M7 16h4" />
                       </svg>
@@ -412,7 +412,7 @@ export default function Home() {
                   },
                   {
                     icon: (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                         <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                       </svg>
@@ -453,7 +453,7 @@ export default function Home() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <p className="text-[#C4A96A] uppercase mb-2"
+              <p className="text-[#A8C5B5] uppercase mb-2"
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
                 Дополнение
               </p>
@@ -466,7 +466,7 @@ export default function Home() {
               </h3>
               {/* small gold star divider */}
               <div className="my-4">
-                <span className="text-[#C4A96A]" style={{ fontSize: "18px" }}>✦</span>
+                <span className="text-[#A8C5B5]" style={{ fontSize: "18px" }}>✦</span>
               </div>
               <p className="text-white/45 leading-relaxed mb-5"
                 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px" }}>
@@ -474,7 +474,7 @@ export default function Home() {
               </p>
               <Link
                 href="/subscription"
-                className="w-full flex items-center justify-between border border-white/[0.15] text-white/60 px-5 py-3.5 hover:border-[#C4A96A]/60 hover:text-[#C4A96A] transition-all duration-300 mt-auto"
+                className="w-full flex items-center justify-between border border-white/[0.15] text-white/60 px-5 py-3.5 hover:border-[#A8C5B5]/60 hover:text-[#A8C5B5] transition-all duration-300 mt-auto"
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
                 <span className="tracking-[0.25em] uppercase" style={{ fontSize: "13px" }}>Обсудить условия</span>
@@ -487,7 +487,7 @@ export default function Home() {
       </section>
 
       {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-14 md:py-20" style={{ backgroundColor: "#F0EDE8" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -495,7 +495,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="border rounded-sm max-w-5xl mx-auto overflow-hidden"
-            style={{ borderColor: "rgba(180,150,90,0.25)", backgroundColor: "#F5F0E8" }}
+            style={{ borderColor: "rgba(180,150,90,0.25)", backgroundColor: "#F0EDE8" }}
           >
             <div className="grid grid-cols-1 md:grid-cols-[45%_55%]">
               {/* Left — photo */}
@@ -567,21 +567,21 @@ export default function Home() {
       {/* ── BOOKING CTA ──────────────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden"
-        style={{ backgroundColor: "#0E0D0B", minHeight: "480px" }}
+        style={{ backgroundColor: "#0E0E0E", minHeight: "480px" }}
       >
         {/* Decorative gold lines */}
         <div className="absolute inset-0 pointer-events-none">
           {/* top-left corner lines */}
-          <div className="absolute top-0 left-0 w-32 h-px" style={{ background: "linear-gradient(to right, #C4A96A, transparent)" }} />
-          <div className="absolute top-0 left-0 h-32 w-px" style={{ background: "linear-gradient(to bottom, #C4A96A, transparent)" }} />
+          <div className="absolute top-0 left-0 w-32 h-px" style={{ background: "linear-gradient(to right, #A8C5B5, transparent)" }} />
+          <div className="absolute top-0 left-0 h-32 w-px" style={{ background: "linear-gradient(to bottom, #A8C5B5, transparent)" }} />
           {/* bottom-right corner lines */}
-          <div className="absolute bottom-0 right-0 w-32 h-px" style={{ background: "linear-gradient(to left, #C4A96A, transparent)" }} />
-          <div className="absolute bottom-0 right-0 h-32 w-px" style={{ background: "linear-gradient(to top, #C4A96A, transparent)" }} />
+          <div className="absolute bottom-0 right-0 w-32 h-px" style={{ background: "linear-gradient(to left, #A8C5B5, transparent)" }} />
+          <div className="absolute bottom-0 right-0 h-32 w-px" style={{ background: "linear-gradient(to top, #A8C5B5, transparent)" }} />
           {/* faint center circle */}
           <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-[420px] h-[420px] rounded-full opacity-[0.04]"
-            style={{ border: "1px solid #C4A96A" }} />
+            style={{ border: "1px solid #A8C5B5" }} />
           <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-[280px] h-[280px] rounded-full opacity-[0.06]"
-            style={{ border: "1px solid #C4A96A" }} />
+            style={{ border: "1px solid #A8C5B5" }} />
         </div>
 
         <div className="container relative z-10 py-20 md:py-28">
@@ -594,7 +594,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-[#C4A96A] text-[10px] tracking-[0.4em] uppercase mb-6"
+              <p className="text-[#A8C5B5] text-[10px] tracking-[0.4em] uppercase mb-6"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
                 Запись
               </p>
@@ -604,7 +604,7 @@ export default function Home() {
                   fontSize: "clamp(48px, 6vw, 80px)",
                 }}>
                 Начните<br />
-                <span style={{ color: "#C4A96A" }}>с знакомства.</span>
+                <span style={{ color: "#A8C5B5" }}>с знакомства.</span>
 
               </h2>
               <p className="text-white/40 max-w-sm leading-relaxed mb-10"
@@ -616,12 +616,12 @@ export default function Home() {
                 className="inline-flex items-center gap-4 group"
               >
                 <span
-                  className="text-[10px] tracking-[0.3em] uppercase text-[#0E0D0B] bg-[#C4A96A] px-10 py-4 group-hover:bg-[#d4b97a] transition-all duration-300"
+                  className="text-[10px] tracking-[0.3em] uppercase text-[#0E0E0E] bg-[#A8C5B5] px-10 py-4 group-hover:bg-[#C8DDD4] transition-all duration-300"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   Записаться
                 </span>
-                <span className="text-[#C4A96A] text-2xl group-hover:translate-x-1 transition-transform duration-300">→</span>
+                <span className="text-[#A8C5B5] text-2xl group-hover:translate-x-1 transition-transform duration-300">→</span>
               </Link>
             </motion.div>
 
@@ -635,7 +635,7 @@ export default function Home() {
             >
               {/* Address */}
               <div className="border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
-                <p className="text-[#C4A96A] text-[9px] tracking-[0.35em] uppercase mb-3"
+                <p className="text-[#A8C5B5] text-[9px] tracking-[0.35em] uppercase mb-3"
                   style={{ fontFamily: "'Inter', sans-serif" }}>
                   Адрес
                 </p>
@@ -648,10 +648,10 @@ export default function Home() {
               {/* Phone */}
               <a
                 href="tel:+79130187219"
-                className="border border-white/[0.08] p-6 group hover:border-[#C4A96A]/40 transition-all duration-300"
+                className="border border-white/[0.08] p-6 group hover:border-[#A8C5B5]/40 transition-all duration-300"
                 style={{ backgroundColor: "rgba(255,255,255,0.03)" }}
               >
-                <p className="text-[#C4A96A] text-[9px] tracking-[0.35em] uppercase mb-3"
+                <p className="text-[#A8C5B5] text-[9px] tracking-[0.35em] uppercase mb-3"
                   style={{ fontFamily: "'Inter', sans-serif" }}>
                   Телефон
                 </p>
@@ -662,7 +662,7 @@ export default function Home() {
               </a>
               {/* Hours */}
               <div className="border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
-                <p className="text-[#C4A96A] text-[9px] tracking-[0.35em] uppercase mb-3"
+                <p className="text-[#A8C5B5] text-[9px] tracking-[0.35em] uppercase mb-3"
                   style={{ fontFamily: "'Inter', sans-serif" }}>
                   Часы работы
                 </p>

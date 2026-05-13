@@ -14,9 +14,9 @@ function VisitCard({ visit }: { visit: any }) {
       {/* Header */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full p-5 flex items-center gap-4 text-left hover:bg-[#F7FAF9] transition-colors"
+        className="w-full p-5 flex items-center gap-4 text-left hover:bg-[#F7F5F2] transition-colors"
       >
-        <div className="w-10 h-10 bg-[#F7FAF9] flex items-center justify-center flex-shrink-0">
+        <div className="w-10 h-10 bg-[#F7F5F2] flex items-center justify-center flex-shrink-0">
           <Scissors size={14} className="text-[#A8C5B5]" />
         </div>
         <div className="flex-1 min-w-0">
@@ -54,7 +54,7 @@ function VisitCard({ visit }: { visit: any }) {
           {/* Notes grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {visit.masterNotes && (
-              <div className="bg-[#F7FAF9] p-4">
+              <div className="bg-[#F7F5F2] p-4">
                 <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8C5B5] mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
                   Заметки мастера
                 </p>
@@ -64,7 +64,7 @@ function VisitCard({ visit }: { visit: any }) {
               </div>
             )}
             {visit.cosmeticsUsed && (
-              <div className="bg-[#F7FAF9] p-4">
+              <div className="bg-[#F7F5F2] p-4">
                 <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8C5B5] mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
                   Косметика
                 </p>
@@ -74,7 +74,7 @@ function VisitCard({ visit }: { visit: any }) {
               </div>
             )}
             {visit.behaviorNotes && (
-              <div className="bg-[#F7FAF9] p-4">
+              <div className="bg-[#F7F5F2] p-4">
                 <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8C5B5] mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
                   Поведение
                 </p>
@@ -84,7 +84,7 @@ function VisitCard({ visit }: { visit: any }) {
               </div>
             )}
             {visit.homeCareTips && (
-              <div className="bg-[#F7FAF9] p-4">
+              <div className="bg-[#F7F5F2] p-4">
                 <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8C5B5] mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
                   Уход дома
                 </p>

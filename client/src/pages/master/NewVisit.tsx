@@ -9,7 +9,7 @@ function MasterLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const logout = trpc.posleClient.logout.useMutation({ onSuccess: () => { window.location.href = "/"; } });
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E8" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#F0EDE8" }}>
       <header className="bg-[#0E0E0E] h-16 flex items-center px-6 gap-6">
         <Link href="/" className="text-white font-light tracking-[0.15em] mr-auto" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px" }}>ПОСЛЕ</Link>
         <span className="text-[#A8C5B5] text-[10px] tracking-[0.2em] uppercase hidden sm:block" style={{ fontFamily: "'Inter', sans-serif" }}>Мастер</span>
@@ -214,7 +214,7 @@ export default function NewVisit() {
                       </button>
                     </div>
                   ) : (
-                    <div className="border border-dashed border-[#E8F0EC] bg-[#F7FAF9] h-36 flex flex-col items-center justify-center gap-2 hover:border-[#A8C5B5] transition-colors">
+                    <div className="border border-dashed border-[#E8F0EC] bg-[#F7F5F2] h-36 flex flex-col items-center justify-center gap-2 hover:border-[#A8C5B5] transition-colors">
                       <Upload size={18} className="text-[#A8C5B5]" />
                       <span className="text-xs text-[#0E0E0E]/30" style={{ fontFamily: "'Inter', sans-serif" }}>Загрузить</span>
                     </div>

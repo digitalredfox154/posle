@@ -101,7 +101,7 @@ export default function AccountSubscription() {
             )}
           </div>
         ) : (
-          <div className="bg-[#F7FAF9] border border-[#E8F0EC] p-6 mb-8">
+          <div className="bg-[#F7F5F2] border border-[#E8F0EC] p-6 mb-8">
             <p className="text-[#0E0E0E]/40 text-[10px] tracking-[0.3em] uppercase mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>Статус</p>
             <p className="text-[#0E0E0E] font-light mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "24px" }}>
               Подписка не активна

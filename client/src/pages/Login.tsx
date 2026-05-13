@@ -135,7 +135,7 @@ export default function Login() {
                       value={phone}
                       onChange={handlePhoneChange}
                       placeholder="+7 999 000-00-00"
-                      className="w-full border border-[#E8F0EC] bg-[#F7FAF9] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
+                      className="w-full border border-[#E8F0EC] bg-[#F7F5F2] px-4 py-3 text-[#0E0E0E] text-sm focus:outline-none focus:border-[#A8C5B5] transition-colors"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                       autoComplete="tel"
                       inputMode="tel"
@@ -165,7 +165,7 @@ export default function Login() {
                   Отправили SMS на {phone}
                 </p>
                 {testCode && (
-                  <div className="mb-6 p-4 bg-[#F7FAF9] border border-[#A8C5B5] text-center">
+                  <div className="mb-6 p-4 bg-[#F7F5F2] border border-[#A8C5B5] text-center">
                     <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8C5B5] mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>Тестовый режим</p>
                     <p className="text-[#0E0E0E] text-3xl font-light tracking-[0.3em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{testCode}</p>
                   </div>
@@ -181,7 +181,7 @@ export default function Login() {
                       value={digit}
                       onChange={(e) => handleCodeInput(i, e.target.value)}
                       onKeyDown={(e) => handleCodeKeyDown(i, e)}
-                      className="w-full aspect-square border border-[#E8F0EC] bg-[#F7FAF9] text-center text-[#0E0E0E] text-xl font-light focus:outline-none focus:border-[#A8C5B5] transition-colors"
+                      className="w-full aspect-square border border-[#E8F0EC] bg-[#F7F5F2] text-center text-[#0E0E0E] text-xl font-light focus:outline-none focus:border-[#A8C5B5] transition-colors"
                       style={{ fontFamily: "'Cormorant Garamond', serif" }}
                     />
                   ))}

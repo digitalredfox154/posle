@@ -32,7 +32,7 @@ export default function AccountDashboard() {
 
         {/* Next appointment banner */}
         {nextAppointment && (
-          <div className="bg-[#F7FAF9] border border-[#E8F0EC] p-5 mb-8 flex items-center justify-between">
+          <div className="bg-[#F7F5F2] border border-[#E8F0EC] p-5 mb-8 flex items-center justify-between">
             <div>
               <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>Ближайший визит</p>
               <p className="text-[#0E0E0E] font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px" }}>
@@ -84,7 +84,7 @@ export default function AccountDashboard() {
             <div className="w-2 h-2 rounded-full bg-[#A8C5B5]" />
           </div>
         ) : (
-          <div className="bg-[#F7FAF9] border border-[#E8F0EC] p-6 mb-6 flex items-center justify-between">
+          <div className="bg-[#F7F5F2] border border-[#E8F0EC] p-6 mb-6 flex items-center justify-between">
             <div>
               <p className="text-[#0E0E0E]/40 text-[10px] tracking-[0.3em] uppercase mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>Подписка</p>
               <p className="text-[#0E0E0E] font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px" }}>Вы не резидент</p>
@@ -107,7 +107,7 @@ export default function AccountDashboard() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {pets.slice(0, 3).map((pet) => (
                 <Link key={pet.id} href={`/account/pets/${pet.id}`} className="bg-white border border-[#E8F0EC] p-4 hover:border-[#A8C5B5] transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-[#F7FAF9] flex items-center justify-center mb-3">
+                  <div className="w-8 h-8 rounded-full bg-[#F7F5F2] flex items-center justify-center mb-3">
                     <PawPrint size={14} className="text-[#A8C5B5]" />
                   </div>
                   <p className="text-[#0E0E0E] text-sm font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>{pet.name}</p>

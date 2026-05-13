@@ -80,7 +80,7 @@ export default function Contacts() {
 
             {/* Map */}
             <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
-              <div className="w-full h-80 md:h-full min-h-[400px] bg-[#F7FAF9] overflow-hidden">
+              <div className="w-full h-80 md:h-full min-h-[400px] bg-[#F7F5F2] overflow-hidden">
                 <iframe
                   src="https://yandex.ru/map-widget/v1/?ll=82.9201%2C55.0415&z=16&pt=82.9201%2C55.0415%2Cpm2rdm&text=Вокзальная+магистраль+16+Новосибирск"
                   width="100%"
@@ -97,7 +97,7 @@ export default function Contacts() {
       </section>
 
       {/* Booking CTA */}
-      <section className="py-20 bg-[#F7FAF9]">
+      <section className="py-20 bg-[#F7F5F2]">
         <div className="container text-center">
           <h2 className="font-light text-[#0E0E0E] mb-8" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>
             Готовы записаться?

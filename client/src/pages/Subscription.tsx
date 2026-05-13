@@ -72,7 +72,7 @@ export default function Subscription() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.15 }}
-                className={`border p-8 flex flex-col ${i === 1 ? "border-[#0E0E0E] bg-[#0E0E0E]" : "border-[#E8F0EC] bg-[#F7FAF9]"}`}
+                className={`border p-8 flex flex-col ${i === 1 ? "border-[#0E0E0E] bg-[#0E0E0E]" : "border-[#E8F0EC] bg-[#F7F5F2]"}`}
               >
                 <p className={`text-[10px] tracking-[0.3em] uppercase mb-4 ${i === 1 ? "text-[#A8C5B5]" : "text-[#A8C5B5]"}`} style={{ fontFamily: "'Inter', sans-serif" }}>
                   {plan.name}
@@ -114,7 +114,7 @@ export default function Subscription() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-[#F7FAF9]">
+      <section className="py-24 bg-[#F7F5F2]">
         <div className="container max-w-2xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mb-12">
             <h2 className="font-light text-[#0E0E0E]" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>

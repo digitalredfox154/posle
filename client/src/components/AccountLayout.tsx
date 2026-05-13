@@ -39,7 +39,7 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
   if (!client) return null;
 
   return (
-    <div className="min-h-screen bg-[#F7FAF9] flex flex-col">
+    <div className="min-h-screen bg-[#F7F5F2] flex flex-col">
       {/* Top bar */}
       <header className="w-full bg-[#0E0E0E] h-16 flex items-center px-4 md:px-8 gap-4">
         <Link href="/" className="text-white font-light tracking-[0.15em] mr-auto" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px" }}>
