@@ -32,12 +32,20 @@ export default function Home() {
   return (
     <PublicLayout>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[88vh] flex items-center overflow-hidden" style={{ backgroundColor: "#111111" }}>
-        {/* Very subtle dot texture like in mockup */}
+      <section
+        className="relative min-h-[88vh] flex items-center overflow-hidden"
+        style={{
+          backgroundImage: "url('/manus-storage/posle-hero-bg_068adb5d.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center right",
+          backgroundRepeat: "no-repeat",
+          backgroundColor: "#111111",
+        }}
+      >
+        {/* Subtle dark overlay on left for text readability */}
         <div className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
+            background: "linear-gradient(to right, rgba(10,10,14,0.75) 0%, rgba(10,10,14,0.4) 50%, transparent 100%)",
           }}
         />
 
@@ -114,21 +122,8 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT: logo image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.1, ease: "easeOut", delay: 0.3 }}
-              className="flex items-center justify-center"
-            >
-              <img
-                src="/manus-storage/posle-logo-only_fef94be3.png"
-                alt="ПОСЛЕ — груминг-сервис"
-                className="w-full max-w-[560px] object-contain select-none"
-                style={{ mixBlendMode: "lighten" }}
-                draggable={false}
-              />
-            </motion.div>
+            {/* RIGHT: empty — background image handles the logo */}
+            <div />
 
           </div>
         </div>
