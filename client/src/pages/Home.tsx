@@ -167,13 +167,13 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Right: 2x2 cards with icon */}
+            {/* Right: 2x2 cards with icon — aligned to h2 start */}
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 gap-4 mt-[calc(1.5rem+1.2em)]"
             >
               {[
                 {
