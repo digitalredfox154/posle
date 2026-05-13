@@ -18,7 +18,7 @@ export default function Contacts() {
       </section>
 
       {/* Contacts grid */}
-      <section className="py-24 bg-white">
+      <section className="py-20 md:py-28" style={{ backgroundColor: "#F0EDE8" }}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             {/* Info */}
@@ -28,15 +28,15 @@ export default function Contacts() {
                 <p className="text-[#0E0E0E] font-light text-xl mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   Вокзальная магистраль, 16
                 </p>
-                <p className="text-[#0E0E0E]/50 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Новосибирск</p>
+                <p className="text-[#0E0E0E]/50 text-sm mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>Новосибирск</p>
                 <a
                   href="https://yandex.ru/maps/?text=Вокзальная+магистраль+16+Новосибирск"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-4 text-xs tracking-[0.2em] uppercase text-[#A8C5B5] hover:text-[#0E0E0E] border-b border-[#A8C5B5] pb-0.5 transition-all duration-200"
+                  className="link-arrow text-xs tracking-[0.2em] uppercase text-[#A8C5B5] border-b border-[#A8C5B5]/40 pb-0.5 transition-all duration-200"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                  Открыть в Яндекс Картах
+                  Открыть в Яндекс Картах →
                 </a>
               </div>
 
@@ -50,16 +50,10 @@ export default function Contacts() {
               <div>
                 <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>Режим работы</p>
                 <div className="flex flex-col gap-2">
-                  {[
-                    { days: "Пн — Пт", time: "10:00 — 19:00" },
-                    { days: "Сб", time: "10:00 — 17:00" },
-                    { days: "Вс", time: "Выходной" },
-                  ].map((row) => (
-                    <div key={row.days} className="flex justify-between items-center border-b border-[#E8F0EC] pb-2">
-                      <span className="text-[#0E0E0E]/60 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>{row.days}</span>
-                      <span className="text-[#0E0E0E] text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>{row.time}</span>
-                    </div>
-                  ))}
+                  <div className="flex justify-between items-center border-b border-[#D8D2C8] pb-2">
+                    <span className="text-[#0E0E0E]/60 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Ежедневно</span>
+                    <span className="text-[#0E0E0E] text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>10:00 — 20:00</span>
+                  </div>
                 </div>
               </div>
 
@@ -80,7 +74,7 @@ export default function Contacts() {
 
             {/* Map */}
             <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
-              <div className="w-full h-80 md:h-full min-h-[400px] bg-[#F7F5F2] overflow-hidden">
+              <div className="w-full h-80 md:h-full min-h-[400px] overflow-hidden" style={{ backgroundColor: "#F7F5F2" }}>
                 <iframe
                   src="https://yandex.ru/map-widget/v1/?ll=82.9201%2C55.0415&z=16&pt=82.9201%2C55.0415%2Cpm2rdm&text=Вокзальная+магистраль+16+Новосибирск"
                   width="100%"
@@ -97,16 +91,19 @@ export default function Contacts() {
       </section>
 
       {/* Booking CTA */}
-      <section className="py-20 bg-[#F7F5F2]">
+      <section className="py-20" style={{ backgroundColor: "#0E0E0E" }}>
         <div className="container text-center">
-          <h2 className="font-light text-[#0E0E0E] mb-8" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>
-            Готовы записаться?
+          <h2 className="font-light text-white mb-8" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>
+            Начните с знакомства
           </h2>
+          <p className="text-white/40 max-w-sm mx-auto leading-relaxed mb-10" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
+            Первый визит — это знакомство. Мы смотрим, слушаем и подбираем то, что нужно именно вашему питомцу.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/booking" className="inline-block text-center text-xs tracking-[0.2em] uppercase bg-[#0E0E0E] text-white px-10 py-4 hover:bg-[#1a1a1a] transition-all duration-300" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <Link href="/booking" className="btn-mint inline-block text-center text-[10px] tracking-[0.3em] uppercase px-10 py-4" style={{ fontFamily: "'Inter', sans-serif" }}>
               Записаться онлайн
             </Link>
-            <a href="tel:+79130187219" className="inline-block text-center text-xs tracking-[0.2em] uppercase border border-[#0E0E0E]/20 text-[#0E0E0E]/60 px-10 py-4 hover:border-[#0E0E0E] hover:text-[#0E0E0E] transition-all duration-300" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <a href="tel:+79130187219" className="btn-outline-light inline-block text-center text-[10px] tracking-[0.3em] uppercase px-10 py-4" style={{ fontFamily: "'Inter', sans-serif" }}>
               Позвонить
             </a>
           </div>

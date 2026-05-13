@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import PublicLayout from "@/components/PublicLayout";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import { Link } from "wouter";
 
 // Same pairs as on the home page — mirrored where needed, no labels
 const gallery = [
@@ -27,9 +28,9 @@ export default function Results() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-20 md:py-28" style={{ backgroundColor: "#F0EDE8" }}>
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {gallery.map((item, i) => (
               <motion.div
                 key={item.id}
@@ -46,6 +47,20 @@ export default function Results() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+      {/* CTA */}
+      <section className="py-20" style={{ backgroundColor: "#0E0E0E" }}>
+        <div className="container text-center">
+          <h2 className="text-white font-light mb-8" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>
+            Начните с знакомства
+          </h2>
+          <p className="text-white/40 max-w-sm mx-auto leading-relaxed mb-10" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
+            Первый визит — это знакомство. Мы смотрим, слушаем и подбираем то, что нужно именно вашему питомцу.
+          </p>
+          <Link href="/booking" className="btn-mint inline-block text-[10px] tracking-[0.3em] uppercase px-10 py-4" style={{ fontFamily: "'Inter', sans-serif" }}>
+            Записаться
+          </Link>
         </div>
       </section>
     </PublicLayout>
