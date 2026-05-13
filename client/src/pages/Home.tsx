@@ -123,7 +123,7 @@ export default function Home() {
               className="flex items-center justify-center"
             >
               <img
-                src="/manus-storage/posle-logo-hero_8e4e6fa3.png"
+                src="/manus-storage/posle-logo-only_fef94be3.png"
                 alt="ПОСЛЕ — груминг-сервис"
                 className="w-full max-w-[520px] object-contain select-none"
                 draggable={false}
