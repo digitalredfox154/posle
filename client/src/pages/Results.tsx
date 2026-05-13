@@ -68,9 +68,7 @@ export default function Results() {
                   afterSrc={item.after}
                   aspectRatio="4/3"
                 />
-                <p className="text-[#0E0E0E]/50 text-xs tracking-widest uppercase mt-3" style={{ fontFamily: "'Inter', sans-serif" }}>
-                  {item.label}
-                </p>
+
               </motion.div>
             ))}
           </div>

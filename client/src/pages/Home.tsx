@@ -15,8 +15,8 @@ const stagger = {
 
 // Real before/after photos — 4 best dog pairs, after photos mirrored to match direction
 const PAIRS = [
-  // Pair 1: black poodle — both face RIGHT
-  { before: "/manus-storage/before1_fb6caf90.jpg", after: "/manus-storage/after1_1140459b.jpg" },
+  // Pair 1: black poodle — swapped: after (groomed) is now "before" side, before (ungroomed) is "after" side
+  { before: "/manus-storage/after1_1140459b.jpg", after: "/manus-storage/before1_fb6caf90.jpg" },
   // Pair 2: ginger poodle — both face camera
   { before: "/manus-storage/before2_929dde77.jpg", after: "/manus-storage/after2_8b3d0f2b.jpg" },
   // Pair 4: yorkie — both face LEFT
