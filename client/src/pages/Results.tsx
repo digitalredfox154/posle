@@ -2,37 +2,12 @@ import { motion } from "framer-motion";
 import PublicLayout from "@/components/PublicLayout";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
+// Same pairs as on the home page — mirrored where needed, no labels
 const gallery = [
-  {
-    id: 1,
-    before: "/manus-storage/before1_fb6caf90.jpg",
-    after: "/manus-storage/after1_6b1450ec.jpg",
-    label: "Чёрный пудель",
-  },
-  {
-    id: 2,
-    before: "/manus-storage/before2_929dde77.jpg",
-    after: "/manus-storage/after2_8b3d0f2b.jpg",
-    label: "Рыжий пудель",
-  },
-  {
-    id: 3,
-    before: "/manus-storage/before3_425e89a3.png",
-    after: "/manus-storage/after3_180d1793.png",
-    label: "Шпиц",
-  },
-  {
-    id: 4,
-    before: "/manus-storage/before4_ff6d2058.jpg",
-    after: "/manus-storage/after4_15677a44.jpg",
-    label: "Йоркшир",
-  },
-  {
-    id: 5,
-    before: "/manus-storage/before5_1c1723f8.png",
-    after: "/manus-storage/after5_2fb66477.png",
-    label: "Коричневый пудель",
-  },
+  { id: 1, before: "/manus-storage/after1_1140459b.jpg", after: "/manus-storage/before1_fb6caf90.jpg" },
+  { id: 2, before: "/manus-storage/before2_929dde77.jpg", after: "/manus-storage/after2_8b3d0f2b.jpg" },
+  { id: 3, before: "/manus-storage/before4_ff6d2058.jpg", after: "/manus-storage/after4_68ffd188.jpg" },
+  { id: 4, before: "/manus-storage/before5_1c1723f8.png", after: "/manus-storage/after5_cc507478.png" },
 ];
 
 export default function Results() {
@@ -68,7 +43,6 @@ export default function Results() {
                   afterSrc={item.after}
                   aspectRatio="4/3"
                 />
-
               </motion.div>
             ))}
           </div>
