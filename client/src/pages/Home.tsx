@@ -565,51 +565,115 @@ export default function Home() {
       </section>
 
       {/* ── BOOKING CTA ──────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20" style={{ backgroundColor: "#F5F0E8" }}>
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-center max-w-xl mx-auto"
-          >
-            <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-4"
-              style={{ fontFamily: "'Inter', sans-serif" }}>
-              Запись
-            </p>
-            <h2 className="font-light text-[#0E0E0E] mb-4"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(36px, 5vw, 56px)",
-              }}>
-              Запишитесь на уход в ПОСЛЕ
-            </h2>
-            <p className="text-[#0E0E0E]/50 text-sm mb-2"
-              style={{ fontFamily: "'Inter', sans-serif" }}>
-              Подберём удобное время и процедуру под состояние шерсти, характер собаки и желаемый результат.
-            </p>
-            <p className="text-[#0E0E0E]/50 text-sm mb-6"
-              style={{ fontFamily: "'Inter', sans-serif" }}>
-              Вокзальная магистраль, 16 · +7 913 018-72-19
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <section
+        className="relative overflow-hidden"
+        style={{ backgroundColor: "#0E0D0B", minHeight: "480px" }}
+      >
+        {/* Decorative gold lines */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* top-left corner lines */}
+          <div className="absolute top-0 left-0 w-32 h-px" style={{ background: "linear-gradient(to right, #C4A96A, transparent)" }} />
+          <div className="absolute top-0 left-0 h-32 w-px" style={{ background: "linear-gradient(to bottom, #C4A96A, transparent)" }} />
+          {/* bottom-right corner lines */}
+          <div className="absolute bottom-0 right-0 w-32 h-px" style={{ background: "linear-gradient(to left, #C4A96A, transparent)" }} />
+          <div className="absolute bottom-0 right-0 h-32 w-px" style={{ background: "linear-gradient(to top, #C4A96A, transparent)" }} />
+          {/* faint center circle */}
+          <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-[420px] h-[420px] rounded-full opacity-[0.04]"
+            style={{ border: "1px solid #C4A96A" }} />
+          <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-[280px] h-[280px] rounded-full opacity-[0.06]"
+            style={{ border: "1px solid #C4A96A" }} />
+        </div>
+
+        <div className="container relative z-10 py-20 md:py-28">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 items-center">
+
+            {/* Left — typography */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <p className="text-[#C4A96A] text-[10px] tracking-[0.4em] uppercase mb-6"
+                style={{ fontFamily: "'Inter', sans-serif" }}>
+                Запись
+              </p>
+              <h2 className="font-light text-white leading-[1.05] mb-8"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(48px, 6vw, 80px)",
+                }}>
+                Начните<br />
+                <span style={{ color: "#C4A96A" }}>с знакомства.</span>
+
+              </h2>
+              <p className="text-white/40 max-w-sm leading-relaxed mb-10"
+                style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
+                Первый визит — это знакомство. Мы смотрим, слушаем и подбираем то, что нужно именно вашему питомцу.
+              </p>
               <Link
                 href="/booking"
-                className="inline-block text-center text-xs tracking-[0.2em] uppercase bg-[#0E0E0E] text-white px-10 py-4 hover:bg-[#1a1a1a] transition-all duration-300 font-medium"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="inline-flex items-center gap-4 group"
               >
-                Записаться онлайн
+                <span
+                  className="text-[10px] tracking-[0.3em] uppercase text-[#0E0D0B] bg-[#C4A96A] px-10 py-4 group-hover:bg-[#d4b97a] transition-all duration-300"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  Записаться
+                </span>
+                <span className="text-[#C4A96A] text-2xl group-hover:translate-x-1 transition-transform duration-300">→</span>
               </Link>
+            </motion.div>
+
+            {/* Right — contact info cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col gap-4 min-w-[260px]"
+            >
+              {/* Address */}
+              <div className="border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
+                <p className="text-[#C4A96A] text-[9px] tracking-[0.35em] uppercase mb-3"
+                  style={{ fontFamily: "'Inter', sans-serif" }}>
+                  Адрес
+                </p>
+                <p className="text-white/70 leading-snug"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
+                  Вокзальная магистраль, 16<br />
+                  <span className="text-white/35 text-sm">Новосибирск</span>
+                </p>
+              </div>
+              {/* Phone */}
               <a
                 href="tel:+79130187219"
-                className="inline-block text-center text-xs tracking-[0.2em] uppercase border border-[#0E0E0E]/20 text-[#0E0E0E]/60 px-10 py-4 hover:border-[#0E0E0E] hover:text-[#0E0E0E] transition-all duration-300"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="border border-white/[0.08] p-6 group hover:border-[#C4A96A]/40 transition-all duration-300"
+                style={{ backgroundColor: "rgba(255,255,255,0.03)" }}
               >
-                Позвонить
+                <p className="text-[#C4A96A] text-[9px] tracking-[0.35em] uppercase mb-3"
+                  style={{ fontFamily: "'Inter', sans-serif" }}>
+                  Телефон
+                </p>
+                <p className="text-white/70 group-hover:text-white transition-colors duration-300"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", letterSpacing: "0.04em" }}>
+                  +7 913 018-72-19
+                </p>
               </a>
-            </div>
-          </motion.div>
+              {/* Hours */}
+              <div className="border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
+                <p className="text-[#C4A96A] text-[9px] tracking-[0.35em] uppercase mb-3"
+                  style={{ fontFamily: "'Inter', sans-serif" }}>
+                  Часы работы
+                </p>
+                <p className="text-white/70"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
+                  Ежедневно, 10:00 — 20:00
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </section>
     </PublicLayout>
