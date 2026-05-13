@@ -130,7 +130,7 @@ export default function Home() {
       </section>
 
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-[#FDFCF9]">
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
             {/* Left: label + heading + paragraphs */}
@@ -220,7 +220,7 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item.num}
-                  className="bg-white rounded-2xl p-6 border border-[#EDE8DF] flex flex-col justify-between min-h-[160px]"
+                  className="rounded-2xl p-6 border border-[#EDE8DF] flex flex-col justify-between min-h-[160px]" style={{ backgroundColor: "#FAF7F2" }}
                 >
                   <div className="flex items-start justify-between">
                     <span className="text-[#0E0E0E]/40 text-sm"
@@ -494,7 +494,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="border rounded-sm max-w-5xl mx-auto overflow-hidden"
-            style={{ borderColor: "rgba(180,150,90,0.25)", backgroundColor: "#FAF7F2" }}
+            style={{ borderColor: "rgba(180,150,90,0.25)", backgroundColor: "#F5F0E8" }}
           >
             <div className="grid grid-cols-1 md:grid-cols-[45%_55%]">
               {/* Left — photo */}
@@ -564,7 +564,7 @@ export default function Home() {
       </section>
 
       {/* ── BOOKING CTA ──────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-[#F7FAF9]">
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}

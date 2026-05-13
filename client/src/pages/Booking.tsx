@@ -96,7 +96,7 @@ export default function Booking() {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="container max-w-xl">
           {step === "done" ? (
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center py-12">

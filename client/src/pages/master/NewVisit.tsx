@@ -9,7 +9,7 @@ function MasterLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const logout = trpc.posleClient.logout.useMutation({ onSuccess: () => { window.location.href = "/"; } });
   return (
-    <div className="min-h-screen bg-[#F7FAF9]">
+    <div className="min-h-screen" style={{ backgroundColor: "#F5F0E8" }}>
       <header className="bg-[#0E0E0E] h-16 flex items-center px-6 gap-6">
         <Link href="/" className="text-white font-light tracking-[0.15em] mr-auto" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px" }}>ПОСЛЕ</Link>
         <span className="text-[#A8C5B5] text-[10px] tracking-[0.2em] uppercase hidden sm:block" style={{ fontFamily: "'Inter', sans-serif" }}>Мастер</span>
