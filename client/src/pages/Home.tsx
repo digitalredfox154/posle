@@ -358,11 +358,11 @@ export default function Home() {
                 </p>
               </div>
               <Link
-                href="/subscription"
+                href="/booking"
                 className="inline-block text-[10px] tracking-[0.25em] uppercase border border-[#A8C5B5]/60 text-[#A8C5B5] px-8 py-4 hover:bg-[#A8C5B5]/10 transition-all duration-300 self-start"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                Стать резидентом
+                Записаться
               </Link>
             </motion.div>
 
@@ -443,19 +443,13 @@ export default function Home() {
               className="rounded-sm border border-white/10 p-8 flex flex-col items-center text-center"
               style={{ backgroundColor: "#1a1a18" }}
             >
-              {/* Logo emblem */}
-              <div className="mb-6 w-20 h-20 flex items-center justify-center">
-                <svg viewBox="0 0 80 80" width="80" height="80" fill="none">
-                  <circle cx="40" cy="40" r="36" stroke="#C4A96A" strokeWidth="1.2" />
-                  <text x="40" y="58" textAnchor="middle"
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "52px", fill: "#C4A96A", fontWeight: 300 }}
-                  >
-                    П
-                  </text>
-                  {/* star on top */}
-                  <path d="M40 4 L41.2 7.5 L45 7.5 L42 9.8 L43.2 13.3 L40 11 L36.8 13.3 L38 9.8 L35 7.5 L38.8 7.5 Z"
-                    fill="#C4A96A" />
-                </svg>
+              {/* Logo emblem — olive PNG */}
+              <div className="mb-6 w-24 h-24 flex items-center justify-center">
+                <img
+                  src="/manus-storage/posle-logo-olive_44f3e3e8.png"
+                  alt="ПОСЛЕ логотип"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <p className="text-[#C4A96A] text-[9px] tracking-[0.3em] uppercase mb-3"
                 style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -481,7 +475,7 @@ export default function Home() {
                 className="w-full flex items-center justify-between border border-white/20 text-white/70 px-5 py-3.5 hover:border-[#C4A96A] hover:text-[#C4A96A] transition-all duration-300 mt-auto"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                <span className="text-[10px] tracking-[0.25em] uppercase">Узнать условия</span>
+                <span className="text-[10px] tracking-[0.25em] uppercase">Записаться</span>
                 <span className="text-lg">→</span>
               </Link>
             </motion.div>
