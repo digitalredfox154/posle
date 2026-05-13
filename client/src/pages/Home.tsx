@@ -380,55 +380,55 @@ export default function Home() {
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}>
                 Онлайн-дневник питомца
               </p>
-              <div className="flex flex-col gap-0">
+              <div className="flex flex-col">
                 {[
                   {
                     icon: (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.4" strokeLinecap="round">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="3" y="4" width="18" height="18" rx="2" />
                         <path d="M16 2v4M8 2v4M3 10h18" />
                         <path d="M8 14h2M14 14h2M8 18h2M14 18h2" />
                       </svg>
                     ),
-                    text: "История визитов\nи процедур",
+                    text: "История визитов и процедур",
                   },
                   {
                     icon: (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.4" strokeLinecap="round">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                       </svg>
                     ),
-                    text: "Рекомендации по уходу\nи питанию",
+                    text: "Рекомендации по уходу и питанию",
                   },
                   {
                     icon: (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.4" strokeLinecap="round">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="3" y="3" width="18" height="18" rx="2" />
                         <path d="M7 8h10M7 12h6M7 16h4" />
                       </svg>
                     ),
-                    text: "Заметки и важные\nнаблюдения",
+                    text: "Заметки и важные наблюдения",
                   },
                   {
                     icon: (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.4" strokeLinecap="round">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4A96A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                         <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                       </svg>
                     ),
-                    text: "Напоминания о записях\nи процедурах",
+                    text: "Напоминания о записях и процедурах",
                   },
                 ].map((item, idx, arr) => (
                   <div key={idx}>
-                    <div className="flex items-start gap-4 py-5">
-                      <div className="mt-0.5 shrink-0">{item.icon}</div>
-                      <p className="text-white/70 leading-snug whitespace-pre-line"
-                        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px" }}>
+                    <div className="flex items-center gap-5 py-5">
+                      <div className="shrink-0 w-8 flex items-center justify-center">{item.icon}</div>
+                      <p className="text-white/80"
+                        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", lineHeight: "1.4" }}>
                         {item.text}
                       </p>
                     </div>
                     {idx < arr.length - 1 && (
-                      <div className="h-px" style={{ backgroundColor: "rgba(255,255,255,0.07)" }} />
+                      <div className="h-px" style={{ backgroundColor: "rgba(255,255,255,0.08)" }} />
                     )}
                   </div>
                 ))}
