@@ -330,7 +330,7 @@ export default function Home() {
       {/* ── SUBSCRIPTION TEASER ──────────────────────────────────────────── */}
       <section className="py-20 md:py-28" style={{ backgroundColor: "#111110" }}>
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr_0.9fr] gap-6 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr_0.9fr] gap-6 items-stretch">
 
             {/* Col 1 — heading + text + button */}
             <motion.div
@@ -338,11 +338,12 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col justify-between h-full py-2"
+              className="flex flex-col justify-between border border-white/[0.07] p-8"
+              style={{ backgroundColor: "#1a1a18" }}
             >
               <div>
                 <p className="text-[#C4A96A] text-[10px] tracking-[0.35em] uppercase mb-6"
-                  style={{ fontFamily: "'Inter', sans-serif" }}>
+                  style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}>
                   Клуб резидентов
                 </p>
                 <h2 className="text-white font-light leading-[1.15] mb-8"
@@ -353,7 +354,7 @@ export default function Home() {
                   Для тех, кто выбирает постоянство
                 </h2>
                 <p className="text-white/45 text-sm leading-relaxed mb-10"
-                  style={{ fontFamily: "'Inter', sans-serif" }}>
+                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px" }}>
                   Онлайн-дневник питомца в личном кабинете — всё о его жизни: визиты, уход, рекомендации и важные заметки. Всегда под рукой.
                 </p>
               </div>
@@ -372,11 +373,11 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="rounded-sm border border-white/10 p-8"
+              className="border border-white/[0.07] p-8"
               style={{ backgroundColor: "#1a1a18" }}
             >
-              <p className="text-[#C4A96A] text-[9px] tracking-[0.3em] uppercase mb-8"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
+              <p className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-8"
+                style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}>
                 Онлайн-дневник питомца
               </p>
               <div className="flex flex-col gap-0">
@@ -421,13 +422,13 @@ export default function Home() {
                   <div key={idx}>
                     <div className="flex items-start gap-4 py-5">
                       <div className="mt-0.5 shrink-0">{item.icon}</div>
-                      <p className="text-white/70 text-sm leading-snug whitespace-pre-line"
-                        style={{ fontFamily: "'Inter', sans-serif" }}>
+                      <p className="text-white/70 leading-snug whitespace-pre-line"
+                        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px" }}>
                         {item.text}
                       </p>
                     </div>
                     {idx < arr.length - 1 && (
-                      <div className="h-px bg-white/8" />
+                      <div className="h-px" style={{ backgroundColor: "rgba(255,255,255,0.07)" }} />
                     )}
                   </div>
                 ))}
@@ -440,7 +441,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="rounded-sm border border-white/10 p-8 flex flex-col items-center text-center"
+              className="border border-white/[0.07] p-8 flex flex-col items-center text-center"
               style={{ backgroundColor: "#1a1a18" }}
             >
               {/* Logo emblem — olive PNG */}
@@ -451,8 +452,8 @@ export default function Home() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <p className="text-[#C4A96A] text-[9px] tracking-[0.3em] uppercase mb-3"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
+              <p className="text-[#C4A96A] text-[10px] tracking-[0.3em] uppercase mb-3"
+                style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}>
                 Дополнение
               </p>
               <h3 className="text-white font-light leading-tight mb-2"
@@ -466,16 +467,16 @@ export default function Home() {
               <div className="my-4">
                 <span className="text-[#C4A96A]" style={{ fontSize: "18px" }}>✦</span>
               </div>
-              <p className="text-white/45 text-sm leading-relaxed mb-8"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
+              <p className="text-white/45 leading-relaxed mb-8"
+                style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px" }}>
                 Персональные привилегии и особое внимание для вашего питомца.
               </p>
               <Link
                 href="/subscription"
-                className="w-full flex items-center justify-between border border-white/20 text-white/70 px-5 py-3.5 hover:border-[#C4A96A] hover:text-[#C4A96A] transition-all duration-300 mt-auto"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="w-full flex items-center justify-between border border-white/[0.15] text-white/60 px-5 py-3.5 hover:border-[#C4A96A]/60 hover:text-[#C4A96A] transition-all duration-300 mt-auto"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
-                <span className="text-[10px] tracking-[0.25em] uppercase">Записаться</span>
+                <span className="tracking-[0.25em] uppercase" style={{ fontSize: "13px" }}>Записаться</span>
                 <span className="text-lg">→</span>
               </Link>
             </motion.div>
