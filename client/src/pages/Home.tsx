@@ -244,34 +244,47 @@ export default function Home() {
       </section>
 
       {/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-[#F7FAF9]">
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-center mb-16"
+            className="text-center mb-14"
           >
-            <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-4"
+            {/* РЕЗУЛЬТАТЫ label */}
+            <p className="text-[#C4A96A] text-[10px] tracking-[0.35em] uppercase mb-3"
               style={{ fontFamily: "'Inter', sans-serif" }}>
-              Результаты
+              РЕЗУЛЬТАТЫ
             </p>
-            <h2 className="font-light text-[#0E0E0E]"
+            {/* Gold divider + paw icon */}
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, #C4A96A)" }} />
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#C4A96A">
+                <ellipse cx="12" cy="17" rx="5" ry="4" />
+                <ellipse cx="6" cy="11" rx="2.5" ry="3" />
+                <ellipse cx="18" cy="11" rx="2.5" ry="3" />
+                <ellipse cx="9" cy="7" rx="2" ry="2.5" />
+                <ellipse cx="15" cy="7" rx="2" ry="2.5" />
+              </svg>
+              <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, #C4A96A)" }} />
+            </div>
+            <h2 className="font-light text-[#2C2416] mb-4"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(36px, 5vw, 56px)",
+                fontSize: "clamp(40px, 5vw, 60px)",
               }}>
               До и после
             </h2>
-            <p className="text-[#0E0E0E]/50 text-sm mt-4 max-w-md mx-auto"
+            <p className="text-[#2C2416]/50 text-sm max-w-md mx-auto"
               style={{ fontFamily: "'Inter', sans-serif" }}>
               Передвиньте разделитель, чтобы увидеть разницу в деталях
             </p>
           </motion.div>
 
-          {/* 4 sliders in 2x2 grid — no labels */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* 4 sliders in 2x2 grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {PAIRS.map((pair, i) => (
               <motion.div
                 key={i}
@@ -289,14 +302,23 @@ export default function Home() {
             ))}
           </div>
 
-          <p className="text-center text-[#0E0E0E]/50 text-sm mt-10 max-w-xl mx-auto"
-            style={{ fontFamily: "'Inter', sans-serif" }}>
-            Аккуратная форма, чистая шерсть, выразительный силуэт и тот самый вид, ради которого хочется сделать фото сразу после процедуры.
-          </p>
+          {/* Bottom paw divider */}
+          <div className="flex items-center justify-center gap-3 mt-12">
+            <div className="h-px w-16" style={{ background: "linear-gradient(to right, transparent, #C4A96A)" }} />
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C4A96A">
+              <ellipse cx="12" cy="17" rx="5" ry="4" />
+              <ellipse cx="6" cy="11" rx="2.5" ry="3" />
+              <ellipse cx="18" cy="11" rx="2.5" ry="3" />
+              <ellipse cx="9" cy="7" rx="2" ry="2.5" />
+              <ellipse cx="15" cy="7" rx="2" ry="2.5" />
+            </svg>
+            <div className="h-px w-16" style={{ background: "linear-gradient(to left, transparent, #C4A96A)" }} />
+          </div>
+
           <div className="text-center mt-8">
             <Link
               href="/results"
-              className="inline-block text-xs tracking-[0.2em] uppercase border border-[#0E0E0E]/20 text-[#0E0E0E]/60 px-8 py-3 hover:border-[#0E0E0E] hover:text-[#0E0E0E] transition-all duration-300"
+              className="inline-block text-xs tracking-[0.2em] uppercase border border-[#2C2416]/20 text-[#2C2416]/60 px-8 py-3 hover:border-[#C4A96A] hover:text-[#C4A96A] transition-all duration-300"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Все результаты

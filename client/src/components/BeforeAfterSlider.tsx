@@ -12,8 +12,8 @@ interface BeforeAfterSliderProps {
 export default function BeforeAfterSlider({
   beforeSrc,
   afterSrc,
-  beforeLabel = "До",
-  afterLabel = "После",
+  beforeLabel = "ДО",
+  afterLabel = "ПОСЛЕ",
   className = "",
   aspectRatio = "4/3",
 }: BeforeAfterSliderProps) {
@@ -25,7 +25,7 @@ export default function BeforeAfterSlider({
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
-    const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    const pct = Math.max(2, Math.min(98, (x / rect.width) * 100));
     setPosition(pct);
   }, []);
 
@@ -68,12 +68,12 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden select-none rounded-sm ${className}`}
+      className={`relative overflow-hidden select-none rounded-xl ${className}`}
       style={{ aspectRatio, cursor: dragging ? "ew-resize" : "col-resize" }}
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
     >
-      {/* After image (full) */}
+      {/* After image (full background) */}
       <img
         src={afterSrc}
         alt={afterLabel}
@@ -81,7 +81,7 @@ export default function BeforeAfterSlider({
         draggable={false}
       />
 
-      {/* Before image (clipped) */}
+      {/* Before image (clipped left portion) */}
       <div
         className="absolute inset-0 overflow-hidden"
         style={{ width: `${position}%` }}
@@ -97,35 +97,48 @@ export default function BeforeAfterSlider({
 
       {/* Divider line */}
       <div
-        className="absolute top-0 bottom-0 w-px bg-white z-10 pointer-events-none"
-        style={{ left: `${position}%` }}
+        className="absolute top-0 bottom-0 w-[2px] z-10 pointer-events-none"
+        style={{ left: `${position}%`, background: "rgba(255,255,255,0.7)" }}
       />
 
-      {/* Handle */}
+      {/* Handle — white circle with ↔ arrows */}
       <div
         className="absolute top-1/2 z-20 -translate-y-1/2 -translate-x-1/2 pointer-events-none"
         style={{ left: `${position}%` }}
       >
-        <div className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M5 8L2 5M2 5L5 2M2 5H14M11 8L14 5M14 5L11 2M14 5H2" stroke="#0E0E0E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <div
+          className="w-11 h-11 rounded-full flex items-center justify-center shadow-xl"
+          style={{ background: "rgba(255,255,255,0.95)" }}
+        >
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+            <path d="M1 6H19M1 6L5 2M1 6L5 10M19 6L15 2M19 6L15 10" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
       </div>
 
-      {/* Labels */}
+      {/* Badge ДО — bottom left, dark semi-transparent */}
       <div className="absolute bottom-3 left-3 z-10 pointer-events-none">
         <span
-          className="text-white text-xs tracking-widest uppercase px-2 py-1 bg-black/40 backdrop-blur-sm"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="text-white text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm"
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            background: "rgba(30,28,24,0.65)",
+            backdropFilter: "blur(4px)",
+          }}
         >
           {beforeLabel}
         </span>
       </div>
+
+      {/* Badge ПОСЛЕ — bottom right, gold */}
       <div className="absolute bottom-3 right-3 z-10 pointer-events-none">
         <span
-          className="text-white text-xs tracking-widest uppercase px-2 py-1 bg-black/40 backdrop-blur-sm"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="text-white text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm"
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            background: "rgba(160,130,70,0.85)",
+            backdropFilter: "blur(4px)",
+          }}
         >
           {afterLabel}
         </span>
