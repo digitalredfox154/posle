@@ -5,27 +5,33 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 const gallery = [
   {
     id: 1,
-    before: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80",
-    label: "Золотистый ретривер",
+    before: "/manus-storage/before1_fb6caf90.jpg",
+    after: "/manus-storage/after1_6b1450ec.jpg",
+    label: "Чёрный пудель",
   },
   {
     id: 2,
-    before: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=800&q=80",
-    label: "Персидская кошка",
+    before: "/manus-storage/before2_929dde77.jpg",
+    after: "/manus-storage/after2_8b3d0f2b.jpg",
+    label: "Рыжий пудель",
   },
   {
     id: 3,
-    before: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80",
+    before: "/manus-storage/before3_425e89a3.png",
+    after: "/manus-storage/after3_180d1793.png",
     label: "Шпиц",
   },
   {
     id: 4,
-    before: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=800&q=80",
-    label: "Мейн-кун",
+    before: "/manus-storage/before4_ff6d2058.jpg",
+    after: "/manus-storage/after4_15677a44.jpg",
+    label: "Йоркшир",
+  },
+  {
+    id: 5,
+    before: "/manus-storage/before5_1c1723f8.png",
+    after: "/manus-storage/after5_2fb66477.png",
+    label: "Коричневый пудель",
   },
 ];
 

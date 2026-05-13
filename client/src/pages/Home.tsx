@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import PublicLayout from "@/components/PublicLayout";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
@@ -13,15 +14,19 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
-// Placeholder images (will be replaced with real photos)
-const PLACEHOLDER_DOG_BEFORE = "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80";
-const PLACEHOLDER_DOG_AFTER = "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80";
-const PLACEHOLDER_CAT_BEFORE = "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80";
-const PLACEHOLDER_CAT_AFTER = "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=800&q=80";
+// Real before/after photos
+const PAIRS = [
+  { before: "/manus-storage/before1_fb6caf90.jpg", after: "/manus-storage/after1_6b1450ec.jpg", label: "Чёрный пудель" },
+  { before: "/manus-storage/before2_929dde77.jpg", after: "/manus-storage/after2_8b3d0f2b.jpg", label: "Рыжий пудель" },
+  { before: "/manus-storage/before3_425e89a3.png", after: "/manus-storage/after3_180d1793.png", label: "Шпиц" },
+  { before: "/manus-storage/before4_ff6d2058.jpg", after: "/manus-storage/after4_15677a44.jpg", label: "Йоркшир" },
+  { before: "/manus-storage/before5_1c1723f8.png", after: "/manus-storage/after5_2fb66477.png", label: "Коричневый пудель" },
+];
 const MASTER_PHOTO = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80";
 
 export default function Home() {
   const { data: plans } = trpc.subscriptions.plans.useQuery();
+  const [selectedPair, setSelectedPair] = useState(0);
 
   return (
     <PublicLayout>
@@ -175,40 +180,42 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <BeforeAfterSlider
-                beforeSrc={PLACEHOLDER_DOG_BEFORE}
-                afterSrc={PLACEHOLDER_DOG_AFTER}
-                aspectRatio="4/3"
-              />
-              <p className="text-center text-xs text-[#0E0E0E]/40 mt-3 tracking-widest uppercase"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
-                Собака
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-            >
-              <BeforeAfterSlider
-                beforeSrc={PLACEHOLDER_CAT_BEFORE}
-                afterSrc={PLACEHOLDER_CAT_AFTER}
-                aspectRatio="4/3"
-              />
-              <p className="text-center text-xs text-[#0E0E0E]/40 mt-3 tracking-widest uppercase"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
-                Кошка
-              </p>
-            </motion.div>
+          {/* Pair selector tabs */}
+          <div className="flex justify-center gap-2 flex-wrap mb-8">
+            {PAIRS.map((pair, i) => (
+              <button
+                key={i}
+                onClick={() => setSelectedPair(i)}
+                className={`text-xs tracking-widest uppercase px-4 py-2 border transition-all duration-300 ${
+                  selectedPair === i
+                    ? "border-[#A8C5B5] text-[#0E0E0E] bg-[#A8C5B5]/20"
+                    : "border-[#0E0E0E]/20 text-[#0E0E0E]/50 hover:border-[#0E0E0E]/50 hover:text-[#0E0E0E]/70"
+                }`}
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                {pair.label}
+              </button>
+            ))}
           </div>
+
+          {/* Single slider for selected pair */}
+          <motion.div
+            key={selectedPair}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-2xl mx-auto"
+          >
+            <BeforeAfterSlider
+              beforeSrc={PAIRS[selectedPair].before}
+              afterSrc={PAIRS[selectedPair].after}
+              aspectRatio="4/3"
+            />
+            <p className="text-center text-xs text-[#0E0E0E]/40 mt-3 tracking-widest uppercase"
+              style={{ fontFamily: "'Inter', sans-serif" }}>
+              {PAIRS[selectedPair].label}
+            </p>
+          </motion.div>
 
           <div className="text-center mt-12">
             <Link
