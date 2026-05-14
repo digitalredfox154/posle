@@ -132,7 +132,7 @@ export default function Home() {
       </section>
 
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F5F3EF" }}>
+      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             {/* Left: label + heading + paragraphs */}
