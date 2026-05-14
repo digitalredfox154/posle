@@ -489,14 +489,14 @@ export default function Home() {
       <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#F0EDE8" }}>
         {/* Branch top-right */}
         <img
-          src="/manus-storage/branch_7a3e6d61.png"
+          src="/manus-storage/branch_transparent_222dc413.png"
           alt=""
           aria-hidden="true"
           style={{ position: "absolute", top: "-40px", right: "-40px", width: "320px", opacity: 0.9, pointerEvents: "none", zIndex: 0, transform: "rotate(-15deg)" }}
         />
         {/* Branch bottom-left mirrored */}
         <img
-          src="/manus-storage/branch_7a3e6d61.png"
+          src="/manus-storage/branch_transparent_222dc413.png"
           alt=""
           aria-hidden="true"
           style={{ position: "absolute", bottom: "-40px", left: "-40px", width: "280px", opacity: 0.75, pointerEvents: "none", zIndex: 0, transform: "rotate(160deg) scaleX(-1)" }}
