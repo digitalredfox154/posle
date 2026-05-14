@@ -167,34 +167,96 @@ export default function About() {
       </section>
 
       {/* Space / Location */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: "#F0EDE8" }}>
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#111110" }}>
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          {/* Section label */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A96E", marginBottom: "8px" }}>
+              Пространство
+            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <div style={{ height: "1px", width: "32px", background: "#C9A96E" }} />
+              <div style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#C9A96E" }} />
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+            {/* Left: text */}
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>Пространство</p>
-              <h2 className="font-light text-[#0E0E0E] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>
+              <h2
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(36px, 4.5vw, 58px)",
+                  fontWeight: 300,
+                  color: "#F0EDE8",
+                  lineHeight: 1.15,
+                  marginBottom: "32px",
+                }}
+              >
                 Место, где<br />хочется остаться
               </h2>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Вокзальная магистраль, 16, Новосибирск. Небольшое, аккуратное пространство без лишнего. Спокойно для животных, приятно для хозяев.
-              </p>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-8" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Работаем ежедневно с 10:00 до 20:00. Запись по телефону или онлайн.
-              </p>
-              <Link href="/contacts" className="link-arrow text-xs tracking-[0.2em] uppercase text-[#A8C5B5] border-b border-[#A8C5B5]/40 pb-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>
+
+              {/* Info rows */}
+              {[
+                { label: "Адрес", value: "Вокзальная магистраль, 16" },
+                { label: "Город", value: "Новосибирск" },
+                { label: "Работаем", value: "Ежедневно 10:00 — 20:00" },
+                { label: "Запись", value: "По телефону или онлайн" },
+              ].map((row) => (
+                <div
+                  key={row.label}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "baseline",
+                    borderBottom: "1px solid rgba(201,169,110,0.15)",
+                    paddingBottom: "14px",
+                    marginBottom: "14px",
+                  }}
+                >
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,232,0.35)" }}>
+                    {row.label}
+                  </span>
+                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#F0EDE8" }}>
+                    {row.value}
+                  </span>
+                </div>
+              ))}
+
+              <Link
+                href="/contacts"
+                style={{
+                  display: "inline-block",
+                  marginTop: "24px",
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "10px",
+                  letterSpacing: "0.25em",
+                  textTransform: "uppercase",
+                  color: "#C9A96E",
+                  borderBottom: "1px solid rgba(201,169,110,0.4)",
+                  paddingBottom: "2px",
+                }}
+              >
                 Как добраться →
               </Link>
             </motion.div>
+
+            {/* Right: map */}
             <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
-              <div className="aspect-[4/3] overflow-hidden">
+              <div style={{ overflow: "hidden", border: "1px solid rgba(201,169,110,0.18)" }}>
                 <iframe
                   src="https://yandex.ru/map-widget/v1/?ll=82.9201%2C55.0415&z=16&pt=82.9201%2C55.0415%2Cpm2rdm&text=Вокзальная+магистраль+16+Новосибирск"
                   width="100%"
-                  height="100%"
+                  height="420"
                   frameBorder="0"
                   title="ПОСЛЕ на карте"
-                  className="w-full h-full"
-                  style={{ minHeight: "320px" }}
+                  style={{ display: "block", filter: "grayscale(0.3) brightness(0.85)" }}
                 />
               </div>
             </motion.div>
