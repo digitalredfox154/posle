@@ -131,8 +131,15 @@ export default function Home() {
         </div>
       </section>
         {/* ── PHILOSOPHY ────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 relative" style={{ backgroundImage: "url('/manus-storage/philosophy_bg_b6159add.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
-        <div className="container">
+      <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/philosophy_bg_b6159add.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+        {/* Branch left — large */}
+        <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true"
+          style={{ position: "absolute", bottom: "-60px", left: "-60px", width: "380px", opacity: 0.85, pointerEvents: "none", zIndex: 0, transform: "rotate(20deg)" }} />
+        {/* Branch right — small, top-right */}
+        <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true"
+          style={{ position: "absolute", top: "-20px", right: "0px", width: "220px", opacity: 0.85, pointerEvents: "none", zIndex: 0, transform: "rotate(170deg) scaleX(-1)" }} />
+
+        <div className="container relative" style={{ zIndex: 1 }}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             {/* Left: label + heading + paragraphs */}
             <motion.div
@@ -141,51 +148,47 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-5"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
-                Философия
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "20px" }}>
+                ФИЛОСОФИЯ
               </p>
-              <h2
-                className="font-light leading-tight mb-5 text-[#0E0E0E]"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(40px, 5vw, 60px)",
-                }}>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(40px, 5vw, 60px)", fontWeight: 300, color: "#0E0E0E", lineHeight: 1.15, marginBottom: "20px" }}>
                 Один питомец.<br />Полное внимание.{" "}
-                <span className="text-[#A8C5B5]" style={{ fontSize: "0.7em" }}>✦</span>
+                <span style={{ color: "#A8C5B5", fontSize: "0.7em" }}>✦</span>
               </h2>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-3"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
+              {/* Ornament divider */}
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "20px" }}>
+                <div style={{ width: "32px", height: "1px", backgroundColor: "rgba(184,150,90,0.35)" }} />
+                <span style={{ color: "#B8965A", fontSize: "12px" }}>&#10022;</span>
+              </div>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(14,14,14,0.6)", lineHeight: 1.75, marginBottom: "14px" }}>
                 Мы не работаем в потоке. У каждой собаки есть свой характер, привычки, тревоги и границы. Поэтому визит в ПОСЛЕ строится спокойно: без спешки, лишнего шума и ощущения конвейера.
               </p>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-3"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(14,14,14,0.6)", lineHeight: 1.75, marginBottom: "14px" }}>
                 Мастер видит не только шерсть и форму, но и настроение питомца. Где нужно — даст время привыкнуть. Где важно — сделает мягче. Где можно — доведёт образ до аккуратного, чистого и выразительного результата.
               </p>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(14,14,14,0.6)", lineHeight: 1.75 }}>
                 ПОСЛЕ — это момент, когда собака выглядит ухоженно, чувствует себя спокойно, а владелец понимает: к деталям здесь относятся всерьёз.
               </p>
             </motion.div>
 
-            {/* Right: 2x2 cards with icon — aligned to h2 start */}
+            {/* Right: 2x2 cards */}
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid grid-cols-2 gap-4 mt-[calc(1.5rem+1.2em)]"
+              style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}
             >
               {[
                 {
                   num: "01",
                   text: "Камерный формат",
                   icon: (
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.2">
-                      <rect x="4" y="4" width="10" height="10" />
-                      <rect x="18" y="4" width="10" height="10" />
-                      <rect x="4" y="18" width="10" height="10" />
-                      <rect x="18" y="18" width="10" height="10" />
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.3">
+                      <rect x="4" y="4" width="10" height="10" rx="1" />
+                      <rect x="18" y="4" width="10" height="10" rx="1" />
+                      <rect x="4" y="18" width="10" height="10" rx="1" />
+                      <rect x="18" y="18" width="10" height="10" rx="1" />
                     </svg>
                   ),
                 },
@@ -193,9 +196,9 @@ export default function Home() {
                   num: "02",
                   text: "Спокойный процесс",
                   icon: (
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.2">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.3">
                       <path d="M16 4C16 4 6 10 6 18a10 10 0 0020 0C26 10 16 4 16 4z" />
-                      <path d="M10 20c1-3 3-5 6-6" />
+                      <path d="M12 19c1-3 3-5 6-5" />
                     </svg>
                   ),
                 },
@@ -203,7 +206,7 @@ export default function Home() {
                   num: "03",
                   text: "Внимание к характеру",
                   icon: (
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.2">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.3">
                       <path d="M16 27S5 20 5 12a6 6 0 0111-3.3A6 6 0 0127 12c0 8-11 15-11 15z" />
                     </svg>
                   ),
@@ -212,7 +215,7 @@ export default function Home() {
                   num: "04",
                   text: "Постоянный мастер",
                   icon: (
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.2">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.3">
                       <circle cx="16" cy="16" r="11" />
                       <circle cx="16" cy="16" r="6" />
                       <path d="M16 5v3M16 24v3M5 16h3M24 16h3" />
@@ -222,28 +225,42 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item.num}
-                  className="card-lift rounded-2xl p-6 border border-[#EDE8DF] flex flex-col justify-between min-h-[160px]" style={{ backgroundColor: "#F7F5F2" }}
+                  className="card-lift"
+                  style={{
+                    borderRadius: "16px",
+                    padding: "24px",
+                    border: "1px solid rgba(237,232,223,0.8)",
+                    backgroundColor: "rgba(250,248,244,0.9)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    minHeight: "180px",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
                 >
-                  <div className="flex items-start justify-between">
-                    <span className="text-[#0E0E0E]/40 text-sm"
-                      style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px" }}>
-                      {item.num}
-                    </span>
+                  {/* Mini branch decoration bottom-right */}
+                  <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true"
+                    style={{ position: "absolute", bottom: "-20px", right: "-20px", width: "100px", opacity: 0.35, pointerEvents: "none", transform: "rotate(30deg)" }} />
+                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", color: "rgba(168,197,181,0.7)", lineHeight: 1 }}>{item.num}</span>
                     {item.icon}
                   </div>
                   <div>
-                    <div className="w-8 h-px bg-[#A8C5B5] mb-4" />
-                    <p className="text-[#0E0E0E] font-light"
-                      style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
-                      {item.text}
-                    </p>
+                    <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "12px" }}>
+                      <div style={{ width: "24px", height: "1px", backgroundColor: "rgba(184,150,90,0.4)" }} />
+                      <span style={{ color: "#B8965A", fontSize: "10px" }}>&#10022;</span>
+                    </div>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#0E0E0E", lineHeight: 1.3, margin: 0 }}>{item.text}</p>
                   </div>
                 </div>
               ))}
             </motion.div>
           </div>
         </div>
-       </section>{/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
+      </section>
+
+      {/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
       <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
         <div className="container">
           <motion.div
