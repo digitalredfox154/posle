@@ -131,7 +131,7 @@ export default function Subscription() {
               lineHeight: 1.02,
               marginBottom: "32px",
             }}>
-              Системный уход<br />на весь год.
+              Системный уход на весь год.
             </h1>
 
             <div style={{ height: "1px", width: "56px", background: "rgba(201,169,110,0.45)", marginBottom: "28px" }} />
@@ -247,16 +247,16 @@ export default function Subscription() {
                 }}>{a.icon}</div>
                 <h3 style={{
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "17px",
+                  fontSize: "19px",
                   fontWeight: 400,
                   color: "#F0EDE8",
                   lineHeight: 1.3,
                 }}>{a.title}</h3>
                 <p style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: "11px",
-                  color: "rgba(240,237,232,0.38)",
-                  lineHeight: 1.7,
+                  fontSize: "13px",
+                  color: "rgba(240,237,232,0.6)",
+                  lineHeight: 1.75,
                 }}>{a.text}</p>
                 <div style={{ height: "1px", width: "28px", background: "rgba(201,169,110,0.3)", marginTop: "4px" }} />
               </motion.div>
