@@ -187,15 +187,15 @@ export default function Results() {
           >
             <Link
               href="/booking"
+              className="btn-mint"
               style={{
                 display: "inline-block",
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "10px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
-                color: "#111110",
-                backgroundColor: "#C9A96E",
                 padding: "16px 48px",
+                textDecoration: "none",
               }}
             >
               Записаться

@@ -238,9 +238,11 @@ export default function About() {
                   fontSize: "10px",
                   letterSpacing: "0.25em",
                   textTransform: "uppercase",
-                  color: "#C9A96E",
-                  borderBottom: "1px solid rgba(201,169,110,0.4)",
+                  color: "#A8C5B5",
+                  borderBottom: "1px solid rgba(168,197,181,0.4)",
                   paddingBottom: "2px",
+                  transition: "color 0.3s ease",
+                  textDecoration: "none",
                 }}
               >
                 Как добраться →
@@ -335,16 +337,15 @@ export default function About() {
           >
             <Link
               href="/booking"
+              className="btn-mint"
               style={{
                 display: "inline-block",
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "10px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
-                color: "#111110",
-                backgroundColor: "#C9A96E",
                 padding: "16px 48px",
-                border: "none",
+                textDecoration: "none",
               }}
             >
               Записаться

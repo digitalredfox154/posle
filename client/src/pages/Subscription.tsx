@@ -152,14 +152,13 @@ export default function Subscription() {
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               <Link
                 href="/booking"
+                className="btn-mint"
                 style={{
                   display: "inline-block",
                   fontFamily: "'Inter', sans-serif",
                   fontSize: "10px",
                   letterSpacing: "0.3em",
                   textTransform: "uppercase",
-                  color: "#111110",
-                  backgroundColor: "#C9A96E",
                   padding: "15px 36px",
                   textDecoration: "none",
                 }}
@@ -170,14 +169,13 @@ export default function Subscription() {
                 href="https://t.me/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="btn-outline-light"
                 style={{
                   display: "inline-block",
                   fontFamily: "'Inter', sans-serif",
                   fontSize: "10px",
                   letterSpacing: "0.3em",
                   textTransform: "uppercase",
-                  color: "#F0EDE8",
-                  border: "1px solid rgba(240,237,232,0.28)",
                   padding: "15px 36px",
                   textDecoration: "none",
                 }}
@@ -447,14 +445,13 @@ export default function Subscription() {
           >
             <Link
               href="/booking"
+              className="btn-mint"
               style={{
                 display: "inline-block",
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "10px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
-                color: "#111110",
-                backgroundColor: "#C9A96E",
                 padding: "16px 48px",
                 textDecoration: "none",
               }}
@@ -465,14 +462,13 @@ export default function Subscription() {
               href="https://t.me/"
               target="_blank"
               rel="noopener noreferrer"
+              className="btn-outline-light"
               style={{
                 display: "inline-block",
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "10px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
-                color: "#F0EDE8",
-                border: "1px solid rgba(240,237,232,0.25)",
                 padding: "16px 48px",
                 textDecoration: "none",
               }}

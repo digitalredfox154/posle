@@ -113,7 +113,7 @@ export default function Contacts() {
                   href="https://yandex.ru/maps/?text=Вокзальная+магистраль+16+Новосибирск"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A96E", borderBottom: "1px solid rgba(201,169,110,0.4)", paddingBottom: "2px" }}
+                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#A8C5B5", borderBottom: "1px solid rgba(168,197,181,0.4)", paddingBottom: "2px", textDecoration: "none", transition: "color 0.3s ease" }}
                 >
                   Открыть в Яндекс Картах →
                 </a>
@@ -244,29 +244,28 @@ export default function Contacts() {
           >
             <Link
               href="/booking"
+              className="btn-mint"
               style={{
                 display: "inline-block",
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "10px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
-                color: "#111110",
-                backgroundColor: "#C9A96E",
                 padding: "16px 48px",
+                textDecoration: "none",
               }}
             >
               Записаться онлайн
             </Link>
             <a
               href="tel:+79130187219"
+              className="btn-outline-light"
               style={{
                 display: "inline-block",
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "10px",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
-                color: "#F0EDE8",
-                border: "1px solid rgba(240,237,232,0.3)",
                 padding: "16px 48px",
                 textDecoration: "none",
               }}
