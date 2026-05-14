@@ -64,8 +64,7 @@ export default function Subscription() {
         position: "relative",
         minHeight: "100vh",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
+        alignItems: "center",
         overflow: "hidden",
         backgroundColor: "#0A0A08",
       }}>
@@ -78,37 +77,32 @@ export default function Subscription() {
           backgroundPosition: "center right",
           backgroundRepeat: "no-repeat",
         }} />
-        {/* Dark overlay left-to-right: dark left, transparent right */}
+        {/* Dark overlay: dark left, transparent right */}
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to right, rgba(10,10,8,0.92) 35%, rgba(10,10,8,0.55) 65%, rgba(10,10,8,0.2) 100%)",
+          background: "linear-gradient(to right, rgba(10,10,8,0.95) 30%, rgba(10,10,8,0.6) 60%, rgba(10,10,8,0.15) 100%)",
         }} />
-        {/* Bottom fade to next section */}
+        {/* Bottom fade to cards block */}
         <div style={{
           position: "absolute",
           bottom: 0, left: 0, right: 0,
-          height: "220px",
+          height: "180px",
           background: "linear-gradient(to bottom, transparent, #0D0D0B)",
           pointerEvents: "none",
           zIndex: 2,
         }} />
 
         {/* Gold arc top-right */}
-        <svg style={{ position: "absolute", top: 0, right: 0, width: "45%", opacity: 0.2, pointerEvents: "none", zIndex: 1 }} viewBox="0 0 500 300" fill="none">
+        <svg style={{ position: "absolute", top: 0, right: 0, width: "45%", opacity: 0.18, pointerEvents: "none", zIndex: 1 }} viewBox="0 0 500 300" fill="none">
           <path d="M500 0 Q300 100 400 300" stroke="#C9A96E" strokeWidth="1" fill="none"/>
           <path d="M500 60 Q330 140 430 300" stroke="#C9A96E" strokeWidth="0.5" fill="none"/>
         </svg>
-        {/* Gold arc bottom-left */}
-        <svg style={{ position: "absolute", bottom: 0, left: 0, width: "30%", opacity: 0.18, pointerEvents: "none", zIndex: 1 }} viewBox="0 0 500 300" fill="none">
-          <path d="M0 300 Q200 200 100 0" stroke="#C9A96E" strokeWidth="1" fill="none"/>
-        </svg>
         {/* Sparkles */}
-        <svg style={{ position: "absolute", top: "20%", left: "32%", opacity: 0.55, pointerEvents: "none", zIndex: 1 }} width="12" height="12" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
-        <svg style={{ position: "absolute", top: "55%", right: "8%", opacity: 0.35, pointerEvents: "none", zIndex: 1 }} width="8" height="8" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+        <svg style={{ position: "absolute", top: "22%", left: "34%", opacity: 0.5, pointerEvents: "none", zIndex: 1 }} width="11" height="11" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+        <svg style={{ position: "absolute", bottom: "30%", left: "8%", opacity: 0.3, pointerEvents: "none", zIndex: 1 }} width="7" height="7" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
 
-        {/* Top content: label + heading + subtitle + buttons */}
-        <div className="container" style={{ position: "relative", zIndex: 3, paddingTop: "140px", paddingBottom: "0", maxWidth: "1400px", flex: "1" }}>
+        <div className="container" style={{ position: "relative", zIndex: 3 }}>
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
@@ -192,13 +186,35 @@ export default function Subscription() {
             </div>
           </motion.div>
         </div>
+      </section>
 
-        {/* Bottom: 4 horizontal cards */}
-        <div className="container" style={{ position: "relative", zIndex: 3, paddingBottom: "60px", paddingTop: "80px", maxWidth: "1400px" }}>
+      {/* ── ADVANTAGES CARDS ── */}
+      <section style={{
+        position: "relative",
+        backgroundColor: "#0D0D0B",
+        paddingTop: "0",
+        paddingBottom: "80px",
+        overflow: "hidden",
+      }}>
+        {/* Top fade from hero */}
+        <div style={{
+          position: "absolute", top: 0, left: 0, right: 0, height: "80px",
+          background: "linear-gradient(to bottom, #0D0D0B, transparent)",
+          pointerEvents: "none",
+        }} />
+        {/* Bottom fade to fits */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0, height: "80px",
+          background: "linear-gradient(to bottom, transparent, #0D0D0B)",
+          pointerEvents: "none",
+        }} />
+
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, 1fr)",
@@ -208,23 +224,21 @@ export default function Subscription() {
             {advantages.map((a, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4 + i * 0.08 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
                 style={{
-                  backgroundColor: "rgba(12,11,9,0.82)",
-                  border: "1px solid rgba(201,169,110,0.18)",
+                  backgroundColor: "rgba(20,18,14,0.9)",
+                  border: "1px solid rgba(201,169,110,0.16)",
                   padding: "24px 20px 20px",
-                  backdropFilter: "blur(12px)",
                   display: "flex",
                   flexDirection: "column",
                   gap: "12px",
                   position: "relative",
                 }}
               >
-                {/* sparkle top-right */}
-                <svg style={{ position: "absolute", top: "10px", right: "10px", opacity: 0.45 }} width="9" height="9" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
-                {/* icon in circle */}
+                <svg style={{ position: "absolute", top: "10px", right: "10px", opacity: 0.4 }} width="9" height="9" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
                 <div style={{
                   width: "42px", height: "42px", borderRadius: "50%",
                   border: "1px solid rgba(201,169,110,0.35)",
@@ -255,25 +269,17 @@ export default function Subscription() {
       <section style={{
         position: "relative",
         backgroundColor: "#0D0D0B",
-        paddingTop: "100px",
+        paddingTop: "80px",
         paddingBottom: "120px",
         overflow: "hidden",
       }}>
-        {/* Top fade from hero */}
-        <div style={{
-          position: "absolute", top: 0, left: 0, right: 0, height: "120px",
-          background: "linear-gradient(to bottom, #0D0D0B, transparent)",
-          pointerEvents: "none",
-        }} />
         {/* Gold wave SVG bottom-left */}
         <svg style={{ position: "absolute", bottom: 0, left: 0, width: "50%", opacity: 0.3, pointerEvents: "none" }} viewBox="0 0 600 200" fill="none">
           <path d="M0 160 Q80 80 160 140 Q240 200 320 120 Q400 40 480 100 Q560 160 600 80" stroke="#C9A96E" strokeWidth="1" fill="none"/>
           <path d="M0 180 Q100 100 200 160 Q300 220 400 140 Q500 60 600 120" stroke="#C9A96E" strokeWidth="0.5" fill="none"/>
         </svg>
-        {/* Sparkles */}
         <svg style={{ position: "absolute", top: "20px", right: "40px", opacity: 0.45, pointerEvents: "none" }} width="18" height="18" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
         <svg style={{ position: "absolute", bottom: "60px", right: "200px", opacity: 0.28, pointerEvents: "none" }} width="10" height="10" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
-        {/* Bottom fade */}
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
           background: "linear-gradient(to bottom, transparent, #0D0D0B)",
@@ -293,7 +299,7 @@ export default function Subscription() {
               alignItems: "start",
             }}
           >
-            {/* Left label + heading */}
+            {/* Left */}
             <div style={{ paddingTop: "8px" }}>
               <p style={{
                 fontFamily: "'Inter', sans-serif",
@@ -319,7 +325,7 @@ export default function Subscription() {
               </div>
             </div>
 
-            {/* Right list: icon → text → line → diamond */}
+            {/* Right list */}
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
               {[
                 { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>, text: "Убрать хаос с записью" },
@@ -342,19 +348,13 @@ export default function Subscription() {
                     borderBottom: i < 4 ? "1px solid rgba(201,169,110,0.1)" : "none",
                   }}
                 >
-                  {/* icon in circle */}
                   <div style={{
                     flexShrink: 0,
-                    width: "44px",
-                    height: "44px",
-                    borderRadius: "50%",
+                    width: "44px", height: "44px", borderRadius: "50%",
                     border: "1px solid rgba(201,169,110,0.4)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    display: "flex", alignItems: "center", justifyContent: "center",
                     color: "#C9A96E",
                   }}>{item.icon}</div>
-                  {/* text */}
                   <span style={{
                     fontFamily: "'Cormorant Garamond', serif",
                     fontSize: "clamp(20px, 2vw, 26px)",
@@ -362,9 +362,7 @@ export default function Subscription() {
                     color: "#F0EDE8",
                     flex: 1,
                   }}>{item.text}</span>
-                  {/* line after text */}
                   <div style={{ width: "60px", height: "1px", background: "rgba(201,169,110,0.2)", flexShrink: 0 }} />
-                  {/* diamond */}
                   <svg width="8" height="8" viewBox="0 0 10 10" style={{ flexShrink: 0 }}>
                     <path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/>
                   </svg>
@@ -382,13 +380,11 @@ export default function Subscription() {
         paddingTop: "80px",
         paddingBottom: "120px",
       }}>
-        {/* Top fade */}
         <div style={{
           position: "absolute", top: 0, left: 0, right: 0, height: "80px",
           background: "linear-gradient(to bottom, #0D0D0B, transparent)",
           pointerEvents: "none",
         }} />
-        {/* Bottom fade to footer */}
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
           background: "linear-gradient(to bottom, transparent, #080808)",
@@ -441,7 +437,6 @@ export default function Subscription() {
             </motion.div>
           ))}
 
-          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
