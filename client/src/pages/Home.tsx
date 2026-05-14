@@ -333,57 +333,97 @@ export default function Home() {
       {/* ── SUBSCRIPTION TEASER ──────────────────────────────────────────── */}
       <section className="py-14 md:py-20" style={{ backgroundColor: "#111110" }}>
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.1fr_0.9fr] gap-4 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
 
-            {/* Col 1 — heading + text + button */}
+            {/* Col 1 — yorkie photo bg + text overlay */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col justify-between border border-white/[0.07] p-7"
-              style={{ backgroundColor: "#1a1a18" }}
+              className="relative overflow-hidden flex flex-col justify-between border border-white/[0.07] min-h-[520px]"
+              style={{
+                backgroundImage: "url('/manus-storage/sub_yorkie_28621a99.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
             >
-              <div>
-                <p className="text-[#A8C5B5] uppercase mb-6"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
-                  Клуб резидентов
-                </p>
-                <h2 className="text-white font-light leading-[1.15] mb-8"
+              {/* Dark gradient overlay for text readability */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,10,8,0.72) 0%, rgba(10,10,8,0.35) 45%, rgba(10,10,8,0.75) 100%)" }} />
+              <div className="relative z-10 p-8 flex flex-col justify-between h-full">
+                <div>
+                  {/* Label + divider */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="h-px w-8" style={{ backgroundColor: "rgba(200,170,100,0.5)" }} />
+                    <p className="text-[#C8AA64] uppercase"
+                      style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.3em", fontSize: "10px" }}>
+                      Клуб резидентов
+                    </p>
+                  </div>
+                  <h2 className="text-white font-light leading-[1.1] mb-6"
+                    style={{
+                      fontFamily: "'Cormorant Garamond', serif",
+                      fontSize: "clamp(38px, 5vw, 62px)",
+                    }}>
+                    Для тех, кто
+                    <br />выбирает
+                    <br /><span style={{ color: "#C8AA64" }}>постоянство</span>
+                  </h2>
+                  <p className="text-white/55 leading-relaxed mb-10"
+                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", maxWidth: "300px" }}>
+                    Онлайн-дневник питомца в личном
+                    кабинете — всё о его жизни:
+                    визиты, уход, рекомендации
+                    и важные заметки. Всегда под рукой.
+                  </p>
+                </div>
+                <Link
+                  href="/booking"
+                  className="inline-flex items-center justify-between px-7 py-4 self-start transition-all duration-300"
                   style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "clamp(36px, 4.5vw, 58px)",
-                  }}>
-                  Для тех, кто выбирает постоянство
-                </h2>
-                <p className="text-white/45 text-sm leading-relaxed mb-10"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px" }}>
-                  Онлайн-дневник питомца в личном кабинете — всё о его жизни: визиты, уход, рекомендации и важные заметки. Всегда под рукой.
-                </p>
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "10px",
+                    letterSpacing: "0.25em",
+                    textTransform: "uppercase",
+                    backgroundColor: "#A8C5B5",
+                    color: "#0E0E0E",
+                    minWidth: "220px",
+                  }}
+                >
+                  <span>Записаться</span>
+                  <span style={{ fontSize: "16px" }}>→</span>
+                </Link>
               </div>
-              <Link
-                href="/booking"
-                className="btn-mint inline-block text-[10px] tracking-[0.25em] uppercase px-8 py-4 self-start"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
-                Записаться
-              </Link>
             </motion.div>
 
-            {/* Col 2 — diary card */}
+            {/* Col 2 — right block: diary + subscription card over poodle photo */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="card-lift-dark border border-white/[0.07] p-7"
-              style={{ backgroundColor: "#1a1a18" }}
+              className="relative overflow-hidden flex flex-col justify-between border border-white/[0.07] min-h-[520px]"
+              style={{
+                backgroundImage: "url('/manus-storage/sub_bg_dark_53c0eb99.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center right",
+              }}
             >
-              <p className="text-[#A8C5B5] uppercase mb-5"
-                style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
-                Онлайн-дневник питомца
-              </p>
-              <div className="flex flex-col">
+              {/* Dark overlay */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(10,10,8,0.82) 0%, rgba(10,10,8,0.55) 55%, rgba(10,10,8,0.3) 100%)" }} />
+              <div className="relative z-10 p-8 flex flex-col h-full justify-between">
+                {/* Diary section */}
+                <div>
+                  {/* Star divider */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="h-px w-8" style={{ backgroundColor: "rgba(200,170,100,0.4)" }} />
+                    <span style={{ color: "#C8AA64", fontSize: "12px" }}>&#10022;</span>
+                  </div>
+                  <h3 className="text-white font-light mb-6"
+                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(26px, 3vw, 36px)" }}>
+                    Онлайн-дневник питомца
+                  </h3>
+                  <div className="flex flex-col">
                 {[
                   {
                     icon: (
@@ -435,57 +475,54 @@ export default function Home() {
                     )}
                   </div>
                 ))}
+                  </div>
+                </div>
+                {/* Subscription card */}
+                <div
+                  className="mt-6 border flex items-center justify-between gap-4 p-5"
+                  style={{ borderColor: "rgba(200,170,100,0.2)", backgroundColor: "rgba(10,10,8,0.55)" }}
+                >
+                  <div className="flex-1">
+                    <p className="uppercase mb-2"
+                      style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.25em", fontSize: "9px", color: "#C8AA64" }}>
+                      Дополнение
+                    </p>
+                    <h4 className="text-white font-light leading-tight mb-1"
+                      style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(20px, 2.5vw, 26px)" }}>
+                      Индивидуальная
+                      <br />подписка
+                    </h4>
+                    <p className="text-white/40 leading-relaxed mt-2"
+                      style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px" }}>
+                      Персональные привилегии и особое внимание для вашего питомца.
+                    </p>
+                  </div>
+                  <div className="shrink-0 w-16 h-16">
+                    <img
+                      src="/manus-storage/posle-logo-olive_44f3e3e8.png"
+                      alt="POSLE"
+                      className="w-full h-full object-contain opacity-80"
+                    />
+                  </div>
+                </div>
+                {/* CTA button */}
+                <Link
+                  href="/subscription"
+                  className="mt-4 flex items-center justify-between px-5 py-3.5 transition-all duration-300"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    color: "rgba(255,255,255,0.7)",
+                  }}
+                >
+                  <span className="tracking-[0.25em] uppercase" style={{ fontSize: "11px" }}>Обсудить условия</span>
+                  <span className="text-lg">→</span>
+                </Link>
               </div>
-            </motion.div>
-
-            {/* Col 3 — subscription card */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="card-lift-dark border border-white/[0.07] p-7 flex flex-col items-center text-center"
-              style={{ backgroundColor: "#1a1a18" }}
-            >
-              {/* Logo emblem — olive PNG */}
-              <div className="mb-4 w-20 h-20 flex items-center justify-center">
-                <img
-                  src="/manus-storage/posle-logo-olive_44f3e3e8.png"
-                  alt="ПОСЛЕ логотип"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <p className="text-[#A8C5B5] uppercase mb-2"
-                style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em", fontSize: "13px" }}>
-                Дополнение
-              </p>
-              <h3 className="text-white font-light leading-tight mb-2"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(26px, 3vw, 34px)",
-                }}>
-                Индивидуальная<br />подписка
-              </h3>
-              {/* small gold star divider */}
-              <div className="my-4">
-                <span className="text-[#A8C5B5]" style={{ fontSize: "18px" }}>✦</span>
-              </div>
-              <p className="text-white/45 leading-relaxed mb-5"
-                style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px" }}>
-                Персональные привилегии и особое внимание для вашего питомца.
-              </p>
-              <Link
-                href="/subscription"
-                className="btn-outline-light w-full flex items-center justify-between px-5 py-3.5 mt-auto"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              >
-                <span className="tracking-[0.25em] uppercase" style={{ fontSize: "13px" }}>Обсудить условия</span>
-                <span className="text-lg">→</span>
-              </Link>
             </motion.div>
 
           </div>
-        </div>
+         </div>
       </section>
 
       {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
