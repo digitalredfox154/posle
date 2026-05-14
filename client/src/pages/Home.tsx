@@ -486,77 +486,116 @@ export default function Home() {
       </section>
 
       {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20" style={{ backgroundColor: "#F0EDE8" }}>
-        <div className="container">
+      <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#F0EDE8" }}>
+        {/* Branch top-right */}
+        <img
+          src="/manus-storage/branch_7a3e6d61.png"
+          alt=""
+          aria-hidden="true"
+          style={{ position: "absolute", top: "-40px", right: "-40px", width: "320px", opacity: 0.9, pointerEvents: "none", zIndex: 0, transform: "rotate(-15deg)" }}
+        />
+        {/* Branch bottom-left mirrored */}
+        <img
+          src="/manus-storage/branch_7a3e6d61.png"
+          alt=""
+          aria-hidden="true"
+          style={{ position: "absolute", bottom: "-40px", left: "-40px", width: "280px", opacity: 0.75, pointerEvents: "none", zIndex: 0, transform: "rotate(160deg) scaleX(-1)" }}
+        />
+        <div className="container relative" style={{ zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="border rounded-sm max-w-5xl mx-auto overflow-hidden"
-            style={{ borderColor: "rgba(180,150,90,0.25)", backgroundColor: "#F0EDE8" }}
+            className="max-w-5xl mx-auto rounded-2xl overflow-hidden"
+            style={{ backgroundColor: "rgba(248,245,240,0.9)", border: "1px solid rgba(180,150,90,0.18)" }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-[45%_55%]">
+            <div className="grid grid-cols-1 md:grid-cols-[42%_58%]">
               {/* Left — photo */}
-              <div className="relative">
-                <div className="h-full min-h-[420px] overflow-hidden">
-                  <img
-                    src={MASTER_PHOTO}
-                    alt="Мастер"
-                    className="w-full h-full object-cover object-top"
-                    style={{ minHeight: "420px" }}
-                  />
-                </div>
+              <div className="relative" style={{ minHeight: "480px" }}>
+                <img
+                  src={MASTER_PHOTO}
+                  alt="Мастер"
+                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }}
+                />
                 {/* Experience badge */}
-                <div
-                  className="absolute bottom-6 right-6 w-28 h-28 flex flex-col items-center justify-center"
-                  style={{ backgroundColor: "#A8C5B5" }}
-                >
-                  <span className="text-[#2a2a2a] text-center leading-tight"
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", letterSpacing: "0.08em" }}>
-                    5 ЛЕТ<br />ОПЫТА
-                  </span>
+                <div style={{
+                  position: "absolute", bottom: "24px", right: "24px",
+                  width: "112px", height: "112px",
+                  backgroundColor: "#A8C5B5",
+                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                  borderRadius: "4px",
+                }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth="1.5" style={{ marginBottom: "6px" }}>
+                    <line x1="12" y1="2" x2="12" y2="22" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <line x1="5" y1="5" x2="19" y2="19" />
+                    <line x1="19" y1="5" x2="5" y2="19" />
+                    <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.6)" stroke="none" />
+                  </svg>
+                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px", color: "#fff", textAlign: "center", lineHeight: 1.3, letterSpacing: "0.06em" }}>5 ЛЕТ<br />ОПЫТА</span>
                 </div>
               </div>
 
               {/* Right — text */}
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                {/* Label */}
-                <p className="uppercase mb-2"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", letterSpacing: "0.35em", color: "#B8965A" }}>
-                  Мастер
-                </p>
-                {/* Gold line + paw divider */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.4)" }} />
-                  <span style={{ color: "#B8965A", fontSize: "18px" }}>🐾</span>
-                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.4)" }} />
+              <div style={{ padding: "48px 48px 40px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                {/* Label + line + diamond */}
+                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", color: "#B8965A", textTransform: "uppercase", margin: 0 }}>МАСТЕР</p>
+                  <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(184,150,90,0.35)" }} />
+                  <span style={{ color: "#B8965A", fontSize: "14px" }}>&#10022;</span>
                 </div>
+
                 {/* Heading */}
-                <h2 className="font-light leading-tight mb-5" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 42px)", color: "#1a1a14" }}>
+                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(30px, 3.5vw, 46px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.2, margin: "0 0 16px 0" }}>
                   Работаю не с потоком,<br />а с характером
                 </h2>
+
                 {/* Ornamental divider */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.3)" }} />
-                  <span style={{ color: "#B8965A", fontSize: "20px" }}>❧</span>
-                  <div className="flex-1 h-px" style={{ backgroundColor: "rgba(180,150,90,0.3)" }} />
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
+                  <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(184,150,90,0.25)" }} />
+                  <span style={{ color: "#B8965A", fontSize: "14px" }}>&#10022;</span>
+                  <div style={{ flex: 1, height: "1px", backgroundColor: "rgba(184,150,90,0.25)" }} />
                 </div>
+
                 {/* Text */}
-                <p className="leading-relaxed mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(26,26,20,0.7)" }}>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(26,26,20,0.65)", lineHeight: 1.75, marginBottom: "14px" }}>
                   Для меня груминг начинается не с инструмента, а с контакта. Я смотрю, как собака реагирует, где ей спокойно, где нужно больше времени, какой уход подойдёт именно ей.
                 </p>
-                <p className="leading-relaxed mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(26,26,20,0.7)" }}>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(26,26,20,0.65)", lineHeight: 1.75, marginBottom: "24px" }}>
                   Мне важно, чтобы после процедуры питомец выглядел ухоженно, но не был уставшим и зажатым. Красивый результат имеет смысл только тогда, когда он получен бережно.
                 </p>
+
                 {/* Link */}
                 <Link
                   href="/about"
-                  className="link-arrow self-start uppercase pb-0.5"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", letterSpacing: "0.25em", color: "#A8C5B5", borderBottom: "1px solid rgba(168,197,181,0.4)" }}
+                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", letterSpacing: "0.2em", color: "#1a1a14", textDecoration: "none", textTransform: "uppercase", borderBottom: "1px solid rgba(26,26,20,0.3)", paddingBottom: "2px", alignSelf: "flex-start", marginBottom: "32px" }}
                 >
                   Подробнее обо мне →
                 </Link>
+
+                {/* 3 icons row */}
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px", borderTop: "1px solid rgba(184,150,90,0.15)", paddingTop: "24px" }}>
+                  {[
+                    {
+                      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>,
+                      text: "Берегу комфорт каждого питомца"
+                    },
+                    {
+                      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+                      text: "Индивидуальный подход"
+                    },
+                    {
+                      icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>,
+                      text: "Только мягкие и безопасные средства"
+                    },
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                      <div style={{ flexShrink: 0, marginTop: "1px" }}>{item.icon}</div>
+                      <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "rgba(26,26,20,0.55)", lineHeight: 1.5, margin: 0 }}>{item.text}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
