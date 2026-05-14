@@ -331,143 +331,165 @@ export default function Home() {
       </section>
 
       {/* ── SUBSCRIPTION TEASER ──────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#0A0A08" }}>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+      <section style={{ backgroundColor: "#0D0D0B", padding: "48px 0" }}>
+        <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", alignItems: "stretch" }}>
 
-          {/* LEFT — yorkie photo bg + text overlay */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden"
-            style={{ minHeight: "600px" }}
-          >
-            <img
-              src="/manus-storage/sub_yorkie_065d12d4.png"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            {/* Dark overlay — heavier on left where text is */}
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(6,6,4,0.82) 0%, rgba(6,6,4,0.55) 55%, rgba(6,6,4,0.1) 100%)" }} />
-            {/* Text */}
-            <div className="relative z-10 flex flex-col justify-between h-full p-10 md:p-12" style={{ minHeight: "600px" }}>
-              <div>
-                {/* Label */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="h-px w-7" style={{ backgroundColor: "rgba(200,170,100,0.6)" }} />
-                  <p style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.28em", fontSize: "10px", color: "#C8AA64", textTransform: "uppercase" }}>
-                    Клуб резидентов
-                  </p>
-                  <span style={{ color: "#C8AA64", fontSize: "9px" }}>✦</span>
-                </div>
-                {/* Heading */}
-                <h2 className="font-light leading-[1.05]" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(44px, 5.5vw, 70px)", color: "#FFFFFF" }}>
-                  Для тех, кто
-                  <br />выбирает
-                  <br /><span style={{ color: "#C8AA64" }}>постоянство</span>
-                </h2>
-                {/* Description */}
-                <p className="mt-6 leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", color: "rgba(255,255,255,0.55)", maxWidth: "280px" }}>
-                  Онлайн-дневник питомца в личном кабинете — всё о его жизни: визиты, уход, рекомендации и важные заметки. Всегда под рукой.
-                </p>
-              </div>
-              {/* CTA */}
-              <Link
-                href="/booking"
-                className="inline-flex items-center justify-between transition-opacity duration-200 hover:opacity-80"
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "10px",
-                  letterSpacing: "0.28em",
-                  textTransform: "uppercase",
-                  backgroundColor: "#A8C5B5",
-                  color: "#0E0E0E",
-                  padding: "15px 28px",
-                  width: "220px",
-                  marginTop: "48px",
-                }}
-              >
-                <span>Записаться</span>
-                <span style={{ fontSize: "18px" }}>→</span>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* RIGHT — poodle photo bg + diary + subscription card */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="relative overflow-hidden"
-            style={{ minHeight: "600px" }}
-          >
-            <img
-              src="/manus-storage/sub_bg_clean_02af3148.png"
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            {/* Dark overlay — heavier on left where text is */}
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(6,6,4,0.88) 0%, rgba(6,6,4,0.72) 50%, rgba(6,6,4,0.15) 100%)" }} />
-            {/* Content */}
-            <div className="relative z-10 flex flex-col justify-between h-full p-10 md:p-12" style={{ minHeight: "600px" }}>
-              <div>
-                {/* Diary heading */}
-                <h3 className="font-light mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(26px, 3vw, 38px)", color: "#FFFFFF" }}>
-                  Онлайн-дневник питомца
-                </h3>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-px w-10" style={{ backgroundColor: "rgba(200,170,100,0.45)" }} />
-                  <span style={{ color: "#C8AA64", fontSize: "11px" }}>✦</span>
-                </div>
-                {/* Feature list */}
-                {[
-                  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h2M14 14h2M8 18h2M14 18h2"/></svg>, text: "История визитов и процедур" },
-                  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>, text: "Рекомендации по уходу и питанию" },
-                  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>, text: "Заметки и важные наблюдения" },
-                  { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>, text: "Напоминания о записях и процедурах" },
-                ].map((item, idx, arr) => (
-                  <div key={idx}>
-                    <div className="flex items-center gap-4 py-4">
-                      <div className="shrink-0 w-7 flex items-center justify-center">{item.icon}</div>
-                      <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.78)", lineHeight: "1.4" }}>{item.text}</p>
-                    </div>
-                    {idx < arr.length - 1 && <div className="h-px" style={{ backgroundColor: "rgba(255,255,255,0.07)" }} />}
+            {/* ─── LEFT: yorkie photo + text ─── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: "6px",
+                border: "1px solid rgba(200,170,100,0.18)",
+                minHeight: "620px",
+              }}
+            >
+              <img
+                src="/manus-storage/sub_yorkie_065d12d4.png"
+                alt=""
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,3,0.85) 0%, rgba(5,5,3,0.6) 50%, rgba(5,5,3,0.05) 100%)" }} />
+              <div style={{ position: "relative", zIndex: 1, padding: "48px", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", minHeight: "620px" }}>
+                <div>
+                  {/* Label row */}
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+                    <div style={{ height: "1px", width: "28px", backgroundColor: "rgba(200,170,100,0.6)" }} />
+                    <span style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.28em", fontSize: "10px", color: "#C8AA64", textTransform: "uppercase" }}>Клуб резидентов</span>
+                    <div style={{ height: "1px", width: "8px", backgroundColor: "rgba(200,170,100,0.4)" }} />
+                    <span style={{ color: "#C8AA64", fontSize: "9px" }}>✦</span>
                   </div>
-                ))}
-              </div>
-
-              {/* Subscription card */}
-              <div className="mt-6 p-5 flex items-start gap-4" style={{ border: "1px solid rgba(200,170,100,0.22)", backgroundColor: "rgba(8,8,6,0.6)" }}>
-                <div className="flex-1">
-                  <p className="uppercase mb-2" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.25em", fontSize: "9px", color: "#C8AA64" }}>Дополнение</p>
-                  <h4 className="font-light leading-tight mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(22px, 2.5vw, 28px)", color: "#FFFFFF" }}>
-                    Индивидуальная<br />подписка
-                  </h4>
-                  <p className="mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px", color: "rgba(255,255,255,0.42)", lineHeight: "1.5" }}>
-                    Персональные привилегии и особое внимание для вашего питомца.
+                  {/* Heading */}
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(44px, 5vw, 66px)", fontWeight: 300, lineHeight: 1.05, color: "#FFFFFF", margin: 0 }}>
+                    Для тех, кто<br />выбирает<br />
+                    <span style={{ color: "#C8AA64" }}>постоянство</span>
+                  </h2>
+                  {/* Description */}
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", color: "rgba(255,255,255,0.52)", lineHeight: 1.65, marginTop: "24px", maxWidth: "270px" }}>
+                    Онлайн-дневник питомца в личном кабинете — всё о его жизни: визиты, уход, рекомендации и важные заметки. Всегда под рукой.
                   </p>
-                  <Link
-                    href="/subscription"
-                    className="flex items-center justify-between px-5 py-3 transition-all duration-200 hover:border-white/40"
-                    style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", letterSpacing: "0.25em", textTransform: "uppercase", border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.7)" }}
-                  >
-                    <span>Обсудить условия</span>
-                    <span style={{ fontSize: "15px" }}>→</span>
-                  </Link>
                 </div>
-                <div className="shrink-0 w-16 h-16 mt-1">
-                  <img src="/manus-storage/posle-logo-olive_44f3e3e8.png" alt="POSLE" className="w-full h-full object-contain opacity-70" />
+                {/* CTA button */}
+                <Link
+                  href="/booking"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "10px",
+                    letterSpacing: "0.28em",
+                    textTransform: "uppercase",
+                    backgroundColor: "#A8C5B5",
+                    color: "#0E0E0E",
+                    padding: "15px 28px",
+                    width: "220px",
+                    marginTop: "48px",
+                    textDecoration: "none",
+                    transition: "opacity 0.2s",
+                  }}
+                >
+                  <span>Записаться</span>
+                  <span style={{ fontSize: "18px" }}>→</span>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* ─── RIGHT: poodle photo + diary + subscription card ─── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.12 }}
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: "6px",
+                border: "1px solid rgba(200,170,100,0.18)",
+                minHeight: "620px",
+              }}
+            >
+              <img
+                src="/manus-storage/sub_bg_clean_02af3148.png"
+                alt=""
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,3,0.92) 0%, rgba(5,5,3,0.78) 52%, rgba(5,5,3,0.12) 100%)" }} />
+              <div style={{ position: "relative", zIndex: 1, padding: "48px", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", minHeight: "620px" }}>
+                <div>
+                  {/* Diary heading */}
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(26px, 3vw, 38px)", fontWeight: 300, color: "#FFFFFF", margin: "0 0 12px 0" }}>
+                    Онлайн-дневник питомца
+                  </h3>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
+                    <div style={{ height: "1px", width: "40px", backgroundColor: "rgba(200,170,100,0.45)" }} />
+                    <span style={{ color: "#C8AA64", fontSize: "11px" }}>✦</span>
+                  </div>
+                  {/* Feature list */}
+                  {[
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h2M14 14h2M8 18h2M14 18h2"/></svg>, text: "История визитов и процедур" },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>, text: "Рекомендации по уходу и питанию" },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>, text: "Заметки и важные наблюдения" },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>, text: "Напоминания о записях и процедурах" },
+                  ].map((item, idx, arr) => (
+                    <div key={idx}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "18px", padding: "14px 0" }}>
+                        <div style={{ flexShrink: 0, width: "28px", display: "flex", alignItems: "center", justifyContent: "center" }}>{item.icon}</div>
+                        <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.78)", lineHeight: 1.4 }}>{item.text}</span>
+                      </div>
+                      {idx < arr.length - 1 && <div style={{ height: "1px", backgroundColor: "rgba(255,255,255,0.07)" }} />}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Subscription card */}
+                <div style={{ marginTop: "24px", border: "1px solid rgba(200,170,100,0.22)", backgroundColor: "rgba(8,8,6,0.65)", padding: "20px", display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                  <div style={{ flex: 1 }}>
+                    <p style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.25em", fontSize: "9px", color: "#C8AA64", textTransform: "uppercase", marginBottom: "8px" }}>Дополнение</p>
+                    <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(22px, 2.5vw, 28px)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.2, margin: "0 0 8px 0" }}>
+                      Индивидуальная<br />подписка
+                    </h4>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px", color: "rgba(255,255,255,0.42)", lineHeight: 1.55, marginBottom: "16px" }}>
+                      Персональные привилегии и особое внимание для вашего питомца.
+                    </p>
+                    <Link
+                      href="/subscription"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding: "12px 20px",
+                        border: "1px solid rgba(255,255,255,0.18)",
+                        color: "rgba(255,255,255,0.7)",
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: "9px",
+                        letterSpacing: "0.25em",
+                        textTransform: "uppercase",
+                        textDecoration: "none",
+                        transition: "border-color 0.2s",
+                      }}
+                    >
+                      <span>Обсудить условия</span>
+                      <span style={{ fontSize: "15px" }}>→</span>
+                    </Link>
+                  </div>
+                  <div style={{ flexShrink: 0, width: "64px", height: "64px", marginTop: "4px" }}>
+                    <img src="/manus-storage/posle-logo-olive_44f3e3e8.png" alt="POSLE" style={{ width: "100%", height: "100%", objectFit: "contain", opacity: 0.72 }} />
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
+          </div>
         </div>
       </section>
 
-            {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
+      {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
       <section className="py-14 md:py-20" style={{ backgroundColor: "#F0EDE8" }}>
         <div className="container">
           <motion.div
