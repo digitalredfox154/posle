@@ -132,7 +132,7 @@ export default function Home() {
       </section>
 
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/philosophy_bg_v2_aeb39957.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             {/* Left: label + heading + paragraphs */}
@@ -244,10 +244,8 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
-
-      {/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_light_e71cd75a.png')", backgroundSize: "cover", backgroundPosition: "center bottom", backgroundRepeat: "no-repeat" }}>
+       </section>{/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
+      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
