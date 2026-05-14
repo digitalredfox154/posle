@@ -655,10 +655,10 @@ export default function Home() {
       {/* ── FIRST VISIT / BOOKING CTA ──────────────────────────────────────── */}
       <section
         className="relative overflow-hidden"
-        style={{ backgroundImage: "url('/manus-storage/cta_bg2_1c175797.webp')", backgroundSize: "cover", backgroundPosition: "center top", backgroundRepeat: "no-repeat" }}
+        style={{ backgroundImage: "url('/manus-storage/cta_bg3_c36fca8d.png')", backgroundSize: "cover", backgroundPosition: "center center", backgroundRepeat: "no-repeat" }}
       >
         <div className="container relative z-10 py-16 md:py-24">
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: "clamp(24px, 4vw, 64px)", alignItems: "center", maxWidth: "900px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: "clamp(24px, 3vw, 48px)", alignItems: "center", maxWidth: "680px", marginLeft: "30%" }}>
 
             {/* ── LEFT: text + button ── */}
             <motion.div
