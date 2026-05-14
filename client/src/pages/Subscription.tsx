@@ -71,74 +71,79 @@ export default function Subscription() {
       {/* ── HERO ── */}
       <section style={{
         position: "relative",
-        backgroundColor: "#0D0D0B",
-        minHeight: "70vh",
+        backgroundColor: "#0A0A08",
+        minHeight: "100vh",
         display: "flex",
         alignItems: "center",
-        paddingTop: "120px",
+        paddingTop: "100px",
         paddingBottom: "0",
         overflow: "hidden",
       }}>
-        {/* subtle radial glow */}
-        <div style={{
-          position: "absolute",
-          top: "30%",
-          right: "15%",
-          width: "500px",
-          height: "500px",
-          background: "radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
+        {/* Gold arc top-right */}
+        <svg style={{ position: "absolute", top: 0, right: 0, width: "40%", opacity: 0.25, pointerEvents: "none" }} viewBox="0 0 500 300" fill="none">
+          <path d="M500 0 Q300 100 400 300" stroke="#C9A96E" strokeWidth="1" fill="none"/>
+          <path d="M500 50 Q320 130 420 300" stroke="#C9A96E" strokeWidth="0.5" fill="none"/>
+        </svg>
+        {/* Gold arc bottom-left */}
+        <svg style={{ position: "absolute", bottom: 0, left: 0, width: "35%", opacity: 0.2, pointerEvents: "none" }} viewBox="0 0 500 300" fill="none">
+          <path d="M0 300 Q200 200 100 0" stroke="#C9A96E" strokeWidth="1" fill="none"/>
+        </svg>
+        {/* Sparkles */}
+        <svg style={{ position: "absolute", top: "18%", left: "38%", opacity: 0.6, pointerEvents: "none" }} width="14" height="14" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+        <svg style={{ position: "absolute", bottom: "25%", left: "10%", opacity: 0.4, pointerEvents: "none" }} width="8" height="8" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+
         {/* fade to next section */}
         <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0, height: "140px",
-          background: "linear-gradient(to bottom, transparent, #111110)",
+          position: "absolute", bottom: 0, left: 0, right: 0, height: "160px",
+          background: "linear-gradient(to bottom, transparent, #0D0D0B)",
           pointerEvents: "none",
         }} />
 
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingBottom: "100px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+        <div className="container" style={{ position: "relative", zIndex: 1, paddingBottom: "120px", width: "100%" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1.1fr", gap: "0", alignItems: "center", minHeight: "80vh" }}>
 
-            {/* Left */}
-            <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            {/* Left — text + buttons */}
+            <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} style={{ paddingRight: "40px" }}>
               <p style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "10px",
                 letterSpacing: "0.35em",
                 textTransform: "uppercase",
                 color: "#C9A96E",
-                marginBottom: "16px",
+                marginBottom: "12px",
               }}>Годовая подписка</p>
 
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "36px" }}>
-                <div style={{ height: "1px", width: "40px", background: "#C9A96E" }} />
-                <svg width="8" height="8" viewBox="0 0 10 10"><path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/></svg>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "28px" }}>
+                <div style={{ height: "1px", width: "32px", background: "#C9A96E" }} />
+                <svg width="7" height="7" viewBox="0 0 10 10"><path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/></svg>
               </div>
 
               <h1 style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(48px, 7vw, 88px)",
+                fontSize: "clamp(44px, 5.5vw, 76px)",
                 fontWeight: 300,
                 color: "#F0EDE8",
                 lineHeight: 1.05,
-                marginBottom: "32px",
+                marginBottom: "28px",
               }}>
                 Системный уход<br />на весь год.
               </h1>
 
+              <div style={{ height: "1px", width: "60px", background: "rgba(201,169,110,0.5)", marginBottom: "28px" }} />
+
               <p style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(17px, 1.5vw, 21px)",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "clamp(13px, 1.1vw, 15px)",
                 fontWeight: 300,
                 color: "rgba(240,237,232,0.5)",
-                lineHeight: 1.7,
-                marginBottom: "48px",
-                maxWidth: "440px",
+                lineHeight: 1.8,
+                marginBottom: "40px",
+                maxWidth: "360px",
               }}>
                 Подписка создана для владельцев, которые хотят, чтобы питомец всегда выглядел ухоженно, а уход не превращался в очередную задачу в календаре.
               </p>
 
-              <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <Link
                   href="/booking"
                   style={{
@@ -149,7 +154,7 @@ export default function Subscription() {
                     textTransform: "uppercase",
                     color: "#111110",
                     backgroundColor: "#C9A96E",
-                    padding: "16px 40px",
+                    padding: "14px 32px",
                     textDecoration: "none",
                   }}
                 >
@@ -166,8 +171,8 @@ export default function Subscription() {
                     letterSpacing: "0.3em",
                     textTransform: "uppercase",
                     color: "#F0EDE8",
-                    border: "1px solid rgba(240,237,232,0.25)",
-                    padding: "16px 40px",
+                    border: "1px solid rgba(240,237,232,0.3)",
+                    padding: "14px 32px",
                     textDecoration: "none",
                   }}
                 >
@@ -176,43 +181,80 @@ export default function Subscription() {
               </div>
             </motion.div>
 
+            {/* Center — dog photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.15 }}
+              style={{
+                display: "flex",
+                alignItems: "flex-end",
+                justifyContent: "center",
+                height: "100%",
+                minHeight: "500px",
+              }}
+            >
+              <img
+                src="/manus-storage/subscription_hero_bg_206534b7.png"
+                alt=""
+                style={{
+                  width: "100%",
+                  maxWidth: "420px",
+                  height: "auto",
+                  objectFit: "contain",
+                  objectPosition: "bottom",
+                  filter: "drop-shadow(0 0 60px rgba(201,169,110,0.12))",
+                }}
+              />
+            </motion.div>
+
             {/* Right — 4 cards 2×2 */}
             <motion.div
               initial={{ opacity: 0, x: 32 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}
+              transition={{ duration: 0.9, delay: 0.25 }}
+              style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", paddingLeft: "20px" }}
             >
               {advantages.map((a, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.3 + i * 0.1 }}
+                  transition={{ duration: 0.7, delay: 0.35 + i * 0.1 }}
                   style={{
-                    backgroundColor: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(201,169,110,0.15)",
-                    padding: "28px 24px",
-                    backdropFilter: "blur(8px)",
+                    backgroundColor: "rgba(20,18,14,0.85)",
+                    border: "1px solid rgba(201,169,110,0.18)",
+                    padding: "24px 20px 20px",
                     display: "flex",
                     flexDirection: "column",
-                    gap: "16px",
+                    gap: "12px",
+                    position: "relative",
                   }}
                 >
-                  <div style={{ color: "#C9A96E" }}>{a.icon}</div>
+                  {/* sparkle top-right */}
+                  <svg style={{ position: "absolute", top: "10px", right: "10px", opacity: 0.5 }} width="10" height="10" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+                  {/* icon in circle */}
+                  <div style={{
+                    width: "44px", height: "44px", borderRadius: "50%",
+                    border: "1px solid rgba(201,169,110,0.35)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    color: "#C9A96E",
+                  }}>{a.icon}</div>
                   <h3 style={{
                     fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "18px",
+                    fontSize: "17px",
                     fontWeight: 400,
                     color: "#F0EDE8",
                     lineHeight: 1.3,
                   }}>{a.title}</h3>
                   <p style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontSize: "12px",
-                    color: "rgba(240,237,232,0.45)",
+                    fontSize: "11px",
+                    color: "rgba(240,237,232,0.4)",
                     lineHeight: 1.7,
                   }}>{a.text}</p>
+                  {/* bottom line */}
+                  <div style={{ height: "1px", width: "32px", background: "rgba(201,169,110,0.3)", marginTop: "4px" }} />
                 </motion.div>
               ))}
             </motion.div>
