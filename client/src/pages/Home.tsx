@@ -33,7 +33,7 @@ export default function Home() {
     <PublicLayout>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section
-        className="relative min-h-[88vh] flex items-center overflow-hidden"
+        className="relative min-h-[100vh] flex items-center overflow-hidden"
         style={{
           backgroundImage: "url('/manus-storage/hero_bg_v3_f07e7468.png')",
           backgroundSize: "cover",
@@ -130,12 +130,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F4F0EC" }}>
-        {/* Seamless top fade from hero #F0EDE8 */}
-        <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "80px", background: "linear-gradient(to bottom, #F0EDE8, #F4F0EC)", zIndex: 1 }} />
-        {/* Seamless bottom fade to before/after #F0EDE8 */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ height: "80px", background: "linear-gradient(to top, #F0EDE8, #F4F0EC)", zIndex: 1 }} />
+        {/* ── PHILOSOPHY ────────────────────────────────────────────────── */}
+      <section className="py-14 md:py-20 relative" style={{ backgroundImage: "url('/manus-storage/philosophy_bg_b6159add.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             {/* Left: label + heading + paragraphs */}
