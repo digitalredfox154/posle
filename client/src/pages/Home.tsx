@@ -487,19 +487,19 @@ export default function Home() {
 
       {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
       <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#F0EDE8" }}>
-        {/* Branch top-right */}
+        {/* Branch left — large, bottom-left, leaning right like on mockup */}
         <img
           src="/manus-storage/branch_transparent_222dc413.png"
           alt=""
           aria-hidden="true"
-          style={{ position: "absolute", top: "-40px", right: "-40px", width: "320px", opacity: 0.9, pointerEvents: "none", zIndex: 0, transform: "rotate(-15deg)" }}
+          style={{ position: "absolute", bottom: "-60px", left: "-60px", width: "380px", opacity: 0.85, pointerEvents: "none", zIndex: 2, transform: "rotate(20deg)" }}
         />
-        {/* Branch bottom-left mirrored */}
+        {/* Branch right — small, top-right corner, hanging down */}
         <img
           src="/manus-storage/branch_transparent_222dc413.png"
           alt=""
           aria-hidden="true"
-          style={{ position: "absolute", bottom: "-40px", left: "-40px", width: "280px", opacity: 0.75, pointerEvents: "none", zIndex: 0, transform: "rotate(160deg) scaleX(-1)" }}
+          style={{ position: "absolute", top: "-20px", right: "0px", width: "220px", opacity: 0.85, pointerEvents: "none", zIndex: 2, transform: "rotate(170deg) scaleX(-1)" }}
         />
         <div className="container relative" style={{ zIndex: 1 }}>
           <motion.div
