@@ -137,39 +137,6 @@ export default function Home() {
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden py-20 md:py-28" style={{ backgroundColor: "#F0EDE8" }}>
 
-        {/* Ветка слева снизу — большая */}
-        <img
-          src="/manus-storage/branch_transparent_222dc413.png"
-          alt=""
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            left: "-3%",
-            bottom: "-4%",
-            width: "22%",
-            transform: "rotate(-10deg) scaleX(-1)",
-            opacity: 0.9,
-            pointerEvents: "none",
-            zIndex: 0,
-          }}
-        />
-
-        {/* Ветка справа сверху — маленькая */}
-        <img
-          src="/manus-storage/branch_transparent_222dc413.png"
-          alt=""
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            right: "-1%",
-            top: "-2%",
-            width: "13%",
-            transform: "rotate(20deg)",
-            opacity: 0.85,
-            pointerEvents: "none",
-            zIndex: 0,
-          }}
-        />
 
         <div className="container relative" style={{ zIndex: 1 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(32px, 5vw, 80px)", alignItems: "center" }}>
