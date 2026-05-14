@@ -223,10 +223,24 @@ export default function Subscription() {
       {/* ── FITS BLOCK ── */}
       <section style={{
         position: "relative",
-        backgroundColor: "#111110",
+        backgroundColor: "#0D0D0B",
         paddingTop: "80px",
         paddingBottom: "100px",
+        overflow: "hidden",
       }}>
+        {/* Gold wave SVG bottom-left */}
+        <svg style={{ position: "absolute", bottom: 0, left: 0, width: "50%", opacity: 0.35, pointerEvents: "none" }} viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 160 Q80 80 160 140 Q240 200 320 120 Q400 40 480 100 Q560 160 600 80" stroke="#C9A96E" strokeWidth="1" fill="none"/>
+          <path d="M0 180 Q100 100 200 160 Q300 220 400 140 Q500 60 600 120" stroke="#C9A96E" strokeWidth="0.5" fill="none"/>
+        </svg>
+        {/* Gold sparkle top-right */}
+        <svg style={{ position: "absolute", top: "20px", right: "40px", opacity: 0.5, pointerEvents: "none" }} width="20" height="20" viewBox="0 0 20 20">
+          <path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/>
+        </svg>
+        <svg style={{ position: "absolute", bottom: "60px", right: "200px", opacity: 0.3, pointerEvents: "none" }} width="10" height="10" viewBox="0 0 20 20">
+          <path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/>
+        </svg>
+
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
           background: "linear-gradient(to bottom, transparent, #0D0D0B)",
@@ -241,9 +255,9 @@ export default function Subscription() {
             transition={{ duration: 0.7 }}
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: "1fr 1.4fr",
               gap: "80px",
-              alignItems: "start",
+              alignItems: "center",
             }}
           >
             {/* Left label + heading */}
@@ -258,18 +272,29 @@ export default function Subscription() {
               }}>Подходит, если вы хотите</p>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(36px, 4vw, 56px)",
+                fontSize: "clamp(40px, 4.5vw, 64px)",
                 fontWeight: 300,
                 color: "#F0EDE8",
-                lineHeight: 1.15,
+                lineHeight: 1.1,
+                marginBottom: "32px",
               }}>
                 Уход без<br />лишних усилий.
               </h2>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <div style={{ height: "1px", width: "40px", background: "rgba(201,169,110,0.4)" }} />
+                <svg width="8" height="8" viewBox="0 0 10 10"><path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/></svg>
+              </div>
             </div>
 
-            {/* Right list */}
+            {/* Right list with circle icons */}
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-              {fits.map((item, i) => (
+              {[
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>, text: "Убрать хаос с записью" },
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M12 21.7C5.4 15.5 2 10.6 2 7a10 10 0 0 1 20 0c0 3.6-3.4 8.5-10 14.7z"/><circle cx="12" cy="7" r="3"/></svg>, text: "Поддерживать постоянный ухоженный вид питомца" },
+                { icon: <svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="currentColor"/></svg>, text: "Получать рекомендации после каждого визита" },
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/><circle cx="12" cy="15" r="1" fill="currentColor"/></svg>, text: "Не думать каждый раз, когда пора на груминг" },
+                { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>, text: "Закрепить за собой приоритетное время в расписании" },
+              ].map((item, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 16 }}
@@ -279,20 +304,32 @@ export default function Subscription() {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "16px",
+                    gap: "20px",
                     padding: "20px 0",
                     borderBottom: "1px solid rgba(201,169,110,0.12)",
                   }}
                 >
-                  <svg width="8" height="8" viewBox="0 0 10 10" style={{ flexShrink: 0 }}>
-                    <path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/>
-                  </svg>
+                  <div style={{
+                    flexShrink: 0,
+                    width: "44px",
+                    height: "44px",
+                    borderRadius: "50%",
+                    border: "1px solid rgba(201,169,110,0.4)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#C9A96E",
+                  }}>{item.icon}</div>
+                  <div style={{ flex: 1, height: "1px", background: "rgba(201,169,110,0.15)" }} />
                   <span style={{
                     fontFamily: "'Cormorant Garamond', serif",
                     fontSize: "20px",
                     fontWeight: 300,
                     color: "#F0EDE8",
-                  }}>{item}</span>
+                  }}>{item.text}</span>
+                  <svg width="8" height="8" viewBox="0 0 10 10" style={{ flexShrink: 0 }}>
+                    <path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/>
+                  </svg>
                 </motion.div>
               ))}
             </div>
