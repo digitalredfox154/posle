@@ -133,6 +133,199 @@ export default function Home() {
         {/* ── PHILOSOPHY ────────────────────────────────────────────────── */}
 
 
+
+      {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden py-20 md:py-28" style={{ backgroundColor: "#F0EDE8" }}>
+
+        {/* Ветка слева снизу — большая */}
+        <img
+          src="/manus-storage/branch_transparent_222dc413.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            left: "-3%",
+            bottom: "-4%",
+            width: "22%",
+            transform: "rotate(-10deg) scaleX(-1)",
+            opacity: 0.9,
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+        />
+
+        {/* Ветка справа сверху — маленькая */}
+        <img
+          src="/manus-storage/branch_transparent_222dc413.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            right: "-1%",
+            top: "-2%",
+            width: "13%",
+            transform: "rotate(20deg)",
+            opacity: 0.85,
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+        />
+
+        <div className="container relative" style={{ zIndex: 1 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(32px, 5vw, 80px)", alignItems: "center" }}>
+
+            {/* ── LEFT: heading + text ── */}
+            <div>
+              <p style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "clamp(9px, 0.7vw, 11px)",
+                letterSpacing: "0.35em",
+                color: "#A8C5B5",
+                textTransform: "uppercase",
+                marginBottom: "clamp(10px, 1.2vw, 18px)",
+              }}>ФИЛОСОФИЯ</p>
+
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(28px, 3.8vw, 56px)",
+                fontWeight: 300,
+                color: "#1a1a14",
+                lineHeight: 1.15,
+                marginBottom: "clamp(10px, 1.2vw, 18px)",
+              }}>
+                Один питомец.<br />Полное внимание.{" "}
+                <span style={{ color: "#A8C5B5" }}>✦</span>
+              </h2>
+
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "clamp(16px, 2vw, 28px)" }}>
+                <div style={{ width: "28px", height: "1px", backgroundColor: "rgba(184,150,90,0.45)" }} />
+                <span style={{ color: "#B8965A", fontSize: "9px" }}>&#10022;</span>
+              </div>
+
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(12px, 0.95vw, 15px)", color: "rgba(14,14,14,0.58)", lineHeight: 1.85, marginBottom: "clamp(10px, 1.2vw, 18px)" }}>
+                Мы не работаем в потоке. У каждой собаки есть свой характер, привычки, тревоги и границы. Поэтому визит в ПОСЛЕ строится спокойно: без спешки, лишнего шума и ощущения конвейера.
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(12px, 0.95vw, 15px)", color: "rgba(14,14,14,0.58)", lineHeight: 1.85, marginBottom: "clamp(10px, 1.2vw, 18px)" }}>
+                Мастер видит не только шерсть и форму, но и настроение питомца. Где нужно — даст время привыкнуть. Где важно — сделает мягче. Где можно — доведёт образ до аккуратного, чистого и выразительного результата.
+              </p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(12px, 0.95vw, 15px)", color: "rgba(14,14,14,0.58)", lineHeight: 1.85 }}>
+                ПОСЛЕ — это момент, когда собака выглядит ухоженно, чувствует себя спокойно, а владелец понимает: к деталям здесь относятся всерьёз.
+              </p>
+            </div>
+
+            {/* ── RIGHT: 2×2 cards ── */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(12px, 1.5vw, 20px)" }}>
+
+              {/* Card 01 */}
+              <div style={{
+                backgroundColor: "rgba(255,255,255,0.82)",
+                borderRadius: "20px",
+                padding: "clamp(18px, 2.2vw, 32px)",
+                display: "flex", flexDirection: "column", justifyContent: "space-between",
+                minHeight: "clamp(160px, 18vw, 260px)",
+                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
+                position: "relative", overflow: "hidden",
+              }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>01</span>
+                  <div style={{ width: "clamp(32px,3vw,44px)", height: "clamp(32px,3vw,44px)", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.45)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="clamp(14px,1.4vw,20px)" height="clamp(14px,1.4vw,20px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><rect x="4" y="4" width="10" height="10" rx="1.5"/><rect x="18" y="4" width="10" height="10" rx="1.5"/><rect x="4" y="18" width="10" height="10" rx="1.5"/><rect x="18" y="18" width="10" height="10" rx="1.5"/></svg>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
+                    <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
+                    <span style={{ color: "#B8965A", fontSize: "8px" }}>&#10022;</span>
+                  </div>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Камерный<br/>формат</p>
+                </div>
+                {/* mini branch bottom-right */}
+                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+              </div>
+
+              {/* Card 02 */}
+              <div style={{
+                backgroundColor: "rgba(255,255,255,0.82)",
+                borderRadius: "20px",
+                padding: "clamp(18px, 2.2vw, 32px)",
+                display: "flex", flexDirection: "column", justifyContent: "space-between",
+                minHeight: "clamp(160px, 18vw, 260px)",
+                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
+                position: "relative", overflow: "hidden",
+              }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>02</span>
+                  <div style={{ width: "clamp(32px,3vw,44px)", height: "clamp(32px,3vw,44px)", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.45)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="clamp(14px,1.4vw,20px)" height="clamp(14px,1.4vw,20px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l4 4" strokeLinecap="round"/></svg>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
+                    <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
+                    <span style={{ color: "#B8965A", fontSize: "8px" }}>&#10022;</span>
+                  </div>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Спокойный<br/>процесс</p>
+                </div>
+                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+              </div>
+
+              {/* Card 03 */}
+              <div style={{
+                backgroundColor: "rgba(255,255,255,0.82)",
+                borderRadius: "20px",
+                padding: "clamp(18px, 2.2vw, 32px)",
+                display: "flex", flexDirection: "column", justifyContent: "space-between",
+                minHeight: "clamp(160px, 18vw, 260px)",
+                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
+                position: "relative", overflow: "hidden",
+              }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>03</span>
+                  <div style={{ width: "clamp(32px,3vw,44px)", height: "clamp(32px,3vw,44px)", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.45)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="clamp(14px,1.4vw,20px)" height="clamp(14px,1.4vw,20px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><path d="M16 27S5 20 5 12a6 6 0 0111-3.3A6 6 0 0127 12c0 8-11 15-11 15z"/></svg>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
+                    <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
+                    <span style={{ color: "#B8965A", fontSize: "8px" }}>&#10022;</span>
+                  </div>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Внимание<br/>к характеру</p>
+                </div>
+                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+              </div>
+
+              {/* Card 04 */}
+              <div style={{
+                backgroundColor: "rgba(255,255,255,0.82)",
+                borderRadius: "20px",
+                padding: "clamp(18px, 2.2vw, 32px)",
+                display: "flex", flexDirection: "column", justifyContent: "space-between",
+                minHeight: "clamp(160px, 18vw, 260px)",
+                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
+                position: "relative", overflow: "hidden",
+              }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>04</span>
+                  <div style={{ width: "clamp(32px,3vw,44px)", height: "clamp(32px,3vw,44px)", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.45)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="clamp(14px,1.4vw,20px)" height="clamp(14px,1.4vw,20px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="5"/><path d="M16 5v3M16 24v3M5 16h3M24 16h3" strokeLinecap="round"/></svg>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
+                    <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
+                    <span style={{ color: "#B8965A", fontSize: "8px" }}>&#10022;</span>
+                  </div>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Постоянный<br/>мастер</p>
+                </div>
+                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
       <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
         <div className="container">
