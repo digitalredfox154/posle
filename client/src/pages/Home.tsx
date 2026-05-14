@@ -35,17 +35,17 @@ export default function Home() {
       <section
         className="relative min-h-[88vh] flex items-center overflow-hidden"
         style={{
-          backgroundImage: "url('/manus-storage/posle-hero-bg_068adb5d.png')",
+          backgroundImage: "url('/manus-storage/hero_bg_light_00fd944f.png')",
           backgroundSize: "cover",
           backgroundPosition: "center right",
           backgroundRepeat: "no-repeat",
-          backgroundColor: "#111111",
+          backgroundColor: "#F0EDE8",
         }}
       >
-        {/* Subtle dark overlay on left for text readability */}
+        {/* Subtle warm overlay on left for text readability */}
         <div className="absolute inset-0 pointer-events-none"
           style={{
-            background: "linear-gradient(to right, rgba(10,10,14,0.75) 0%, rgba(10,10,14,0.4) 50%, transparent 100%)",
+            background: "linear-gradient(to right, rgba(240,237,232,0.6) 0%, rgba(240,237,232,0.25) 55%, transparent 100%)",
           }}
         />
 
@@ -60,16 +60,17 @@ export default function Home() {
             >
               <motion.p
                 variants={fadeUp}
-                 className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-5"
-                style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.3em" }}
+                className="text-[10px] tracking-[0.3em] uppercase mb-5"
+                style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.3em", color: "#7A9E8E" }}
               >
                 Камерный груминг-сервис · Новосибирск
               </motion.p>
 
               <motion.h1
                 variants={fadeUp}
-                className="text-white leading-none mb-4"
+                className="leading-none mb-4"
                 style={{
+                  color: "#0E0E0E",
                   fontFamily: "'Cormorant Garamond', serif",
                   fontSize: "clamp(72px, 11vw, 130px)",
                   fontWeight: 300,
@@ -88,8 +89,8 @@ export default function Home() {
 
               <motion.p
                 variants={fadeUp}
-                className="text-white/60 font-light leading-relaxed mb-12 max-w-sm"
-                style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", lineHeight: "1.7" }}
+                className="font-light leading-relaxed mb-12 max-w-sm"
+                style={{ color: "rgba(14,14,14,0.55)", fontFamily: "'Inter', sans-serif", fontSize: "15px", lineHeight: "1.7" }}
               >
                 Деликатный уход для собак, где важны<br />
                 не только чистота и форма, но и состояние<br />
@@ -111,10 +112,11 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/results"
-                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase text-white/65 px-10 py-4 hover:text-white transition-all duration-300"
+                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase px-10 py-4 transition-all duration-300 hover:border-[#0E0E0E] hover:text-[#0E0E0E]"
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    border: "1px solid rgba(255,255,255,0.25)",
+                    border: "1px solid rgba(14,14,14,0.3)",
+                    color: "rgba(14,14,14,0.55)",
                   }}
                 >
                   Посмотреть работы

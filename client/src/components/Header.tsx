@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { trpc } from "@/lib/trpc";
@@ -13,18 +13,39 @@ const navLinks = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
   const { data: clientData } = trpc.posleClient.me.useQuery();
 
+  const isHomePage = location === "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Light mode: transparent over light hero on home page before scroll
+  const lightMode = isHomePage && !scrolled;
+
+  const logoColor = lightMode ? "#0E0E0E" : "#ffffff";
+  const navColor = lightMode ? "rgba(14,14,14,0.6)" : "rgba(255,255,255,0.7)";
+  const navActiveColor = "#A8C5B5";
+  const navHoverColor = lightMode ? "#0E0E0E" : "#ffffff";
+
   return (
-    <header className="w-full bg-[#0E0E0E] text-white sticky top-0 z-50">
+    <header
+      className="w-full sticky top-0 z-50 transition-all duration-400"
+      style={{ backgroundColor: lightMode ? "transparent" : "#0E0E0E" }}
+    >
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <span
-            className="font-display text-2xl md:text-3xl font-light tracking-[0.15em] text-white transition-colors duration-400"
+            className="font-display text-2xl md:text-3xl font-light tracking-[0.15em]"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
+              color: logoColor,
               transition: "color 0.4s ease, letter-spacing 0.4s ease",
             }}
             onMouseEnter={(e) => {
@@ -32,7 +53,7 @@ export default function Header() {
               (e.currentTarget as HTMLElement).style.letterSpacing = "0.2em";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.color = "#ffffff";
+              (e.currentTarget as HTMLElement).style.color = logoColor;
               (e.currentTarget as HTMLElement).style.letterSpacing = "0.15em";
             }}
           >
@@ -53,17 +74,17 @@ export default function Header() {
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 fontWeight: 300,
-                color: location === link.href ? "#A8C5B5" : "rgba(255,255,255,0.7)",
+                color: location === link.href ? navActiveColor : navColor,
                 transition: "color 0.3s ease",
                 paddingBottom: "2px",
               }}
               onMouseEnter={(e) => {
                 if (location !== link.href)
-                  (e.currentTarget as HTMLElement).style.color = "#ffffff";
+                  (e.currentTarget as HTMLElement).style.color = navHoverColor;
               }}
               onMouseLeave={(e) => {
                 if (location !== link.href)
-                  (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)";
+                  (e.currentTarget as HTMLElement).style.color = navColor;
               }}
             >
               {link.label}
@@ -84,8 +105,12 @@ export default function Header() {
           ) : (
             <Link
               href="/login"
-              className="btn-outline-light text-xs tracking-widest uppercase px-4 py-2"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              className="text-xs tracking-widest uppercase px-4 py-2 transition-all duration-300"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                border: `1px solid ${lightMode ? "rgba(14,14,14,0.25)" : "rgba(255,255,255,0.3)"}`,
+                color: lightMode ? "rgba(14,14,14,0.6)" : "rgba(255,255,255,0.7)",
+              }}
             >
               Войти
             </Link>
@@ -101,7 +126,8 @@ export default function Header() {
 
         {/* Mobile burger */}
         <button
-          className="md:hidden text-white p-1 transition-colors duration-200 hover:text-[#A8C5B5]"
+          className="md:hidden p-1 transition-colors duration-200 hover:text-[#A8C5B5]"
+          style={{ color: lightMode ? "#0E0E0E" : "#ffffff" }}
           onClick={() => setOpen(!open)}
           aria-label="Меню"
         >
