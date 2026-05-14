@@ -125,13 +125,14 @@ export default function Subscription() {
 
             <h1 style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "clamp(52px, 6.5vw, 92px)",
+              fontSize: "clamp(36px, 4.5vw, 68px)",
               fontWeight: 300,
               color: "#F0EDE8",
-              lineHeight: 1.02,
+              lineHeight: 1.1,
               marginBottom: "32px",
             }}>
-              Системный уход<br />на весь год.
+              <span style={{ display: "block", whiteSpace: "nowrap" }}>Системный уход</span>
+              <span style={{ display: "block", whiteSpace: "nowrap" }}>на весь год.</span>
             </h1>
 
             <div style={{ height: "1px", width: "56px", background: "rgba(201,169,110,0.45)", marginBottom: "28px" }} />
