@@ -19,33 +19,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: "#F0EDE8" }}>
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-              <div className="aspect-[3/4] overflow-hidden" style={{ backgroundColor: "#F7F5F2" }}>
-                <img src={MASTER_PHOTO} alt="Мастер ПОСЛЕ" className="w-full h-full object-cover object-top" />
-              </div>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
-              <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>Мастер</p>
-              <h2 className="font-light text-[#0E0E0E] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>
-                Работаю не с потоком,<br />а с характером
-              </h2>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Я работаю с животными больше 5 лет. Для меня груминг начинается не с инструмента, а с контакта. Я смотрю, как собака реагирует, где ей спокойно, где нужно больше времени, какой уход подойдёт именно ей.
-              </p>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>
-                ПОСЛЕ — это мой ответ на конвейерный груминг. Камерный формат, где я знаю каждого питомца по имени, знаю его характер и особенности. Где результат важнее скорости.
-              </p>
-              <p className="text-[#0E0E0E]/60 text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Мне важно, чтобы после процедуры питомец выглядел ухоженно, но не был уставшим и зажатым. Красивый результат имеет смысл только тогда, когда он получен бережно.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Values */}
       <section className="py-20 md:py-28" style={{ backgroundColor: "#F7F5F2" }}>
