@@ -62,15 +62,37 @@ export default function About() {
       </section>
 
 
-      {/* Values */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: "#F7F5F2" }}>
+      {/* How I Work */}
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#111110" }}>
         <div className="container">
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="text-center mb-16">
-            <h2 className="font-light text-[#0E0E0E]" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>
+          {/* Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-center mb-4"
+          >
+            <h2
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(36px, 5vw, 64px)",
+                fontWeight: 300,
+                color: "#F0EDE8",
+                letterSpacing: "0.01em",
+              }}
+            >
               Как я работаю
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Gold divider */}
+          <div className="flex items-center justify-center gap-3 mb-14">
+            <div style={{ height: "1px", width: "48px", background: "#C9A96E" }} />
+            <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#C9A96E" }} />
+            <div style={{ height: "1px", width: "48px", background: "#C9A96E" }} />
+          </div>
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
             {[
               { num: "01", title: "Камерный формат", text: "Один питомец за раз. Никакого шума, никакого стресса от других животных." },
               { num: "02", title: "Спокойный процесс", text: "Без спешки и конвейера. Там, где нужно больше времени — я даю его." },
@@ -83,13 +105,49 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.1 }}
-                className="card-lift border border-[#EDE8DF] p-8 flex flex-col"
-                style={{ backgroundColor: "#FDFCFA" }}
+                style={{
+                  backgroundColor: "#1A1A18",
+                  border: "1px solid rgba(201,169,110,0.18)",
+                  padding: "36px 28px 40px",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
               >
-                <p className="text-[#A8C5B5] text-xs tracking-widest uppercase mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>{item.num}</p>
-                <div className="w-8 h-px bg-[#A8C5B5] mb-4" />
-                <h3 className="text-[#0E0E0E] font-light mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px" }}>{item.title}</h3>
-                <p className="text-[#0E0E0E]/60 text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>{item.text}</p>
+                <p
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "32px",
+                    fontWeight: 300,
+                    color: "#C9A96E",
+                    marginBottom: "12px",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  {item.num}
+                </p>
+                <div style={{ height: "1px", width: "28px", background: "rgba(201,169,110,0.45)", marginBottom: "24px" }} />
+                <h3
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "clamp(20px, 2vw, 26px)",
+                    fontWeight: 300,
+                    color: "#F0EDE8",
+                    lineHeight: 1.25,
+                    marginBottom: "16px",
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "13px",
+                    color: "rgba(240,237,232,0.5)",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {item.text}
+                </p>
               </motion.div>
             ))}
           </div>
