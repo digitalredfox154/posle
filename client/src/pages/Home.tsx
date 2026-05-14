@@ -33,7 +33,7 @@ export default function Home() {
     <PublicLayout>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section
-        className="relative min-h-[88vh] flex items-center overflow-hidden section-fade-bottom-dark"
+        className="relative min-h-[88vh] flex items-center overflow-hidden"
         style={{
           backgroundImage: "url('/manus-storage/hero_bg_v3_f07e7468.png')",
           backgroundSize: "cover",
@@ -329,7 +329,7 @@ export default function Home() {
       </section>
 
       {/* ── SUBSCRIPTION TEASER ──────────────────────────────────────────── */}
-      <section className="relative section-fade-top-light section-fade-bottom-light" style={{ backgroundColor: "#0D0D0B", padding: "48px 0" }}>
+      <section style={{ backgroundColor: "#0D0D0B", padding: "48px 0" }}>
         <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 24px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", alignItems: "stretch" }}>
 
@@ -488,7 +488,7 @@ export default function Home() {
       </section>
 
       {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 relative section-fade-bottom-dark" style={{ backgroundColor: "#F0EDE8" }}>
+      <section className="py-14 md:py-20" style={{ backgroundColor: "#F0EDE8" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -567,7 +567,7 @@ export default function Home() {
 
       {/* ── BOOKING CTA ──────────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden section-fade-top-light"
+        className="relative overflow-hidden"
         style={{ backgroundColor: "#0E0E0E", minHeight: "480px" }}
       >
         {/* Decorative gold lines */}
