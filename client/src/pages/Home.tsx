@@ -653,111 +653,114 @@ export default function Home() {
       </section>
 
       {/* ── BOOKING CTA ──────────────────────────────────────────────────── */}
+      {/* ── FIRST VISIT / BOOKING CTA ──────────────────────────────────────── */}
       <section
         className="relative overflow-hidden"
-        style={{ backgroundColor: "#0E0E0E", minHeight: "480px" }}
+        style={{ backgroundColor: "#0D0D0B" }}
       >
-        {/* Decorative gold lines */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* top-left corner lines */}
-          <div className="absolute top-0 left-0 w-32 h-px" style={{ background: "linear-gradient(to right, #A8C5B5, transparent)" }} />
-          <div className="absolute top-0 left-0 h-32 w-px" style={{ background: "linear-gradient(to bottom, #A8C5B5, transparent)" }} />
-          {/* bottom-right corner lines */}
-          <div className="absolute bottom-0 right-0 w-32 h-px" style={{ background: "linear-gradient(to left, #A8C5B5, transparent)" }} />
-          <div className="absolute bottom-0 right-0 h-32 w-px" style={{ background: "linear-gradient(to top, #A8C5B5, transparent)" }} />
-          {/* faint center circle */}
-          <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-[420px] h-[420px] rounded-full opacity-[0.04]"
-            style={{ border: "1px solid #A8C5B5" }} />
-          <div className="absolute top-1/2 right-[15%] -translate-y-1/2 w-[280px] h-[280px] rounded-full opacity-[0.06]"
-            style={{ border: "1px solid #A8C5B5" }} />
-        </div>
+        {/* Decorative faint circle */}
+        <div className="absolute pointer-events-none" style={{ top: "50%", left: "52%", transform: "translate(-50%,-50%)", width: "520px", height: "520px", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.08)" }} />
+        <div className="absolute pointer-events-none" style={{ top: "50%", left: "52%", transform: "translate(-50%,-50%)", width: "340px", height: "340px", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.06)" }} />
+        {/* Gold star center */}
+        <div className="absolute pointer-events-none" style={{ top: "50%", left: "52%", transform: "translate(-50%,-50%)", color: "#B8965A", fontSize: "18px", opacity: 0.5 }}>✦</div>
 
-        <div className="container relative z-10 py-20 md:py-28">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 items-center">
+        <div className="container relative z-10 py-16 md:py-24">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: "clamp(24px, 4vw, 64px)", alignItems: "center" }}>
 
-            {/* Left — typography */}
+            {/* ── LEFT: text + button ── */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-[#A8C5B5] text-[10px] tracking-[0.4em] uppercase mb-6"
-                style={{ fontFamily: "'Inter', sans-serif" }}>
-                Запись
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(8px, 0.65vw, 10px)", letterSpacing: "0.4em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "clamp(12px, 1.5vw, 22px)" }}>
+                ПЕРВЫЙ ВИЗИТ
               </p>
-              <h2 className="font-light text-white leading-[1.05] mb-8"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(48px, 6vw, 80px)",
-                }}>
-                Начните<br />
-                <span style={{ color: "#A8C5B5" }}>с знакомства.</span>
-
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(36px, 5.5vw, 76px)",
+                fontWeight: 300,
+                color: "#FFFFFF",
+                lineHeight: 1.1,
+                marginBottom: "clamp(12px, 1.5vw, 22px)",
+              }}>
+                Начните<br />с первого визита.
               </h2>
-              <p className="text-white/40 max-w-sm leading-relaxed mb-10"
-                style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
-                Первый визит — это знакомство. Мы смотрим, слушаем и подбираем то, что нужно именно вашему питомцу.
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(12px, 0.9vw, 14px)", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, marginBottom: "clamp(20px, 2.5vw, 36px)", maxWidth: "280px" }}>
+                Познакомимся, подберём уход и создадим безупречный образ для вашего любимца.
               </p>
-              <Link
-                href="/booking"
-                className="inline-flex items-center gap-4 group"
-              >
+              <Link href="/booking" className="inline-flex items-center gap-4 group">
                 <span
-                  className="btn-mint text-[10px] tracking-[0.3em] uppercase px-10 py-4"
+                  className="btn-mint text-[10px] tracking-[0.3em] uppercase px-8 py-4"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                  Записаться
+                  ЗАПИСАТЬСЯ НА ПЕРВЫЙ ВИЗИТ
                 </span>
                 <span className="link-arrow text-[#A8C5B5] text-2xl">→</span>
               </Link>
             </motion.div>
 
-            {/* Right — contact info cards */}
+            {/* ── CENTER: dog photo placeholder ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, delay: 0.15 }}
+              style={{ display: "flex", justifyContent: "center", alignItems: "flex-end" }}
+            >
+              <div style={{
+                width: "clamp(160px, 18vw, 280px)",
+                height: "clamp(200px, 22vw, 340px)",
+                borderRadius: "50% 50% 0 0",
+                backgroundColor: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.06)",
+                display: "flex",
+                alignItems: "flex-end",
+                justifyContent: "center",
+                overflow: "hidden",
+              }}>
+                {/* Placeholder — заменить на фото пуделя */}
+                <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ color: "rgba(255,255,255,0.12)", fontSize: "12px", fontFamily: "'Inter', sans-serif", letterSpacing: "0.1em" }}>ФОТО</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* ── RIGHT: contact cards ── */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col gap-4 min-w-[260px]"
+              style={{ display: "flex", flexDirection: "column", gap: "clamp(8px, 1vw, 14px)" }}
             >
               {/* Address */}
-              <div className="card-lift-dark border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
-                <p className="text-[#A8C5B5] text-[9px] tracking-[0.35em] uppercase mb-3"
-                  style={{ fontFamily: "'Inter', sans-serif" }}>
-                  Адрес
-                </p>
-                <p className="text-white/70 leading-snug"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
-                  Вокзальная магистраль, 16<br />
-                  <span className="text-white/35 text-sm">Новосибирск</span>
-                </p>
+              <div style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "clamp(14px, 1.6vw, 22px) clamp(16px, 1.8vw, 26px)", display: "flex", gap: "clamp(10px, 1.2vw, 16px)", alignItems: "flex-start" }}>
+                <svg width="clamp(16px,1.4vw,20px)" height="clamp(16px,1.4vw,20px)" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5" style={{ flexShrink: 0, marginTop: "2px" }}><path d="M12 21s-8-5.5-8-11a8 8 0 0116 0c0 5.5-8 11-8 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                <div>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(8px, 0.65vw, 10px)", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "6px" }}>АДРЕС</p>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(14px, 1.3vw, 18px)", color: "rgba(255,255,255,0.75)", lineHeight: 1.4, margin: 0 }}>Вокзальная магистраль, 16</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(10px, 0.8vw, 12px)", color: "rgba(255,255,255,0.35)", margin: "4px 0 0" }}>Новосибирск</p>
+                </div>
               </div>
               {/* Phone */}
-              <a
-                href="tel:+79130187219"
-                className="border border-white/[0.08] p-6 group hover:border-[#A8C5B5]/40 transition-all duration-300"
-                style={{ backgroundColor: "rgba(255,255,255,0.03)" }}
-              >
-                <p className="text-[#A8C5B5] text-[9px] tracking-[0.35em] uppercase mb-3"
-                  style={{ fontFamily: "'Inter', sans-serif" }}>
-                  Телефон
-                </p>
-                <p className="text-white/70 group-hover:text-white transition-colors duration-300"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", letterSpacing: "0.04em" }}>
-                  +7 913 018-72-19
-                </p>
+              <a href="tel:+79130187219" style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "clamp(14px, 1.6vw, 22px) clamp(16px, 1.8vw, 26px)", display: "flex", gap: "clamp(10px, 1.2vw, 16px)", alignItems: "flex-start", textDecoration: "none", transition: "border-color 0.3s" }}>
+                <svg width="clamp(16px,1.4vw,20px)" height="clamp(16px,1.4vw,20px)" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5" style={{ flexShrink: 0, marginTop: "2px" }}><path d="M6.6 10.8a15.3 15.3 0 006.6 6.6l2.2-2.2a1 1 0 011.1-.2 11.4 11.4 0 003.6 1.1 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c.1 1.3.4 2.5 1.1 3.6a1 1 0 01-.2 1.1L6.6 10.8z"/></svg>
+                <div>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(8px, 0.65vw, 10px)", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "6px" }}>ТЕЛЕФОН</p>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(14px, 1.3vw, 18px)", color: "rgba(255,255,255,0.75)", margin: 0 }}>+7 913 018-72-19</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(10px, 0.8vw, 12px)", color: "rgba(255,255,255,0.35)", margin: "4px 0 0" }}>Ежедневно с 10:00 до 20:00</p>
+                </div>
               </a>
               {/* Hours */}
-              <div className="card-lift-dark border border-white/[0.08] p-6" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
-                <p className="text-[#A8C5B5] text-[9px] tracking-[0.35em] uppercase mb-3"
-                  style={{ fontFamily: "'Inter', sans-serif" }}>
-                  Часы работы
-                </p>
-                <p className="text-white/70"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
-                  Ежедневно, 10:00 — 20:00
-                </p>
+              <div style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "clamp(14px, 1.6vw, 22px) clamp(16px, 1.8vw, 26px)", display: "flex", gap: "clamp(10px, 1.2vw, 16px)", alignItems: "flex-start" }}>
+                <svg width="clamp(16px,1.4vw,20px)" height="clamp(16px,1.4vw,20px)" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5" style={{ flexShrink: 0, marginTop: "2px" }}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" strokeLinecap="round"/></svg>
+                <div>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(8px, 0.65vw, 10px)", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "6px" }}>ВРЕМЯ РАБОТЫ</p>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(14px, 1.3vw, 18px)", color: "rgba(255,255,255,0.75)", margin: 0 }}>Пн — Вс: 10:00 — 20:00</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(10px, 0.8vw, 12px)", color: "rgba(255,255,255,0.35)", margin: "4px 0 0" }}>Без выходных</p>
+                </div>
               </div>
             </motion.div>
 
