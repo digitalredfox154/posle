@@ -60,13 +60,15 @@ export default function Subscription() {
     <PublicLayout>
 
       {/* ── HERO ── */}
-      <section style={{
+      <section className="hero-bg-mobile-none" style={{
         position: "relative",
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
         backgroundColor: "#0A0A08",
+        paddingTop: "clamp(80px, 15vw, 120px)",
+        paddingBottom: "clamp(48px, 8vw, 80px)",
       }}>
         {/* Background image */}
         <div style={{
@@ -214,9 +216,8 @@ export default function Subscription() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
               gap: "12px",
             }}
           >

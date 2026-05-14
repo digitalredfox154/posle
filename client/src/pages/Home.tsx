@@ -33,7 +33,7 @@ export default function Home() {
     <PublicLayout>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section
-        className="relative min-h-[100vh] flex items-center overflow-hidden"
+        className="relative min-h-[100vh] flex items-center overflow-hidden hero-section"
         style={{
           backgroundImage: "url('/manus-storage/hero_bg_v3_f07e7468.png')",
           backgroundSize: "cover",
@@ -50,7 +50,7 @@ export default function Home() {
         />
 
         <div className="container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[88vh] py-16">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[88vh] py-20 md:py-16">
 
             {/* LEFT: text */}
             <motion.div
@@ -60,7 +60,7 @@ export default function Home() {
             >
               <motion.p
                 variants={fadeUp}
-                className="text-[10px] tracking-[0.3em] uppercase mb-5"
+                className="text-[10px] tracking-[0.3em] uppercase mb-4 md:mb-5"
                 style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.3em", color: "#7A9E8E" }}
               >
                 Камерный груминг-сервис · Новосибирск
@@ -72,7 +72,7 @@ export default function Home() {
                 style={{
                   color: "#0E0E0E",
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(72px, 11vw, 130px)",
+                  fontSize: "clamp(64px, 18vw, 130px)",
                   fontWeight: 300,
                   letterSpacing: "0.15em",
                 }}
@@ -89,19 +89,16 @@ export default function Home() {
 
               <motion.p
                 variants={fadeUp}
-                className="font-light leading-relaxed mb-12 max-w-sm"
-                style={{ color: "rgba(14,14,14,0.55)", fontFamily: "'Inter', sans-serif", fontSize: "15px", lineHeight: "1.7" }}
+                className="font-light leading-relaxed mb-10 max-w-sm"
+                style={{ color: "rgba(14,14,14,0.55)", fontFamily: "'Inter', sans-serif", fontSize: "clamp(13px, 3.5vw, 15px)", lineHeight: "1.7" }}
               >
-                Деликатный уход для собак, где важны<br />
-                не только чистота и форма, но и состояние<br />
-                питомца после визита.
+                Деликатный уход для собак, где важны не только чистота и форма, но и состояние питомца после визита.
               </motion.p>
 
-              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
-                {/* Olive-green button like in mockup */}
+              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/booking"
-                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase px-10 py-4 font-medium transition-all duration-300 hover:opacity-90"
+                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase px-8 py-4 font-medium transition-all duration-300 hover:opacity-90"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     backgroundColor: "#A8C5B5",
@@ -112,7 +109,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/results"
-                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase px-10 py-4 transition-all duration-300 hover:border-[#0E0E0E] hover:text-[#0E0E0E]"
+                  className="inline-block text-center text-[11px] tracking-[0.25em] uppercase px-8 py-4 transition-all duration-300 hover:border-[#0E0E0E] hover:text-[#0E0E0E]"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     border: "1px solid rgba(14,14,14,0.3)",
@@ -135,11 +132,11 @@ export default function Home() {
 
 
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-28" style={{ backgroundColor: "#F0EDE8" }}>
+      <section className="relative overflow-hidden py-14 md:py-28" style={{ backgroundColor: "#F0EDE8" }}>
 
 
         <div className="container relative" style={{ zIndex: 1 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(32px, 5vw, 80px)", alignItems: "center" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "clamp(32px, 5vw, 80px)", alignItems: "center" }}>
 
             {/* ── LEFT: heading + text ── */}
             <div>
@@ -181,7 +178,7 @@ export default function Home() {
             </div>
 
             {/* ── RIGHT: 2×2 cards ── */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(12px, 1.5vw, 20px)" }}>
+            <div className="grid grid-cols-2" style={{ gap: "clamp(12px, 1.5vw, 20px)" }}>
 
               {/* Card 01 */}
               <div style={{
@@ -378,8 +375,8 @@ export default function Home() {
       </section>
 
       {/* ── SUBSCRIPTION TEASER ────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#0D0D0B", padding: "48px 0", position: "relative" }}>   <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", alignItems: "stretch" }}>
+      <section style={{ backgroundColor: "#0D0D0B", padding: "clamp(32px,6vw,48px) 0", position: "relative" }}><div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 clamp(16px,4vw,24px)" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "16px", alignItems: "stretch" }}>
 
             {/* ─── LEFT: yorkie photo + text ─── */}
             <motion.div
@@ -387,12 +384,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
+              className="sub-card-mobile"
               style={{
                 position: "relative",
                 overflow: "hidden",
                 borderRadius: "6px",
                 border: "1px solid rgba(200,170,100,0.18)",
-                minHeight: "620px",
+                minHeight: "clamp(380px, 60vw, 620px)",
               }}
             >
               <img
@@ -401,7 +399,7 @@ export default function Home() {
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,3,0.85) 0%, rgba(5,5,3,0.6) 50%, rgba(5,5,3,0.05) 100%)" }} />
-              <div style={{ position: "relative", zIndex: 1, padding: "48px", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", minHeight: "620px" }}>
+              <div style={{ position: "relative", zIndex: 1, padding: "clamp(24px,5vw,48px)", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", minHeight: "clamp(380px,60vw,620px)" }}>
                 <div>
                   {/* Label row */}
                   <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
@@ -452,12 +450,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.12 }}
+              className="sub-card-mobile"
               style={{
                 position: "relative",
                 overflow: "hidden",
                 borderRadius: "6px",
                 border: "1px solid rgba(200,170,100,0.18)",
-                minHeight: "620px",
+                minHeight: "clamp(380px, 60vw, 620px)",
               }}
             >
               <img
@@ -466,7 +465,7 @@ export default function Home() {
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,3,0.92) 0%, rgba(5,5,3,0.78) 52%, rgba(5,5,3,0.12) 100%)" }} />
-              <div style={{ position: "relative", zIndex: 1, padding: "48px", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", minHeight: "620px" }}>
+              <div style={{ position: "relative", zIndex: 1, padding: "clamp(24px,5vw,48px)", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", minHeight: "clamp(380px,60vw,620px)" }}>
                 <div>
                   {/* Diary heading */}
                   <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(26px, 3vw, 38px)", fontWeight: 300, color: "#FFFFFF", margin: "0 0 12px 0" }}>
@@ -654,11 +653,11 @@ export default function Home() {
 
       {/* ── FIRST VISIT / BOOKING CTA ──────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden"
+        className="relative overflow-hidden hero-bg-mobile-none"
         style={{ backgroundImage: "url('/manus-storage/cta_bg3_c36fca8d.png')", backgroundSize: "cover", backgroundPosition: "center center", backgroundRepeat: "no-repeat" }}
       >
         <div className="container relative z-10 py-16 md:py-24">
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: "clamp(24px, 3vw, 48px)", alignItems: "center", maxWidth: "680px", marginLeft: "30%" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "clamp(24px, 3vw, 48px)", alignItems: "center", maxWidth: "680px", marginLeft: "auto", marginRight: "auto" }}>
 
             {/* ── LEFT: text + button ── */}
             <motion.div

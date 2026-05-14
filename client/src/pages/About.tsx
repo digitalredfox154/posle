@@ -9,6 +9,7 @@ export default function About() {
     <PublicLayout>
       {/* Hero */}
       <section
+        className="hero-bg-mobile-none"
         style={{
           position: "relative",
           backgroundImage: "url('/manus-storage/about_hero_bg2_29fe14f9.png')",
@@ -18,6 +19,8 @@ export default function About() {
           minHeight: "100vh",
           display: "flex",
           alignItems: "center",
+          paddingTop: "clamp(80px, 15vw, 120px)",
+          paddingBottom: "clamp(48px, 8vw, 80px)",
         }}
       >
         {/* Bottom fade to dark */}
@@ -36,7 +39,7 @@ export default function About() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            style={{ maxWidth: "520px" }}
+            style={{ maxWidth: "520px", width: "100%" }}
           >
             {/* Label */}
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A96E", marginBottom: "8px" }}>

@@ -16,6 +16,7 @@ export default function Results() {
 
       {/* ── HERO ── */}
       <section
+        className="hero-bg-mobile-none"
         style={{
           position: "relative",
           minHeight: "100vh",
@@ -24,6 +25,8 @@ export default function Results() {
           backgroundPosition: "center",
           display: "flex",
           alignItems: "center",
+          paddingTop: "clamp(80px, 15vw, 120px)",
+          paddingBottom: "clamp(48px, 8vw, 80px)",
         }}
       >
         {/* dark overlay left */}
@@ -40,7 +43,7 @@ export default function Results() {
         }} />
 
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} style={{ maxWidth: "520px" }}>
             {/* label */}
             <p style={{
               fontFamily: "'Inter', sans-serif",

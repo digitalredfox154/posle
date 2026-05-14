@@ -278,3 +278,261 @@
 .fade-in-delay-1 { transition-delay: 0.1s; }
 .fade-in-delay-2 { transition-delay: 0.2s; }
 .fade-in-delay-3 { transition-delay: 0.3s; }
+
+/* ─── MOBILE ADAPTIVE ────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Remove decorative background images on mobile - show solid dark bg instead */
+  .hero-section,
+  .hero-section-dark {
+    background-image: none !important;
+  }
+  .hero-section {
+    background-color: #F0EDE8 !important;
+  }
+  .hero-section-dark {
+    background-color: #0E0E0E !important;
+    min-height: auto !important;
+  }
+
+  /* Remove bg images from decorative sections on mobile */
+  .section-no-bg-mobile {
+    background-image: none !important;
+  }
+
+  /* Hero overlay - hide on mobile since no bg image */
+  .hero-overlay-mobile-hide {
+    display: none !important;
+  }
+
+  /* Typography scaling */
+  .mobile-h1 {
+    font-size: clamp(52px, 15vw, 80px) !important;
+    letter-spacing: 0.1em !important;
+  }
+  .mobile-h2 {
+    font-size: clamp(32px, 9vw, 52px) !important;
+  }
+  .mobile-body {
+    font-size: 14px !important;
+  }
+
+  /* Subscription hero on mobile */
+  .sub-hero-section {
+    background-image: none !important;
+    background-color: #0E0E0E !important;
+    min-height: auto !important;
+    padding-top: 80px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Dark hero pages on mobile */
+  .dark-hero-section {
+    background-image: none !important;
+    background-color: #0E0E0E !important;
+    min-height: auto !important;
+    padding-top: 80px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* About hero on mobile */
+  .about-hero-section {
+    background-image: none !important;
+    background-color: #111110 !important;
+    min-height: auto !important;
+    padding-top: 80px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Subscription section cards - stack vertically */
+  .sub-cards-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* Philosophy section - stack columns */
+  .philosophy-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Subscription teaser - stack columns */
+  .sub-teaser-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* CTA section on mobile */
+  .cta-section-grid {
+    grid-template-columns: 1fr !important;
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Master bio - stack photo and text */
+  .master-bio-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .master-bio-photo {
+    min-height: 320px !important;
+  }
+  .master-bio-text {
+    padding: 28px 24px !important;
+  }
+
+  /* FITS lines section */
+  .fits-line-item {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  /* Reduce padding on sections */
+  .section-py-mobile {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* Hide decorative branch images on mobile */
+  .branch-deco {
+    display: none !important;
+  }
+
+  /* Buttons full-width on mobile */
+  .mobile-btn-full {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Sub teaser left card - reduce height */
+  .sub-teaser-card {
+    min-height: 380px !important;
+  }
+
+  /* Contact info rows */
+  .contact-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+}
+
+/* ─── Mobile Adaptive: hero sections ─────────────────────────────────────── */
+/* On mobile: hero sections use solid dark bg, no background image */
+@media (max-width: 767px) {
+  .hero-bg-mobile-none {
+    background-image: none !important;
+    background-color: #0E0E0E !important;
+  }
+  /* Light hero (Home page) on mobile */
+  .hero-bg-mobile-light {
+    background-image: none !important;
+    background-color: #F0EDE8 !important;
+  }
+  /* Reduce hero min-height on mobile */
+  .hero-mobile-height {
+    min-height: 100svh !important;
+    padding-top: 80px !important;
+    padding-bottom: 60px !important;
+  }
+  /* Section vertical padding reduction */
+  .section-mobile-py {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+  /* Grid: force single column */
+  .grid-mobile-1 {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  /* Typography scale down */
+  .h1-mobile {
+    font-size: clamp(48px, 14vw, 72px) !important;
+    line-height: 1.05 !important;
+  }
+  .h2-mobile {
+    font-size: clamp(32px, 9vw, 52px) !important;
+    line-height: 1.1 !important;
+  }
+  /* Buttons full width on mobile */
+  .btn-mobile-full {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+  /* Hide decorative overlay on mobile */
+  .overlay-mobile-hide {
+    display: none !important;
+  }
+  /* Fits/lines block on mobile */
+  .fits-item-mobile {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .fits-line-mobile {
+    display: none !important;
+  }
+}
+
+/* ─── Extended Mobile Adaptive ───────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Mobile: show text in hero even without bg image */
+  .hero-bg-mobile-none h1,
+  .hero-bg-mobile-none h2 {
+    color: #F0EDE8 !important;
+  }
+  .hero-bg-mobile-none p {
+    color: rgba(240, 237, 232, 0.6) !important;
+  }
+
+  /* Subscription cards: reduce height */
+  .sub-card-mobile {
+    min-height: clamp(300px, 70vw, 420px) !important;
+  }
+
+  /* Map iframe height on mobile */
+  iframe[title] {
+    height: 260px !important;
+  }
+
+  /* Philosophy cards 2x2: tighter gap */
+  .grid.grid-cols-2 {
+    gap: 10px !important;
+  }
+
+  /* Buttons: full width on mobile */
+  .flex.flex-col > a.btn-mint,
+  .flex.flex-col > a.btn-outline-light {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Master bio right panel: reduce padding */
+  .md\:grid-cols-\[42\%_58\%\] > div:last-child {
+    padding: 28px 20px !important;
+  }
+
+  /* Contact grid gap reduction */
+  .gap-16 {
+    gap: 40px !important;
+  }
+
+  /* FITS section: hide long lines on mobile */
+  .fits-line {
+    display: none !important;
+  }
+
+  /* Reduce CTA section padding */
+  section.relative.overflow-hidden + section {
+    padding-top: 56px !important;
+    padding-bottom: 72px !important;
+  }
+}
+
+/* ─── Smooth page transitions ─────────────────────────────────────────────── */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: pageEnter 0.4s ease both;
+}
