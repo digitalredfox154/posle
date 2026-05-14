@@ -5,7 +5,7 @@ import { Link } from "wouter";
 const advantages = [
   {
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
         <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
       </svg>
@@ -15,7 +15,7 @@ const advantages = [
   },
   {
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
         <line x1="16" y1="2" x2="16" y2="6"/>
         <line x1="8" y1="2" x2="8" y2="6"/>
@@ -27,12 +27,11 @@ const advantages = [
   },
   {
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
         <polyline points="14 2 14 8 20 8"/>
         <line x1="16" y1="13" x2="8" y2="13"/>
         <line x1="16" y1="17" x2="8" y2="17"/>
-        <polyline points="10 9 9 9 8 9"/>
       </svg>
     ),
     title: "Дневник посещений",
@@ -40,21 +39,13 @@ const advantages = [
   },
   {
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
     title: "Неограниченные посещения",
     text: "Можно приходить в течение года столько раз, сколько нужно питомцу в рамках условий подписки.",
   },
-];
-
-const fits = [
-  "Убрать хаос с записью",
-  "Поддерживать постоянный ухоженный вид питомца",
-  "Получать рекомендации после каждого визита",
-  "Не думать каждый раз, когда пора на груминг",
-  "Закрепить за собой приоритетное время в расписании",
 ];
 
 const faqs = [
@@ -71,194 +62,192 @@ export default function Subscription() {
       {/* ── HERO ── */}
       <section style={{
         position: "relative",
-        backgroundColor: "#0A0A08",
         minHeight: "100vh",
         display: "flex",
-        alignItems: "center",
-        paddingTop: "100px",
-        paddingBottom: "0",
+        flexDirection: "column",
+        justifyContent: "space-between",
         overflow: "hidden",
+        backgroundColor: "#0A0A08",
       }}>
+        {/* Background image */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url('/manus-storage/subscription_spitz_bg_adc4b9f3.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center right",
+          backgroundRepeat: "no-repeat",
+        }} />
+        {/* Dark overlay left-to-right: dark left, transparent right */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to right, rgba(10,10,8,0.92) 35%, rgba(10,10,8,0.55) 65%, rgba(10,10,8,0.2) 100%)",
+        }} />
+        {/* Bottom fade to next section */}
+        <div style={{
+          position: "absolute",
+          bottom: 0, left: 0, right: 0,
+          height: "220px",
+          background: "linear-gradient(to bottom, transparent, #0D0D0B)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }} />
+
         {/* Gold arc top-right */}
-        <svg style={{ position: "absolute", top: 0, right: 0, width: "40%", opacity: 0.25, pointerEvents: "none" }} viewBox="0 0 500 300" fill="none">
+        <svg style={{ position: "absolute", top: 0, right: 0, width: "45%", opacity: 0.2, pointerEvents: "none", zIndex: 1 }} viewBox="0 0 500 300" fill="none">
           <path d="M500 0 Q300 100 400 300" stroke="#C9A96E" strokeWidth="1" fill="none"/>
-          <path d="M500 50 Q320 130 420 300" stroke="#C9A96E" strokeWidth="0.5" fill="none"/>
+          <path d="M500 60 Q330 140 430 300" stroke="#C9A96E" strokeWidth="0.5" fill="none"/>
         </svg>
         {/* Gold arc bottom-left */}
-        <svg style={{ position: "absolute", bottom: 0, left: 0, width: "35%", opacity: 0.2, pointerEvents: "none" }} viewBox="0 0 500 300" fill="none">
+        <svg style={{ position: "absolute", bottom: 0, left: 0, width: "30%", opacity: 0.18, pointerEvents: "none", zIndex: 1 }} viewBox="0 0 500 300" fill="none">
           <path d="M0 300 Q200 200 100 0" stroke="#C9A96E" strokeWidth="1" fill="none"/>
         </svg>
         {/* Sparkles */}
-        <svg style={{ position: "absolute", top: "18%", left: "38%", opacity: 0.6, pointerEvents: "none" }} width="14" height="14" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
-        <svg style={{ position: "absolute", bottom: "25%", left: "10%", opacity: 0.4, pointerEvents: "none" }} width="8" height="8" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+        <svg style={{ position: "absolute", top: "20%", left: "32%", opacity: 0.55, pointerEvents: "none", zIndex: 1 }} width="12" height="12" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+        <svg style={{ position: "absolute", top: "55%", right: "8%", opacity: 0.35, pointerEvents: "none", zIndex: 1 }} width="8" height="8" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
 
-        {/* fade to next section */}
-        <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0, height: "160px",
-          background: "linear-gradient(to bottom, transparent, #0D0D0B)",
-          pointerEvents: "none",
-        }} />
+        {/* Top content: label + heading + subtitle + buttons */}
+        <div className="container" style={{ position: "relative", zIndex: 3, paddingTop: "140px", paddingBottom: "0", maxWidth: "1400px" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85 }}
+            style={{ maxWidth: "560px" }}
+          >
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "10px",
+              letterSpacing: "0.38em",
+              textTransform: "uppercase",
+              color: "#C9A96E",
+              marginBottom: "14px",
+            }}>Годовая подписка</p>
 
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingBottom: "120px", width: "100%" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1.1fr", gap: "0", alignItems: "center", minHeight: "80vh" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "30px" }}>
+              <div style={{ height: "1px", width: "32px", background: "#C9A96E" }} />
+              <svg width="7" height="7" viewBox="0 0 10 10"><path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/></svg>
+            </div>
 
-            {/* Left — text + buttons */}
-            <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} style={{ paddingRight: "40px" }}>
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "10px",
-                letterSpacing: "0.35em",
-                textTransform: "uppercase",
-                color: "#C9A96E",
-                marginBottom: "12px",
-              }}>Годовая подписка</p>
+            <h1 style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: "clamp(52px, 6.5vw, 92px)",
+              fontWeight: 300,
+              color: "#F0EDE8",
+              lineHeight: 1.02,
+              marginBottom: "32px",
+            }}>
+              Системный уход<br />на весь год.
+            </h1>
 
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "28px" }}>
-                <div style={{ height: "1px", width: "32px", background: "#C9A96E" }} />
-                <svg width="7" height="7" viewBox="0 0 10 10"><path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/></svg>
-              </div>
+            <div style={{ height: "1px", width: "56px", background: "rgba(201,169,110,0.45)", marginBottom: "28px" }} />
 
-              <h1 style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(44px, 5.5vw, 76px)",
-                fontWeight: 300,
-                color: "#F0EDE8",
-                lineHeight: 1.05,
-                marginBottom: "28px",
-              }}>
-                Системный уход<br />на весь год.
-              </h1>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(13px, 1.1vw, 15px)",
+              fontWeight: 300,
+              color: "rgba(240,237,232,0.5)",
+              lineHeight: 1.85,
+              marginBottom: "44px",
+              maxWidth: "400px",
+            }}>
+              Подписка создана для владельцев, которые хотят, чтобы питомец всегда выглядел ухоженно, а уход не превращался в очередную задачу в календаре.
+            </p>
 
-              <div style={{ height: "1px", width: "60px", background: "rgba(201,169,110,0.5)", marginBottom: "28px" }} />
-
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "clamp(13px, 1.1vw, 15px)",
-                fontWeight: 300,
-                color: "rgba(240,237,232,0.5)",
-                lineHeight: 1.8,
-                marginBottom: "40px",
-                maxWidth: "360px",
-              }}>
-                Подписка создана для владельцев, которые хотят, чтобы питомец всегда выглядел ухоженно, а уход не превращался в очередную задачу в календаре.
-              </p>
-
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                <Link
-                  href="/booking"
-                  style={{
-                    display: "inline-block",
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: "10px",
-                    letterSpacing: "0.3em",
-                    textTransform: "uppercase",
-                    color: "#111110",
-                    backgroundColor: "#C9A96E",
-                    padding: "14px 32px",
-                    textDecoration: "none",
-                  }}
-                >
-                  Оформить подписку
-                </Link>
-                <a
-                  href="https://t.me/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-block",
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: "10px",
-                    letterSpacing: "0.3em",
-                    textTransform: "uppercase",
-                    color: "#F0EDE8",
-                    border: "1px solid rgba(240,237,232,0.3)",
-                    padding: "14px 32px",
-                    textDecoration: "none",
-                  }}
-                >
-                  Узнать условия
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Center — dog photo */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.15 }}
-              style={{
-                display: "flex",
-                alignItems: "flex-end",
-                justifyContent: "center",
-                height: "100%",
-                minHeight: "500px",
-              }}
-            >
-              <img
-                src="/manus-storage/subscription_hero_bg_206534b7.png"
-                alt=""
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <Link
+                href="/booking"
                 style={{
-                  width: "100%",
-                  maxWidth: "420px",
-                  height: "auto",
-                  objectFit: "contain",
-                  objectPosition: "bottom",
-                  filter: "drop-shadow(0 0 60px rgba(201,169,110,0.12))",
+                  display: "inline-block",
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "10px",
+                  letterSpacing: "0.3em",
+                  textTransform: "uppercase",
+                  color: "#111110",
+                  backgroundColor: "#C9A96E",
+                  padding: "15px 36px",
+                  textDecoration: "none",
                 }}
-              />
-            </motion.div>
+              >
+                Оформить подписку
+              </Link>
+              <a
+                href="https://t.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-block",
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "10px",
+                  letterSpacing: "0.3em",
+                  textTransform: "uppercase",
+                  color: "#F0EDE8",
+                  border: "1px solid rgba(240,237,232,0.28)",
+                  padding: "15px 36px",
+                  textDecoration: "none",
+                }}
+              >
+                Узнать условия
+              </a>
+            </div>
+          </motion.div>
+        </div>
 
-            {/* Right — 4 cards 2×2 */}
-            <motion.div
-              initial={{ opacity: 0, x: 32 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.25 }}
-              style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", paddingLeft: "20px" }}
-            >
-              {advantages.map((a, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.35 + i * 0.1 }}
-                  style={{
-                    backgroundColor: "rgba(20,18,14,0.85)",
-                    border: "1px solid rgba(201,169,110,0.18)",
-                    padding: "24px 20px 20px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "12px",
-                    position: "relative",
-                  }}
-                >
-                  {/* sparkle top-right */}
-                  <svg style={{ position: "absolute", top: "10px", right: "10px", opacity: 0.5 }} width="10" height="10" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
-                  {/* icon in circle */}
-                  <div style={{
-                    width: "44px", height: "44px", borderRadius: "50%",
-                    border: "1px solid rgba(201,169,110,0.35)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#C9A96E",
-                  }}>{a.icon}</div>
-                  <h3 style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "17px",
-                    fontWeight: 400,
-                    color: "#F0EDE8",
-                    lineHeight: 1.3,
-                  }}>{a.title}</h3>
-                  <p style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: "11px",
-                    color: "rgba(240,237,232,0.4)",
-                    lineHeight: 1.7,
-                  }}>{a.text}</p>
-                  {/* bottom line */}
-                  <div style={{ height: "1px", width: "32px", background: "rgba(201,169,110,0.3)", marginTop: "4px" }} />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+        {/* Bottom: 4 horizontal cards */}
+        <div className="container" style={{ position: "relative", zIndex: 3, paddingBottom: "60px", maxWidth: "1400px" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.3 }}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "12px",
+            }}
+          >
+            {advantages.map((a, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4 + i * 0.08 }}
+                style={{
+                  backgroundColor: "rgba(12,11,9,0.82)",
+                  border: "1px solid rgba(201,169,110,0.18)",
+                  padding: "24px 20px 20px",
+                  backdropFilter: "blur(12px)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                  position: "relative",
+                }}
+              >
+                {/* sparkle top-right */}
+                <svg style={{ position: "absolute", top: "10px", right: "10px", opacity: 0.45 }} width="9" height="9" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+                {/* icon in circle */}
+                <div style={{
+                  width: "42px", height: "42px", borderRadius: "50%",
+                  border: "1px solid rgba(201,169,110,0.35)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  color: "#C9A96E",
+                }}>{a.icon}</div>
+                <h3 style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "17px",
+                  fontWeight: 400,
+                  color: "#F0EDE8",
+                  lineHeight: 1.3,
+                }}>{a.title}</h3>
+                <p style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "11px",
+                  color: "rgba(240,237,232,0.38)",
+                  lineHeight: 1.7,
+                }}>{a.text}</p>
+                <div style={{ height: "1px", width: "28px", background: "rgba(201,169,110,0.3)", marginTop: "4px" }} />
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -266,23 +255,25 @@ export default function Subscription() {
       <section style={{
         position: "relative",
         backgroundColor: "#0D0D0B",
-        paddingTop: "80px",
-        paddingBottom: "100px",
+        paddingTop: "100px",
+        paddingBottom: "120px",
         overflow: "hidden",
       }}>
+        {/* Top fade from hero */}
+        <div style={{
+          position: "absolute", top: 0, left: 0, right: 0, height: "120px",
+          background: "linear-gradient(to bottom, #0D0D0B, transparent)",
+          pointerEvents: "none",
+        }} />
         {/* Gold wave SVG bottom-left */}
-        <svg style={{ position: "absolute", bottom: 0, left: 0, width: "50%", opacity: 0.35, pointerEvents: "none" }} viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg style={{ position: "absolute", bottom: 0, left: 0, width: "50%", opacity: 0.3, pointerEvents: "none" }} viewBox="0 0 600 200" fill="none">
           <path d="M0 160 Q80 80 160 140 Q240 200 320 120 Q400 40 480 100 Q560 160 600 80" stroke="#C9A96E" strokeWidth="1" fill="none"/>
           <path d="M0 180 Q100 100 200 160 Q300 220 400 140 Q500 60 600 120" stroke="#C9A96E" strokeWidth="0.5" fill="none"/>
         </svg>
-        {/* Gold sparkle top-right */}
-        <svg style={{ position: "absolute", top: "20px", right: "40px", opacity: 0.5, pointerEvents: "none" }} width="20" height="20" viewBox="0 0 20 20">
-          <path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/>
-        </svg>
-        <svg style={{ position: "absolute", bottom: "60px", right: "200px", opacity: 0.3, pointerEvents: "none" }} width="10" height="10" viewBox="0 0 20 20">
-          <path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/>
-        </svg>
-
+        {/* Sparkles */}
+        <svg style={{ position: "absolute", top: "20px", right: "40px", opacity: 0.45, pointerEvents: "none" }} width="18" height="18" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+        <svg style={{ position: "absolute", bottom: "60px", right: "200px", opacity: 0.28, pointerEvents: "none" }} width="10" height="10" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
+        {/* Bottom fade */}
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
           background: "linear-gradient(to bottom, transparent, #0D0D0B)",
@@ -297,13 +288,13 @@ export default function Subscription() {
             transition={{ duration: 0.7 }}
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1.4fr",
+              gridTemplateColumns: "1fr 1.5fr",
               gap: "80px",
-              alignItems: "center",
+              alignItems: "start",
             }}
           >
             {/* Left label + heading */}
-            <div>
+            <div style={{ paddingTop: "8px" }}>
               <p style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "10px",
@@ -314,13 +305,13 @@ export default function Subscription() {
               }}>Подходит, если вы хотите</p>
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(40px, 4.5vw, 64px)",
+                fontSize: "clamp(44px, 5vw, 72px)",
                 fontWeight: 300,
                 color: "#F0EDE8",
-                lineHeight: 1.1,
-                marginBottom: "32px",
+                lineHeight: 1.08,
+                marginBottom: "36px",
               }}>
-                Уход без<br />лишних усилий.
+                Уход без<br />лишних<br />усилий.
               </h2>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <div style={{ height: "1px", width: "40px", background: "rgba(201,169,110,0.4)" }} />
@@ -328,7 +319,7 @@ export default function Subscription() {
               </div>
             </div>
 
-            {/* Right list with circle icons */}
+            {/* Right list: icon → text → line → diamond */}
             <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
               {[
                 { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>, text: "Убрать хаос с записью" },
@@ -347,10 +338,11 @@ export default function Subscription() {
                     display: "flex",
                     alignItems: "center",
                     gap: "20px",
-                    padding: "20px 0",
-                    borderBottom: "1px solid rgba(201,169,110,0.12)",
+                    padding: "22px 0",
+                    borderBottom: i < 4 ? "1px solid rgba(201,169,110,0.1)" : "none",
                   }}
                 >
+                  {/* icon in circle */}
                   <div style={{
                     flexShrink: 0,
                     width: "44px",
@@ -362,13 +354,17 @@ export default function Subscription() {
                     justifyContent: "center",
                     color: "#C9A96E",
                   }}>{item.icon}</div>
-                  <div style={{ flex: 1, height: "1px", background: "rgba(201,169,110,0.15)" }} />
+                  {/* text */}
                   <span style={{
                     fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "20px",
+                    fontSize: "clamp(20px, 2vw, 26px)",
                     fontWeight: 300,
                     color: "#F0EDE8",
+                    flex: 1,
                   }}>{item.text}</span>
+                  {/* line after text */}
+                  <div style={{ width: "60px", height: "1px", background: "rgba(201,169,110,0.2)", flexShrink: 0 }} />
+                  {/* diamond */}
                   <svg width="8" height="8" viewBox="0 0 10 10" style={{ flexShrink: 0 }}>
                     <path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/>
                   </svg>
@@ -386,6 +382,13 @@ export default function Subscription() {
         paddingTop: "80px",
         paddingBottom: "120px",
       }}>
+        {/* Top fade */}
+        <div style={{
+          position: "absolute", top: 0, left: 0, right: 0, height: "80px",
+          background: "linear-gradient(to bottom, #0D0D0B, transparent)",
+          pointerEvents: "none",
+        }} />
+        {/* Bottom fade to footer */}
         <div style={{
           position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
           background: "linear-gradient(to bottom, transparent, #080808)",
@@ -407,7 +410,7 @@ export default function Subscription() {
             </div>
             <h2 style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "clamp(32px, 4vw, 52px)",
+              fontSize: "clamp(36px, 4vw, 56px)",
               fontWeight: 300,
               color: "#F0EDE8",
             }}>Вопросы</h2>
