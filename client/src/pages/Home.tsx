@@ -656,7 +656,7 @@ export default function Home() {
       {/* ── FIRST VISIT / BOOKING CTA ──────────────────────────────────────── */}
       <section
         className="relative overflow-hidden"
-        style={{ backgroundImage: "url('/manus-storage/cta_bg_5c120b8e.webp')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}
+        style={{ backgroundImage: "url('/manus-storage/cta_bg2_1c175797.webp')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}
       >
         {/* Decorative faint circle */}
         <div className="absolute pointer-events-none" style={{ top: "50%", left: "52%", transform: "translate(-50%,-50%)", width: "520px", height: "520px", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.08)" }} />
