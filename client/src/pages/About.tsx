@@ -8,13 +8,55 @@ export default function About() {
   return (
     <PublicLayout>
       {/* Hero */}
-      <section className="bg-[#0E0E0E] py-24 md:py-32">
+      <section
+        style={{
+          backgroundImage: "url('/manus-storage/about_hero_bg_816a3a8f.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center right",
+          backgroundRepeat: "no-repeat",
+          minHeight: "560px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <div className="container">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>О сервисе</p>
-            <h1 className="text-white font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(48px, 8vw, 96px)" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ maxWidth: "520px" }}
+          >
+            {/* Label */}
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A96E", marginBottom: "8px" }}>
+              О СЕРВИСЕ
+            </p>
+            {/* Gold divider */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "24px" }}>
+              <div style={{ height: "1px", width: "32px", background: "#C9A96E" }} />
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M4 0L5 3L8 4L5 5L4 8L3 5L0 4L3 3Z" fill="#C9A96E"/></svg>
+            </div>
+            {/* Headline */}
+            <h1
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(52px, 7vw, 88px)",
+                fontWeight: 300,
+                color: "#FFFFFF",
+                lineHeight: 1.1,
+                marginBottom: "28px",
+              }}
+            >
               Не для всех.<br />Для своих.
             </h1>
+            {/* Bottom divider + subtitle */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
+              <div style={{ height: "1px", width: "32px", background: "#C9A96E" }} />
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M4 0L5 3L8 4L5 5L4 8L3 5L0 4L3 3Z" fill="#C9A96E"/></svg>
+              <div style={{ height: "1px", width: "32px", background: "#C9A96E" }} />
+            </div>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
+              СЕЛЕКТИВНЫЙ ГРУМИНГ
+            </p>
           </motion.div>
         </div>
       </section>
