@@ -248,9 +248,7 @@ export default function Home() {
           </div>
         </div>
        </section>{/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
-        {/* Seamless bottom fade to dark subscription #0D0D0B */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ height: "100px", background: "linear-gradient(to bottom, transparent, #0D0D0B)", zIndex: 1 }} />
+      <section className="relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", paddingTop: "56px", paddingBottom: "160px" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -333,11 +331,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── GRADIENT BRIDGE: BEFORE/AFTER → SUBSCRIPTION ── */}
-      <div style={{ height: "160px", background: "linear-gradient(to bottom, #F0EDE8 0%, #0D0D0B 100%)", margin: 0, padding: 0, lineHeight: 0, fontSize: 0 }} />
-
       {/* ── SUBSCRIPTION TEASER ────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#0D0D0B", padding: "48px 0", position: "relative" }}>   <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 24px" }}>
+      <section style={{ backgroundColor: "#0D0D0B", padding: "48px 0", position: "relative", marginTop: "-160px", paddingTop: "160px", background: "linear-gradient(to bottom, #F0EDE8 0%, #0D0D0B 160px, #0D0D0B 100%)" }}>   <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 24px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", alignItems: "stretch" }}>
 
             {/* ─── LEFT: yorkie photo + text ─── */}
