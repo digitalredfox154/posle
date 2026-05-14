@@ -335,51 +335,55 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
 
-            {/* Col 1 — yorkie photo bg + text overlay */}
+            {/* LEFT — yorkie photo bg + text overlay */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="relative overflow-hidden flex flex-col justify-between border border-white/[0.07] min-h-[520px]"
-              style={{
-                backgroundImage: "url('/manus-storage/sub_yorkie_28621a99.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
+              className="relative overflow-hidden border border-white/[0.07] rounded-sm"
+              style={{ minHeight: "580px" }}
             >
-              {/* Dark gradient overlay for text readability */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,10,8,0.72) 0%, rgba(10,10,8,0.35) 45%, rgba(10,10,8,0.75) 100%)" }} />
-              <div className="relative z-10 p-8 flex flex-col justify-between h-full">
+              {/* Background photo */}
+              <img
+                src="/manus-storage/sub_yorkie_28621a99.png"
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* Gradient overlay — dark left, transparent right */}
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to right, rgba(8,8,6,0.88) 0%, rgba(8,8,6,0.6) 50%, rgba(8,8,6,0.15) 100%)" }}
+              />
+              {/* Text content */}
+              <div className="relative z-10 p-8 flex flex-col justify-between h-full" style={{ minHeight: "580px" }}>
                 <div>
-                  {/* Label + divider */}
-                  <div className="flex items-center gap-3 mb-6">
+                  {/* Label */}
+                  <div className="flex items-center gap-3 mb-5">
                     <div className="h-px w-8" style={{ backgroundColor: "rgba(200,170,100,0.5)" }} />
-                    <p className="text-[#C8AA64] uppercase"
-                      style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.3em", fontSize: "10px" }}>
+                    <p style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.3em", fontSize: "10px", color: "#C8AA64", textTransform: "uppercase" }}>
                       Клуб резидентов
                     </p>
+                    <div className="h-px w-2" style={{ backgroundColor: "rgba(200,170,100,0.5)" }} />
+                    <span style={{ color: "#C8AA64", fontSize: "10px" }}>✦</span>
                   </div>
-                  <h2 className="text-white font-light leading-[1.1] mb-6"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontSize: "clamp(38px, 5vw, 62px)",
-                    }}>
+                  {/* Heading */}
+                  <h2 className="text-white font-light leading-[1.1] mb-8"
+                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(42px, 5.5vw, 68px)" }}>
                     Для тех, кто
                     <br />выбирает
                     <br /><span style={{ color: "#C8AA64" }}>постоянство</span>
                   </h2>
-                  <p className="text-white/55 leading-relaxed mb-10"
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", maxWidth: "300px" }}>
-                    Онлайн-дневник питомца в личном
-                    кабинете — всё о его жизни:
-                    визиты, уход, рекомендации
-                    и важные заметки. Всегда под рукой.
+                  {/* Description */}
+                  <p className="text-white/55 leading-relaxed"
+                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", maxWidth: "280px" }}>
+                    Онлайн-дневник питомца в личном кабинете — всё о его жизни: визиты, уход, рекомендации и важные заметки. Всегда под рукой.
                   </p>
                 </div>
+                {/* CTA button */}
                 <Link
                   href="/booking"
-                  className="inline-flex items-center justify-between px-7 py-4 self-start transition-all duration-300"
+                  className="inline-flex items-center justify-between transition-all duration-300 hover:opacity-90"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "10px",
@@ -387,145 +391,157 @@ export default function Home() {
                     textTransform: "uppercase",
                     backgroundColor: "#A8C5B5",
                     color: "#0E0E0E",
+                    padding: "16px 28px",
                     minWidth: "220px",
+                    marginTop: "40px",
                   }}
                 >
                   <span>Записаться</span>
-                  <span style={{ fontSize: "16px" }}>→</span>
+                  <span style={{ fontSize: "18px", marginLeft: "16px" }}>→</span>
                 </Link>
               </div>
             </motion.div>
 
-            {/* Col 2 — right block: diary + subscription card over poodle photo */}
+            {/* RIGHT — poodle photo bg + diary + subscription card */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="relative overflow-hidden flex flex-col justify-between border border-white/[0.07] min-h-[520px]"
-              style={{
-                backgroundImage: "url('/manus-storage/sub_bg_dark_53c0eb99.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center right",
-              }}
+              className="relative overflow-hidden border border-white/[0.07] rounded-sm"
+              style={{ minHeight: "580px" }}
             >
-              {/* Dark overlay */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(10,10,8,0.82) 0%, rgba(10,10,8,0.55) 55%, rgba(10,10,8,0.3) 100%)" }} />
-              <div className="relative z-10 p-8 flex flex-col h-full justify-between">
-                {/* Diary section */}
+              {/* Background photo */}
+              <img
+                src="/manus-storage/sub_bg_clean_a0c39a4c.png"
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* Gradient overlay — dark left, transparent right */}
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to right, rgba(8,8,6,0.92) 0%, rgba(8,8,6,0.75) 55%, rgba(8,8,6,0.2) 100%)" }}
+              />
+              {/* Content */}
+              <div className="relative z-10 p-8 flex flex-col justify-between h-full" style={{ minHeight: "580px" }}>
                 <div>
-                  {/* Star divider */}
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="h-px w-8" style={{ backgroundColor: "rgba(200,170,100,0.4)" }} />
-                    <span style={{ color: "#C8AA64", fontSize: "12px" }}>&#10022;</span>
-                  </div>
-                  <h3 className="text-white font-light mb-6"
-                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(26px, 3vw, 36px)" }}>
+                  {/* Diary heading */}
+                  <h3 className="text-white font-light mb-4"
+                    style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.5vw, 40px)" }}>
                     Онлайн-дневник питомца
                   </h3>
-                  <div className="flex flex-col">
-                {[
-                  {
-                    icon: (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" />
-                        <path d="M16 2v4M8 2v4M3 10h18" />
-                        <path d="M8 14h2M14 14h2M8 18h2M14 18h2" />
-                      </svg>
-                    ),
-                    text: "История визитов и процедур",
-                  },
-                  {
-                    icon: (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                      </svg>
-                    ),
-                    text: "Рекомендации по уходу и питанию",
-                  },
-                  {
-                    icon: (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" />
-                        <path d="M7 8h10M7 12h6M7 16h4" />
-                      </svg>
-                    ),
-                    text: "Заметки и важные наблюдения",
-                  },
-                  {
-                    icon: (
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                      </svg>
-                    ),
-                    text: "Напоминания о записях и процедурах",
-                  },
-                ].map((item, idx, arr) => (
-                  <div key={idx}>
-                    <div className="flex items-center gap-5 py-5">
-                      <div className="shrink-0 w-8 flex items-center justify-center">{item.icon}</div>
-                      <p className="text-white/80"
-                        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", lineHeight: "1.4" }}>
-                        {item.text}
-                      </p>
-                    </div>
-                    {idx < arr.length - 1 && (
-                      <div className="h-px" style={{ backgroundColor: "rgba(255,255,255,0.08)" }} />
-                    )}
+                  {/* Star divider */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="h-px w-12" style={{ backgroundColor: "rgba(200,170,100,0.4)" }} />
+                    <span style={{ color: "#C8AA64", fontSize: "12px" }}>✦</span>
                   </div>
-                ))}
+                  {/* Feature list */}
+                  <div className="flex flex-col">
+                    {[
+                      {
+                        icon: (
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
+                            <path d="M8 14h2M14 14h2M8 18h2M14 18h2" />
+                          </svg>
+                        ),
+                        text: "История визитов и процедур",
+                      },
+                      {
+                        icon: (
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                          </svg>
+                        ),
+                        text: "Рекомендации по уходу и питанию",
+                      },
+                      {
+                        icon: (
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M7 8h10M7 12h6M7 16h4" />
+                          </svg>
+                        ),
+                        text: "Заметки и важные наблюдения",
+                      },
+                      {
+                        icon: (
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                          </svg>
+                        ),
+                        text: "Напоминания о записях и процедурах",
+                      },
+                    ].map((item, idx, arr) => (
+                      <div key={idx}>
+                        <div className="flex items-center gap-5 py-4">
+                          <div className="shrink-0 w-8 flex items-center justify-center">{item.icon}</div>
+                          <p className="text-white/80"
+                            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", lineHeight: "1.4" }}>
+                            {item.text}
+                          </p>
+                        </div>
+                        {idx < arr.length - 1 && (
+                          <div className="h-px" style={{ backgroundColor: "rgba(255,255,255,0.08)" }} />
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
+
                 {/* Subscription card */}
                 <div
-                  className="mt-6 border flex items-center justify-between gap-4 p-5"
-                  style={{ borderColor: "rgba(200,170,100,0.2)", backgroundColor: "rgba(10,10,8,0.55)" }}
+                  className="mt-5 border p-5 flex items-center justify-between gap-4"
+                  style={{ borderColor: "rgba(200,170,100,0.25)", backgroundColor: "rgba(8,8,6,0.65)" }}
                 >
                   <div className="flex-1">
                     <p className="uppercase mb-2"
                       style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.25em", fontSize: "9px", color: "#C8AA64" }}>
                       Дополнение
                     </p>
-                    <h4 className="text-white font-light leading-tight mb-1"
-                      style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(20px, 2.5vw, 26px)" }}>
+                    <h4 className="text-white font-light leading-tight mb-2"
+                      style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(22px, 2.5vw, 30px)" }}>
                       Индивидуальная
                       <br />подписка
                     </h4>
-                    <p className="text-white/40 leading-relaxed mt-2"
+                    <p className="text-white/45 leading-relaxed"
                       style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px" }}>
                       Персональные привилегии и особое внимание для вашего питомца.
                     </p>
+                    <Link
+                      href="/subscription"
+                      className="mt-4 flex items-center justify-between px-5 py-3 transition-all duration-300 hover:border-white/40"
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: "9px",
+                        letterSpacing: "0.25em",
+                        textTransform: "uppercase",
+                        border: "1px solid rgba(255,255,255,0.18)",
+                        color: "rgba(255,255,255,0.7)",
+                      }}
+                    >
+                      <span>Обсудить условия</span>
+                      <span style={{ fontSize: "16px" }}>→</span>
+                    </Link>
                   </div>
-                  <div className="shrink-0 w-16 h-16">
+                  <div className="shrink-0 w-20 h-20">
                     <img
                       src="/manus-storage/posle-logo-olive_44f3e3e8.png"
                       alt="POSLE"
-                      className="w-full h-full object-contain opacity-80"
+                      className="w-full h-full object-contain opacity-75"
                     />
                   </div>
                 </div>
-                {/* CTA button */}
-                <Link
-                  href="/subscription"
-                  className="mt-4 flex items-center justify-between px-5 py-3.5 transition-all duration-300"
-                  style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    color: "rgba(255,255,255,0.7)",
-                  }}
-                >
-                  <span className="tracking-[0.25em] uppercase" style={{ fontSize: "11px" }}>Обсудить условия</span>
-                  <span className="text-lg">→</span>
-                </Link>
               </div>
             </motion.div>
 
           </div>
-         </div>
+        </div>
       </section>
 
-      {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
+            {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
       <section className="py-14 md:py-20" style={{ backgroundColor: "#F0EDE8" }}>
         <div className="container">
           <motion.div
