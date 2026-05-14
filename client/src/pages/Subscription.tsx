@@ -72,7 +72,7 @@ export default function Subscription() {
         <div style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "url('/manus-storage/subscription_spitz_bg_adc4b9f3.png')",
+          backgroundImage: "url('/manus-storage/spitz_sub_hero_4ec6c1fa.png')",
           backgroundSize: "cover",
           backgroundPosition: "center right",
           backgroundRepeat: "no-repeat",
