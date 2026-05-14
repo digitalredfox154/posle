@@ -108,7 +108,7 @@ export default function Subscription() {
         <svg style={{ position: "absolute", top: "55%", right: "8%", opacity: 0.35, pointerEvents: "none", zIndex: 1 }} width="8" height="8" viewBox="0 0 20 20"><path d="M10 0L11.8 8.2L20 10L11.8 11.8L10 20L8.2 11.8L0 10L8.2 8.2Z" fill="#C9A96E"/></svg>
 
         {/* Top content: label + heading + subtitle + buttons */}
-        <div className="container" style={{ position: "relative", zIndex: 3, paddingTop: "140px", paddingBottom: "0", maxWidth: "1400px" }}>
+        <div className="container" style={{ position: "relative", zIndex: 3, paddingTop: "140px", paddingBottom: "0", maxWidth: "1400px", flex: "1" }}>
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
@@ -194,7 +194,7 @@ export default function Subscription() {
         </div>
 
         {/* Bottom: 4 horizontal cards */}
-        <div className="container" style={{ position: "relative", zIndex: 3, paddingBottom: "60px", maxWidth: "1400px" }}>
+        <div className="container" style={{ position: "relative", zIndex: 3, paddingBottom: "60px", paddingTop: "80px", maxWidth: "1400px" }}>
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
