@@ -9,13 +9,14 @@ export default function About() {
     <PublicLayout>
       {/* Hero */}
       <section
-        className="hero-bg-mobile-none"
+        className="about-hero-section"
         style={{
           position: "relative",
           backgroundImage: "url('/manus-storage/about_hero_bg2_29fe14f9.png')",
           backgroundSize: "cover",
           backgroundPosition: "center top",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "#111110",
           minHeight: "100vh",
           display: "flex",
           alignItems: "center",
@@ -78,7 +79,7 @@ export default function About() {
 
 
       {/* How I Work */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#111110" }}>
+      <section className="py-14 md:py-32" style={{ backgroundColor: "#111110" }}>
         <div className="container">
           {/* Heading */}
           <motion.div
@@ -107,7 +108,7 @@ export default function About() {
             <div style={{ height: "1px", width: "48px", background: "#C9A96E" }} />
           </div>
           {/* Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
             {[
               { num: "01", title: "Камерный формат", text: "Один питомец за раз. Никакого шума, никакого стресса от других животных." },
               { num: "02", title: "Спокойный процесс", text: "Без спешки и конвейера. Там, где нужно больше времени — я даю его." },
@@ -170,7 +171,7 @@ export default function About() {
       </section>
 
       {/* Space / Location */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#111110" }}>
+      <section className="py-14 md:py-32" style={{ backgroundColor: "#111110" }}>
         <div className="container">
           {/* Section label */}
           <motion.div
@@ -189,7 +190,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
             {/* Left: text */}
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <h2
@@ -274,8 +275,8 @@ export default function About() {
         style={{
           position: "relative",
           backgroundColor: "#111110",
-          paddingTop: "96px",
-          paddingBottom: "120px",
+          paddingTop: "clamp(56px, 10vw, 96px)",
+          paddingBottom: "clamp(72px, 12vw, 120px)",
         }}
       >
         {/* Fade to footer */}

@@ -136,7 +136,7 @@ export default function Home() {
 
 
         <div className="container relative" style={{ zIndex: 1 }}>
-          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "clamp(32px, 5vw, 80px)", alignItems: "center" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 philosophy-grid" style={{ gap: "clamp(32px, 5vw, 80px)", alignItems: "center" }}>
 
             {/* ── LEFT: heading + text ── */}
             <div>
@@ -541,6 +541,7 @@ export default function Home() {
           src="/manus-storage/branch_transparent_222dc413.png"
           alt=""
           aria-hidden="true"
+          className="branch-deco"
           style={{ position: "absolute", bottom: "-60px", left: "-60px", width: "380px", opacity: 0.85, pointerEvents: "none", zIndex: 2, transform: "rotate(20deg)" }}
         />
         {/* Branch right — small, top-right corner, hanging down */}
@@ -548,6 +549,7 @@ export default function Home() {
           src="/manus-storage/branch_transparent_222dc413.png"
           alt=""
           aria-hidden="true"
+          className="branch-deco"
           style={{ position: "absolute", top: "-20px", right: "0px", width: "220px", opacity: 0.85, pointerEvents: "none", zIndex: 2, transform: "rotate(170deg) scaleX(-1)" }}
         />
         <div className="container relative" style={{ zIndex: 1 }}>
@@ -559,9 +561,9 @@ export default function Home() {
             className="max-w-5xl mx-auto rounded-2xl overflow-hidden"
             style={{ backgroundColor: "rgba(248,245,240,0.9)", border: "1px solid rgba(180,150,90,0.18)" }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-[42%_58%]">
+            <div className="grid grid-cols-1 md:grid-cols-[42%_58%] master-bio-grid">
               {/* Left — photo */}
-              <div className="relative" style={{ minHeight: "480px" }}>
+              <div className="relative master-bio-photo" style={{ minHeight: "480px" }}>
                 <img
                   src={MASTER_PHOTO}
                   alt="Мастер"
@@ -587,7 +589,7 @@ export default function Home() {
               </div>
 
               {/* Right — text */}
-              <div style={{ padding: "48px 48px 40px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <div className="master-bio-text" style={{ padding: "48px 48px 40px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                 {/* Label + line + diamond */}
                 <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", color: "#B8965A", textTransform: "uppercase", margin: 0 }}>МАСТЕР</p>
@@ -653,11 +655,11 @@ export default function Home() {
 
       {/* ── FIRST VISIT / BOOKING CTA ──────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden hero-bg-mobile-none"
-        style={{ backgroundImage: "url('/manus-storage/cta_bg3_c36fca8d.png')", backgroundSize: "cover", backgroundPosition: "center center", backgroundRepeat: "no-repeat" }}
+        className="relative overflow-hidden dark-hero-section"
+        style={{ backgroundImage: "url('/manus-storage/cta_bg3_c36fca8d.png')", backgroundSize: "cover", backgroundPosition: "center center", backgroundRepeat: "no-repeat", backgroundColor: "#0E0E0E" }}
       >
-        <div className="container relative z-10 py-16 md:py-24">
-          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "clamp(24px, 3vw, 48px)", alignItems: "center", maxWidth: "680px", marginLeft: "auto", marginRight: "auto" }}>
+        <div className="container relative z-10 py-14 md:py-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 cta-section-grid" style={{ gap: "clamp(24px, 3vw, 48px)", alignItems: "center", maxWidth: "680px", marginLeft: "auto", marginRight: "auto" }}>
 
             {/* ── LEFT: text + button ── */}
             <motion.div

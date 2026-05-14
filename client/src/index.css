@@ -536,3 +536,131 @@
 .page-enter {
   animation: pageEnter 0.4s ease both;
 }
+
+/* ─── COMPREHENSIVE MOBILE ADAPTIVE ─────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  /* ── Hero: hide inner bg image div, keep solid bg color ── */
+  .dark-hero-section > div[style*="backgroundImage"],
+  .about-hero-section > div[style*="backgroundImage"] {
+    display: none !important;
+  }
+  /* Hide left-to-right gradient overlay (no bg image on mobile) */
+  .dark-hero-section > div[style*="linear-gradient(to right"],
+  .about-hero-section > div[style*="linear-gradient(to right"] {
+    display: none !important;
+  }
+
+  /* ── Typography: scale down large headings ── */
+  h1[style*="clamp(56px"],
+  h1[style*="clamp(52px"] {
+    font-size: clamp(38px, 12vw, 56px) !important;
+  }
+  h1[style*="clamp(36px"] {
+    font-size: clamp(30px, 10vw, 48px) !important;
+  }
+
+  /* ── Subscription hero title: allow wrapping ── */
+  .dark-hero-section span[style*="whiteSpace"] {
+    white-space: normal !important;
+  }
+
+  /* ── Buttons: stack and full width in flex containers ── */
+  div[style*="display: flex"][style*="flexWrap: wrap"] {
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  div[style*="display: flex"][style*="flexWrap: wrap"] > a,
+  div[style*="display: flex"][style*="flexWrap: wrap"] > button {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* ── Section padding: reduce for mobile ── */
+  section.py-14,
+  section.py-16,
+  section.py-24,
+  section.py-32 {
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+  }
+
+  /* ── About: How I Work cards: 2 per row ── */
+  .grid-cols-2.md\:grid-cols-4 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .grid-cols-2.md\:grid-cols-4 > div {
+    padding: 18px 14px 20px !important;
+  }
+  .grid-cols-2.md\:grid-cols-4 h3 {
+    font-size: 17px !important;
+  }
+  .grid-cols-2.md\:grid-cols-4 p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ── Subscription advantages cards: 2 per row ── */
+  .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 > div {
+    padding: 18px 14px 18px !important;
+  }
+  .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 h3 {
+    font-size: 15px !important;
+  }
+  .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ── Map iframe ── */
+  iframe {
+    height: 220px !important;
+  }
+
+  /* ── Subscription FAQ: full width ── */
+  div[style*="maxWidth: \"760px\""],
+  div[style*="max-width: 760px"] {
+    max-width: 100% !important;
+  }
+
+  /* ── Decorative SVG arcs: hide ── */
+  svg[style*="position: absolute"][style*="opacity: 0.18"] {
+    display: none !important;
+  }
+
+  /* ── Home hero: ensure text is visible ── */
+  section.home-hero h1,
+  section.home-hero p {
+    color: #0E0E0E !important;
+  }
+
+  /* ── Subscription teaser grid: single column ── */
+  .sub-teaser-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Contacts: info rows wrap ── */
+  div[style*="justifyContent: space-between"][style*="alignItems: baseline"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+  }
+
+  /* ── FITS block items: stack ── */
+  div[style*="display: flex"][style*="alignItems: center"][style*="gap: \"clamp(32px"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  /* Hide FITS decorative lines on mobile */
+  div[style*="flex: 1"][style*="height: \"1px\""],
+  div[style*="flex: 1"][style*="height: '1px'"] {
+    display: none !important;
+  }
+}

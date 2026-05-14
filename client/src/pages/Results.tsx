@@ -16,13 +16,14 @@ export default function Results() {
 
       {/* ── HERO ── */}
       <section
-        className="hero-bg-mobile-none"
+        className="dark-hero-section"
         style={{
           position: "relative",
           minHeight: "100vh",
           backgroundImage: "url('/manus-storage/results_hero_bg_e804746f.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          backgroundColor: "#111110",
           display: "flex",
           alignItems: "center",
           paddingTop: "clamp(80px, 15vw, 120px)",
@@ -91,8 +92,8 @@ export default function Results() {
         style={{
           position: "relative",
           backgroundColor: "#111110",
-          paddingTop: "80px",
-          paddingBottom: "100px",
+          paddingTop: "clamp(48px, 8vw, 80px)",
+          paddingBottom: "clamp(60px, 10vw, 100px)",
         }}
       >
         {/* fade to CTA */}
@@ -129,8 +130,8 @@ export default function Results() {
         style={{
           position: "relative",
           backgroundColor: "#0D0D0B",
-          paddingTop: "96px",
-          paddingBottom: "120px",
+          paddingTop: "clamp(56px, 10vw, 96px)",
+          paddingBottom: "clamp(72px, 12vw, 120px)",
         }}
       >
         {/* fade to footer */}

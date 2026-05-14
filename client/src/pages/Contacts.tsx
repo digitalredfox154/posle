@@ -8,13 +8,14 @@ export default function Contacts() {
 
       {/* ── HERO ── */}
       <section
-        className="hero-bg-mobile-none"
+        className="dark-hero-section"
         style={{
           position: "relative",
           minHeight: "100vh",
           backgroundImage: "url('/manus-storage/contacts_hero_bg_c3d5fab0.png')",
           backgroundSize: "cover",
           backgroundPosition: "center right",
+          backgroundColor: "#111110",
           display: "flex",
           alignItems: "center",
           paddingTop: "clamp(80px, 15vw, 120px)",
@@ -83,8 +84,8 @@ export default function Contacts() {
         style={{
           position: "relative",
           backgroundColor: "#111110",
-          paddingTop: "80px",
-          paddingBottom: "100px",
+          paddingTop: "clamp(48px, 8vw, 80px)",
+          paddingBottom: "clamp(60px, 10vw, 100px)",
         }}
       >
         {/* fade to CTA */}
@@ -95,7 +96,7 @@ export default function Contacts() {
         }} />
 
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
 
             {/* Info */}
             <motion.div
@@ -185,8 +186,8 @@ export default function Contacts() {
         style={{
           position: "relative",
           backgroundColor: "#0D0D0B",
-          paddingTop: "96px",
-          paddingBottom: "120px",
+          paddingTop: "clamp(56px, 10vw, 96px)",
+          paddingBottom: "clamp(72px, 12vw, 120px)",
         }}
       >
         {/* fade to footer */}

@@ -60,7 +60,7 @@ export default function Subscription() {
     <PublicLayout>
 
       {/* ── HERO ── */}
-      <section className="hero-bg-mobile-none" style={{
+      <section className="dark-hero-section" style={{
         position: "relative",
         minHeight: "100vh",
         display: "flex",
