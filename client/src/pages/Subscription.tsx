@@ -131,7 +131,7 @@ export default function Subscription() {
               lineHeight: 1.02,
               marginBottom: "32px",
             }}>
-              Системный уход на весь год.
+              Системный уход<br />на весь год.
             </h1>
 
             <div style={{ height: "1px", width: "56px", background: "rgba(201,169,110,0.45)", marginBottom: "28px" }} />
