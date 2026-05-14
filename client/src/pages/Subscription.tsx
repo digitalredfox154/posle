@@ -133,8 +133,8 @@ export default function Subscription() {
               lineHeight: 1.1,
               marginBottom: "32px",
             }}>
-              <span style={{ display: "block", whiteSpace: "nowrap" }}>Системный уход</span>
-              <span style={{ display: "block", whiteSpace: "nowrap" }}>на весь год.</span>
+              <span style={{ display: "block" }}>Системный уход</span>
+              <span style={{ display: "block" }}>на весь год.</span>
             </h1>
 
             <div style={{ height: "1px", width: "56px", background: "rgba(201,169,110,0.45)", marginBottom: "28px" }} />
@@ -151,18 +151,19 @@ export default function Subscription() {
               Подписка создана для владельцев, которые хотят, чтобы питомец всегда выглядел ухоженно, а уход не превращался в очередную задачу в календаре.
             </p>
 
-            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+            <div className="flex flex-col sm:flex-row" style={{ gap: "12px" }}>
               <Link
                 href="/booking"
                 className="btn-mint"
                 style={{
-                  display: "inline-block",
+                  display: "block",
                   fontFamily: "'Inter', sans-serif",
                   fontSize: "10px",
                   letterSpacing: "0.3em",
                   textTransform: "uppercase",
                   padding: "15px 36px",
                   textDecoration: "none",
+                  textAlign: "center",
                 }}
               >
                 Оформить подписку
@@ -173,13 +174,14 @@ export default function Subscription() {
                 rel="noopener noreferrer"
                 className="btn-outline-light"
                 style={{
-                  display: "inline-block",
+                  display: "block",
                   fontFamily: "'Inter', sans-serif",
                   fontSize: "10px",
                   letterSpacing: "0.3em",
                   textTransform: "uppercase",
                   padding: "15px 36px",
                   textDecoration: "none",
+                  textAlign: "center",
                 }}
               >
                 Узнать условия
@@ -292,10 +294,9 @@ export default function Subscription() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr]"
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1.5fr",
-              gap: "80px",
+              gap: "clamp(32px, 6vw, 80px)",
               alignItems: "start",
             }}
           >
@@ -442,7 +443,8 @@ export default function Subscription() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            style={{ marginTop: "64px", display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}
+            className="flex flex-col sm:flex-row justify-center"
+            style={{ marginTop: "64px", gap: "16px" }}
           >
             <Link
               href="/booking"
