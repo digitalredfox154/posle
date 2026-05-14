@@ -415,7 +415,7 @@ export default function Home() {
               }}
             >
               <img
-                src="/manus-storage/sub_poodle_v2_a9722432.png"
+                src="/manus-storage/sub_poodle_v3_adbbb892.png"
                 alt=""
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
               />
