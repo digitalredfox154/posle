@@ -249,6 +249,8 @@ export default function Home() {
         </div>
        </section>{/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
       <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+        {/* Seamless bottom fade to dark subscription #0D0D0B */}
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ height: "100px", background: "linear-gradient(to bottom, transparent, #0D0D0B)", zIndex: 1 }} />
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -331,9 +333,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SUBSCRIPTION TEASER ──────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#0D0D0B", padding: "48px 0" }}>
-        <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 24px" }}>
+      {/* ── SUBSCRIPTION TEASER ────────────────────────────────────────────────── */}
+      <section style={{ backgroundColor: "#0D0D0B", padding: "48px 0", position: "relative" }}>   <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 24px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", alignItems: "stretch" }}>
 
             {/* ─── LEFT: yorkie photo + text ─── */}
