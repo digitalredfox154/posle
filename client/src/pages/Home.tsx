@@ -135,65 +135,137 @@ export default function Home() {
         className="relative w-full overflow-hidden"
         style={{ backgroundColor: "#F0EDE8" }}
       >
-        {/* Background image fills the section */}
+        {/* Background image — sets section height naturally */}
         <img
-          src="/manus-storage/philosophy_bg2_44d1610f.png"
+          src="/manus-storage/philosophy_bg3_3544d52b.png"
           alt=""
           aria-hidden="true"
           style={{ display: "block", width: "100%", height: "auto" }}
         />
 
-        {/* Text overlay — absolute, matches bg image proportions */}
-        <div style={{ position: "absolute", inset: 0, display: "flex" }}>
-          {/* Left zone ~45% — heading + text on the large card area */}
-          <div style={{ width: "45%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "5% 4% 5% 5%" }}>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(8px, 0.9vw, 11px)", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "clamp(8px, 1.5vw, 20px)" }}>
+        {/* Overlay — absolute, covers entire section */}
+        <div style={{ position: "absolute", inset: 0 }}>
+
+          {/* ── LEFT ZONE: heading + text (big card area ~5%–50%) ── */}
+          <div style={{
+            position: "absolute",
+            left: "5%", top: "12%",
+            width: "43%",
+            display: "flex", flexDirection: "column", justifyContent: "flex-start",
+          }}>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(8px, 0.75vw, 11px)",
+              letterSpacing: "0.35em",
+              color: "#A8C5B5",
+              textTransform: "uppercase",
+              marginBottom: "clamp(8px, 1.2vw, 18px)",
+            }}>
               ФИЛОСОФИЯ
             </p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(22px, 4vw, 56px)", fontWeight: 300, color: "#0E0E0E", lineHeight: 1.15, marginBottom: "clamp(8px, 1.5vw, 20px)" }}>
+            <h2 style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: "clamp(20px, 3.6vw, 52px)",
+              fontWeight: 300,
+              color: "#1a1a14",
+              lineHeight: 1.15,
+              marginBottom: "clamp(8px, 1.2vw, 18px)",
+            }}>
               Один питомец.<br />Полное внимание.{" "}
               <span style={{ color: "#A8C5B5" }}>✦</span>
             </h2>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "clamp(8px, 1.5vw, 20px)" }}>
-              <div style={{ width: "28px", height: "1px", backgroundColor: "rgba(184,150,90,0.4)" }} />
-              <span style={{ color: "#B8965A", fontSize: "clamp(8px, 0.8vw, 11px)" }}>&#10022;</span>
+            <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "clamp(8px, 1.2vw, 18px)" }}>
+              <div style={{ width: "28px", height: "1px", backgroundColor: "rgba(184,150,90,0.45)" }} />
+              <span style={{ color: "#B8965A", fontSize: "clamp(7px, 0.7vw, 10px)" }}>&#10022;</span>
             </div>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(10px, 1.1vw, 14px)", color: "rgba(14,14,14,0.6)", lineHeight: 1.75, marginBottom: "clamp(6px, 1vw, 14px)" }}>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(9px, 0.9vw, 13px)",
+              color: "rgba(14,14,14,0.58)",
+              lineHeight: 1.8,
+              marginBottom: "clamp(6px, 0.8vw, 12px)",
+            }}>
               Мы не работаем в потоке. У каждой собаки есть свой характер, привычки, тревоги и границы. Поэтому визит в ПОСЛЕ строится спокойно: без спешки, лишнего шума и ощущения конвейера.
             </p>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(10px, 1.1vw, 14px)", color: "rgba(14,14,14,0.6)", lineHeight: 1.75, marginBottom: "clamp(6px, 1vw, 14px)" }}>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(9px, 0.9vw, 13px)",
+              color: "rgba(14,14,14,0.58)",
+              lineHeight: 1.8,
+              marginBottom: "clamp(6px, 0.8vw, 12px)",
+            }}>
               Мастер видит не только шерсть и форму, но и настроение питомца. Где нужно — даст время привыкнуть. Где важно — сделает мягче.
             </p>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(10px, 1.1vw, 14px)", color: "rgba(14,14,14,0.6)", lineHeight: 1.75 }}>
+            <p style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "clamp(9px, 0.9vw, 13px)",
+              color: "rgba(14,14,14,0.58)",
+              lineHeight: 1.8,
+            }}>
               ПОСЛЕ — это момент, когда собака выглядит ухоженно, чувствует себя спокойно, а владелец понимает: к деталям здесь относятся всерьёз.
             </p>
           </div>
 
-          {/* Right zone ~55% — 2x2 grid matching the 4 card positions */}
-          <div style={{ width: "55%", display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", padding: "6% 5% 6% 3%", gap: "2%" }}>
-            {[
-              { num: "01", text: "Камерный формат", icon: <svg width="clamp(16px,1.6vw,24px)" height="clamp(16px,1.6vw,24px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.4"><rect x="4" y="4" width="10" height="10" rx="1.5"/><rect x="18" y="4" width="10" height="10" rx="1.5"/><rect x="4" y="18" width="10" height="10" rx="1.5"/><rect x="18" y="18" width="10" height="10" rx="1.5"/></svg> },
-              { num: "02", text: "Спокойный процесс", icon: <svg width="clamp(16px,1.6vw,24px)" height="clamp(16px,1.6vw,24px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.4"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l4 4" strokeLinecap="round"/></svg> },
-              { num: "03", text: "Внимание к характеру", icon: <svg width="clamp(16px,1.6vw,24px)" height="clamp(16px,1.6vw,24px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.4"><path d="M16 27S5 20 5 12a6 6 0 0111-3.3A6 6 0 0127 12c0 8-11 15-11 15z"/></svg> },
-              { num: "04", text: "Постоянный мастер", icon: <svg width="clamp(16px,1.6vw,24px)" height="clamp(16px,1.6vw,24px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.4"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="5"/><path d="M16 5v3M16 24v3M5 16h3M24 16h3" strokeLinecap="round"/></svg> },
-            ].map((item) => (
-              <div key={item.num} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "8% 8% 10%" }}>
-                {/* Top: number + icon */}
-                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 2vw, 28px)", fontWeight: 300, color: "rgba(168,197,181,0.7)", lineHeight: 1 }}>{item.num}</span>
-                  {item.icon}
-                </div>
-                {/* Bottom: divider + title */}
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(4px, 0.6vw, 10px)" }}>
-                    <div style={{ width: "18px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
-                    <span style={{ color: "#B8965A", fontSize: "8px" }}>&#10022;</span>
-                  </div>
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(13px, 1.5vw, 20px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.3, margin: 0, whiteSpace: "pre-line" }}>{item.text}</p>
-                </div>
+          {/* ── CARD 01 — top-left (x:52%–73%, y:8%–47%) ── */}
+          <div style={{ position: "absolute", left: "53%", top: "11%", width: "19%", height: "38%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "3% 3% 4%" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(14px, 1.8vw, 26px)", fontWeight: 300, color: "rgba(168,197,181,0.65)" }}>01</span>
+              <svg width="clamp(14px,1.4vw,22px)" height="clamp(14px,1.4vw,22px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><rect x="4" y="4" width="10" height="10" rx="1.5"/><rect x="18" y="4" width="10" height="10" rx="1.5"/><rect x="4" y="18" width="10" height="10" rx="1.5"/><rect x="18" y="18" width="10" height="10" rx="1.5"/></svg>
+            </div>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(3px, 0.5vw, 8px)" }}>
+                <div style={{ width: "16px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
+                <span style={{ color: "#B8965A", fontSize: "7px" }}>&#10022;</span>
               </div>
-            ))}
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(12px, 1.4vw, 20px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.3, margin: 0 }}>Камерный формат</p>
+            </div>
           </div>
+
+          {/* ── CARD 02 — top-right (x:74%–97%, y:8%–47%) ── */}
+          <div style={{ position: "absolute", left: "74.5%", top: "11%", width: "22%", height: "38%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "3% 3% 4%" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(14px, 1.8vw, 26px)", fontWeight: 300, color: "rgba(168,197,181,0.65)" }}>02</span>
+              <svg width="clamp(14px,1.4vw,22px)" height="clamp(14px,1.4vw,22px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l4 4" strokeLinecap="round"/></svg>
+            </div>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(3px, 0.5vw, 8px)" }}>
+                <div style={{ width: "16px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
+                <span style={{ color: "#B8965A", fontSize: "7px" }}>&#10022;</span>
+              </div>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(12px, 1.4vw, 20px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.3, margin: 0 }}>Спокойный процесс</p>
+            </div>
+          </div>
+
+          {/* ── CARD 03 — bottom-left (x:52%–73%, y:49%–88%) ── */}
+          <div style={{ position: "absolute", left: "53%", top: "51%", width: "19%", height: "38%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "3% 3% 4%" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(14px, 1.8vw, 26px)", fontWeight: 300, color: "rgba(168,197,181,0.65)" }}>03</span>
+              <svg width="clamp(14px,1.4vw,22px)" height="clamp(14px,1.4vw,22px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><path d="M16 27S5 20 5 12a6 6 0 0111-3.3A6 6 0 0127 12c0 8-11 15-11 15z"/></svg>
+            </div>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(3px, 0.5vw, 8px)" }}>
+                <div style={{ width: "16px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
+                <span style={{ color: "#B8965A", fontSize: "7px" }}>&#10022;</span>
+              </div>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(12px, 1.4vw, 20px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.3, margin: 0 }}>Внимание к характеру</p>
+            </div>
+          </div>
+
+          {/* ── CARD 04 — bottom-right (x:74%–97%, y:49%–88%) ── */}
+          <div style={{ position: "absolute", left: "74.5%", top: "51%", width: "22%", height: "38%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "3% 3% 4%" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(14px, 1.8vw, 26px)", fontWeight: 300, color: "rgba(168,197,181,0.65)" }}>04</span>
+              <svg width="clamp(14px,1.4vw,22px)" height="clamp(14px,1.4vw,22px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="5"/><path d="M16 5v3M16 24v3M5 16h3M24 16h3" strokeLinecap="round"/></svg>
+            </div>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(3px, 0.5vw, 8px)" }}>
+                <div style={{ width: "16px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
+                <span style={{ color: "#B8965A", fontSize: "7px" }}>&#10022;</span>
+              </div>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(12px, 1.4vw, 20px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.3, margin: 0 }}>Постоянный мастер</p>
+            </div>
+          </div>
+
         </div>
       </section>
 
