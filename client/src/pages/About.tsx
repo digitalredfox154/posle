@@ -10,9 +10,9 @@ export default function About() {
       {/* Hero */}
       <section
         style={{
-          backgroundImage: "url('/manus-storage/about_hero_bg_816a3a8f.png')",
+          backgroundImage: "url('/manus-storage/about_hero_bg2_29fe14f9.png')",
           backgroundSize: "cover",
-          backgroundPosition: "center right",
+          backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           minHeight: "560px",
           display: "flex",
