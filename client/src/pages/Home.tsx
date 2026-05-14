@@ -331,8 +331,8 @@ export default function Home() {
       </section>
 
       {/* ── SUBSCRIPTION TEASER ──────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden py-14 md:py-20"
+       <section
+        className="relative overflow-hidden"
         style={{ backgroundColor: "#0A0A08" }}
       >
         {/* Full-section background photo */}
@@ -345,11 +345,10 @@ export default function Home() {
         {/* Subtle dark overlay to keep text readable */}
         <div
           className="absolute inset-0"
-          style={{ background: "rgba(8,8,6,0.45)" }}
+          style={{ background: "rgba(8,8,6,0.35)" }}
         />
-
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+        <div className="relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch">
 
             {/* LEFT — text + CTA */}
             <motion.div
@@ -357,8 +356,8 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col justify-between border border-white/[0.07] rounded-sm p-8"
-              style={{ backgroundColor: "rgba(8,8,6,0.6)", minHeight: "560px", backdropFilter: "blur(2px)" }}
+              className="flex flex-col justify-between p-10 md:p-14"
+              style={{ minHeight: "56vw", maxHeight: "700px" }}
             >
               <div>
                 {/* Label */}
@@ -408,8 +407,8 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="flex flex-col justify-between border border-white/[0.07] rounded-sm p-8"
-              style={{ backgroundColor: "rgba(8,8,6,0.6)", minHeight: "560px", backdropFilter: "blur(2px)" }}
+              className="flex flex-col justify-between p-10 md:p-14"
+              style={{ minHeight: "56vw", maxHeight: "700px" }}
             >
               <div>
                 {/* Diary heading */}
