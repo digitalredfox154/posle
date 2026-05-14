@@ -10,15 +10,27 @@ export default function About() {
       {/* Hero */}
       <section
         style={{
+          position: "relative",
           backgroundImage: "url('/manus-storage/about_hero_bg2_29fe14f9.png')",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center top",
           backgroundRepeat: "no-repeat",
-          minHeight: "560px",
+          minHeight: "100vh",
           display: "flex",
           alignItems: "center",
         }}
       >
+        {/* Bottom fade to dark */}
+        <div style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "220px",
+          background: "linear-gradient(to bottom, transparent, #111110)",
+          pointerEvents: "none",
+          zIndex: 1,
+        }} />
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
