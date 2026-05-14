@@ -265,17 +265,91 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ backgroundColor: "#0E0E0E" }}>
-        <div className="container text-center">
-          <h2 className="text-white font-light mb-8" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>
+      <section
+        style={{
+          position: "relative",
+          backgroundColor: "#111110",
+          paddingTop: "96px",
+          paddingBottom: "120px",
+        }}
+      >
+        {/* Fade to footer */}
+        <div style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "120px",
+          background: "linear-gradient(to bottom, transparent, #080808)",
+          pointerEvents: "none",
+        }} />
+
+        <div className="container text-center" style={{ position: "relative", zIndex: 1 }}>
+          {/* Gold divider top */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "40px" }}>
+            <div style={{ height: "1px", width: "60px", background: "rgba(201,169,110,0.4)" }} />
+            <svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 0L6.2 3.8L10 5L6.2 6.2L5 10L3.8 6.2L0 5L3.8 3.8Z" fill="#C9A96E"/></svg>
+            <div style={{ height: "1px", width: "60px", background: "rgba(201,169,110,0.4)" }} />
+          </div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: "clamp(36px, 5vw, 64px)",
+              fontWeight: 300,
+              color: "#F0EDE8",
+              marginBottom: "24px",
+              lineHeight: 1.15,
+            }}
+          >
             Начните с знакомства
-          </h2>
-          <p className="text-white/40 max-w-sm mx-auto leading-relaxed mb-10" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: "20px",
+              fontWeight: 300,
+              color: "rgba(240,237,232,0.45)",
+              maxWidth: "440px",
+              margin: "0 auto 48px",
+              lineHeight: 1.6,
+            }}
+          >
             Первый визит — это знакомство. Мы смотрим, слушаем и подбираем то, что нужно именно вашему питомцу.
-          </p>
-          <Link href="/booking" className="btn-mint inline-block text-[10px] tracking-[0.3em] uppercase px-10 py-4" style={{ fontFamily: "'Inter', sans-serif" }}>
-            Записаться
-          </Link>
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+          >
+            <Link
+              href="/booking"
+              style={{
+                display: "inline-block",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "10px",
+                letterSpacing: "0.3em",
+                textTransform: "uppercase",
+                color: "#111110",
+                backgroundColor: "#C9A96E",
+                padding: "16px 48px",
+                border: "none",
+              }}
+            >
+              Записаться
+            </Link>
+          </motion.div>
         </div>
       </section>
     </PublicLayout>
