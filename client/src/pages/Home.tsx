@@ -131,16 +131,16 @@ export default function Home() {
         </div>
       </section>
         {/* ── PHILOSOPHY ────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/philosophy_bg_b6159add.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
-        {/* Branch left — large */}
+      <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#F0EDE8" }}>
+        {/* Branch left — stays outside container, low z-index, won't overlap text */}
         <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true"
-          style={{ position: "absolute", bottom: "-60px", left: "-60px", width: "380px", opacity: 0.85, pointerEvents: "none", zIndex: 0, transform: "rotate(20deg)" }} />
-        {/* Branch right — small, top-right */}
+          style={{ position: "absolute", bottom: "-40px", left: "-50px", width: "340px", opacity: 0.8, pointerEvents: "none", zIndex: 0, transform: "rotate(15deg)" }} />
+        {/* Branch right — top-right, clipped by overflow-hidden */}
         <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true"
-          style={{ position: "absolute", top: "-20px", right: "0px", width: "220px", opacity: 0.85, pointerEvents: "none", zIndex: 0, transform: "rotate(170deg) scaleX(-1)" }} />
+          style={{ position: "absolute", top: "-30px", right: "-30px", width: "240px", opacity: 0.8, pointerEvents: "none", zIndex: 0, transform: "rotate(175deg) scaleX(-1)" }} />
 
         <div className="container relative" style={{ zIndex: 1 }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             {/* Left: label + heading + paragraphs */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
@@ -155,18 +155,17 @@ export default function Home() {
                 Один питомец.<br />Полное внимание.{" "}
                 <span style={{ color: "#A8C5B5", fontSize: "0.7em" }}>✦</span>
               </h2>
-              {/* Ornament divider */}
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "20px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "24px" }}>
                 <div style={{ width: "32px", height: "1px", backgroundColor: "rgba(184,150,90,0.35)" }} />
                 <span style={{ color: "#B8965A", fontSize: "12px" }}>&#10022;</span>
               </div>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(14,14,14,0.6)", lineHeight: 1.75, marginBottom: "14px" }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(14,14,14,0.6)", lineHeight: 1.8, marginBottom: "16px" }}>
                 Мы не работаем в потоке. У каждой собаки есть свой характер, привычки, тревоги и границы. Поэтому визит в ПОСЛЕ строится спокойно: без спешки, лишнего шума и ощущения конвейера.
               </p>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(14,14,14,0.6)", lineHeight: 1.75, marginBottom: "14px" }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(14,14,14,0.6)", lineHeight: 1.8, marginBottom: "16px" }}>
                 Мастер видит не только шерсть и форму, но и настроение питомца. Где нужно — даст время привыкнуть. Где важно — сделает мягче. Где можно — доведёт образ до аккуратного, чистого и выразительного результата.
               </p>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(14,14,14,0.6)", lineHeight: 1.75 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "rgba(14,14,14,0.6)", lineHeight: 1.8 }}>
                 ПОСЛЕ — это момент, когда собака выглядит ухоженно, чувствует себя спокойно, а владелец понимает: к деталям здесь относятся всерьёз.
               </p>
             </motion.div>
@@ -184,11 +183,11 @@ export default function Home() {
                   num: "01",
                   text: "Камерный формат",
                   icon: (
-                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.3">
-                      <rect x="4" y="4" width="10" height="10" rx="1" />
-                      <rect x="18" y="4" width="10" height="10" rx="1" />
-                      <rect x="4" y="18" width="10" height="10" rx="1" />
-                      <rect x="18" y="18" width="10" height="10" rx="1" />
+                    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.4">
+                      <rect x="4" y="4" width="10" height="10" rx="1.5" />
+                      <rect x="18" y="4" width="10" height="10" rx="1.5" />
+                      <rect x="4" y="18" width="10" height="10" rx="1.5" />
+                      <rect x="18" y="18" width="10" height="10" rx="1.5" />
                     </svg>
                   ),
                 },
@@ -196,9 +195,9 @@ export default function Home() {
                   num: "02",
                   text: "Спокойный процесс",
                   icon: (
-                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.3">
-                      <path d="M16 4C16 4 6 10 6 18a10 10 0 0020 0C26 10 16 4 16 4z" />
-                      <path d="M12 19c1-3 3-5 6-5" />
+                    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.4">
+                      <circle cx="16" cy="16" r="11" />
+                      <path d="M16 9v7l4 4" strokeLinecap="round" />
                     </svg>
                   ),
                 },
@@ -206,7 +205,7 @@ export default function Home() {
                   num: "03",
                   text: "Внимание к характеру",
                   icon: (
-                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.3">
+                    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.4">
                       <path d="M16 27S5 20 5 12a6 6 0 0111-3.3A6 6 0 0127 12c0 8-11 15-11 15z" />
                     </svg>
                   ),
@@ -215,10 +214,10 @@ export default function Home() {
                   num: "04",
                   text: "Постоянный мастер",
                   icon: (
-                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.3">
+                    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.4">
                       <circle cx="16" cy="16" r="11" />
-                      <circle cx="16" cy="16" r="6" />
-                      <path d="M16 5v3M16 24v3M5 16h3M24 16h3" />
+                      <circle cx="16" cy="16" r="5" />
+                      <path d="M16 5v3M16 24v3M5 16h3M24 16h3" strokeLinecap="round" />
                     </svg>
                   ),
                 },
@@ -228,30 +227,34 @@ export default function Home() {
                   className="card-lift"
                   style={{
                     borderRadius: "16px",
-                    padding: "24px",
-                    border: "1px solid rgba(237,232,223,0.8)",
-                    backgroundColor: "rgba(250,248,244,0.9)",
+                    padding: "24px 24px 28px",
+                    border: "1px solid rgba(220,215,205,0.7)",
+                    backgroundColor: "#F7F5F1",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
-                    minHeight: "180px",
+                    minHeight: "190px",
                     position: "relative",
                     overflow: "hidden",
                   }}
                 >
-                  {/* Mini branch decoration bottom-right */}
+                  {/* Subtle branch watermark — very small, very faint, bottom-right */}
                   <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true"
-                    style={{ position: "absolute", bottom: "-20px", right: "-20px", width: "100px", opacity: 0.35, pointerEvents: "none", transform: "rotate(30deg)" }} />
+                    style={{ position: "absolute", bottom: "-16px", right: "-16px", width: "90px", opacity: 0.18, pointerEvents: "none", transform: "rotate(25deg)" }} />
+                  {/* Top row: number + icon */}
                   <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
-                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", color: "rgba(168,197,181,0.7)", lineHeight: 1 }}>{item.num}</span>
-                    {item.icon}
-                  </div>
-                  <div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "12px" }}>
-                      <div style={{ width: "24px", height: "1px", backgroundColor: "rgba(184,150,90,0.4)" }} />
-                      <span style={{ color: "#B8965A", fontSize: "10px" }}>&#10022;</span>
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "24px", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>{item.num}</span>
+                    <div style={{ width: "40px", height: "40px", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      {item.icon}
                     </div>
-                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#0E0E0E", lineHeight: 1.3, margin: 0 }}>{item.text}</p>
+                  </div>
+                  {/* Bottom: divider + title */}
+                  <div>
+                    <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px" }}>
+                      <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
+                      <span style={{ color: "#B8965A", fontSize: "9px" }}>&#10022;</span>
+                    </div>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "19px", fontWeight: 300, color: "#1a1a14", lineHeight: 1.3, margin: 0 }}>{item.text}</p>
                   </div>
                 </div>
               ))}
