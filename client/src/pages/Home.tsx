@@ -35,7 +35,7 @@ export default function Home() {
       <section
         className="relative min-h-[88vh] flex items-center overflow-hidden"
         style={{
-          backgroundImage: "url('/manus-storage/hero_bg_light_00fd944f.png')",
+          backgroundImage: "url('/manus-storage/hero_bg_gold_8b7a9e68.png')",
           backgroundSize: "cover",
           backgroundPosition: "center right",
           backgroundRepeat: "no-repeat",
