@@ -350,7 +350,7 @@ export default function Home() {
               }}
             >
               <img
-                src="/manus-storage/sub_yorkie_065d12d4.png"
+                src="/manus-storage/sub_yorkie_v2_ae03f7d0.png"
                 alt=""
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
               />
@@ -415,7 +415,7 @@ export default function Home() {
               }}
             >
               <img
-                src="/manus-storage/sub_bg_clean_02af3148.png"
+                src="/manus-storage/sub_poodle_v2_a9722432.png"
                 alt=""
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
               />
