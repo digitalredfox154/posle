@@ -162,7 +162,7 @@ export const clientRouter = router({
 
   // Logout
   logout: publicProcedure.mutation(({ ctx }) => {
-    ctx.res.clearCookie(CLIENT_COOKIE, { path: "/" });
+    ctx.res.clearCookie(CLIENT_COOKIE, { path: "/", httpOnly: true, secure: true, sameSite: "none" });
     return { success: true };
   }),
 
