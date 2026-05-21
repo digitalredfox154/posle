@@ -1,22 +1,22 @@
-import { useState, useRef } from "react";
-import { Link, useParams } from "wouter";
+import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trpc } from "@/lib/trpc";
-import { useClientAuth } from "@/hooks/useClientAuth";
-import { ArrowLeft, Plus, Upload, Save, X, PawPrint, Calendar, Edit2, Check } from "lucide-react";
+import { useParams, Link } from "wouter";
 import { toast } from "sonner";
+import { ArrowLeft, Plus, Save, Upload, ChevronDown, ChevronUp, PawPrint, Edit2, Check, X, Calendar } from "lucide-react";
+import { useClientAuth } from "@/hooks/useClientAuth";
 
 const inputStyle: React.CSSProperties = {
+  width: "100%",
   background: "rgba(255,255,255,0.04)",
   border: "1px solid rgba(168,197,181,0.2)",
-  padding: "10px 14px",
   color: "#F5F0E8",
   fontFamily: "'Inter', sans-serif",
   fontSize: "13px",
+  padding: "10px 14px",
   outline: "none",
-  width: "100%",
-  boxSizing: "border-box",
   transition: "border-color 0.2s",
+  boxSizing: "border-box",
 };
 
 const labelStyle: React.CSSProperties = {
@@ -29,10 +29,41 @@ const labelStyle: React.CSSProperties = {
   display: "block",
 };
 
-function VisitEditor({ visit, onUpdate, onPhotoUpload, isUpdating }: {
+function PhotoSlot({ url, label, onUpload }: { url?: string | null; label: string; onUpload: () => void }) {
+  return (
+    <div>
+      <label style={labelStyle}>{label}</label>
+      {url ? (
+        <div style={{ position: "relative" }}>
+          <img src={url} alt={label} style={{ width: "100%", height: "180px", objectFit: "cover", display: "block" }} />
+          <button
+            onClick={onUpload}
+            style={{ position: "absolute", bottom: "8px", right: "8px", background: "rgba(14,14,14,0.85)", border: "1px solid rgba(168,197,181,0.3)", padding: "6px 12px", cursor: "pointer", color: "#A8C5B5", fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase" }}
+          >
+            Заменить
+          </button>
+        </div>
+      ) : (
+        <button
+          onClick={onUpload}
+          style={{ width: "100%", height: "140px", background: "rgba(168,197,181,0.04)", border: "1px dashed rgba(168,197,181,0.25)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "10px", cursor: "pointer", transition: "all 0.2s" }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(168,197,181,0.08)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.4)"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(168,197,181,0.04)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.25)"; }}
+        >
+          <Upload size={18} color="rgba(168,197,181,0.5)" />
+          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(168,197,181,0.5)" }}>Загрузить фото</span>
+        </button>
+      )}
+    </div>
+  );
+}
+
+// VisitEditor has its own file input ref — this eliminates the race condition
+// that occurred when the parent's state was used to track which visit/type was being uploaded.
+function VisitEditor({ visit, clientId, onUpdate, isUpdating }: {
   visit: any;
+  clientId: number;
   onUpdate: (data: any) => void;
-  onPhotoUpload: (type: "before" | "after") => void;
   isUpdating: boolean;
 }) {
   const [fields, setFields] = useState({
@@ -41,42 +72,77 @@ function VisitEditor({ visit, onUpdate, onPhotoUpload, isUpdating }: {
     behaviorNotes: visit.behaviorNotes || "",
     homeCareTips: visit.homeCareTips || "",
     nextVisitSuggestion: visit.nextVisitSuggestion || "",
+    beforePhotoUrl: visit.beforePhotoUrl || "",
+    beforePhotoKey: visit.beforePhotoKey || "",
+    afterPhotoUrl: visit.afterPhotoUrl || "",
+    afterPhotoKey: visit.afterPhotoKey || "",
   });
 
+  // Use ref to avoid stale closure in file input onChange — fix for the race condition
+  const uploadTypeRef = useRef<"before" | "after" | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const uploadPhoto = trpc.admin.uploadPhoto.useMutation({
+    onSuccess: (result: any) => {
+      const type = uploadTypeRef.current;
+      if (type === "before") {
+        const updated = { ...fields, beforePhotoUrl: result.url, beforePhotoKey: result.key };
+        setFields(updated);
+        onUpdate(updated);
+      } else if (type === "after") {
+        const updated = { ...fields, afterPhotoUrl: result.url, afterPhotoKey: result.key };
+        setFields(updated);
+        onUpdate(updated);
+      }
+      uploadTypeRef.current = null;
+      toast.success("Фото загружено");
+    },
+    onError: (e: any) => {
+      toast.error(e.message || "Ошибка загрузки фото");
+      uploadTypeRef.current = null;
+    },
+  });
+
+  const handlePhotoClick = useCallback((type: "before" | "after") => {
+    uploadTypeRef.current = type;
+    if (fileRef.current) {
+      fileRef.current.value = "";
+      fileRef.current.click();
+    }
+  }, []);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      uploadPhoto.mutate({
+        base64: reader.result as string,
+        mimeType: file.type as "image/jpeg" | "image/png" | "image/webp",
+        purpose: uploadTypeRef.current === "before" ? "before_photo" : "after_photo",
+        clientId,
+      });
+    };
+    reader.readAsDataURL(file);
+    e.target.value = "";
+  };
+
   return (
-    <div style={{ padding: "24px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "24px" }}>
-        {(["before", "after"] as const).map((type) => {
-          const url = type === "before" ? visit.beforePhotoUrl : visit.afterPhotoUrl;
-          return (
-            <div key={type}>
-              <label style={labelStyle}>{type === "before" ? "Фото до" : "Фото после"}</label>
-              {url ? (
-                <div style={{ position: "relative" }}>
-                  <img src={url} alt={type} style={{ width: "100%", height: "180px", objectFit: "cover" }} />
-                  <button
-                    onClick={() => onPhotoUpload(type)}
-                    style={{ position: "absolute", bottom: "8px", right: "8px", background: "rgba(14,14,14,0.8)", border: "1px solid rgba(168,197,181,0.3)", padding: "6px 12px", cursor: "pointer", color: "#A8C5B5", fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase" }}
-                  >
-                    Заменить
-                  </button>
-                </div>
-              ) : (
-                <button
-                  onClick={() => onPhotoUpload(type)}
-                  style={{ width: "100%", height: "120px", background: "rgba(168,197,181,0.04)", border: "1px dashed rgba(168,197,181,0.2)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "8px", cursor: "pointer", transition: "all 0.2s" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(168,197,181,0.08)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(168,197,181,0.04)"; }}
-                >
-                  <Upload size={16} color="rgba(168,197,181,0.5)" />
-                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(168,197,181,0.5)" }}>Загрузить</span>
-                </button>
-              )}
-            </div>
-          );
-        })}
+    <div style={{ padding: "20px 24px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      {/* Before / After photos — responsive grid */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px", marginBottom: "24px" }}>
+        <PhotoSlot url={fields.beforePhotoUrl} label="Фото до" onUpload={() => handlePhotoClick("before")} />
+        <PhotoSlot url={fields.afterPhotoUrl} label="Фото после" onUpload={() => handlePhotoClick("after")} />
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "20px" }}>
+
+      {uploadPhoto.isPending && (
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "#A8C5B5", marginBottom: "16px" }}>
+          Загружаем фото...
+        </p>
+      )}
+
+      {/* Notes — responsive grid */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "14px", marginBottom: "14px" }}>
         {[
           { key: "masterNotes", label: "Заметки мастера" },
           { key: "behaviorNotes", label: "Поведение питомца" },
@@ -95,6 +161,7 @@ function VisitEditor({ visit, onUpdate, onPhotoUpload, isUpdating }: {
           </div>
         ))}
       </div>
+
       <div style={{ marginBottom: "20px" }}>
         <label style={labelStyle}>Следующий визит</label>
         <textarea
@@ -105,6 +172,7 @@ function VisitEditor({ visit, onUpdate, onPhotoUpload, isUpdating }: {
           onBlur={(e) => (e.target.style.borderColor = "rgba(168,197,181,0.2)")}
         />
       </div>
+
       <button
         onClick={() => onUpdate(fields)}
         disabled={isUpdating}
@@ -114,6 +182,9 @@ function VisitEditor({ visit, onUpdate, onPhotoUpload, isUpdating }: {
         <Save size={13} />
         {isUpdating ? "Сохраняем..." : "Сохранить изменения"}
       </button>
+
+      {/* Each VisitEditor has its own hidden file input */}
+      <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" style={{ display: "none" }} onChange={handleFileChange} />
     </div>
   );
 }
@@ -128,10 +199,15 @@ export default function AdminClientDetail() {
   const [showNewVisit, setShowNewVisit] = useState(false);
   const [showNewPet, setShowNewPet] = useState(false);
   const [selectedVisitId, setSelectedVisitId] = useState<number | null>(null);
-  const [uploadingFor, setUploadingFor] = useState<{ visitId: number; type: "before" | "after" } | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const { data, isLoading, refetch } = trpc.admin.getClient.useQuery({ clientId }, { enabled: !!clientId });
+  // Pet photo upload — also use ref to avoid stale closure
+  const petPhotoRef = useRef<HTMLInputElement>(null);
+  const petPhotoIdRef = useRef<number | null>(null);
+
+  const { data, isLoading, refetch } = trpc.admin.getClient.useQuery(
+    { clientId },
+    { enabled: !!clientId }
+  );
 
   const updateClient = trpc.admin.updateClient.useMutation({
     onSuccess: () => { toast.success("Имя обновлено"); setEditingName(false); refetch(); },
@@ -153,41 +229,46 @@ export default function AdminClientDetail() {
     onError: (e: any) => toast.error(e.message),
   });
 
-  const uploadPhoto = trpc.admin.uploadPhoto.useMutation({
+  const uploadPetPhoto = trpc.admin.uploadPhoto.useMutation({
     onSuccess: (result: any) => {
-      if (uploadingFor) {
-        const field = uploadingFor.type === "before" ? "beforePhotoUrl" : "afterPhotoUrl";
-        const keyField = uploadingFor.type === "before" ? "beforePhotoKey" : "afterPhotoKey";
-        updateVisit.mutate({ id: uploadingFor.visitId, [field]: result.url, [keyField]: result.key });
+      const petId = petPhotoIdRef.current;
+      if (petId) {
+        upsertPet.mutate({ id: petId, clientId, name: "", photoUrl: result.url, photoKey: result.key } as any);
       }
-      setUploadingFor(null);
+      petPhotoIdRef.current = null;
+      toast.success("Фото питомца загружено");
     },
-    onError: (e: any) => { toast.error(e.message); setUploadingFor(null); },
+    onError: (e: any) => toast.error(e.message),
   });
+
+  const handlePetPhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      uploadPetPhoto.mutate({
+        base64: reader.result as string,
+        mimeType: file.type as "image/jpeg" | "image/png" | "image/webp",
+        purpose: "pet_photo",
+        clientId,
+      });
+    };
+    reader.readAsDataURL(file);
+    e.target.value = "";
+  };
 
   const [newVisit, setNewVisit] = useState({
     petId: 0,
     visitDate: new Date().toISOString().slice(0, 16),
     serviceType: "",
-    masterNotes: "",
     cosmeticsUsed: "",
+    masterNotes: "",
     behaviorNotes: "",
     homeCareTips: "",
     nextVisitSuggestion: "",
   });
 
   const [newPet, setNewPet] = useState({ name: "", breed: "", notes: "" });
-
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file || !uploadingFor) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      uploadPhoto.mutate({ base64: reader.result as string, mimeType: file.type as any, purpose: uploadingFor.type === "before" ? "before_photo" : "after_photo", clientId });
-    };
-    reader.readAsDataURL(file);
-    e.target.value = "";
-  };
 
   if (authLoading || isLoading) {
     return (
@@ -205,72 +286,82 @@ export default function AdminClientDetail() {
     );
   }
 
-  const { client, pets, visits } = data;
+  const { client, pets, visits } = data as any;
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: "#0E0E0E" }}>
-      <header style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "0 32px", height: "64px", display: "flex", alignItems: "center", gap: "16px" }}>
-        <Link href="/admin" style={{ display: "flex", alignItems: "center", gap: "8px", color: "rgba(245,240,232,0.4)", textDecoration: "none", fontFamily: "'Inter', sans-serif", fontSize: "12px", letterSpacing: "0.1em" }}>
+    <div style={{ minHeight: "100vh", background: "#0E0E0E", color: "#F5F0E8" }}>
+      {/* Header */}
+      <header style={{ borderBottom: "1px solid rgba(255,255,255,0.05)", padding: "0 16px", height: "64px", display: "flex", alignItems: "center", gap: "16px", position: "sticky", top: 0, background: "#0E0E0E", zIndex: 10 }}>
+        <Link
+          href="/admin"
+          style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Inter', sans-serif", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(245,240,232,0.4)", textDecoration: "none", transition: "color 0.2s", flexShrink: 0 }}
+          onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(245,240,232,0.7)")}
+          onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(245,240,232,0.4)")}
+        >
           <ArrowLeft size={14} />
-          Клиенты
+          <span>Клиенты</span>
         </Link>
-        <span style={{ color: "rgba(255,255,255,0.15)" }}>·</span>
-        <Link href="/" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, letterSpacing: "0.2em", color: "#F5F0E8", textDecoration: "none", marginLeft: "auto" }}>
+        <div style={{ width: "1px", height: "20px", background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
+        {editingName ? (
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", flex: 1, minWidth: 0 }}>
+            <input
+              value={nameValue}
+              onChange={(e) => setNameValue(e.target.value)}
+              style={{ ...inputStyle, flex: 1, maxWidth: "300px", padding: "6px 12px", fontSize: "16px", fontFamily: "'Cormorant Garamond', serif" }}
+              autoFocus
+              onKeyDown={(e) => {
+                if (e.key === "Enter") updateClient.mutate({ clientId, name: nameValue });
+                if (e.key === "Escape") setEditingName(false);
+              }}
+            />
+            <button onClick={() => updateClient.mutate({ clientId, name: nameValue })} style={{ background: "none", border: "none", cursor: "pointer", color: "#A8C5B5", padding: "4px", flexShrink: 0 }}><Check size={16} /></button>
+            <button onClick={() => setEditingName(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(245,240,232,0.4)", padding: "4px", flexShrink: 0 }}><X size={16} /></button>
+          </div>
+        ) : (
+          <button
+            onClick={() => { setNameValue(client.name || ""); setEditingName(true); }}
+            style={{ display: "flex", alignItems: "center", gap: "8px", background: "none", border: "none", cursor: "pointer", color: "#F5F0E8", fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 3vw, 22px)", fontWeight: 300, padding: 0, overflow: "hidden", flex: 1, minWidth: 0 }}
+          >
+            <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{client.name || "Без имени"}</span>
+            <Edit2 size={13} color="rgba(245,240,232,0.3)" style={{ flexShrink: 0 }} />
+          </button>
+        )}
+        <Link href="/" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, letterSpacing: "0.2em", color: "#F5F0E8", textDecoration: "none", flexShrink: 0, marginLeft: "auto" }}>
           ПОСЛЕ
         </Link>
       </header>
 
-      <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "48px 32px", width: "100%" }}>
-        {/* Client header */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ marginBottom: "48px" }}>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.35em", textTransform: "uppercase", color: "#A8C5B5", marginBottom: "12px" }}>Клиент #{client.id}</p>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
-            {editingName ? (
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <input
-                  autoFocus
-                  value={nameValue}
-                  onChange={(e) => setNameValue(e.target.value)}
-                  onKeyDown={(e) => { if (e.key === "Enter") updateClient.mutate({ clientId, name: nameValue }); if (e.key === "Escape") setEditingName(false); }}
-                  style={{ ...inputStyle, fontSize: "32px", fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, padding: "4px 10px", width: "280px" }}
-                />
-                <button onClick={() => updateClient.mutate({ clientId, name: nameValue })} style={{ background: "none", border: "none", cursor: "pointer", color: "#A8C5B5" }}><Check size={18} /></button>
-                <button onClick={() => setEditingName(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(245,240,232,0.3)" }}><X size={18} /></button>
-              </div>
-            ) : (
-              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 300, color: "#F5F0E8", lineHeight: 1.1 }}>
-                  {client.name || "Без имени"}
-                </h1>
-                <button onClick={() => { setNameValue(client.name || ""); setEditingName(true); }} style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(245,240,232,0.25)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#A8C5B5")} onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,240,232,0.25)")}>
-                  <Edit2 size={16} />
-                </button>
-              </div>
-            )}
-          </div>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.4)", marginTop: "8px" }}>
-            {client.email || client.phone || "—"}
-          </p>
+      {/* Content */}
+      <div style={{ maxWidth: "960px", margin: "0 auto", padding: "32px 16px 80px", width: "100%" }}>
+        {/* Client info */}
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ marginBottom: "40px" }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.35em", textTransform: "uppercase", color: "#A8C5B5", marginBottom: "8px" }}>Клиент #{client.id}</p>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.4)" }}>{client.email || client.phone || "—"}</p>
+          {client.createdAt && (
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: "rgba(245,240,232,0.2)", marginTop: "4px" }}>
+              Клиент с {new Date(client.createdAt).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" })}
+            </p>
+          )}
         </motion.div>
 
-        {/* Pets */}
+        {/* Pets section */}
         <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }} style={{ marginBottom: "48px" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px", flexWrap: "wrap", gap: "10px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <PawPrint size={16} color="#A8C5B5" />
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "24px", fontWeight: 300, color: "#F5F0E8" }}>Питомцы</h2>
             </div>
-            <button onClick={() => setShowNewPet(!showNewPet)} style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "1px solid rgba(168,197,181,0.3)", padding: "7px 14px", cursor: "pointer", color: "#A8C5B5", fontFamily: "'Inter', sans-serif", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+            <button onClick={() => setShowNewPet(!showNewPet)} style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "1px solid rgba(168,197,181,0.3)", padding: "7px 14px", cursor: "pointer", color: "#A8C5B5", fontFamily: "'Inter', sans-serif", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", transition: "all 0.2s", flexShrink: 0 }}>
               <Plus size={13} /> Добавить
             </button>
           </div>
+
           <AnimatePresence>
             {showNewPet && (
               <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} style={{ overflow: "hidden", marginBottom: "16px" }}>
                 <div style={{ background: "rgba(168,197,181,0.05)", border: "1px solid rgba(168,197,181,0.15)", padding: "24px" }}>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.25em", textTransform: "uppercase", color: "#A8C5B5", marginBottom: "20px" }}>Новый питомец</p>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "14px", marginBottom: "14px" }}>
                     <div>
                       <label style={labelStyle}>Имя *</label>
                       <input style={inputStyle} value={newPet.name} onChange={(e) => setNewPet({ ...newPet, name: e.target.value })}
@@ -287,7 +378,7 @@ export default function AdminClientDetail() {
                     <textarea style={{ ...inputStyle, minHeight: "80px", resize: "vertical" }} value={newPet.notes} onChange={(e) => setNewPet({ ...newPet, notes: e.target.value })}
                       onFocus={(e) => (e.target.style.borderColor = "#A8C5B5")} onBlur={(e) => (e.target.style.borderColor = "rgba(168,197,181,0.2)")} />
                   </div>
-                  <div style={{ display: "flex", gap: "10px" }}>
+                  <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                     <button onClick={() => upsertPet.mutate({ clientId, name: newPet.name, breed: newPet.breed || undefined, notes: newPet.notes || undefined })}
                       disabled={!newPet.name || upsertPet.isPending} className="btn-mint" style={{ padding: "10px 24px", fontSize: "11px", opacity: !newPet.name ? 0.5 : 1 }}>
                       {upsertPet.isPending ? "Сохраняем..." : "Сохранить"}
@@ -298,28 +389,20 @@ export default function AdminClientDetail() {
               </motion.div>
             )}
           </AnimatePresence>
+
           {pets.length === 0 && !showNewPet ? (
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.3)", padding: "24px 0" }}>Питомцев нет</p>
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "12px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "12px" }}>
               {pets.map((pet: any) => (
-                <div key={pet.id} style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", padding: "20px" }}>
+                <div key={pet.id} style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", padding: "16px" }}>
                   {pet.photoUrl ? (
-                    <img src={pet.photoUrl} alt={pet.name} style={{ width: "100%", height: "140px", objectFit: "cover", marginBottom: "14px" }} />
+                    <img src={pet.photoUrl} alt={pet.name} style={{ width: "100%", height: "130px", objectFit: "cover", marginBottom: "12px" }} />
                   ) : (
-                    <div style={{ width: "100%", height: "140px", background: "rgba(168,197,181,0.06)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "8px", marginBottom: "14px", cursor: "pointer", border: "1px dashed rgba(168,197,181,0.2)" }}
+                    <div style={{ width: "100%", height: "100px", background: "rgba(168,197,181,0.06)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "8px", marginBottom: "12px", cursor: "pointer", border: "1px dashed rgba(168,197,181,0.2)" }}
                       onClick={() => {
-                        const input = document.createElement("input");
-                        input.type = "file"; input.accept = "image/*";
-                        input.onchange = (e: any) => {
-                          const file = e.target.files?.[0]; if (!file) return;
-                          const reader = new FileReader();
-                          reader.onload = () => {
-                            uploadPhoto.mutate({ base64: reader.result as string, mimeType: file.type as any, purpose: "pet_photo", clientId, petId: pet.id } as any);
-                          };
-                          reader.readAsDataURL(file);
-                        };
-                        input.click();
+                        petPhotoIdRef.current = pet.id;
+                        if (petPhotoRef.current) { petPhotoRef.current.value = ""; petPhotoRef.current.click(); }
                       }}>
                       <Upload size={18} color="rgba(168,197,181,0.5)" />
                       <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(168,197,181,0.5)" }}>Добавить фото</span>
@@ -328,29 +411,40 @@ export default function AdminClientDetail() {
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, color: "#F5F0E8", marginBottom: "4px" }}>{pet.name}</p>
                   {pet.breed && <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.4)" }}>{pet.breed}</p>}
                   {pet.notes && <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.35)", marginTop: "8px", lineHeight: 1.5 }}>{pet.notes}</p>}
+                  {pet.photoUrl && (
+                    <button
+                      onClick={() => { petPhotoIdRef.current = pet.id; if (petPhotoRef.current) { petPhotoRef.current.value = ""; petPhotoRef.current.click(); } }}
+                      style={{ marginTop: "10px", background: "none", border: "1px solid rgba(168,197,181,0.2)", cursor: "pointer", color: "rgba(168,197,181,0.6)", fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", padding: "6px 12px", width: "100%", transition: "all 0.2s" }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "#A8C5B5"; (e.currentTarget as HTMLElement).style.color = "#A8C5B5"; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.2)"; (e.currentTarget as HTMLElement).style.color = "rgba(168,197,181,0.6)"; }}
+                    >
+                      Заменить фото
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
           )}
         </motion.section>
 
-        {/* Visits */}
+        {/* Visits section */}
         <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px", flexWrap: "wrap", gap: "10px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <Calendar size={16} color="#A8C5B5" />
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "24px", fontWeight: 300, color: "#F5F0E8" }}>Визиты</h2>
             </div>
-            <button onClick={() => setShowNewVisit(!showNewVisit)} style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "1px solid rgba(168,197,181,0.3)", padding: "7px 14px", cursor: "pointer", color: "#A8C5B5", fontFamily: "'Inter', sans-serif", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+            <button onClick={() => setShowNewVisit(!showNewVisit)} style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "1px solid rgba(168,197,181,0.3)", padding: "7px 14px", cursor: "pointer", color: "#A8C5B5", fontFamily: "'Inter', sans-serif", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", transition: "all 0.2s", flexShrink: 0 }}>
               <Plus size={13} /> Добавить визит
             </button>
           </div>
+
           <AnimatePresence>
             {showNewVisit && (
               <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} style={{ overflow: "hidden", marginBottom: "16px" }}>
                 <div style={{ background: "rgba(168,197,181,0.05)", border: "1px solid rgba(168,197,181,0.15)", padding: "24px" }}>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.25em", textTransform: "uppercase", color: "#A8C5B5", marginBottom: "20px" }}>Новый визит</p>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "16px" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "14px", marginBottom: "16px" }}>
                     <div>
                       <label style={labelStyle}>Питомец *</label>
                       <select style={{ ...inputStyle, cursor: "pointer" }} value={newVisit.petId} onChange={(e) => setNewVisit({ ...newVisit, petId: parseInt(e.target.value) })}
@@ -387,7 +481,7 @@ export default function AdminClientDetail() {
                         onFocus={(e) => (e.target.style.borderColor = "#A8C5B5")} onBlur={(e) => (e.target.style.borderColor = "rgba(168,197,181,0.2)")} />
                     </div>
                   ))}
-                  <div style={{ display: "flex", gap: "10px", marginTop: "8px" }}>
+                  <div style={{ display: "flex", gap: "10px", marginTop: "8px", flexWrap: "wrap" }}>
                     <button onClick={() => createVisit.mutate({ clientId, ...newVisit, published: true })}
                       disabled={!newVisit.petId || !newVisit.visitDate || createVisit.isPending} className="btn-mint"
                       style={{ padding: "10px 24px", fontSize: "11px", opacity: (!newVisit.petId || !newVisit.visitDate) ? 0.5 : 1 }}>
@@ -399,37 +493,38 @@ export default function AdminClientDetail() {
               </motion.div>
             )}
           </AnimatePresence>
+
           {visits.length === 0 && !showNewVisit ? (
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.3)", padding: "24px 0" }}>Визитов нет</p>
           ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {visits.map((visit: any) => {
                 const pet = pets.find((p: any) => p.id === visit.petId);
                 const isOpen = selectedVisitId === visit.id;
                 return (
                   <div key={visit.id} style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}>
-                    <button onClick={() => setSelectedVisitId(isOpen ? null : visit.id)}
-                      style={{ width: "100%", display: "flex", alignItems: "center", gap: "16px", padding: "18px 24px", background: "none", border: "none", cursor: "pointer", textAlign: "left", transition: "background 0.2s" }}
+                    <button
+                      onClick={() => setSelectedVisitId(isOpen ? null : visit.id)}
+                      style={{ width: "100%", display: "flex", alignItems: "center", gap: "12px", padding: "16px 20px", background: "none", border: "none", cursor: "pointer", textAlign: "left", transition: "background 0.2s" }}
                       onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(168,197,181,0.04)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = "none")}>
-                      <div style={{ flex: 1 }}>
-                        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, color: "#F5F0E8", marginBottom: "4px" }}>
+                      onMouseLeave={(e) => (e.currentTarget.style.background = "none")}
+                    >
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#F5F0E8", marginBottom: "2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                           {new Date(visit.visitDate).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" })}
-                          {visit.serviceType && <span style={{ marginLeft: "12px", fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#A8C5B5" }}>{visit.serviceType}</span>}
+                          {visit.serviceType && <span style={{ marginLeft: "10px", fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "#A8C5B5" }}>{visit.serviceType}</span>}
                         </p>
-                        {pet && <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.4)" }}>Питомец: {pet.name}</p>}
+                        {pet && <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.4)" }}>{pet.name}</p>}
                       </div>
-                      <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.3)", letterSpacing: "0.1em" }}>
-                        {isOpen ? "Свернуть" : "Подробнее"}
-                      </span>
+                      {isOpen ? <ChevronUp size={14} color="rgba(245,240,232,0.3)" /> : <ChevronDown size={14} color="rgba(245,240,232,0.3)" />}
                     </button>
                     <AnimatePresence>
                       {isOpen && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} style={{ overflow: "hidden" }}>
                           <VisitEditor
                             visit={visit}
+                            clientId={clientId}
                             onUpdate={(data) => updateVisit.mutate({ id: visit.id, ...data })}
-                            onPhotoUpload={(type) => { setUploadingFor({ visitId: visit.id, type }); fileInputRef.current?.click(); }}
                             isUpdating={updateVisit.isPending}
                           />
                         </motion.div>
@@ -442,7 +537,9 @@ export default function AdminClientDetail() {
           )}
         </motion.section>
       </div>
-      <input ref={fileInputRef} type="file" accept="image/*" style={{ display: "none" }} onChange={handleFileChange} />
+
+      {/* Pet photo hidden input */}
+      <input ref={petPhotoRef} type="file" accept="image/jpeg,image/png,image/webp" style={{ display: "none" }} onChange={handlePetPhotoChange} />
     </div>
   );
 }

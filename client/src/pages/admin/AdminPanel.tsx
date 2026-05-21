@@ -44,11 +44,11 @@ export default function AdminPanel() {
       <header
         style={{
           borderBottom: "1px solid rgba(255,255,255,0.06)",
-          padding: "0 32px",
+          padding: "0 16px",
           height: "64px",
           display: "flex",
           alignItems: "center",
-          gap: "16px",
+          gap: "12px",
         }}
       >
         <Link
@@ -60,11 +60,13 @@ export default function AdminPanel() {
             letterSpacing: "0.2em",
             color: "#F5F0E8",
             marginRight: "auto",
+            textDecoration: "none",
           }}
         >
           ПОСЛЕ
         </Link>
         <span
+          className="hidden sm:inline"
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: "10px",
@@ -78,6 +80,7 @@ export default function AdminPanel() {
           Администратор
         </span>
         <span
+          className="hidden md:inline"
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: "12px",
@@ -109,7 +112,7 @@ export default function AdminPanel() {
         </button>
       </header>
 
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "48px 32px", width: "100%" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 16px", width: "100%" }}>
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -147,7 +150,7 @@ export default function AdminPanel() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginBottom: "40px" }}
+          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "12px", marginBottom: "40px" }}
         >
           {[
             { icon: Users, label: "Всего клиентов", value: clients?.length ?? "—" },
@@ -285,8 +288,8 @@ export default function AdminPanel() {
                     </p>
                   </div>
 
-                  {/* Meta */}
-                  <div style={{ display: "flex", gap: "24px", alignItems: "center" }}>
+                  {/* Meta — hidden on mobile to prevent overflow */}
+                  <div className="hidden sm:flex" style={{ gap: "24px", alignItems: "center" }}>
                     <div style={{ textAlign: "center" }}>
                       <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, color: "#F5F0E8" }}>{c.petsCount}</p>
                       <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(245,240,232,0.3)" }}>питомцев</p>

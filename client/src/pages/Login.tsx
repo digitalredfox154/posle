@@ -325,7 +325,7 @@ export default function Login() {
                 )}
 
                 <div
-                  style={{ display: "flex", gap: "10px", marginBottom: "32px" }}
+                  style={{ display: "flex", gap: "8px", marginBottom: "32px", justifyContent: "center" }}
                   onPaste={handleCodePaste}
                 >
                   {code.map((digit, i) => (
@@ -339,17 +339,19 @@ export default function Login() {
                       onChange={(e) => handleCodeInput(i, e.target.value)}
                       onKeyDown={(e) => handleCodeKeyDown(i, e)}
                       style={{
-                        flex: 1,
-                        aspectRatio: "1",
+                        width: "clamp(40px, 12vw, 56px)",
+                        height: "clamp(48px, 14vw, 64px)",
+                        flexShrink: 0,
                         background: "rgba(255,255,255,0.04)",
                         border: digit ? "1px solid #A8C5B5" : "1px solid rgba(168,197,181,0.2)",
                         color: "#F5F0E8",
                         textAlign: "center",
                         fontFamily: "'Cormorant Garamond', serif",
-                        fontSize: "24px",
+                        fontSize: "clamp(20px, 5vw, 28px)",
                         fontWeight: 300,
                         outline: "none",
                         transition: "border-color 0.2s",
+                        boxSizing: "border-box",
                       }}
                     />
                   ))}
