@@ -46,7 +46,7 @@ export default function AccountDashboard() {
         {/* Next appointment */}
         {nextAppointment && (
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 }}
-            style={{ background: "rgba(168,197,181,0.07)", border: "1px solid rgba(168,197,181,0.2)", padding: "20px 24px", marginBottom: "32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            style={{ background: "rgba(168,197,181,0.07)", border: "1px solid rgba(168,197,181,0.2)", padding: "16px 20px", marginBottom: "32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", flexWrap: "wrap" }}>
             <div>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#A8C5B5", marginBottom: "6px" }}>Ближайший визит</p>
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300, color: "#F5F0E8" }}>
@@ -62,7 +62,7 @@ export default function AccountDashboard() {
 
         {/* Quick actions */}
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "32px" }}>
+          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "12px", marginBottom: "32px" }}>
           <Link href="/booking"
             style={{ ...cardBase, background: "rgba(168,197,181,0.08)", borderColor: "rgba(168,197,181,0.2)" }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(168,197,181,0.14)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.4)"; }}

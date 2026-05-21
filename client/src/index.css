@@ -663,4 +663,76 @@
   div[style*="flex: 1"][style*="height: '1px'"] {
     display: none !important;
   }
+
+  /* ═══════════════════════════════════════════
+     ACCOUNT / PERSONAL CABINET — mobile fixes
+     ═══════════════════════════════════════════ */
+
+  /* AccountLayout: sidebar is already fixed/hidden via Tailwind translate-x-full.
+     Make sure the overlay backdrop covers the full screen height. */
+  .account-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 30 !important;
+  }
+
+  /* AccountLayout header: reduce horizontal padding */
+  header[style*="height: 64px"] {
+    padding: 0 16px !important;
+  }
+
+  /* AccountLayout main: reduce padding already done via clamp() in JSX */
+
+  /* Dashboard: subscription status block — stack content vertically */
+  div[style*="rgba(168,197,181,0.06)"][style*="justifyContent: space-between"],
+  div[style*="rgba(255,255,255,0.02)"][style*="justifyContent: space-between"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  /* Dashboard: active subscription card (dark bg) */
+  div[style*="rgba(168,197,181,0.06)"][style*="padding: \"20px 24px\""],
+  div[style*="rgba(255,255,255,0.02)"][style*="padding: \"20px 24px\""] {
+    padding: 16px !important;
+  }
+
+  /* Pets page: header row — wrap on very small screens */
+  .max-w-2xl > div.flex.items-center.justify-between {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  /* Pets list item: hide diary link text, keep icon */
+  .max-w-2xl .hidden.sm\:block {
+    display: none !important;
+  }
+
+  /* Diary: timeline line + dots — reduce left offset on mobile */
+  .relative .absolute.left-\[18px\] {
+    left: 10px !important;
+  }
+  .relative .pl-12 {
+    padding-left: 28px !important;
+  }
+  .absolute.left-5.top-5 {
+    left: 13px !important;
+  }
+
+  /* Subscription: active plan card — full width on mobile */
+  .bg-\[\#0E0E0E\].p-6.mb-8 {
+    padding: 20px !important;
+  }
+
+  /* Subscription: plan cards — single column on very small screens */
+  .grid-cols-1.sm\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Payment history rows — stack amount below date */
+  .bg-white.border.border-\[\#E8F0EC\].px-5.py-4 {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
 }

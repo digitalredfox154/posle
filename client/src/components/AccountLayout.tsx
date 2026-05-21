@@ -158,7 +158,7 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
         )}
 
         {/* Main content */}
-        <main style={{ flex: 1, minWidth: 0, padding: "40px 32px", background: "#0E0E0E" }}>
+        <main style={{ flex: 1, minWidth: 0, padding: "clamp(20px, 5vw, 40px) clamp(16px, 4vw, 32px)", background: "#0E0E0E", paddingBottom: "calc(clamp(20px, 5vw, 40px) + env(safe-area-inset-bottom, 0px))" }} className="pb-safe">
           {children}
         </main>
       </div>
