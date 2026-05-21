@@ -154,6 +154,27 @@ export const adminRouter = router({
       return { success: true };
     }),
 
+  // Update pet photo only (avoids re-validating name)
+  updatePetPhoto: publicProcedure
+    .input(
+      z.object({
+        petId: z.number(),
+        clientId: z.number(),
+        photoUrl: z.string(),
+        photoKey: z.string(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      await requireAdmin(ctx.req);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      await db
+        .update(pets)
+        .set({ photoUrl: input.photoUrl, photoKey: input.photoKey })
+        .where(and(eq(pets.id, input.petId), eq(pets.clientId, input.clientId)));
+      return { success: true };
+    }),
+
   // Upload photo (base64) and store in S3
   uploadPhoto: publicProcedure
     .input(

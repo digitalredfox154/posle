@@ -229,14 +229,18 @@ export default function AdminClientDetail() {
     onError: (e: any) => toast.error(e.message),
   });
 
+  const updatePetPhoto = trpc.admin.updatePetPhoto.useMutation({
+    onSuccess: () => { toast.success("Фото питомца сохранено"); refetch(); },
+    onError: (e: any) => toast.error(e.message),
+  });
+
   const uploadPetPhoto = trpc.admin.uploadPhoto.useMutation({
     onSuccess: (result: any) => {
       const petId = petPhotoIdRef.current;
       if (petId) {
-        upsertPet.mutate({ id: petId, clientId, name: "", photoUrl: result.url, photoKey: result.key } as any);
+        updatePetPhoto.mutate({ petId, clientId, photoUrl: result.url, photoKey: result.key });
       }
       petPhotoIdRef.current = null;
-      toast.success("Фото питомца загружено");
     },
     onError: (e: any) => toast.error(e.message),
   });
