@@ -145,12 +145,7 @@ export const bookingRouter = router({
     .mutation(async ({ input, ctx }) => {
       const { companyId } = getYclientsHeaders();
 
-      // Пробуем получить сессию клиента если авторизован
       let clientPhone = input.clientPhone;
-      try {
-        const session = await getClientFromCookie(ctx.req);
-        if (session?.phone) clientPhone = session.phone;
-      } catch {}
 
       const comment = [
         input.comment || "",

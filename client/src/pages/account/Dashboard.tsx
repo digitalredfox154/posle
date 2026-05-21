@@ -2,7 +2,8 @@ import AccountLayout from "@/components/AccountLayout";
 import { trpc } from "@/lib/trpc";
 import { useClientAuth } from "@/hooks/useClientAuth";
 import { Link } from "wouter";
-import { PawPrint, Calendar, CreditCard, ArrowRight } from "lucide-react";
+import { PawPrint, Calendar, CreditCard, ArrowRight, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function AccountDashboard() {
   const { client } = useClientAuth(true);
@@ -17,119 +18,155 @@ export default function AccountDashboard() {
     return "Добрый вечер";
   };
 
+  const cardBase: React.CSSProperties = {
+    background: "rgba(255,255,255,0.02)",
+    border: "1px solid rgba(255,255,255,0.06)",
+    padding: "24px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    textDecoration: "none",
+    transition: "all 0.25s",
+    cursor: "pointer",
+  };
+
   return (
     <AccountLayout>
-      <div className="max-w-3xl">
+      <div style={{ maxWidth: "760px" }}>
         {/* Greeting */}
-        <div className="mb-10">
-          <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ marginBottom: "40px" }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.35em", textTransform: "uppercase", color: "#A8C5B5", marginBottom: "10px" }}>
             Личный кабинет
           </p>
-          <h1 className="font-light text-[#0E0E0E]" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 48px)" }}>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 300, color: "#F5F0E8", lineHeight: 1.1 }}>
             {greeting()}{client?.name ? `, ${client.name}` : ""}
           </h1>
-        </div>
+        </motion.div>
 
-        {/* Next appointment banner */}
+        {/* Next appointment */}
         {nextAppointment && (
-          <div className="bg-[#F7F5F2] border border-[#E8F0EC] p-5 mb-8 flex items-center justify-between">
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 }}
+            style={{ background: "rgba(168,197,181,0.07)", border: "1px solid rgba(168,197,181,0.2)", padding: "20px 24px", marginBottom: "32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div>
-              <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>Ближайший визит</p>
-              <p className="text-[#0E0E0E] font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px" }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#A8C5B5", marginBottom: "6px" }}>Ближайший визит</p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300, color: "#F5F0E8" }}>
                 {new Date(nextAppointment.visitDate).toLocaleDateString("ru-RU", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })}
               </p>
               {nextAppointment.serviceType && (
-                <p className="text-[#0E0E0E]/40 text-xs mt-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>{nextAppointment.serviceType}</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.4)", marginTop: "4px" }}>{nextAppointment.serviceType}</p>
               )}
             </div>
-            <Calendar size={18} className="text-[#A8C5B5]" />
-          </div>
+            <Calendar size={18} color="#A8C5B5" />
+          </motion.div>
         )}
 
         {/* Quick actions */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-          <Link href="/booking" className="bg-[#0E0E0E] text-white p-6 flex flex-col gap-3 hover:bg-[#1a1a1a] transition-colors group">
-            <Calendar size={20} className="text-[#A8C5B5]" />
-            <p className="text-sm font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>Записаться</p>
-            <ArrowRight size={14} className="text-white/40 group-hover:text-white/70 transition-colors" />
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}
+          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "32px" }}>
+          <Link href="/booking"
+            style={{ ...cardBase, background: "rgba(168,197,181,0.08)", borderColor: "rgba(168,197,181,0.2)" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(168,197,181,0.14)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.4)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(168,197,181,0.08)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.2)"; }}>
+            <Calendar size={18} color="#A8C5B5" />
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#F5F0E8" }}>Записаться</p>
+            <ArrowRight size={13} color="rgba(168,197,181,0.6)" />
           </Link>
-          <Link href="/account/pets" className="bg-white border border-[#E8F0EC] p-6 flex flex-col gap-3 hover:border-[#A8C5B5] transition-colors group">
-            <PawPrint size={20} className="text-[#A8C5B5]" />
-            <p className="text-sm font-light text-[#0E0E0E]" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
+          <Link href="/account/pets"
+            style={cardBase}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.2)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)"; }}>
+            <PawPrint size={18} color="#A8C5B5" />
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#F5F0E8" }}>
               Питомцы {pets ? `(${pets.length})` : ""}
             </p>
-            <ArrowRight size={14} className="text-[#0E0E0E]/30 group-hover:text-[#0E0E0E]/60 transition-colors" />
+            <ArrowRight size={13} color="rgba(245,240,232,0.2)" />
           </Link>
-          <Link href="/account/subscription" className="bg-white border border-[#E8F0EC] p-6 flex flex-col gap-3 hover:border-[#A8C5B5] transition-colors group">
-            <CreditCard size={20} className="text-[#A8C5B5]" />
-            <p className="text-sm font-light text-[#0E0E0E]" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>
+          <Link href="/account/subscription"
+            style={cardBase}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.2)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)"; }}>
+            <CreditCard size={18} color="#A8C5B5" />
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#F5F0E8" }}>
               {subscription?.status === "active" ? "Резидент" : "Подписка"}
             </p>
-            <ArrowRight size={14} className="text-[#0E0E0E]/30 group-hover:text-[#0E0E0E]/60 transition-colors" />
+            <ArrowRight size={13} color="rgba(245,240,232,0.2)" />
           </Link>
-        </div>
+        </motion.div>
 
         {/* Subscription status */}
-        {subscription?.status === "active" ? (
-          <div className="bg-[#0E0E0E] p-6 mb-6 flex items-center justify-between">
-            <div>
-              <p className="text-[#A8C5B5] text-[10px] tracking-[0.3em] uppercase mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>Статус</p>
-              <p className="text-white font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px" }}>Резидент ПОСЛЕ</p>
-              {subscription.nextBillingAt && (
-                <p className="text-white/40 text-xs mt-1" style={{ fontFamily: "'Inter', sans-serif" }}>
-                  Следующее списание: {new Date(subscription.nextBillingAt).toLocaleDateString("ru-RU")}
-                </p>
-              )}
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.15 }} style={{ marginBottom: "32px" }}>
+          {subscription?.status === "active" ? (
+            <div style={{ background: "rgba(168,197,181,0.06)", border: "1px solid rgba(168,197,181,0.2)", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#A8C5B5", marginBottom: "6px" }}>Статус</p>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300, color: "#F5F0E8" }}>Резидент ПОСЛЕ</p>
+                {subscription.nextBillingAt && (
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.35)", marginTop: "4px" }}>
+                    Следующее списание: {new Date(subscription.nextBillingAt).toLocaleDateString("ru-RU")}
+                  </p>
+                )}
+              </div>
+              <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#A8C5B5", boxShadow: "0 0 8px rgba(168,197,181,0.6)" }} />
             </div>
-            <div className="w-2 h-2 rounded-full bg-[#A8C5B5]" />
-          </div>
-        ) : (
-          <div className="bg-[#F7F5F2] border border-[#E8F0EC] p-6 mb-6 flex items-center justify-between">
-            <div>
-              <p className="text-[#0E0E0E]/40 text-[10px] tracking-[0.3em] uppercase mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>Подписка</p>
-              <p className="text-[#0E0E0E] font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px" }}>Вы не резидент</p>
-            </div>
-            <Link href="/subscription" className="text-xs tracking-[0.2em] uppercase text-[#A8C5B5] hover:text-[#0E0E0E] border-b border-[#A8C5B5] pb-0.5 transition-colors" style={{ fontFamily: "'Inter', sans-serif" }}>
-              Стать резидентом
-            </Link>
-          </div>
-        )}
-
-        {/* Pets preview */}
-        {pets && pets.length > 0 ? (
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <p className="text-[#0E0E0E]/40 text-[10px] tracking-[0.3em] uppercase" style={{ fontFamily: "'Inter', sans-serif" }}>Питомцы</p>
-              <Link href="/account/pets" className="text-xs text-[#A8C5B5] hover:text-[#0E0E0E] transition-colors" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Все питомцы
+          ) : (
+            <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(245,240,232,0.25)", marginBottom: "6px" }}>Подписка</p>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, color: "rgba(245,240,232,0.6)" }}>Вы не резидент</p>
+              </div>
+              <Link href="/subscription"
+                style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#A8C5B5", textDecoration: "none", borderBottom: "1px solid rgba(168,197,181,0.4)", paddingBottom: "2px" }}>
+                Стать резидентом
               </Link>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {pets.slice(0, 3).map((pet) => (
-                <Link key={pet.id} href={`/account/pets/${pet.id}`} className="bg-white border border-[#E8F0EC] p-4 hover:border-[#A8C5B5] transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-[#F7F5F2] flex items-center justify-center mb-3">
-                    <PawPrint size={14} className="text-[#A8C5B5]" />
-                  </div>
-                  <p className="text-[#0E0E0E] text-sm font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px" }}>{pet.name}</p>
-                  <p className="text-[#0E0E0E]/40 text-xs mt-1" style={{ fontFamily: "'Inter', sans-serif" }}>
-                    {pet.species === "dog" ? "Собака" : pet.species === "cat" ? "Кошка" : "Другое"}
-                    {pet.breed ? ` · ${pet.breed}` : ""}
-                  </p>
+          )}
+        </motion.div>
+
+        {/* Pets preview */}
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}>
+          {pets && pets.length > 0 ? (
+            <div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(245,240,232,0.25)" }}>Питомцы</p>
+                <Link href="/account/pets" style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "#A8C5B5", textDecoration: "none" }}>
+                  Все питомцы
                 </Link>
-              ))}
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "10px" }}>
+                {pets.slice(0, 3).map((pet) => (
+                  <Link key={pet.id} href={`/account/diary/${pet.id}`}
+                    style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", padding: "18px", textDecoration: "none", display: "block", transition: "border-color 0.2s" }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.2)"; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)"; }}>
+                    {(pet as any).photoUrl ? (
+                      <img src={(pet as any).photoUrl} alt={pet.name} style={{ width: "100%", height: "100px", objectFit: "cover", marginBottom: "12px" }} />
+                    ) : (
+                      <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "rgba(168,197,181,0.1)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "12px" }}>
+                        <PawPrint size={14} color="#A8C5B5" />
+                      </div>
+                    )}
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#F5F0E8", marginBottom: "4px" }}>{pet.name}</p>
+                    <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: "rgba(245,240,232,0.35)" }}>
+                      {pet.species === "dog" ? "Собака" : pet.species === "cat" ? "Кошка" : "Другое"}
+                      {pet.breed ? ` · ${pet.breed}` : ""}
+                    </p>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="bg-white border border-dashed border-[#E8F0EC] p-8 text-center">
-            <PawPrint size={24} className="text-[#A8C5B5] mx-auto mb-4" />
-            <p className="text-[#0E0E0E]/60 text-sm mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>
-              Добавьте питомца, чтобы вести дневник визитов
-            </p>
-            <Link href="/account/pets/new" className="text-xs tracking-[0.2em] uppercase text-[#A8C5B5] hover:text-[#0E0E0E] border-b border-[#A8C5B5] pb-0.5 transition-colors" style={{ fontFamily: "'Inter', sans-serif" }}>
-              Добавить питомца
-            </Link>
-          </div>
-        )}
+          ) : (
+            <div style={{ background: "rgba(255,255,255,0.02)", border: "1px dashed rgba(255,255,255,0.08)", padding: "48px 32px", textAlign: "center" }}>
+              <Sparkles size={24} color="rgba(168,197,181,0.4)" style={{ margin: "0 auto 16px" }} />
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", color: "rgba(245,240,232,0.4)", marginBottom: "20px" }}>
+                Добавьте питомца, чтобы вести дневник визитов
+              </p>
+              <Link href="/account/pets"
+                style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#A8C5B5", textDecoration: "none", borderBottom: "1px solid rgba(168,197,181,0.4)", paddingBottom: "2px" }}>
+                Добавить питомца
+              </Link>
+            </div>
+          )}
+        </motion.div>
       </div>
     </AccountLayout>
   );

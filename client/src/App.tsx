@@ -20,6 +20,10 @@ import AccountPets from "./pages/account/Pets";
 import AccountDiary from "./pages/account/Diary";
 import AccountSubscription from "./pages/account/AccountSubscription";
 
+// Admin pages
+import AdminPanel from "./pages/admin/AdminPanel";
+import AdminClientDetail from "./pages/admin/AdminClientDetail";
+
 // Master pages
 import MasterPanel from "./pages/master/MasterPanel";
 import NewVisit from "./pages/master/NewVisit";
@@ -44,6 +48,10 @@ function Router() {
       <Route path="/account/diary" component={AccountDiary} />
       <Route path="/account/diary/:petId" component={AccountDiary} />
       <Route path="/account/subscription" component={AccountSubscription} />
+
+      {/* Admin panel */}
+      <Route path="/admin" component={AdminPanel} />
+      <Route path="/admin/client/:id" component={AdminClientDetail} />
 
       {/* Master panel */}
       <Route path="/master" component={MasterPanel} />

@@ -25,10 +25,12 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// ─── Clients (SMS-auth based) ────────────────────────────────────────────────
+// ─── Clients (email-auth based) ──────────────────────────────────────────────
 export const clients = mysqlTable("clients", {
   id: int("id").autoincrement().primaryKey(),
-  phone: varchar("phone", { length: 20 }).notNull().unique(),
+  phone: varchar("phone", { length: 20 }),
+  email: varchar("email", { length: 320 }).unique(),
+  passwordHash: text("passwordHash"),
   name: text("name"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
@@ -37,6 +39,19 @@ export const clients = mysqlTable("clients", {
 
 export type Client = typeof clients.$inferSelect;
 export type InsertClient = typeof clients.$inferInsert;
+
+// ─── Email OTP Codes ─────────────────────────────────────────────────────────
+export const emailOtps = mysqlTable("email_otps", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  code: varchar("code", { length: 6 }).notNull(),
+  attempts: int("attempts").default(0).notNull(),
+  blocked: boolean("blocked").default(false).notNull(),
+  expiresAt: timestamp("expiresAt").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type EmailOtp = typeof emailOtps.$inferSelect;
 
 // ─── SMS Codes ───────────────────────────────────────────────────────────────
 export const smsCodes = mysqlTable("sms_codes", {

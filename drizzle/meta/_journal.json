@@ -15,6 +15,13 @@
       "when": 1776928117043,
       "tag": "0001_previous_natasha_romanoff",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1779371371261,
+      "tag": "0002_famous_skin",
+      "breakpoints": true
     }
   ]
 }
