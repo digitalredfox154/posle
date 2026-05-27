@@ -326,6 +326,11 @@
     padding-bottom: 60px !important;
   }
 
+  /* Hide subscription hero background image on mobile */
+  .subscription-hero-bg {
+    display: none !important;
+  }
+
   /* Dark hero pages on mobile */
   .dark-hero-section {
     background-image: none !important;

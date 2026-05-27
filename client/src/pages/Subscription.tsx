@@ -70,11 +70,20 @@ export default function Subscription() {
         paddingTop: "clamp(80px, 15vw, 120px)",
         paddingBottom: "clamp(48px, 8vw, 80px)",
       }}>
-        {/* Dark textured background — no dog image */}
+        {/* Background image — hidden on mobile via CSS */}
+        <div className="subscription-hero-bg" style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url('/manus-storage/subscription_hero_bg_new_fc37e260.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center right",
+          backgroundRepeat: "no-repeat",
+        }} />
+        {/* Dark overlay */}
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "radial-gradient(ellipse at 70% 40%, rgba(201,169,110,0.06) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(168,197,181,0.05) 0%, transparent 50%)",
+          background: "linear-gradient(to right, rgba(10,10,8,0.92) 45%, rgba(10,10,8,0.35) 100%)",
         }} />
         {/* Bottom fade to cards block */}
         <div style={{
