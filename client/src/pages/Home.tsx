@@ -523,9 +523,7 @@ export default function Home() {
                       <span style={{ fontSize: "15px" }}>→</span>
                     </Link>
                   </div>
-                  <div style={{ flexShrink: 0, width: "64px", height: "64px", marginTop: "4px" }}>
-                    <img src="/manus-storage/posle-logo-olive_44f3e3e8.png" alt="POSLE" style={{ width: "100%", height: "100%", objectFit: "contain", opacity: 0.72 }} />
-                  </div>
+
                 </div>
               </div>
             </motion.div>
