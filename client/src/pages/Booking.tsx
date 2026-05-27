@@ -4,9 +4,9 @@ import PublicLayout from "@/components/PublicLayout";
 import { trpc } from "@/lib/trpc";
 import { useClientAuth } from "@/hooks/useClientAuth";
 import { toast } from "sonner";
-import { Check, ChevronRight } from "lucide-react";
+import { Check, ChevronRight, User } from "lucide-react";
 
-type Step = "service" | "datetime" | "confirm" | "done";
+type Step = "service" | "specialist" | "datetime" | "confirm" | "done";
 
 function formatPhone(raw: string) {
   const digits = raw.replace(/\D/g, "");
@@ -26,17 +26,15 @@ export default function Booking() {
   const { client } = useClientAuth(false);
   const [step, setStep] = useState<Step>("service");
   const [selectedService, setSelectedService] = useState<any>(null);
+  const [selectedStaff, setSelectedStaff] = useState<any>(null);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [clientName, setClientName] = useState(client?.name || "");
-  const [clientPhone, setClientPhone] = useState(client?.phone || "");
   const [rawPhone, setRawPhone] = useState(client?.phone || "");
   const [comment, setComment] = useState("");
-  const [bookingId, setBookingId] = useState<number | null>(null);
 
   const { data: services, isLoading: servicesLoading } = trpc.booking.services.useQuery();
-  const { data: staff } = trpc.booking.staff.useQuery();
-  const staffId = staff?.[0]?.id;
+  const { data: staff, isLoading: staffLoading } = trpc.booking.staff.useQuery();
 
   // Get next 14 days
   const today = new Date();
@@ -44,32 +42,29 @@ export default function Booking() {
   const dateTo = new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
 
   const { data: availableDates } = trpc.booking.availableDates.useQuery(
-    { serviceId: selectedService?.id, staffId, dateFrom, dateTo },
-    { enabled: !!selectedService?.id }
+    { serviceId: selectedService?.id, staffId: selectedStaff?.id, dateFrom, dateTo },
+    { enabled: !!selectedService?.id && !!selectedStaff?.id }
   );
 
   const { data: slots } = trpc.booking.availableSlots.useQuery(
-    { serviceId: selectedService?.id, staffId, date: selectedDate },
-    { enabled: !!selectedService?.id && !!selectedDate }
+    { serviceId: selectedService?.id, staffId: selectedStaff?.id, date: selectedDate },
+    { enabled: !!selectedService?.id && !!selectedStaff?.id && !!selectedDate }
   );
 
   const createBooking = trpc.booking.createBooking.useMutation({
-    onSuccess: (data) => {
-      setBookingId(data.bookingId || null);
-      setStep("done");
-    },
+    onSuccess: () => setStep("done"),
     onError: (e) => toast.error(e.message),
   });
 
   const handleConfirm = () => {
-    if (!selectedService || !selectedDate || !selectedTime) return;
+    if (!selectedService || !selectedStaff || !selectedDate || !selectedTime) return;
     if (!clientName.trim() || !rawPhone) {
       toast.error("Заполните имя и телефон");
       return;
     }
     createBooking.mutate({
       serviceId: selectedService.id,
-      staffId: staffId || 0,
+      staffId: selectedStaff.id,
       date: selectedDate,
       time: selectedTime,
       clientName: clientName.trim(),
@@ -80,9 +75,12 @@ export default function Booking() {
 
   const steps = [
     { id: "service", label: "Услуга" },
+    { id: "specialist", label: "Специалист" },
     { id: "datetime", label: "Дата и время" },
     { id: "confirm", label: "Подтверждение" },
   ];
+
+  const stepIndex = steps.findIndex(s => s.id === step);
 
   return (
     <PublicLayout>
@@ -113,7 +111,7 @@ export default function Booking() {
                 Ожидайте SMS-подтверждения на номер {formatPhone(rawPhone)}
               </p>
               <button
-                onClick={() => { setStep("service"); setSelectedService(null); setSelectedDate(""); setSelectedTime(""); }}
+                onClick={() => { setStep("service"); setSelectedService(null); setSelectedStaff(null); setSelectedDate(""); setSelectedTime(""); }}
                 className="text-xs tracking-[0.2em] uppercase text-[#A8C5B5] hover:text-[#0E0E0E] border-b border-[#A8C5B5] pb-0.5 transition-colors"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
@@ -123,24 +121,24 @@ export default function Booking() {
           ) : (
             <>
               {/* Steps indicator */}
-              <div className="flex items-center gap-0 mb-10">
+              <div className="flex items-center gap-0 mb-10 overflow-x-auto pb-1">
                 {steps.map((s, i) => (
-                  <div key={s.id} className="flex items-center flex-1">
-                    <div className={`flex items-center gap-2 ${step === s.id ? "opacity-100" : "opacity-40"}`}>
-                      <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
-                        steps.findIndex(x => x.id === step) > i
+                  <div key={s.id} className="flex items-center flex-1 min-w-0">
+                    <div className={`flex items-center gap-1.5 shrink-0 ${step === s.id ? "opacity-100" : "opacity-40"}`}>
+                      <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs shrink-0 ${
+                        stepIndex > i
                           ? "bg-[#A8C5B5] text-[#0E0E0E]"
                           : step === s.id
                           ? "bg-[#0E0E0E] text-white"
                           : "bg-[#E8F0EC] text-[#0E0E0E]/40"
                       }`} style={{ fontFamily: "'Inter', sans-serif" }}>
-                        {steps.findIndex(x => x.id === step) > i ? <Check size={10} /> : i + 1}
+                        {stepIndex > i ? <Check size={10} /> : i + 1}
                       </div>
-                      <span className="text-[10px] tracking-widest uppercase text-[#0E0E0E]/60 hidden sm:block" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      <span className="text-[9px] tracking-widest uppercase text-[#0E0E0E]/60 hidden sm:block whitespace-nowrap" style={{ fontFamily: "'Inter', sans-serif" }}>
                         {s.label}
                       </span>
                     </div>
-                    {i < steps.length - 1 && <div className="flex-1 h-px bg-[#E8F0EC] mx-3" />}
+                    {i < steps.length - 1 && <div className="flex-1 h-px bg-[#E8F0EC] mx-2" />}
                   </div>
                 ))}
               </div>
@@ -161,7 +159,7 @@ export default function Booking() {
                         {services.map((svc) => (
                           <button
                             key={svc.id}
-                            onClick={() => { setSelectedService(svc); setStep("datetime"); }}
+                            onClick={() => { setSelectedService(svc); setStep("specialist"); }}
                             className="w-full text-left border border-[#E8F0EC] p-5 flex items-center justify-between hover:border-[#A8C5B5] transition-colors group"
                           >
                             <div>
@@ -191,17 +189,88 @@ export default function Booking() {
                   </motion.div>
                 )}
 
-                {/* Step 2: Date & Time */}
-                {step === "datetime" && (
-                  <motion.div key="datetime" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }}>
+                {/* Step 2: Specialist */}
+                {step === "specialist" && (
+                  <motion.div key="specialist" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }}>
                     <button onClick={() => setStep("service")} className="text-[#0E0E0E]/40 text-xs tracking-widest uppercase mb-6 hover:text-[#0E0E0E] transition-colors" style={{ fontFamily: "'Inter', sans-serif" }}>
                       ← Назад
                     </button>
-                    <h2 className="font-light text-[#0E0E0E] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "28px" }}>
-                      Дата и время
+                    <h2 className="font-light text-[#0E0E0E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "28px" }}>
+                      Выберите специалиста
                     </h2>
                     <p className="text-[#0E0E0E]/40 text-xs mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>
                       Услуга: {selectedService?.title}
+                    </p>
+
+                    {staffLoading ? (
+                      <div className="flex flex-col gap-3">
+                        {[1, 2].map(i => <div key={i} className="h-20 bg-[#F7F5F2] animate-pulse" />)}
+                      </div>
+                    ) : staff && staff.length > 0 ? (
+                      <div className="flex flex-col gap-3">
+                        {staff.map((member) => (
+                          <button
+                            key={member.id}
+                            onClick={() => { setSelectedStaff(member); setStep("datetime"); }}
+                            className="w-full text-left border border-[#E8F0EC] p-5 flex items-center gap-4 hover:border-[#A8C5B5] transition-colors group"
+                          >
+                            {/* Avatar */}
+                            <div className="w-12 h-12 rounded-full overflow-hidden bg-[#E8F0EC] flex items-center justify-center shrink-0">
+                              {member.avatar ? (
+                                <img src={member.avatar} alt={member.name} className="w-full h-full object-cover" />
+                              ) : (
+                                <User size={20} className="text-[#A8C5B5]" />
+                              )}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-[#0E0E0E] font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px" }}>{member.name}</p>
+                              {member.specialization && (
+                                <p className="text-[#0E0E0E]/40 text-xs mt-0.5 truncate" style={{ fontFamily: "'Inter', sans-serif" }}>{member.specialization}</p>
+                              )}
+                            </div>
+                            <ChevronRight size={16} className="text-[#0E0E0E]/20 group-hover:text-[#A8C5B5] transition-colors shrink-0" />
+                          </button>
+                        ))}
+                        {/* Any specialist option */}
+                        <button
+                          onClick={() => {
+                            const anyStaff = staff[0];
+                            setSelectedStaff({ ...anyStaff, name: "Любой специалист" });
+                            setStep("datetime");
+                          }}
+                          className="w-full text-left border border-dashed border-[#E8F0EC] p-5 flex items-center gap-4 hover:border-[#A8C5B5] transition-colors group"
+                        >
+                          <div className="w-12 h-12 rounded-full bg-[#E8F0EC]/60 flex items-center justify-center shrink-0">
+                            <User size={20} className="text-[#A8C5B5]/60" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-[#0E0E0E]/60 font-light" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px" }}>Любой специалист</p>
+                            <p className="text-[#0E0E0E]/30 text-xs mt-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>Первый свободный</p>
+                          </div>
+                          <ChevronRight size={16} className="text-[#0E0E0E]/20 group-hover:text-[#A8C5B5] transition-colors shrink-0" />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="bg-[#F7F5F2] border border-[#E8F0EC] p-8 text-center">
+                        <p className="text-[#0E0E0E]/50 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>
+                          Специалисты не найдены
+                        </p>
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+
+                {/* Step 3: Date & Time */}
+                {step === "datetime" && (
+                  <motion.div key="datetime" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }}>
+                    <button onClick={() => setStep("specialist")} className="text-[#0E0E0E]/40 text-xs tracking-widest uppercase mb-6 hover:text-[#0E0E0E] transition-colors" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      ← Назад
+                    </button>
+                    <h2 className="font-light text-[#0E0E0E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "28px" }}>
+                      Дата и время
+                    </h2>
+                    <p className="text-[#0E0E0E]/40 text-xs mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      {selectedService?.title} · {selectedStaff?.name}
                     </p>
 
                     {/* Dates */}
@@ -267,7 +336,7 @@ export default function Booking() {
                   </motion.div>
                 )}
 
-                {/* Step 3: Confirm */}
+                {/* Step 4: Confirm */}
                 {step === "confirm" && (
                   <motion.div key="confirm" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }}>
                     <button onClick={() => setStep("datetime")} className="text-[#0E0E0E]/40 text-xs tracking-widest uppercase mb-6 hover:text-[#0E0E0E] transition-colors" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -283,6 +352,10 @@ export default function Booking() {
                         <div className="flex justify-between">
                           <span className="text-[#0E0E0E]/40 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>Услуга</span>
                           <span className="text-[#0E0E0E] text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>{selectedService?.title}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-[#0E0E0E]/40 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>Специалист</span>
+                          <span className="text-[#0E0E0E] text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>{selectedStaff?.name}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-[#0E0E0E]/40 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>Дата</span>

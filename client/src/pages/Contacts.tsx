@@ -138,7 +138,7 @@ export default function Contacts() {
               <div>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A96E", marginBottom: "16px" }}>Режим работы</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid rgba(201,169,110,0.15)", paddingBottom: "12px" }}>
-                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "rgba(240,237,232,0.4)" }}>Ежедневно</span>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "rgba(240,237,232,0.4)" }}>Чт — Пт</span>
                   <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, color: "#F0EDE8" }}>10:00 — 20:00</span>
                 </div>
               </div>

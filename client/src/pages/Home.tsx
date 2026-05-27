@@ -50,7 +50,7 @@ export default function Home() {
         />
 
         <div className="container relative z-10">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[88vh] py-20 md:py-16">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-20 md:min-h-[88vh] md:py-16">
 
             {/* LEFT: text */}
             <motion.div
@@ -121,8 +121,8 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT: empty — background image handles the logo */}
-            <div />
+            {/* RIGHT: empty on desktop only — background image handles the logo */}
+            <div className="hidden md:block" />
 
           </div>
         </div>
@@ -718,7 +718,7 @@ export default function Home() {
                 <div>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "5px" }}>ТЕЛЕФОН</p>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.8)", margin: 0 }}>+7 913 018-72-19</p>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Ежедневно с 10:00 до 20:00</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Чт — Пт с 10:00 до 20:00</p>
                 </div>
               </a>
               {/* Hours */}
@@ -726,8 +726,8 @@ export default function Home() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5" style={{ flexShrink: 0, marginTop: "2px" }}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" strokeLinecap="round"/></svg>
                 <div>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "5px" }}>ВРЕМЯ РАБОТЫ</p>
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.8)", margin: 0 }}>Пн — Вс: 10:00 — 20:00</p>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Без выходных</p>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.8)", margin: 0 }}>Чт — Пт: 10:00 — 20:00</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Сб — Ср: выходной</p>
                 </div>
               </div>
             </motion.div>

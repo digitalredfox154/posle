@@ -288,6 +288,7 @@
   }
   .hero-section {
     background-color: #F0EDE8 !important;
+    min-height: auto !important;
   }
   .hero-section-dark {
     background-color: #0E0E0E !important;
