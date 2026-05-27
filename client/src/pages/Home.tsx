@@ -630,15 +630,15 @@ export default function Home() {
                   {[
                     {
                       icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>,
-                      text: "Берегу комфорт каждого питомца"
+                      text: "Комфорт питомца"
                     },
                     {
                       icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
-                      text: "Индивидуальный подход"
+                      text: "Индивидуально"
                     },
                     {
                       icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>,
-                      text: "Только мягкие и безопасные средства"
+                      text: "Мягкие средства"
                     },
                   ].map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
@@ -718,7 +718,7 @@ export default function Home() {
                 <div>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "5px" }}>ТЕЛЕФОН</p>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.8)", margin: 0 }}>+7 913 018-72-19</p>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Чт — Пт с 10:00 до 20:00</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Чт — Вс с 10:00 до 20:00</p>
                 </div>
               </a>
               {/* Hours */}
@@ -726,8 +726,8 @@ export default function Home() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5" style={{ flexShrink: 0, marginTop: "2px" }}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" strokeLinecap="round"/></svg>
                 <div>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "5px" }}>ВРЕМЯ РАБОТЫ</p>
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.8)", margin: 0 }}>Чт — Пт: 10:00 — 20:00</p>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Сб — Ср: выходной</p>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.8)", margin: 0 }}>Чт — Вс: 10:00 — 20:00</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Пн — Ср: выходной</p>
                 </div>
               </div>
             </motion.div>

@@ -70,15 +70,7 @@ export default function Footer() {
               >
                 Telegram
               </a>
-              <a
-                href="https://instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/40 hover:text-[#A8C5B5] transition-colors text-xs tracking-widest uppercase"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
-                Instagram
-              </a>
+
             </div>
           </div>
         </div>

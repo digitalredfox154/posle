@@ -70,20 +70,11 @@ export default function Subscription() {
         paddingTop: "clamp(80px, 15vw, 120px)",
         paddingBottom: "clamp(48px, 8vw, 80px)",
       }}>
-        {/* Background image */}
+        {/* Dark textured background — no dog image */}
         <div style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "url('/manus-storage/spitz_sub_hero_4ec6c1fa.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center right",
-          backgroundRepeat: "no-repeat",
-        }} />
-        {/* Dark overlay: dark left, transparent right */}
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          background: "linear-gradient(to right, rgba(10,10,8,0.95) 30%, rgba(10,10,8,0.6) 60%, rgba(10,10,8,0.15) 100%)",
+          background: "radial-gradient(ellipse at 70% 40%, rgba(201,169,110,0.06) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(168,197,181,0.05) 0%, transparent 50%)",
         }} />
         {/* Bottom fade to cards block */}
         <div style={{
