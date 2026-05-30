@@ -35,7 +35,7 @@ export default function Home() {
       <section
         className="relative min-h-[100vh] flex items-center overflow-hidden hero-section"
         style={{
-          backgroundImage: "url('/manus-storage/hero_bg_new_e5a2868a.png')",
+          backgroundImage: "url('/manus-storage/hero_main_new_59027f0b.png')",
           backgroundSize: "cover",
           backgroundPosition: "center right",
           backgroundRepeat: "no-repeat",
@@ -182,7 +182,9 @@ export default function Home() {
 
               {/* Card 01 */}
               <div style={{
-                backgroundColor: "rgba(255,255,255,0.82)",
+                backgroundImage: "url('/manus-storage/card_bg_1_a5145d09.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
                 borderRadius: "20px",
                 padding: "clamp(18px, 2.2vw, 32px)",
                 display: "flex", flexDirection: "column", justifyContent: "space-between",
@@ -203,12 +205,14 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Камерный<br/>формат</p>
                 </div>
-                <img src="/manus-storage/icon_comb_883f0ed6.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-4%", right: "-4%", width: "52%", opacity: 1, pointerEvents: "none" }} />
+
               </div>
 
               {/* Card 02 */}
               <div style={{
-                backgroundColor: "rgba(255,255,255,0.82)",
+                backgroundImage: "url('/manus-storage/card_bg_2_1f0b5262.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
                 borderRadius: "20px",
                 padding: "clamp(18px, 2.2vw, 32px)",
                 display: "flex", flexDirection: "column", justifyContent: "space-between",
@@ -229,12 +233,14 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Спокойный<br/>процесс</p>
                 </div>
-                <img src="/manus-storage/icon_scissors_2ba452a2.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-4%", right: "-4%", width: "52%", opacity: 1, pointerEvents: "none" }} />
+
               </div>
 
               {/* Card 03 */}
               <div style={{
-                backgroundColor: "rgba(255,255,255,0.82)",
+                backgroundImage: "url('/manus-storage/card_bg_3_9e8c9339.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
                 borderRadius: "20px",
                 padding: "clamp(18px, 2.2vw, 32px)",
                 display: "flex", flexDirection: "column", justifyContent: "space-between",
@@ -255,12 +261,14 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Внимание<br/>к характеру</p>
                 </div>
-                <img src="/manus-storage/icon_paw_19fed88d.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-4%", right: "-4%", width: "52%", opacity: 1, pointerEvents: "none" }} />
+
               </div>
 
               {/* Card 04 */}
               <div style={{
-                backgroundColor: "rgba(255,255,255,0.82)",
+                backgroundImage: "url('/manus-storage/card_bg_4_862d5e57.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
                 borderRadius: "20px",
                 padding: "clamp(18px, 2.2vw, 32px)",
                 display: "flex", flexDirection: "column", justifyContent: "space-between",
@@ -281,7 +289,7 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Постоянный<br/>мастер</p>
                 </div>
-                <img src="/manus-storage/icon_dog_99415d69.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-4%", right: "-4%", width: "52%", opacity: 1, pointerEvents: "none" }} />
+
               </div>
 
             </div>
