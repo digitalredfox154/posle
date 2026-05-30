@@ -203,8 +203,7 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Камерный<br/>формат</p>
                 </div>
-                {/* mini branch bottom-right */}
-                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+                <img src="/manus-storage/icon_comb_883f0ed6.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-4%", right: "-4%", width: "52%", opacity: 1, pointerEvents: "none" }} />
               </div>
 
               {/* Card 02 */}
@@ -230,7 +229,7 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Спокойный<br/>процесс</p>
                 </div>
-                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+                <img src="/manus-storage/icon_scissors_2ba452a2.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-4%", right: "-4%", width: "52%", opacity: 1, pointerEvents: "none" }} />
               </div>
 
               {/* Card 03 */}
@@ -256,7 +255,7 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Внимание<br/>к характеру</p>
                 </div>
-                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+                <img src="/manus-storage/icon_paw_19fed88d.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-4%", right: "-4%", width: "52%", opacity: 1, pointerEvents: "none" }} />
               </div>
 
               {/* Card 04 */}
@@ -282,7 +281,7 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Постоянный<br/>мастер</p>
                 </div>
-                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+                <img src="/manus-storage/icon_dog_99415d69.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-4%", right: "-4%", width: "52%", opacity: 1, pointerEvents: "none" }} />
               </div>
 
             </div>
@@ -534,22 +533,7 @@ export default function Home() {
 
       {/* ── MASTER BIO ───────────────────────────────────────────────────── */}
       <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#F0EDE8" }}>
-        {/* Branch left — large, bottom-left, leaning right like on mockup */}
-        <img
-          src="/manus-storage/branch_transparent_222dc413.png"
-          alt=""
-          aria-hidden="true"
-          className="branch-deco"
-          style={{ position: "absolute", bottom: "-60px", left: "-60px", width: "380px", opacity: 0.85, pointerEvents: "none", zIndex: 2, transform: "rotate(20deg)" }}
-        />
-        {/* Branch right — small, top-right corner, hanging down */}
-        <img
-          src="/manus-storage/branch_transparent_222dc413.png"
-          alt=""
-          aria-hidden="true"
-          className="branch-deco"
-          style={{ position: "absolute", top: "-20px", right: "0px", width: "220px", opacity: 0.85, pointerEvents: "none", zIndex: 2, transform: "rotate(170deg) scaleX(-1)" }}
-        />
+
         <div className="container relative" style={{ zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -654,7 +638,7 @@ export default function Home() {
       {/* ── FIRST VISIT / BOOKING CTA ──────────────────────────────────────── */}
       <section
         className="relative overflow-hidden dark-hero-section"
-        style={{ backgroundImage: "url('/manus-storage/cta_bg3_c36fca8d.png')", backgroundSize: "cover", backgroundPosition: "center center", backgroundRepeat: "no-repeat", backgroundColor: "#0E0E0E" }}
+        style={{ backgroundImage: "url('/manus-storage/offer_bg_2437d711.png')", backgroundSize: "cover", backgroundPosition: "center center", backgroundRepeat: "no-repeat", backgroundColor: "#0E0E0E" }}
       >
         <div className="container relative z-10 py-14 md:py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 cta-section-grid" style={{ gap: "clamp(24px, 3vw, 48px)", alignItems: "center", maxWidth: "680px", marginLeft: "auto", marginRight: "auto" }}>

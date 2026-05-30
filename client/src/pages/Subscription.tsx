@@ -74,7 +74,7 @@ export default function Subscription() {
         <div className="subscription-hero-bg" style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "url('/manus-storage/subscription_hero_bg_new_fc37e260.png')",
+          backgroundImage: "url('/manus-storage/subscription_hero_new_70a0bbb7.png')",
           backgroundSize: "cover",
           backgroundPosition: "center right",
           backgroundRepeat: "no-repeat",

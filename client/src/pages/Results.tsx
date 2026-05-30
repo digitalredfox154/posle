@@ -20,7 +20,7 @@ export default function Results() {
         style={{
           position: "relative",
           minHeight: "100vh",
-          backgroundImage: "url('/manus-storage/results_hero_bg_new_cf828d60.png')",
+          backgroundImage: "url('/manus-storage/results_hero_new_ac929f38.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundColor: "#111110",

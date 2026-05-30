@@ -12,7 +12,7 @@ export default function Contacts() {
         style={{
           position: "relative",
           minHeight: "100vh",
-          backgroundImage: "url('/manus-storage/contacts_hero_bg_new_7380a179.png')",
+          backgroundImage: "url('/manus-storage/contacts_hero_new_7a2e3d7c.png')",
           backgroundSize: "cover",
           backgroundPosition: "center right",
           backgroundColor: "#111110",
