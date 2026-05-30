@@ -132,7 +132,7 @@ export default function Home() {
 
 
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-14 md:py-28" style={{ backgroundColor: "#F0EDE8" }}>
+      <section className="relative py-14 md:py-28" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "600px auto", backgroundRepeat: "repeat" }}>
 
 
         <div className="container relative" style={{ zIndex: 1 }}>
@@ -192,12 +192,7 @@ export default function Home() {
                 boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
                 position: "relative", overflow: "hidden",
               }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>01</span>
-                  <div style={{ width: "clamp(32px,3vw,44px)", height: "clamp(32px,3vw,44px)", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.45)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="clamp(14px,1.4vw,20px)" height="clamp(14px,1.4vw,20px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><rect x="4" y="4" width="10" height="10" rx="1.5"/><rect x="18" y="4" width="10" height="10" rx="1.5"/><rect x="4" y="18" width="10" height="10" rx="1.5"/><rect x="18" y="18" width="10" height="10" rx="1.5"/></svg>
-                  </div>
-                </div>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>01</span>
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
                     <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
@@ -220,12 +215,7 @@ export default function Home() {
                 boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
                 position: "relative", overflow: "hidden",
               }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>02</span>
-                  <div style={{ width: "clamp(32px,3vw,44px)", height: "clamp(32px,3vw,44px)", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.45)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="clamp(14px,1.4vw,20px)" height="clamp(14px,1.4vw,20px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l4 4" strokeLinecap="round"/></svg>
-                  </div>
-                </div>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>02</span>
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
                     <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
@@ -248,12 +238,7 @@ export default function Home() {
                 boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
                 position: "relative", overflow: "hidden",
               }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>03</span>
-                  <div style={{ width: "clamp(32px,3vw,44px)", height: "clamp(32px,3vw,44px)", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.45)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="clamp(14px,1.4vw,20px)" height="clamp(14px,1.4vw,20px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><path d="M16 27S5 20 5 12a6 6 0 0111-3.3A6 6 0 0127 12c0 8-11 15-11 15z"/></svg>
-                  </div>
-                </div>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>03</span>
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
                     <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
@@ -276,12 +261,7 @@ export default function Home() {
                 boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
                 position: "relative", overflow: "hidden",
               }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>04</span>
-                  <div style={{ width: "clamp(32px,3vw,44px)", height: "clamp(32px,3vw,44px)", borderRadius: "50%", border: "1px solid rgba(168,197,181,0.45)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="clamp(14px,1.4vw,20px)" height="clamp(14px,1.4vw,20px)" viewBox="0 0 32 32" fill="none" stroke="#A8C5B5" strokeWidth="1.5"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="5"/><path d="M16 5v3M16 24v3M5 16h3M24 16h3" strokeLinecap="round"/></svg>
-                  </div>
-                </div>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>04</span>
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
                     <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
@@ -298,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "600px auto", backgroundRepeat: "repeat" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
