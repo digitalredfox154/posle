@@ -1,27 +1,5 @@
 {
   "version": "7",
   "dialect": "mysql",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "5",
-      "when": 1776924405669,
-      "tag": "0000_condemned_sharon_ventura",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1776928117043,
-      "tag": "0001_previous_natasha_romanoff",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1779371371261,
-      "tag": "0002_famous_skin",
-      "breakpoints": true
-    }
-  ]
+  "entries": []
 }
