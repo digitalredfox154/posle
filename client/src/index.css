@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -43,82 +44,61 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
+  /* ПОСЛЕ brand palette */
+  --primary: oklch(0.09 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --radius: 0.5rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
+  --foreground: oklch(0.09 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
+  --card-foreground: oklch(0.09 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
+  --popover-foreground: oklch(0.09 0 0);
+  --secondary: oklch(0.96 0.015 160);
+  --secondary-foreground: oklch(0.09 0 0);
+  --muted: oklch(0.97 0.008 160);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.88 0.04 160);
+  --accent-foreground: oklch(0.09 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --border: oklch(0.90 0.012 160);
+  --input: oklch(0.90 0.012 160);
+  --ring: oklch(0.09 0 0);
+  /* Mint palette */
+  --mint: oklch(0.88 0.04 160);
+  --mint-light: oklch(0.96 0.015 160);
+  --mint-dark: oklch(0.72 0.07 160);
+  --dark: oklch(0.09 0 0);
+  /* Sidebar */
+  --sidebar: oklch(0.09 0 0);
+  --sidebar-foreground: oklch(0.9 0 0);
+  --sidebar-primary: oklch(0.88 0.04 160);
+  --sidebar-primary-foreground: oklch(0.09 0 0);
+  --sidebar-accent: oklch(0.15 0 0);
+  --sidebar-accent-foreground: oklch(0.9 0 0);
+  --sidebar-border: oklch(0.2 0 0);
+  --sidebar-ring: oklch(0.88 0.04 160);
+  /* Charts */
+  --chart-1: oklch(0.72 0.07 160);
+  --chart-2: oklch(0.60 0.08 160);
+  --chart-3: oklch(0.50 0.06 160);
+  --chart-4: oklch(0.40 0.04 160);
+  --chart-5: oklch(0.30 0.02 160);
 }
 
-.dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
-}
+/* No dark mode for ПОСЛЕ — light theme only */
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -173,5 +153,592 @@
       padding-right: 2rem;
       max-width: 1280px; /* Standard content width */
     }
+  }
+}
+/* ─── ПОСЛЕ Premium Interactions ─────────────────────────────────────────── */
+
+/* Mint filled button */
+.btn-mint {
+  position: relative;
+  overflow: hidden;
+  background-color: #A8C5B5;
+  color: #0E0E0E;
+  transition: background-color 0.35s ease, transform 0.25s ease, box-shadow 0.35s ease;
+}
+.btn-mint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.12);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-mint:hover {
+  background-color: #C8DDD4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(168,197,181,0.35);
+}
+.btn-mint:hover::after { opacity: 1; }
+.btn-mint:active { transform: translateY(0); box-shadow: none; }
+
+/* Outline button (dark on light) */
+.btn-outline-dark {
+  position: relative;
+  border: 1px solid rgba(14,14,14,0.2);
+  color: rgba(14,14,14,0.6);
+  transition: border-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
+}
+.btn-outline-dark:hover {
+  border-color: #A8C5B5;
+  color: #A8C5B5;
+  transform: translateY(-1px);
+}
+
+/* Outline button (light on dark) */
+.btn-outline-light {
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.65);
+  transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.25s ease;
+}
+.btn-outline-light:hover {
+  border-color: rgba(168,197,181,0.7);
+  color: #A8C5B5;
+  background-color: rgba(168,197,181,0.06);
+  transform: translateY(-1px);
+}
+
+/* Premium card lift */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(14,14,14,0.1);
+}
+
+/* Dark card lift (for dark sections) */
+.card-lift-dark {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+.card-lift-dark:hover {
+  transform: translateY(-3px);
+  border-color: rgba(168,197,181,0.3) !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+/* Nav link underline slide */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #A8C5B5;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* Before/after slider handle pulse */
+.slider-handle {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.slider-handle:hover,
+.slider-handle:active {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 6px rgba(168,197,181,0.25);
+}
+
+/* Link arrow nudge */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+.link-arrow:hover { gap: 0.85rem; color: #A8C5B5; }
+
+/* ─── Global smooth fade-in ────────────────────────────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+
+/* ─── MOBILE ADAPTIVE ────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Remove decorative background images on mobile - show solid dark bg instead */
+  .hero-section,
+  .hero-section-dark {
+    background-image: none !important;
+  }
+  .hero-section {
+    background-color: #F0EDE8 !important;
+    min-height: auto !important;
+  }
+  .hero-section-dark {
+    background-color: #0E0E0E !important;
+    min-height: auto !important;
+  }
+
+  /* Remove bg images from decorative sections on mobile */
+  .section-no-bg-mobile {
+    background-image: none !important;
+  }
+
+  /* Hero overlay - hide on mobile since no bg image */
+  .hero-overlay-mobile-hide {
+    display: none !important;
+  }
+
+  /* Typography scaling */
+  .mobile-h1 {
+    font-size: clamp(52px, 15vw, 80px) !important;
+    letter-spacing: 0.1em !important;
+  }
+  .mobile-h2 {
+    font-size: clamp(32px, 9vw, 52px) !important;
+  }
+  .mobile-body {
+    font-size: 14px !important;
+  }
+
+  /* Subscription hero on mobile */
+  .sub-hero-section {
+    background-image: none !important;
+    background-color: #0E0E0E !important;
+    min-height: auto !important;
+    padding-top: 80px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Hide subscription hero background image on mobile */
+  .subscription-hero-bg {
+    display: none !important;
+  }
+
+  /* Dark hero pages on mobile */
+  .dark-hero-section {
+    background-image: none !important;
+    background-color: #0E0E0E !important;
+    min-height: auto !important;
+    padding-top: 80px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* About hero on mobile */
+  .about-hero-section {
+    background-image: none !important;
+    background-color: #111110 !important;
+    min-height: auto !important;
+    padding-top: 80px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Subscription section cards - stack vertically */
+  .sub-cards-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* Philosophy section - stack columns */
+  .philosophy-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Subscription teaser - stack columns */
+  .sub-teaser-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* CTA section on mobile */
+  .cta-section-grid {
+    grid-template-columns: 1fr !important;
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Master bio - stack photo and text */
+  .master-bio-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .master-bio-photo {
+    min-height: 320px !important;
+  }
+  .master-bio-text {
+    padding: 28px 24px !important;
+  }
+
+  /* FITS lines section */
+  .fits-line-item {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  /* Reduce padding on sections */
+  .section-py-mobile {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* Hide decorative branch images on mobile */
+  .branch-deco {
+    display: none !important;
+  }
+
+  /* Buttons full-width on mobile */
+  .mobile-btn-full {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Sub teaser left card - reduce height */
+  .sub-teaser-card {
+    min-height: 380px !important;
+  }
+
+  /* Contact info rows */
+  .contact-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+}
+
+/* ─── Mobile Adaptive: hero sections ─────────────────────────────────────── */
+/* On mobile: hero sections use solid dark bg, no background image */
+@media (max-width: 767px) {
+  .hero-bg-mobile-none {
+    background-image: none !important;
+    background-color: #0E0E0E !important;
+  }
+  /* Light hero (Home page) on mobile */
+  .hero-bg-mobile-light {
+    background-image: none !important;
+    background-color: #F0EDE8 !important;
+  }
+  /* Reduce hero min-height on mobile */
+  .hero-mobile-height {
+    min-height: 100svh !important;
+    padding-top: 80px !important;
+    padding-bottom: 60px !important;
+  }
+  /* Section vertical padding reduction */
+  .section-mobile-py {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+  /* Grid: force single column */
+  .grid-mobile-1 {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  /* Typography scale down */
+  .h1-mobile {
+    font-size: clamp(48px, 14vw, 72px) !important;
+    line-height: 1.05 !important;
+  }
+  .h2-mobile {
+    font-size: clamp(32px, 9vw, 52px) !important;
+    line-height: 1.1 !important;
+  }
+  /* Buttons full width on mobile */
+  .btn-mobile-full {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+  /* Hide decorative overlay on mobile */
+  .overlay-mobile-hide {
+    display: none !important;
+  }
+  /* Fits/lines block on mobile */
+  .fits-item-mobile {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .fits-line-mobile {
+    display: none !important;
+  }
+}
+
+/* ─── Extended Mobile Adaptive ───────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Mobile: show text in hero even without bg image */
+  .hero-bg-mobile-none h1,
+  .hero-bg-mobile-none h2 {
+    color: #F0EDE8 !important;
+  }
+  .hero-bg-mobile-none p {
+    color: rgba(240, 237, 232, 0.6) !important;
+  }
+
+  /* Subscription cards: reduce height */
+  .sub-card-mobile {
+    min-height: clamp(300px, 70vw, 420px) !important;
+  }
+
+  /* Map iframe height on mobile */
+  iframe[title] {
+    height: 260px !important;
+  }
+
+  /* Philosophy cards 2x2: tighter gap */
+  .grid.grid-cols-2 {
+    gap: 10px !important;
+  }
+
+  /* Buttons: full width on mobile */
+  .flex.flex-col > a.btn-mint,
+  .flex.flex-col > a.btn-outline-light {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Master bio right panel: reduce padding */
+  .md\:grid-cols-\[42\%_58\%\] > div:last-child {
+    padding: 28px 20px !important;
+  }
+
+  /* Contact grid gap reduction */
+  .gap-16 {
+    gap: 40px !important;
+  }
+
+  /* FITS section: hide long lines on mobile */
+  .fits-line {
+    display: none !important;
+  }
+
+  /* Reduce CTA section padding */
+  section.relative.overflow-hidden + section {
+    padding-top: 56px !important;
+    padding-bottom: 72px !important;
+  }
+}
+
+/* ─── Smooth page transitions ─────────────────────────────────────────────── */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: pageEnter 0.4s ease both;
+}
+
+/* ─── COMPREHENSIVE MOBILE ADAPTIVE ─────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  /* ── Hero: hide inner bg image div, keep solid bg color ── */
+  .dark-hero-section > div[style*="backgroundImage"],
+  .about-hero-section > div[style*="backgroundImage"] {
+    display: none !important;
+  }
+  /* Hide left-to-right gradient overlay (no bg image on mobile) */
+  .dark-hero-section > div[style*="linear-gradient(to right"],
+  .about-hero-section > div[style*="linear-gradient(to right"] {
+    display: none !important;
+  }
+
+  /* ── Typography: scale down large headings ── */
+  h1[style*="clamp(56px"],
+  h1[style*="clamp(52px"] {
+    font-size: clamp(38px, 12vw, 56px) !important;
+  }
+  h1[style*="clamp(36px"] {
+    font-size: clamp(30px, 10vw, 48px) !important;
+  }
+
+  /* ── Subscription hero title: allow wrapping ── */
+  .dark-hero-section span[style*="whiteSpace"] {
+    white-space: normal !important;
+  }
+
+  /* ── Buttons: stack and full width in flex containers ── */
+  div[style*="display: flex"][style*="flexWrap: wrap"] {
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  div[style*="display: flex"][style*="flexWrap: wrap"] > a,
+  div[style*="display: flex"][style*="flexWrap: wrap"] > button {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* ── Section padding: reduce for mobile ── */
+  section.py-14,
+  section.py-16,
+  section.py-24,
+  section.py-32 {
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+  }
+
+  /* ── About: How I Work cards: 2 per row ── */
+  .grid-cols-2.md\:grid-cols-4 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .grid-cols-2.md\:grid-cols-4 > div {
+    padding: 18px 14px 20px !important;
+  }
+  .grid-cols-2.md\:grid-cols-4 h3 {
+    font-size: 17px !important;
+  }
+  .grid-cols-2.md\:grid-cols-4 p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ── Subscription advantages cards: 2 per row ── */
+  .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 > div {
+    padding: 18px 14px 18px !important;
+  }
+  .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 h3 {
+    font-size: 15px !important;
+  }
+  .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ── Map iframe ── */
+  iframe {
+    height: 220px !important;
+  }
+
+  /* ── Subscription FAQ: full width ── */
+  div[style*="maxWidth: \"760px\""],
+  div[style*="max-width: 760px"] {
+    max-width: 100% !important;
+  }
+
+  /* ── Decorative SVG arcs: hide ── */
+  svg[style*="position: absolute"][style*="opacity: 0.18"] {
+    display: none !important;
+  }
+
+  /* ── Home hero: ensure text is visible ── */
+  section.home-hero h1,
+  section.home-hero p {
+    color: #0E0E0E !important;
+  }
+
+  /* ── Subscription teaser grid: single column ── */
+  .sub-teaser-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Contacts: info rows wrap ── */
+  div[style*="justifyContent: space-between"][style*="alignItems: baseline"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+  }
+
+  /* ── FITS block items: stack ── */
+  div[style*="display: flex"][style*="alignItems: center"][style*="gap: \"clamp(32px"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  /* Hide FITS decorative lines on mobile */
+  div[style*="flex: 1"][style*="height: \"1px\""],
+  div[style*="flex: 1"][style*="height: '1px'"] {
+    display: none !important;
+  }
+
+  /* ═══════════════════════════════════════════
+     ACCOUNT / PERSONAL CABINET — mobile fixes
+     ═══════════════════════════════════════════ */
+
+  /* AccountLayout: sidebar is already fixed/hidden via Tailwind translate-x-full.
+     Make sure the overlay backdrop covers the full screen height. */
+  .account-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 30 !important;
+  }
+
+  /* AccountLayout header: reduce horizontal padding */
+  header[style*="height: 64px"] {
+    padding: 0 16px !important;
+  }
+
+  /* AccountLayout main: reduce padding already done via clamp() in JSX */
+
+  /* Dashboard: subscription status block — stack content vertically */
+  div[style*="rgba(168,197,181,0.06)"][style*="justifyContent: space-between"],
+  div[style*="rgba(255,255,255,0.02)"][style*="justifyContent: space-between"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  /* Dashboard: active subscription card (dark bg) */
+  div[style*="rgba(168,197,181,0.06)"][style*="padding: \"20px 24px\""],
+  div[style*="rgba(255,255,255,0.02)"][style*="padding: \"20px 24px\""] {
+    padding: 16px !important;
+  }
+
+  /* Pets page: header row — wrap on very small screens */
+  .max-w-2xl > div.flex.items-center.justify-between {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  /* Pets list item: hide diary link text, keep icon */
+  .max-w-2xl .hidden.sm\:block {
+    display: none !important;
+  }
+
+  /* Diary: timeline line + dots — reduce left offset on mobile */
+  .relative .absolute.left-\[18px\] {
+    left: 10px !important;
+  }
+  .relative .pl-12 {
+    padding-left: 28px !important;
+  }
+  .absolute.left-5.top-5 {
+    left: 13px !important;
+  }
+
+  /* Subscription: active plan card — full width on mobile */
+  .bg-\[\#0E0E0E\].p-6.mb-8 {
+    padding: 20px !important;
+  }
+
+  /* Subscription: plan cards — single column on very small screens */
+  .grid-cols-1.sm\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Payment history rows — stack amount below date */
+  .bg-white.border.border-\[\#E8F0EC\].px-5.py-4 {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
   }
 }

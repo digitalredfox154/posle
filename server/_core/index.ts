@@ -8,6 +8,8 @@ import { registerStorageProxy } from "./storageProxy";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import { storagePut } from "../storage";
+import { nanoid } from "nanoid";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -36,6 +38,39 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   registerStorageProxy(app);
   registerOAuthRoutes(app);
+
+  // File upload endpoint for master panel photos
+  app.post("/api/upload", express.raw({ type: "*/*", limit: "6mb" }), async (req: express.Request, res: express.Response) => {
+    try {
+      const contentType = (req.headers["content-type"] || "") as string;
+      const boundaryMatch = contentType.match(/boundary=(.+)/);
+      if (!boundaryMatch) { res.status(400).json({ error: "No boundary" }); return; }
+      const boundary = boundaryMatch[1];
+      const body = req.body as Buffer;
+      const parts = body.toString("binary").split("--" + boundary);
+      let fileBuffer: Buffer | null = null;
+      let mimeType = "image/jpeg";
+      for (const part of parts) {
+        if (part.includes("Content-Disposition: form-data") && part.includes("filename")) {
+          const mimeMatch = part.match(/Content-Type: ([^\r\n]+)/);
+          if (mimeMatch) mimeType = mimeMatch[1].trim();
+          const dataStart = part.indexOf("\r\n\r\n") + 4;
+          const dataEnd = part.lastIndexOf("\r\n");
+          if (dataStart > 0 && dataEnd > dataStart) {
+            fileBuffer = Buffer.from(part.slice(dataStart, dataEnd), "binary");
+          }
+        }
+      }
+      if (!fileBuffer) { res.status(400).json({ error: "No file" }); return; }
+      const ext = mimeType.includes("png") ? "png" : "jpg";
+      const key = `visits/${nanoid()}.${ext}`;
+      const { url } = await storagePut(key, fileBuffer, mimeType);
+      res.json({ key, url });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // tRPC API
   app.use(
     "/api/trpc",
