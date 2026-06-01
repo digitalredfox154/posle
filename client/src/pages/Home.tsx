@@ -179,10 +179,16 @@ export default function Home() {
 
             {/* ── RIGHT: 2×2 cards ── */}
             <div className="grid grid-cols-2" style={{ gap: "clamp(12px, 1.5vw, 20px)" }}>
-              <img src="/manus-storage/card_bg_1_a5145d09.png" alt="Камерный формат" style={{ width: "100%", height: "auto", display: "block", borderRadius: "20px", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }} />
-              <img src="/manus-storage/card_bg_2_1f0b5262.png" alt="Спокойный процесс" style={{ width: "100%", height: "auto", display: "block", borderRadius: "20px", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }} />
-              <img src="/manus-storage/card_bg_3_9e8c9339.png" alt="Внимание к характеру" style={{ width: "100%", height: "auto", display: "block", borderRadius: "20px", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }} />
-              <img src="/manus-storage/card_bg_4_862d5e57.png" alt="Постоянный мастер" style={{ width: "100%", height: "auto", display: "block", borderRadius: "20px", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }} />
+              {[
+                { src: "/manus-storage/card_bg_1_a5145d09.png", alt: "Камерный формат" },
+                { src: "/manus-storage/card_bg_2_1f0b5262.png", alt: "Спокойный процесс" },
+                { src: "/manus-storage/card_bg_3_9e8c9339.png", alt: "Внимание к характеру" },
+                { src: "/manus-storage/card_bg_4_862d5e57.png", alt: "Постоянный мастер" },
+              ].map((card) => (
+                <div key={card.alt} style={{ aspectRatio: "4/5", borderRadius: "20px", overflow: "hidden", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
+                  <img src={card.src} alt={card.alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
