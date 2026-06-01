@@ -200,7 +200,7 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Камерный<br/>формат</p>
                 </div>
-                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+
               </div>
 
               {/* Card 02 */}
@@ -226,7 +226,7 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Спокойный<br/>процесс</p>
                 </div>
-                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+
               </div>
 
               {/* Card 03 */}
@@ -252,7 +252,7 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Внимание<br/>к характеру</p>
                 </div>
-                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+
               </div>
 
               {/* Card 04 */}
@@ -278,7 +278,7 @@ export default function Home() {
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Постоянный<br/>мастер</p>
                 </div>
-                <img src="/manus-storage/branch_transparent_222dc413.png" alt="" aria-hidden="true" style={{ position: "absolute", bottom: "-8%", right: "-6%", width: "42%", opacity: 0.55, transform: "rotate(15deg)", pointerEvents: "none" }} />
+
               </div>
 
             </div>
