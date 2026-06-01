@@ -182,14 +182,12 @@ export default function Home() {
 
               {/* Card 01 */}
               <div style={{
-                backgroundImage: "url('/manus-storage/card_bg_1_a5145d09.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                background: "transparent",
+                border: "1px solid rgba(168,197,181,0.45)",
                 borderRadius: "20px",
                 padding: "clamp(18px, 2.2vw, 32px)",
                 display: "flex", flexDirection: "column", justifyContent: "space-between",
                 minHeight: "clamp(160px, 18vw, 260px)",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
                 position: "relative", overflow: "hidden",
               }}>
                 <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>01</span>
@@ -205,14 +203,12 @@ export default function Home() {
 
               {/* Card 02 */}
               <div style={{
-                backgroundImage: "url('/manus-storage/card_bg_2_1f0b5262.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                background: "transparent",
+                border: "1px solid rgba(168,197,181,0.45)",
                 borderRadius: "20px",
                 padding: "clamp(18px, 2.2vw, 32px)",
                 display: "flex", flexDirection: "column", justifyContent: "space-between",
                 minHeight: "clamp(160px, 18vw, 260px)",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
                 position: "relative", overflow: "hidden",
               }}>
                 <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>02</span>
@@ -228,14 +224,12 @@ export default function Home() {
 
               {/* Card 03 */}
               <div style={{
-                backgroundImage: "url('/manus-storage/card_bg_3_9e8c9339.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                background: "transparent",
+                border: "1px solid rgba(168,197,181,0.45)",
                 borderRadius: "20px",
                 padding: "clamp(18px, 2.2vw, 32px)",
                 display: "flex", flexDirection: "column", justifyContent: "space-between",
                 minHeight: "clamp(160px, 18vw, 260px)",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
                 position: "relative", overflow: "hidden",
               }}>
                 <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>03</span>
@@ -251,14 +245,12 @@ export default function Home() {
 
               {/* Card 04 */}
               <div style={{
-                backgroundImage: "url('/manus-storage/card_bg_4_862d5e57.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                background: "transparent",
+                border: "1px solid rgba(168,197,181,0.45)",
                 borderRadius: "20px",
                 padding: "clamp(18px, 2.2vw, 32px)",
                 display: "flex", flexDirection: "column", justifyContent: "space-between",
                 minHeight: "clamp(160px, 18vw, 260px)",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
                 position: "relative", overflow: "hidden",
               }}>
                 <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>04</span>
