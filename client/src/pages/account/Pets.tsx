@@ -105,7 +105,6 @@ export default function AccountPets() {
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   <option value="dog">Собака</option>
-                  <option value="cat">Кошка</option>
                   <option value="other">Другое</option>
                 </select>
               </div>

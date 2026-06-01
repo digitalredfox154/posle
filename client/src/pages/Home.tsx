@@ -493,13 +493,13 @@ export default function Home() {
                   <div style={{ flex: 1 }}>
                     <p style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.25em", fontSize: "9px", color: "#C8AA64", textTransform: "uppercase", marginBottom: "8px" }}>Дополнение</p>
                     <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(22px, 2.5vw, 28px)", fontWeight: 300, color: "#FFFFFF", lineHeight: 1.2, margin: "0 0 8px 0" }}>
-                      Индивидуальная<br />подписка
+                      Индивидуальный<br />подход
                     </h4>
                     <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px", color: "rgba(255,255,255,0.42)", lineHeight: 1.55, marginBottom: "16px" }}>
                       Персональные привилегии и особое внимание для вашего питомца.
                     </p>
                     <Link
-                      href="/subscription"
+                      href="/booking"
                       style={{
                         display: "flex",
                         alignItems: "center",

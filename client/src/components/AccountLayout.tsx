@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useClientAuth } from "@/hooks/useClientAuth";
-import { LayoutDashboard, PawPrint, BookOpen, CreditCard, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, PawPrint, BookOpen, LogOut, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -9,7 +9,6 @@ const navItems = [
   { href: "/account", label: "Обзор", icon: LayoutDashboard },
   { href: "/account/pets", label: "Мои питомцы", icon: PawPrint },
   { href: "/account/diary", label: "Дневник визитов", icon: BookOpen },
-  { href: "/account/subscription", label: "Подписка", icon: CreditCard },
 ];
 
 interface AccountLayoutProps {

@@ -9,7 +9,6 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Results from "./pages/Results";
-import Subscription from "./pages/Subscription";
 import Contacts from "./pages/Contacts";
 import Booking from "./pages/Booking";
 import Login from "./pages/Login";
@@ -18,7 +17,6 @@ import Login from "./pages/Login";
 import AccountDashboard from "./pages/account/Dashboard";
 import AccountPets from "./pages/account/Pets";
 import AccountDiary from "./pages/account/Diary";
-import AccountSubscription from "./pages/account/AccountSubscription";
 
 // Admin pages
 import AdminPanel from "./pages/admin/AdminPanel";
@@ -36,7 +34,6 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/results" component={Results} />
-      <Route path="/subscription" component={Subscription} />
       <Route path="/contacts" component={Contacts} />
       <Route path="/booking" component={Booking} />
       <Route path="/login" component={Login} />
@@ -47,7 +44,6 @@ function Router() {
       <Route path="/account/pets/new" component={AccountPets} />
       <Route path="/account/diary" component={AccountDiary} />
       <Route path="/account/diary/:petId" component={AccountDiary} />
-      <Route path="/account/subscription" component={AccountSubscription} />
 
       {/* Admin panel */}
       <Route path="/admin" component={AdminPanel} />

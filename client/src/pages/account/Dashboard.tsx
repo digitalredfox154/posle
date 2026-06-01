@@ -2,13 +2,12 @@ import AccountLayout from "@/components/AccountLayout";
 import { trpc } from "@/lib/trpc";
 import { useClientAuth } from "@/hooks/useClientAuth";
 import { Link } from "wouter";
-import { PawPrint, Calendar, CreditCard, ArrowRight, Sparkles } from "lucide-react";
+import { PawPrint, Calendar, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function AccountDashboard() {
   const { client } = useClientAuth(true);
   const { data: pets } = trpc.pets.list.useQuery();
-  const { data: subscription } = trpc.subscriptions.mySubscription.useQuery();
   const { data: nextAppointment } = trpc.visits.nextAppointment.useQuery();
 
   const greeting = () => {
@@ -81,46 +80,10 @@ export default function AccountDashboard() {
             </p>
             <ArrowRight size={13} color="rgba(245,240,232,0.2)" />
           </Link>
-          <Link href="/account/subscription"
-            style={cardBase}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,197,181,0.2)"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)"; }}>
-            <CreditCard size={18} color="#A8C5B5" />
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#F5F0E8" }}>
-              {subscription?.status === "active" ? "Резидент" : "Подписка"}
-            </p>
-            <ArrowRight size={13} color="rgba(245,240,232,0.2)" />
-          </Link>
+
         </motion.div>
 
-        {/* Subscription status */}
-        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.15 }} style={{ marginBottom: "32px" }}>
-          {subscription?.status === "active" ? (
-            <div style={{ background: "rgba(168,197,181,0.06)", border: "1px solid rgba(168,197,181,0.2)", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#A8C5B5", marginBottom: "6px" }}>Статус</p>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300, color: "#F5F0E8" }}>Резидент ПОСЛЕ</p>
-                {subscription.nextBillingAt && (
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(245,240,232,0.35)", marginTop: "4px" }}>
-                    Следующее списание: {new Date(subscription.nextBillingAt).toLocaleDateString("ru-RU")}
-                  </p>
-                )}
-              </div>
-              <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#A8C5B5", boxShadow: "0 0 8px rgba(168,197,181,0.6)" }} />
-            </div>
-          ) : (
-            <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(245,240,232,0.25)", marginBottom: "6px" }}>Подписка</p>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, color: "rgba(245,240,232,0.6)" }}>Вы не резидент</p>
-              </div>
-              <Link href="/subscription"
-                style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#A8C5B5", textDecoration: "none", borderBottom: "1px solid rgba(168,197,181,0.4)", paddingBottom: "2px" }}>
-                Стать резидентом
-              </Link>
-            </div>
-          )}
-        </motion.div>
+
 
         {/* Pets preview */}
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}>
@@ -147,7 +110,7 @@ export default function AccountDashboard() {
                     )}
                     <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, color: "#F5F0E8", marginBottom: "4px" }}>{pet.name}</p>
                     <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "10px", color: "rgba(245,240,232,0.35)" }}>
-                      {pet.species === "dog" ? "Собака" : pet.species === "cat" ? "Кошка" : "Другое"}
+                      {pet.species === "dog" ? "Собака" : "Другое"}
                       {pet.breed ? ` · ${pet.breed}` : ""}
                     </p>
                   </Link>
