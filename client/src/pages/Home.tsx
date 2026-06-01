@@ -128,9 +128,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── GRADIENT TRANSITION ──────────────────────────────────────────── */}
-      <div style={{ height: "80px", background: "linear-gradient(to bottom, #F0EDE8, #EFEFED)" }} />
-
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
       <section className="relative py-14 md:py-28" style={{ backgroundColor: "#EFEFED" }}>
 
