@@ -179,99 +179,10 @@ export default function Home() {
 
             {/* ── RIGHT: 2×2 cards ── */}
             <div className="grid grid-cols-2" style={{ gap: "clamp(12px, 1.5vw, 20px)" }}>
-
-              {/* Card 01 */}
-              <div style={{
-                backgroundImage: "url('/manus-storage/card_bg_1_a5145d09.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "20px",
-                padding: "clamp(18px, 2.2vw, 32px)",
-                display: "flex", flexDirection: "column", justifyContent: "space-between",
-                minHeight: "clamp(160px, 18vw, 260px)",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
-                position: "relative", overflow: "hidden",
-              }}>
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>01</span>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
-                    <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
-                    <span style={{ color: "#B8965A", fontSize: "8px" }}>&#10022;</span>
-                  </div>
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Камерный<br/>формат</p>
-                </div>
-
-              </div>
-
-              {/* Card 02 */}
-              <div style={{
-                backgroundImage: "url('/manus-storage/card_bg_2_1f0b5262.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "20px",
-                padding: "clamp(18px, 2.2vw, 32px)",
-                display: "flex", flexDirection: "column", justifyContent: "space-between",
-                minHeight: "clamp(160px, 18vw, 260px)",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
-                position: "relative", overflow: "hidden",
-              }}>
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>02</span>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
-                    <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
-                    <span style={{ color: "#B8965A", fontSize: "8px" }}>&#10022;</span>
-                  </div>
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Спокойный<br/>процесс</p>
-                </div>
-
-              </div>
-
-              {/* Card 03 */}
-              <div style={{
-                backgroundImage: "url('/manus-storage/card_bg_3_9e8c9339.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "20px",
-                padding: "clamp(18px, 2.2vw, 32px)",
-                display: "flex", flexDirection: "column", justifyContent: "space-between",
-                minHeight: "clamp(160px, 18vw, 260px)",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
-                position: "relative", overflow: "hidden",
-              }}>
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>03</span>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
-                    <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
-                    <span style={{ color: "#B8965A", fontSize: "8px" }}>&#10022;</span>
-                  </div>
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Внимание<br/>к характеру</p>
-                </div>
-
-              </div>
-
-              {/* Card 04 */}
-              <div style={{
-                backgroundImage: "url('/manus-storage/card_bg_4_862d5e57.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "20px",
-                padding: "clamp(18px, 2.2vw, 32px)",
-                display: "flex", flexDirection: "column", justifyContent: "space-between",
-                minHeight: "clamp(160px, 18vw, 260px)",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
-                position: "relative", overflow: "hidden",
-              }}>
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.2vw, 48px)", fontWeight: 300, color: "rgba(168,197,181,0.65)", lineHeight: 1 }}>04</span>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "clamp(6px, 0.8vw, 12px)" }}>
-                    <div style={{ width: "20px", height: "1px", backgroundColor: "rgba(184,150,90,0.5)" }} />
-                    <span style={{ color: "#B8965A", fontSize: "8px" }}>&#10022;</span>
-                  </div>
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 1.8vw, 26px)", fontWeight: 300, color: "#1a1a14", lineHeight: 1.25, margin: 0 }}>Постоянный<br/>мастер</p>
-                </div>
-
-              </div>
-
+              <img src="/manus-storage/card_bg_1_a5145d09.png" alt="Камерный формат" style={{ width: "100%", height: "auto", display: "block", borderRadius: "20px", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }} />
+              <img src="/manus-storage/card_bg_2_1f0b5262.png" alt="Спокойный процесс" style={{ width: "100%", height: "auto", display: "block", borderRadius: "20px", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }} />
+              <img src="/manus-storage/card_bg_3_9e8c9339.png" alt="Внимание к характеру" style={{ width: "100%", height: "auto", display: "block", borderRadius: "20px", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }} />
+              <img src="/manus-storage/card_bg_4_862d5e57.png" alt="Постоянный мастер" style={{ width: "100%", height: "auto", display: "block", borderRadius: "20px", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }} />
             </div>
           </div>
         </div>
