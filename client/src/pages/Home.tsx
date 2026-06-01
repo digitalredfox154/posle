@@ -626,7 +626,7 @@ export default function Home() {
       {/* ── FIRST VISIT / BOOKING CTA ──────────────────────────────────────── */}
       <section
         className="relative overflow-hidden dark-hero-section"
-        style={{ backgroundImage: "url('/manus-storage/offer_bg_2437d711.png')", backgroundSize: "cover", backgroundPosition: "center center", backgroundRepeat: "no-repeat", backgroundColor: "#0E0E0E" }}
+        style={{ backgroundImage: "url('/manus-storage/cta_bg3_f8d3a463.png')", backgroundSize: "cover", backgroundPosition: "center center", backgroundRepeat: "no-repeat", backgroundColor: "#0E0E0E" }}
       >
         <div className="container relative z-10 py-14 md:py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 cta-section-grid" style={{ gap: "clamp(24px, 3vw, 48px)", alignItems: "center", maxWidth: "680px", marginLeft: "auto", marginRight: "auto" }}>

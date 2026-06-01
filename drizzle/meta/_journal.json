@@ -22,6 +22,20 @@
       "when": 1779371371261,
       "tag": "0002_famous_skin",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1780218907228,
+      "tag": "0003_lean_drax",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1780219310164,
+      "tag": "0004_careful_morg",
+      "breakpoints": true
     }
   ]
 }
