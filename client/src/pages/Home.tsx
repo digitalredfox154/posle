@@ -132,7 +132,7 @@ export default function Home() {
 
 
       {/* ── PHILOSOPHY ───────────────────────────────────────────────────── */}
-      <section className="relative py-14 md:py-28" style={{ backgroundColor: "#F0EDE8", backgroundImage: "url('/manus-storage/sections_bg_seamless_1439c1ee.png')", backgroundSize: "600px auto", backgroundRepeat: "repeat" }}>
+      <section className="relative py-14 md:py-28" style={{ backgroundColor: "#EFEFED" }}>
 
 
         <div className="container relative" style={{ zIndex: 1 }}>
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* ── BEFORE / AFTER ───────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-14 md:py-20 relative" style={{ backgroundColor: "#EFEFED" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
