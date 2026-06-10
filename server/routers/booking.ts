@@ -74,7 +74,13 @@ export const bookingRouter = router({
   staff: publicProcedure.query(async () => {
     const { companyId } = getYclientsHeaders();
     const data = await yclientsRequest(`/book_staff/${companyId}`);
-    return (data.data || []) as Array<{
+    const allStaff = (data.data || []) as Array<{
+      id: number;
+      name: string;
+      avatar: string;
+      specialization: string;
+    }>;
+    return allStaff.slice(0, 1) as Array<{
       id: number;
       name: string;
       avatar: string;
