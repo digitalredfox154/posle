@@ -12,7 +12,7 @@ export default function About() {
         className="about-hero-section"
         style={{
           position: "relative",
-          backgroundImage: "url('/manus-storage/about_hero_bg_new_9c6d631d.png')",
+          backgroundImage: "url('/manus-storage/about_hero_bg_v2_6464368c.png')",
           backgroundSize: "cover",
           backgroundPosition: "center top",
           backgroundRepeat: "no-repeat",
