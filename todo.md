@@ -55,3 +55,5 @@
 ## Bug Fixes
 - [x] Home.tsx: исправлены 4 TS ошибки — PLACEHOLDER_* заменены на PAIRS array с выбором пары через табы
 - [x] Results.tsx: заменены Unsplash placeholder-фото на реальные CDN фото (5 пар до/после)
+
+- [x] Установить предоставленный логотип IMG_4296.JPG как фавикон сайта
