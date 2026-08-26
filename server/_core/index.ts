@@ -3,12 +3,11 @@ import express from "express";
 import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { registerOAuthRoutes } from "./oauth";
-import { registerStorageProxy } from "./storageProxy";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
-import { storagePut } from "../storage";
+import { getStorageDirectory, storagePut } from "../storage";
+import { getClientFromCookie } from "../routers/client";
 import { nanoid } from "nanoid";
 
 function isPortAvailable(port: number): Promise<boolean> {
@@ -36,12 +35,21 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
-  registerStorageProxy(app);
-  registerOAuthRoutes(app);
+  app.use("/uploads", express.static(getStorageDirectory(), { maxAge: "7d", immutable: true }));
+  // Preserve stored relative URLs while legacy Manus objects are copied to the VPS.
+  app.use("/manus-storage", (req, res) => {
+    res.redirect(307, `/uploads${req.originalUrl.slice("/manus-storage".length)}`);
+  });
 
   // File upload endpoint for master panel photos
   app.post("/api/upload", express.raw({ type: "*/*", limit: "6mb" }), async (req: express.Request, res: express.Response) => {
     try {
+      const adminEmail = (process.env.ADMIN_EMAIL || "").toLowerCase().trim();
+      const session = await getClientFromCookie(req);
+      if (!adminEmail || !session || session.email.toLowerCase().trim() !== adminEmail) {
+        res.status(403).json({ error: "Admin access required" });
+        return;
+      }
       const contentType = (req.headers["content-type"] || "") as string;
       const boundaryMatch = contentType.match(/boundary=(.+)/);
       if (!boundaryMatch) { res.status(400).json({ error: "No boundary" }); return; }

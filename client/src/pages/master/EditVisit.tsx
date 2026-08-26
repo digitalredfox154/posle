@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useRoute } from "wouter";
 import { motion } from "framer-motion";
 import { trpc } from "@/lib/trpc";
-import { useAuth } from "@/_core/hooks/useAuth";
+import { useClientAuth } from "@/hooks/useClientAuth";
 import { toast } from "sonner";
 import { ArrowLeft, Upload, Eye, Clock, Save } from "lucide-react";
 
@@ -42,7 +42,7 @@ async function compressToWebP(file: File, maxSizeMB = 5): Promise<File> {
 export default function EditVisit() {
   const [, params] = useRoute("/master/visit/:id");
   const [, navigate] = useLocation();
-  const { user, isAuthenticated } = useAuth();
+  const { client, isAuthenticated } = useClientAuth(true);
   const visitId = params?.id ? parseInt(params.id) : 0;
 
   const [masterNotes, setMasterNotes] = useState("");
@@ -60,7 +60,7 @@ export default function EditVisit() {
 
   const { data: currentVisit, isLoading } = trpc.visits.masterGet.useQuery(
     { id: visitId },
-    { enabled: isAuthenticated && user?.role === "admin" && visitId > 0 }
+    { enabled: isAuthenticated && client?.isAdmin === true && visitId > 0 }
   );
 
   useEffect(() => {
@@ -133,7 +133,7 @@ export default function EditVisit() {
     });
   };
 
-  if (!isAuthenticated || user?.role !== "admin") {
+  if (!isAuthenticated || client?.isAdmin !== true) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <p className="text-[#0E0E0E]/40 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Доступ запрещён</p>

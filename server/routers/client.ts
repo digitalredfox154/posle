@@ -13,6 +13,12 @@ const JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret || "posle-secret-ke
 const CLIENT_COOKIE = "posle_client_session";
 const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || "").toLowerCase().trim();
 
+function getClientCookieOptions(req: any) {
+  const forwardedProto = req.headers?.["x-forwarded-proto"];
+  const secure = req.protocol === "https" || (typeof forwardedProto === "string" && forwardedProto.split(",").some((value: string) => value.trim() === "https"));
+  return { httpOnly: true, secure, sameSite: "lax" as const, path: "/" };
+}
+
 // Helper: get client from request cookie
 export async function getClientFromCookie(req: any) {
   const raw = req.headers?.cookie || "";
@@ -151,18 +157,15 @@ export const clientRouter = router({
         .sign(JWT_SECRET);
 
       ctx.res.cookie(CLIENT_COOKIE, token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
+        ...getClientCookieOptions(ctx.req),
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        path: "/",
       });
       return { success: true };
     }),
 
   // Logout
   logout: publicProcedure.mutation(({ ctx }) => {
-    ctx.res.clearCookie(CLIENT_COOKIE, { path: "/", httpOnly: true, secure: true, sameSite: "none" });
+    ctx.res.clearCookie(CLIENT_COOKIE, getClientCookieOptions(ctx.req));
     return { success: true };
   }),
 

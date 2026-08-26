@@ -2,10 +2,12 @@ import { AXIOS_TIMEOUT_MS, COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 import { ForbiddenError } from "@shared/_core/errors";
 import axios, { type AxiosInstance } from "axios";
 import { parse as parseCookieHeader } from "cookie";
+import { createHash } from "node:crypto";
 import type { Request } from "express";
 import { SignJWT, jwtVerify } from "jose";
 import type { User } from "../../drizzle/schema";
 import * as db from "../db";
+import { getClientFromCookie } from "../routers/client";
 import { ENV } from "./env";
 import type {
   ExchangeTokenRequest,
@@ -256,7 +258,42 @@ class SDKServer {
     } as GetUserInfoWithJwtResponse;
   }
 
+  /**
+   * The customer cabinet already has an independent email-OTP session.  On the
+   * self-hosted runtime, the configured administrator's OTP session is the
+   * trusted source for master-only tRPC procedures; no upstream OAuth request
+   * is made in this path.
+   */
+  private async authenticateLocalAdminRequest(req: Request): Promise<User | null> {
+    const adminEmail = (process.env.ADMIN_EMAIL || "").toLowerCase().trim();
+    if (!adminEmail) return null;
+
+    const clientSession = await getClientFromCookie(req);
+    if (!clientSession || clientSession.email.toLowerCase().trim() !== adminEmail) {
+      return null;
+    }
+
+    const openId = `local-admin:${createHash("sha256")
+      .update(adminEmail)
+      .digest("hex")
+      .slice(0, 48)}`;
+
+    await db.upsertUser({
+      openId,
+      email: adminEmail,
+      name: "Администратор",
+      loginMethod: "email_otp",
+      role: "admin",
+      lastSignedIn: new Date(),
+    });
+
+    return (await db.getUserByOpenId(openId)) ?? null;
+  }
+
   async authenticateRequest(req: Request): Promise<User> {
+    const localAdmin = await this.authenticateLocalAdminRequest(req);
+    if (localAdmin) return localAdmin;
+
     // Regular authentication flow
     const cookies = this.parseCookies(req.headers.cookie);
     const sessionCookie = cookies.get(COOKIE_NAME);
