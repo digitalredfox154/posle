@@ -21,9 +21,9 @@ export function getStorageDirectory(): string {
   return path.resolve(process.env.STORAGE_DIR || path.join(process.cwd(), "storage"));
 }
 
-function getAbsolutePath(key: string): string {
-  const root = getStorageDirectory();
-  const target = path.resolve(root, key);
+export function getStorageFilePath(key: string, storageDirectory = getStorageDirectory()): string {
+  const root = path.resolve(storageDirectory);
+  const target = path.resolve(root, normalizeKey(key));
   if (!target.startsWith(`${root}${path.sep}`)) {
     throw new Error("Storage path escapes configured directory");
   }
@@ -37,7 +37,7 @@ export async function storagePut(
   _contentType = "application/octet-stream",
 ): Promise<{ key: string; url: string }> {
   const key = appendHashSuffix(normalizeKey(relKey));
-  const target = getAbsolutePath(key);
+  const target = getStorageFilePath(key);
   await fs.mkdir(path.dirname(target), { recursive: true });
   await fs.writeFile(target, data);
   return { key, url: `/uploads/${key}` };
@@ -51,6 +51,6 @@ export async function storageGet(relKey: string): Promise<{ key: string; url: st
 /** Existing call sites expect a URL; files are already protected by normal app access rules. */
 export async function storageGetSignedUrl(relKey: string): Promise<string> {
   const key = normalizeKey(relKey);
-  await fs.access(getAbsolutePath(key));
+  await fs.access(getStorageFilePath(key));
   return `/uploads/${key}`;
 }

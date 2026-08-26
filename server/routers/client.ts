@@ -13,6 +13,14 @@ const JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret || "posle-secret-ke
 const CLIENT_COOKIE = "posle_client_session";
 const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || "").toLowerCase().trim();
 
+export function isSmtpConfigured(env: NodeJS.ProcessEnv = process.env) {
+  return Boolean(env.SMTP_HOST && env.SMTP_USER && env.SMTP_PASS);
+}
+
+export function shouldExposeEmailTestCode(env: NodeJS.ProcessEnv = process.env) {
+  return env.NODE_ENV !== "production" && !isSmtpConfigured(env);
+}
+
 function getClientCookieOptions(req: any) {
   const forwardedProto = req.headers?.["x-forwarded-proto"];
   const secure = req.protocol === "https" || (typeof forwardedProto === "string" && forwardedProto.split(",").some((value: string) => value.trim() === "https"));
@@ -39,7 +47,7 @@ async function sendOtpEmail(email: string, code: string) {
   const smtpUser = process.env.SMTP_USER;
   const smtpPass = process.env.SMTP_PASS;
   const smtpFrom = process.env.SMTP_FROM || "noreply@posle.ru";
-  if (smtpHost && smtpUser && smtpPass) {
+  if (isSmtpConfigured()) {
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: parseInt(process.env.SMTP_PORT || "587"),
@@ -56,6 +64,14 @@ async function sendOtpEmail(email: string, code: string) {
   } else {
     console.log(`[Email DEV] OTP for ${email}: ${code}`);
   }
+}
+
+export async function deliverAndStoreEmailOtp(
+  deliver: () => Promise<unknown>,
+  persist: () => Promise<unknown>,
+): Promise<void> {
+  await deliver();
+  await persist();
 }
 
 export const clientRouter = router({
@@ -78,6 +94,9 @@ export const clientRouter = router({
     .mutation(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      if (process.env.NODE_ENV === "production" && !isSmtpConfigured()) {
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Сервис отправки кодов временно недоступен" });
+      }
       const email = input.email.toLowerCase().trim();
 
       // Rate limiting
@@ -101,11 +120,20 @@ export const clientRouter = router({
 
       const code = Math.floor(100000 + Math.random() * 900000).toString();
       const expiresAt = new Date(Date.now() + 10 * 60_000);
-      await db.insert(emailOtps).values({ email, code, expiresAt });
-      await sendOtpEmail(email, code);
+      try {
+        await deliverAndStoreEmailOtp(
+          () => sendOtpEmail(email, code),
+          () => db.insert(emailOtps).values({ email, code, expiresAt }),
+        );
+      } catch (error) {
+        console.error(`[Email] OTP delivery failed for ${email}`, error);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Не удалось отправить код. Повторите попытку позже",
+        });
+      }
 
-      const isDevMode = !process.env.SMTP_HOST;
-      return { success: true, message: "Код отправлен на почту", testCode: isDevMode ? code : undefined };
+      return { success: true, message: "Код отправлен на почту", testCode: shouldExposeEmailTestCode() ? code : undefined };
     }),
 
   // Verify email OTP and create session

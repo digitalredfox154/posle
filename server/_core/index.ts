@@ -3,11 +3,16 @@ import express from "express";
 import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
+import { and, eq, or } from "drizzle-orm";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { getStorageDirectory, storagePut } from "../storage";
 import { getClientFromCookie } from "../routers/client";
+import { getDb } from "../db";
+import { pets, visits } from "../../drizzle/schema";
+import { getMediaUrlVariants } from "../media-access";
+import { registerMediaRoutes } from "../media-routes";
 import { nanoid } from "nanoid";
 
 function isPortAvailable(port: number): Promise<boolean> {
@@ -29,16 +34,58 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
   throw new Error(`No available port found starting from ${startPort}`);
 }
 
+async function canReadPrivateMedia(req: express.Request, key: string): Promise<boolean> {
+  const session = await getClientFromCookie(req);
+  const adminEmail = (process.env.ADMIN_EMAIL || "").toLowerCase().trim();
+  if (!session) return false;
+  if (adminEmail && session.email.toLowerCase().trim() === adminEmail) return true;
+
+  const db = await getDb();
+  if (!db) return false;
+  const urls = getMediaUrlVariants(key);
+
+  const pet = await db
+    .select({ id: pets.id })
+    .from(pets)
+    .where(and(
+      eq(pets.clientId, session.clientId),
+      or(
+        eq(pets.photoKey, key),
+        eq(pets.photoUrl, urls.current),
+        eq(pets.photoUrl, urls.legacy),
+      ),
+    ))
+    .limit(1);
+  if (pet[0]) return true;
+
+  const visit = await db
+    .select({ id: visits.id })
+    .from(visits)
+    .where(and(
+      eq(visits.clientId, session.clientId),
+      eq(visits.published, true),
+      or(
+        eq(visits.beforePhotoKey, key),
+        eq(visits.afterPhotoKey, key),
+        eq(visits.beforePhotoUrl, urls.current),
+        eq(visits.afterPhotoUrl, urls.current),
+        eq(visits.beforePhotoUrl, urls.legacy),
+        eq(visits.afterPhotoUrl, urls.legacy),
+      ),
+    ))
+    .limit(1);
+  return Boolean(visit[0]);
+}
+
 async function startServer() {
   const app = express();
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
-  app.use("/uploads", express.static(getStorageDirectory(), { maxAge: "7d", immutable: true }));
-  // Preserve stored relative URLs while legacy Manus objects are copied to the VPS.
-  app.use("/manus-storage", (req, res) => {
-    res.redirect(307, `/uploads${req.originalUrl.slice("/manus-storage".length)}`);
+  registerMediaRoutes(app, {
+    storageDirectory: getStorageDirectory(),
+    canReadPrivateMedia,
   });
 
   // File upload endpoint for master panel photos

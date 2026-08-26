@@ -10,7 +10,7 @@ describe("sms.ru API", () => {
     const data = await res.json() as { status: string; status_code: number };
     expect(data.status).toBe("OK");
     expect(data.status_code).toBe(100);
-  });
+  }, 15_000);
 
   it("should return balance (even if zero)", async () => {
     const res = await fetch(
@@ -19,5 +19,5 @@ describe("sms.ru API", () => {
     const data = await res.json() as { status: string; balance: number };
     expect(data.status).toBe("OK");
     expect(typeof data.balance).toBe("number");
-  });
+  }, 15_000);
 });
