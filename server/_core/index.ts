@@ -118,9 +118,8 @@ async function startServer() {
       }
       if (!fileBuffer) { res.status(400).json({ error: "No file" }); return; }
       const ext = mimeType.includes("png") ? "png" : "jpg";
-      const key = `visits/${nanoid()}.${ext}`;
-      const { url } = await storagePut(key, fileBuffer, mimeType);
-      res.json({ key, url });
+      const stored = await storagePut(`visits/${nanoid()}.${ext}`, fileBuffer, mimeType);
+      res.json(stored);
     } catch (err: any) {
       res.status(500).json({ error: err.message });
     }
