@@ -563,7 +563,7 @@ export default function Home() {
                     <line x1="19" y1="5" x2="5" y2="19" />
                     <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.6)" stroke="none" />
                   </svg>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px", color: "#fff", textAlign: "center", lineHeight: 1.3, letterSpacing: "0.06em" }}>5 ЛЕТ<br />ОПЫТА</span>
+                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px", color: "#fff", textAlign: "center", lineHeight: 1.3, letterSpacing: "0.06em" }}>2 ГОДА<br />ОПЫТА</span>
                 </div>
               </div>
 
@@ -697,7 +697,7 @@ export default function Home() {
                 <div>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "5px" }}>ТЕЛЕФОН</p>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.8)", margin: 0 }}>+7 913 018-72-19</p>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Чт — Вс с 10:00 до 20:00</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Сб — Вс с 10:00 до 20:00</p>
                 </div>
               </a>
               {/* Hours */}
@@ -705,8 +705,8 @@ export default function Home() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A8C5B5" strokeWidth="1.5" style={{ flexShrink: 0, marginTop: "2px" }}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" strokeLinecap="round"/></svg>
                 <div>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "9px", letterSpacing: "0.3em", color: "#A8C5B5", textTransform: "uppercase", marginBottom: "5px" }}>ВРЕМЯ РАБОТЫ</p>
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.8)", margin: 0 }}>Чт — Вс: 10:00 — 20:00</p>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Пн — Ср: выходной</p>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", color: "rgba(255,255,255,0.8)", margin: 0 }}>Сб — Вс: 10:00 — 20:00</p>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.35)", margin: "3px 0 0" }}>Пн — Пт: выходной</p>
                 </div>
               </div>
             </motion.div>
